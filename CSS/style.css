@@ -583,7 +583,6 @@ body::after {
         0 1px 0 rgba(11, 11, 13, 0.44)
     );
 
-    /* O giro principal é feito pelos keyframes de abertura. */
     transition: filter 500ms ease;
 
     pointer-events: none;
@@ -622,7 +621,6 @@ body::after {
 
     transform: translateY(18%) scale(0.94);
 
-    /* O movimento de saída da carta também usa keyframes. */
     transition: none;
 }
 
@@ -668,8 +666,6 @@ body::after {
 
     pointer-events: none;
 }
-
-/* O PNG já contém a forma e o monograma. */
 
 .envelope__seal::before,
 .envelope__seal::after {
@@ -723,7 +719,7 @@ body::after {
     pointer-events: none;
 }
 
-/* A aba começa fechada e gira para trás. */
+/* A aba gira para trás. */
 
 .envelope.is-opening .envelope__flap,
 .intro.is-opening .envelope__flap {
@@ -763,7 +759,13 @@ body::after {
     }
 }
 
-/* A carta aparece de dentro do envelope e sobe visivelmente. */
+/*
+   A carta começa atrás da aba.
+   Conforme sobe, passa para a frente da aba (z-index: 5).
+
+   Essa troca de camada é o ajuste que impede o papel
+   de parecer preso dentro do envelope.
+*/
 
 .envelope.is-opening .envelope__letter,
 .intro.is-opening .envelope__letter {
@@ -777,18 +779,41 @@ body::after {
 
 @keyframes envelope-letter-rise {
     0% {
+        z-index: 2;
+
         visibility: visible;
         opacity: 0;
 
         transform: translateY(18%) scale(0.94);
     }
 
-    18% {
+    /*
+       A carta começa a sair por trás da aba.
+       A mudança de z-index acontece no início da subida,
+       deixando o papel visível à frente do envelope.
+    */
+
+    20% {
+        z-index: 5;
+
         visibility: visible;
-        opacity: 0.35;
+        opacity: 0.5;
+
+        transform: translateY(0%) scale(0.97);
+    }
+
+    45% {
+        z-index: 5;
+
+        visibility: visible;
+        opacity: 0.85;
+
+        transform: translateY(-30%) scale(0.99);
     }
 
     100% {
+        z-index: 5;
+
         visibility: visible;
         opacity: 1;
 
@@ -796,7 +821,7 @@ body::after {
     }
 }
 
-/* O lacre dá um pequeno salto antes de desaparecer. */
+/* O lacre se solta e desaparece. */
 
 .envelope.is-opening .envelope__seal,
 .intro.is-opening .envelope__seal {
@@ -843,7 +868,7 @@ body::after {
     animation: none;
 }
 
-/* Revelação gradual do convite depois da abertura. */
+/* Entrada do convite principal. */
 
 .invitation.is-visible {
     animation: invitation-reveal 850ms ease both;
@@ -859,11 +884,6 @@ body::after {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.intro.is-opening .intro__glow--red,
-.intro.is-opening .intro__glow--silver {
-    display: none;
 }
 
 
@@ -1125,9 +1145,11 @@ body::after {
 
         background-position:
             18px center,
+
             calc(
                 100% - 18px - clamp(38px, 6vw, 64px)
             ) center,
+
             center 5%,
             center 95%;
 
@@ -1138,7 +1160,6 @@ body::after {
 
 /* =========================================================
    20. MOVIMENTO REDUZIDO
-   Mantém a abertura visível, mas mais curta.
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
