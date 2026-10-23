@@ -44,9 +44,12 @@ const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 ).matches;
 
+// A animação da carta dura cerca de 1.29 s no modo normal.
+// A troca de tela acontece somente depois de ela terminar.
+
 const OPEN_ANIMATION_DURATION = prefersReducedMotion
-    ? 800
-    : 1250;
+    ? 1100
+    : 1650;
 
 
 // ================================================
@@ -92,7 +95,7 @@ function createParticles() {
 
     particles.replaceChildren();
 
-    const particleCount = 28;
+    const particleCount = prefersReducedMotion ? 0 : 28;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement("span");
