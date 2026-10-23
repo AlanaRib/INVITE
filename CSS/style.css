@@ -1,9 +1,11 @@
-/* ================================================
+/* =========================================================
    CONVITE DE ANIVERSÁRIO — ALANA 19
    ETAPA 1: ENVELOPE GÓTICO / NEO-TRIBAL
-================================================ */
+   ========================================================= */
 
-/* 1. VARIÁVEIS */
+/* =========================================================
+   1. VARIÁVEIS
+   ========================================================= */
 
 :root {
     --silver-light: #f2f1f1;
@@ -21,8 +23,9 @@
     --transition-soft: 350ms ease;
 }
 
-
-/* 2. RESET E BASE */
+/* =========================================================
+   2. RESET E BASE
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -36,7 +39,6 @@ html {
 body {
     position: relative;
     isolation: isolate;
-
     min-height: 100vh;
     margin: 0;
 
@@ -44,7 +46,6 @@ body {
     background: #dedadb;
 
     font-family: Georgia, "Times New Roman", serif;
-
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -73,8 +74,9 @@ input:focus-visible {
     background: var(--blood-red);
 }
 
-
-/* 3. FUNDO ATUAL — NÃO ALTERADO */
+/* =========================================================
+   3. FUNDO ATUAL — MANTIDO
+   ========================================================= */
 
 body::before,
 body::after {
@@ -128,12 +130,12 @@ body::after {
 
     background-size: 23px 27px, 31px 35px;
     background-position: 0 0, 13px 17px;
-
     mix-blend-mode: multiply;
 }
 
-
-/* 4. ABERTURA DO CONVITE */
+/* =========================================================
+   4. ABERTURA DO CONVITE
+   ========================================================= */
 
 .intro {
     position: relative;
@@ -154,7 +156,6 @@ body::after {
 .intro__atmosphere {
     position: absolute;
     inset: 0;
-
     overflow: hidden;
     pointer-events: none;
     z-index: -1;
@@ -162,10 +163,8 @@ body::after {
 
 .intro__glow {
     position: absolute;
-
     width: min(70vw, 620px);
     aspect-ratio: 1;
-
     border-radius: 50%;
     filter: blur(110px);
     opacity: 0.10;
@@ -174,7 +173,6 @@ body::after {
 .intro__glow--red {
     right: -32%;
     bottom: -42%;
-
     background: var(--blood-red);
     opacity: 0.14;
 }
@@ -182,28 +180,26 @@ body::after {
 .intro__glow--silver {
     top: -48%;
     left: -35%;
-
     background: #eeeaeb;
     opacity: 0.12;
 }
 
-
-/* 5. POSICIONAMENTO */
+/* =========================================================
+   5. POSICIONAMENTO
+   ========================================================= */
 
 .intro__content {
     position: relative;
-
     display: grid;
     place-items: center;
-
     width: 100%;
     min-height: 390px;
-
     z-index: 1;
 }
 
-
-/* 6. ENVELOPE */
+/* =========================================================
+   6. ENVELOPE
+   ========================================================= */
 
 .envelope {
     --envelope-width: clamp(280px, 70vw, 440px);
@@ -211,6 +207,7 @@ body::after {
 
     position: relative;
     display: block;
+    isolation: isolate;
 
     width: var(--envelope-width);
     height: var(--envelope-height);
@@ -246,8 +243,9 @@ body::after {
     transform: translateY(0) scale(0.985);
 }
 
-
-/* 7. CAMADAS */
+/* =========================================================
+   7. CAMADAS
+   ========================================================= */
 
 .envelope__shadow,
 .envelope__body,
@@ -261,37 +259,42 @@ body::after {
 .envelope__shadow {
     inset: 2px;
     transform: translateY(12px);
-
     background: rgba(11, 11, 13, 0.35);
     filter: blur(16px);
+    pointer-events: none;
 }
 
-
-/* 8. CORPO — VERMELHO UNIFORME */
+/* =========================================================
+   8. CORPO — VERMELHO UNIFORME
+   ========================================================= */
 
 .envelope__body {
+    position: absolute;
+    z-index: 1;
     inset: 0;
     overflow: hidden;
-
     border: 1px solid #360205;
-    border-radius: 18px 18px 10px 10px;
+    border-radius: inherit;
 
-    background: var(--blood-red);
+    background-color: var(--blood-red);
+    background-image: url("../IMGS/envelope-ornament.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
     box-shadow:
-        inset 0 0 0 3px rgba(11, 11, 13, 0.78),
-        inset 0 0 0 5px rgba(255, 255, 255, 0.07),
+        inset 0 0 0 1px rgba(11, 11, 13, 0.54),
+        inset 0 0 0 4px rgba(11, 11, 13, 0.10),
         inset 0 -14px 24px rgba(37, 2, 5, 0.17);
 }
 
-/* Textura de papel discreta */
-
+/* Textura delicada de papel. */
 .envelope__body::before {
     position: absolute;
     inset: 0;
-
     content: "";
     pointer-events: none;
+    opacity: 0.30;
 
     background:
         repeating-linear-gradient(
@@ -303,136 +306,57 @@ body::after {
         ),
         linear-gradient(
             135deg,
-            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.035),
             transparent 42%,
-            rgba(11, 11, 13, 0.10)
+            rgba(11, 11, 13, 0.08)
         );
 }
 
-/* Filete interno */
-
+/* Remove a moldura interna que reforçava o aspecto quadrado. */
 .envelope__body::after {
-    position: absolute;
-    inset: 10px;
-
-    content: "";
-    pointer-events: none;
-
-    border: 1px solid rgba(11, 11, 13, 0.65);
-    border-radius: 12px 12px 6px 6px;
-
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+    content: none;
+    display: none;
 }
 
-
 /* =========================================================
-   9. RENDA NEO-TRIBAL NAS LATERAIS
+   9. ORNAMENTOS PRETOS NAS LATERAIS
    ========================================================= */
 
+/* O SVG tem fundo transparente; os traços aparecem sobre o vermelho. */
 .envelope__body {
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    overflow: hidden;
-    border-radius: inherit;
-
-    /* Corpo inteiro em vermelho */
     background-color: #920608;
-
-    /* Ornamentos pretos em SVG */
     background-image: url("../IMGS/envelope-ornament.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-
-    box-shadow:
-        inset 0 0 0 1px rgba(11, 11, 13, 0.54),
-        inset 0 0 0 5px rgba(11, 11, 13, 0.10),
-        inset 0 1px 0 rgba(255, 190, 190, 0.12);
 }
-
-/* Textura sutil de papel */
-.envelope__body::before {
-    position: absolute;
-    inset: 0;
-    content: "";
-    pointer-events: none;
-
-    opacity: 0.34;
-
-    background-image:
-        repeating-linear-gradient(
-            8deg,
-            rgba(35, 0, 2, 0.10) 0,
-            rgba(35, 0, 2, 0.10) 1px,
-            transparent 1px,
-            transparent 4px
-        ),
-        repeating-linear-gradient(
-            94deg,
-            rgba(255, 190, 190, 0.035) 0,
-            rgba(255, 190, 190, 0.035) 1px,
-            transparent 1px,
-            transparent 5px
-        );
-
-    mix-blend-mode: multiply;
-}
-
-/* Filete interno delicado */
-.envelope__body::after {
-    position: absolute;
-    inset: 9px;
-    content: "";
-    pointer-events: none;
-
-    border: 1px solid rgba(11, 11, 13, 0.38);
-    border-radius: 6px 8px 5px 7px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 180, 180, 0.06);
-}
-
 
 /* =========================================================
-   10. ABA — VERMELHO COM ORNAMENTO SIMÉTRICO
+   10. ABA — VERMELHA COM ORNAMENTO PRETO
    ========================================================= */
 
 .envelope__flap {
     position: absolute;
     z-index: 4;
     inset: 0 0 auto;
-
     height: 58%;
     overflow: hidden;
 
     border-radius: 8px 10px 0 0;
 
-    /* A aba mantém o mesmo vermelho do envelope */
     background-color: #920608;
-
-    /* Ornamento preto da aba */
     background-image: url("../IMGS/flap-ornament.svg");
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
-    /* Silhueta triangular da aba */
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
 
     transform-origin: center top;
     transform: rotateX(0deg);
     backface-visibility: visible;
 
-    filter:
-        drop-shadow(
-            0 1px 0 rgba(11, 11, 13, 0.44)
-        );
+    filter: drop-shadow(0 1px 0 rgba(11, 11, 13, 0.44));
 
     transition:
         transform 700ms cubic-bezier(0.22, 0.72, 0.24, 1),
@@ -441,149 +365,114 @@ body::after {
     pointer-events: none;
 }
 
-/* 11. CARTA INTERNA */
+/* =========================================================
+   11. CARTA INTERNA
+   A carta fica oculta até o envelope começar a abrir.
+   ========================================================= */
 
 .envelope__letter {
+    position: absolute;
+    z-index: 2;
     inset: 10% 8% 7%;
 
-    border: 1px solid rgba(11, 11, 13, 0.65);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
 
-    background:
-        linear-gradient(
-            180deg,
-            #f4eeee,
-            #ded5d7
-        );
+    border: 1px solid rgba(11, 11, 13, 0.45);
+    border-radius: 2px 4px 2px 3px;
+
+    background: linear-gradient(
+        180deg,
+        #f4eeee 0%,
+        #ded5d7 100%
+    );
 
     box-shadow:
-        inset 0 0 0 4px rgba(255, 255, 255, 0.22),
+        inset 0 0 0 4px rgba(255, 255, 255, 0.18),
         0 2px 8px rgba(11, 11, 13, 0.15);
 
     transform: translateY(0);
 
     transition:
-        transform 800ms cubic-bezier(0.2, 0.7, 0.25, 1);
-
-    z-index: 2;
+        transform 800ms cubic-bezier(0.2, 0.7, 0.25, 1),
+        opacity 420ms ease;
 }
 
-
-/* 12. LACRE PRATEADO — MEDALHÃO DELICADO */
+/* =========================================================
+   12. SELO DE CERA VERMELHO + INICIAL PRATA
+   ========================================================= */
 
 .envelope__seal {
+    position: absolute;
+    z-index: 6;
     top: 49%;
     left: 50%;
 
     display: grid;
     place-items: center;
-
-    width: clamp(58px, 12vw, 76px);
+    width: clamp(72px, 14vw, 91px);
     aspect-ratio: 1;
+    overflow: visible;
 
-    border: 1px solid #f4f1f2;
-    border-radius: 50%;
+    border: 0;
+    border-radius: 0;
 
-    background:
-        radial-gradient(
-            circle at 32% 24%,
-            #ffffff 0%,
-            #e6e2e3 18%,
-            #bcb8bb 42%,
-            #e8e5e6 58%,
-            #969195 78%,
-            #d9d5d7 100%
-        );
+    background-color: transparent;
+    background-image: url("../IMGS/wax-seal.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
-    color: #292629;
+    color: var(--silver);
+    box-shadow: none;
 
-    box-shadow:
-        0 4px 10px rgba(11, 11, 13, 0.32),
-        inset 0 0 0 2px rgba(255, 255, 255, 0.68),
-        inset 0 0 0 4px rgba(80, 76, 80, 0.22),
-        inset 0 1px 2px rgba(255, 255, 255, 0.95),
-        inset 0 -3px 5px rgba(11, 11, 13, 0.20);
-
-    transform: translate(-50%, -50%);
-
-    z-index: 6;
+    transform: translate(-50%, -50%) rotate(-2deg);
 
     transition:
         opacity 250ms ease,
         transform 400ms ease;
+
+    pointer-events: none;
 }
 
-/* Anel metálico interno */
-
-.envelope__seal::before {
-    position: absolute;
-    inset: 7px;
-
-    content: "";
-
-    border: 1px solid rgba(77, 72, 77, 0.65);
-    border-radius: 50%;
-
-    box-shadow:
-        inset 0 0 0 2px rgba(255, 255, 255, 0.42);
-}
-
-/* Microdetalhes geométricos */
-
+/* A textura irregular já está no SVG; não adicionar aros via CSS. */
+.envelope__seal::before,
 .envelope__seal::after {
-    position: absolute;
-    inset: 12px;
-
-    content: "";
-
-    border: 1px solid rgba(77, 72, 77, 0.28);
-    border-radius: 50%;
-
-    background:
-        repeating-conic-gradient(
-            from 0deg,
-            rgba(65, 60, 65, 0.18) 0deg 1deg,
-            transparent 1deg 15deg
-        );
-
-    -webkit-mask: radial-gradient(
-        circle,
-        transparent 0 60%,
-        #000 62% 100%
-    );
-
-    mask: radial-gradient(
-        circle,
-        transparent 0 60%,
-        #000 62% 100%
-    );
+    content: none;
+    display: none;
 }
 
+/* Inicial prata, integrada visualmente ao selo. */
 .envelope__seal-symbol {
     position: relative;
     z-index: 1;
 
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(1.4rem, 4vw, 1.85rem);
-    font-weight: 700;
-    font-style: normal;
+    color: var(--silver) !important;
+    font-family: "Cormorant Garamond", "Bodoni MT", Georgia, serif;
+    font-size: clamp(2rem, 5vw, 2.45rem);
+    font-weight: 600;
+    font-style: italic;
     line-height: 1;
 
-    color: #3c383c;
+    transform: translateY(-1px) rotate(2deg);
+    -webkit-text-stroke: 0.25px rgba(255, 255, 255, 0.5);
 
     text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.85),
-        0 -1px 0 rgba(50, 46, 50, 0.24);
+        0 1px 0 rgba(255, 255, 255, 0.38),
+        0 -1px 0 rgba(63, 0, 3, 0.95),
+        1px 2px 1px rgba(49, 0, 2, 0.60);
 }
 
-
-/* 13. TEXTO DO ENVELOPE */
+/* =========================================================
+   13. TEXTO DO ENVELOPE
+   ========================================================= */
 
 .envelope__label {
     position: absolute;
-
+    z-index: 5;
     left: 50%;
     bottom: 11%;
-
     width: 90%;
 
     color: var(--white);
@@ -594,16 +483,15 @@ body::after {
     line-height: 1.6;
     text-align: center;
 
-    text-shadow:
-        0 2px 3px rgba(11, 11, 13, 0.9);
+    text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
 
     transform: translateX(-50%);
-
-    z-index: 5;
+    pointer-events: none;
 }
 
-
-/* 14. ABERTURA ANIMADA */
+/* =========================================================
+   14. ABERTURA ANIMADA
+   ========================================================= */
 
 .envelope.is-opening,
 .intro.is-opening .envelope {
@@ -617,16 +505,15 @@ body::after {
 
 .envelope.is-opening .envelope__letter,
 .intro.is-opening .envelope__letter {
+    visibility: visible;
+    opacity: 1;
     transform: translateY(-30%);
 }
 
 .envelope.is-opening .envelope__seal,
 .intro.is-opening .envelope__seal {
     opacity: 0;
-
-    transform:
-        translate(-50%, -50%)
-        scale(0.55);
+    transform: translate(-50%, -50%) scale(0.55) rotate(8deg);
 }
 
 .intro.is-opening .intro__glow--red {
@@ -637,22 +524,20 @@ body::after {
     opacity: 0.14;
 }
 
-
-/* 15. PARTÍCULAS */
+/* =========================================================
+   15. PARTÍCULAS
+   ========================================================= */
 
 .particles {
     position: absolute;
     inset: 0;
-
     overflow: hidden;
     pointer-events: none;
-
     z-index: 10;
 }
 
 .particle {
     position: absolute;
-
     top: 50%;
     left: var(--particle-x);
 
@@ -669,16 +554,12 @@ body::after {
 
 .particle--red {
     background: var(--blood-red);
-
-    box-shadow:
-        0 0 10px rgba(146, 6, 8, 0.32);
+    box-shadow: 0 0 10px rgba(146, 6, 8, 0.32);
 }
 
 .particle--silver {
     background: var(--white);
-
-    box-shadow:
-        0 0 8px rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
 }
 
 @keyframes particle-rise {
@@ -704,16 +585,18 @@ body::after {
     }
 }
 
-
-/* 16. PERSONAGEM DECORATIVO */
+/* =========================================================
+   16. PERSONAGEM DECORATIVO
+   ========================================================= */
 
 .intro__character {
     position: absolute;
     pointer-events: none;
 }
 
-
-/* 17. RESPONSIVIDADE */
+/* =========================================================
+   17. RESPONSIVIDADE
+   ========================================================= */
 
 @media (max-width: 480px) {
     .intro {
@@ -728,21 +611,23 @@ body::after {
         --envelope-width: min(86vw, 360px);
     }
 
+    /* Mantém os SVGs proporcionais em telas pequenas. */
     .envelope__body {
-        background-size:
-            57px 100%,
-            57px 100%;
+        background-size: 100% 100%;
     }
 
-    .envelope__body::after {
-        inset: 8px;
+    .envelope__flap {
+        background-size: 100% 100%;
     }
 
     .envelope__label {
         bottom: 10%;
-
         font-size: 0.68rem;
         letter-spacing: 0.12em;
+    }
+
+    .envelope__seal {
+        width: clamp(68px, 19vw, 84px);
     }
 
     .intro__glow {
@@ -750,8 +635,9 @@ body::after {
     }
 }
 
-
-/* 18. MOVIMENTO REDUZIDO */
+/* =========================================================
+   18. MOVIMENTO REDUZIDO
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
     *,
