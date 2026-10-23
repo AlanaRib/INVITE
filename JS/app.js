@@ -3,8 +3,6 @@
 // ================================================
 
 const CONFIG = {
-    // Substituiremos pela URL do Web App do Google Apps
-    // Script depois de publicar a integração.
     SHEETS_URL: "https://script.google.com/macros/s/AKfycbzHBsqtEphQOgcTPlGJyX2KX_EdrZVTfIi5yJ6MR7oo1VBgm6b5613O5axV7G9QS9ur/exec",
 
     MAX_COMPANIONS: 4,
@@ -56,7 +54,6 @@ envelope?.addEventListener("click", () => {
 
     createParticles();
 
-    // Aguarda a animação inicial antes de revelar o convite.
     window.setTimeout(() => {
         if (intro) {
             intro.hidden = true;
@@ -199,7 +196,6 @@ companions?.addEventListener("input", () => {
     companions.setCustomValidity("");
     clearFeedback();
 
-    // O navegador não deve manter valores acima do limite.
     if (companions.value !== "") {
         const quantity = Number(companions.value);
 
@@ -281,7 +277,6 @@ form?.addEventListener("submit", async (event) => {
         return;
     }
 
-    // Sem acompanhantes informados quando a resposta é "Não".
     const companionCount =
         attendance === "Sim"
             ? Number(companions.value)
@@ -314,7 +309,6 @@ form?.addEventListener("submit", async (event) => {
     submitButton.textContent = "Enviando...";
 
     try {
-
         const body = new URLSearchParams({
             nome: payload.nome,
             presenca: payload.presenca,
@@ -327,15 +321,18 @@ form?.addEventListener("submit", async (event) => {
             body
         });
 
+        // Limpa o formulário primeiro.
+        form.reset();
+        updateCompanionsField();
+
+        // Exibe a mensagem depois da limpeza.
+        // Assim, updateCompanionsField não a apaga.
         showFeedback(
             CONFIG.MESSAGES[
                 attendance === "Sim" ? "yes" : "no"
             ],
             "success"
         );
-
-        form.reset();
-        updateCompanionsField();
 
     } catch (error) {
         console.error(
