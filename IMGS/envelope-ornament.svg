@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 292" fill="none">
+  <g stroke="#0b0b0d" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left side: a fine neo-tribal ink engraving, not a floral repeat. -->
+    <g id="left-ornament">
+      <path d="M4 4 C28 17 27 35 41 47 C55 60 71 57 79 45 C86 34 78 24 70 27 C62 29 63 37 69 39 C73 40 76 36 73 34" stroke-width="2.05"/>
+      <path d="M10 7 C32 26 21 39 35 56 C47 71 66 76 79 66 C90 58 88 46 81 42" stroke-width="1.05"/>
+      <path d="M5 48 C21 51 30 62 25 75 C20 87 8 91 14 104 C20 117 37 120 48 109 C59 98 51 88 43 92 C36 96 39 102 44 101" stroke-width="1.7"/>
+      <path d="M5 52 C17 63 10 75 16 87 C23 101 36 105 47 98" stroke-width=".9"/>
+      <path d="M6 119 C27 107 44 119 42 135 C40 148 27 151 30 163 C33 176 49 181 60 170 C69 161 62 151 55 155 C50 158 52 164 57 162" stroke-width="1.8"/>
+      <path d="M9 123 C18 136 11 147 21 160 C29 171 42 174 53 165" stroke-width=".95"/>
+      <path d="M5 190 C25 181 44 192 40 208 C37 220 24 224 29 237 C34 250 49 252 59 241 C67 231 61 222 54 226 C49 229 52 234 56 232" stroke-width="1.8"/>
+      <path d="M8 196 C18 208 12 221 22 233 C31 244 42 246 53 237" stroke-width=".95"/>
+      <path d="M4 263 C20 250 35 258 34 270 C33 280 24 283 25 291" stroke-width="1.65"/>
+      <path d="M8 276 C20 280 26 285 28 291" stroke-width=".9"/>
+
+      <!-- Knife-like tapered accents interrupt the curves without becoming a grid. -->
+      <path d="M21 22 C28 29 32 34 33 42 C24 36 19 30 21 22Z" fill="#0b0b0d" stroke="none"/>
+      <path d="M47 65 C39 59 34 52 34 45 C44 50 50 57 47 65Z" fill="#0b0b0d" stroke="none"/>
+      <path d="M16 98 C23 93 29 87 32 79 C34 91 29 100 16 98Z" fill="#0b0b0d" stroke="none"/>
+      <path d="M43 143 C35 137 31 130 32 123 C42 130 47 136 43 143Z" fill="#0b0b0d" stroke="none"/>
+      <path d="M18 218 C27 212 32 204 32 197 C39 210 31 220 18 218Z" fill="#0b0b0d" stroke="none"/>
+      <path d="M48 264 C40 258 37 251 39 245 C49 252 53 258 48 264Z" fill="#0b0b0d" stroke="none"/>
+
+      <!-- Hairline echoes make the engraving feel layered, not icon-like. -->
+      <path d="M51 16 C61 24 60 32 56 39 M58 75 C69 79 75 88 72 98 C70 105 63 108 59 103" stroke-width=".78"/>
+      <path d="M46 111 C58 113 66 123 62 134 M54 181 C66 185 72 195 66 206" stroke-width=".78"/>
+      <path d="M53 249 C65 251 71 260 67 270 C65 276 60 278 57 274" stroke-width=".78"/>
+      <path d="M4 35 L14 43 L6 45 M7 153 L18 160 L8 164 M5 236 L17 242 L7 247" stroke-width="1.1"/>
+      <path d="M78 119 C91 113 101 122 96 132 C92 140 83 135 87 130" stroke-width=".9"/>
+      <path d="M77 204 C91 197 100 207 94 217 C90 224 82 220 86 215" stroke-width=".9"/>
+    </g>
+    <use href="#left-ornament" transform="translate(430 0) scale(-1 1)"/>
+
+    <!-- Tiny irregular ink spikes at the top corners, away from the seal. -->
+    <g fill="#0b0b0d" stroke="none" opacity=".9">
+      <path d="M0 0 H26 C20 5 15 8 11 15 L10 6 L0 10Z"/>
+      <path d="M430 0 H404 C410 5 415 8 419 15 L420 6 L430 10Z"/>
+      <path d="M0 292 H25 C17 287 14 282 12 275 L8 285 L0 282Z"/>
+      <path d="M430 292 H405 C413 287 416 282 418 275 L422 285 L430 282Z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 175" fill="none">
+  <g stroke="#0b0b0d" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Slender ink engraving that follows the triangular envelope flap. -->
+    <g stroke-width="1.25" opacity=".96">
+      <path d="M7 4 C37 14 51 32 67 48 C84 65 108 74 128 63 C145 53 142 39 131 38 C121 37 118 47 126 50 C131 52 135 48 132 45"/>
+      <path d="M12 17 C37 28 43 48 64 64 C83 80 106 88 127 78 C141 71 146 61 139 56" stroke-width=".82"/>
+      <path d="M23 5 C29 16 29 25 25 33 C21 42 25 52 36 61"/>
+      <path d="M48 37 C57 47 56 57 51 65 C45 75 51 83 62 89"/>
+      <path d="M75 61 C84 71 83 82 77 89 C70 98 77 108 89 111"/>
+      <path d="M423 4 C393 14 379 32 363 48 C346 65 322 74 302 63 C285 53 288 39 299 38 C309 37 312 47 304 50 C299 52 295 48 298 45"/>
+      <path d="M418 17 C393 28 387 48 366 64 C347 80 324 88 303 78 C289 71 284 61 291 56" stroke-width=".82"/>
+      <path d="M407 5 C401 16 401 25 405 33 C409 42 405 52 394 61"/>
+      <path d="M382 37 C373 47 374 57 379 65 C385 75 379 83 368 89"/>
+      <path d="M355 61 C346 71 347 82 353 89 C360 98 353 108 341 111"/>
+      <path d="M111 19 C130 28 144 43 158 54 C173 66 190 65 201 55 C211 45 204 37 198 41 C192 44 196 49 200 47"/>
+      <path d="M319 19 C300 28 286 43 272 54 C257 66 240 65 229 55 C219 45 226 37 232 41 C238 44 234 49 230 47"/>
+    </g>
+
+    <!-- Central thorn-and-flame monogram: sinuous and organic, not a flower. -->
+    <g>
+      <path d="M215 5 C209 20 207 29 211 38 C202 30 191 27 179 31 C191 39 201 47 207 61 C211 70 212 79 215 89 C218 79 219 70 223 61 C229 47 239 39 251 31 C239 27 228 30 219 38 C223 29 221 20 215 5Z" fill="#0b0b0d" stroke="none" opacity=".93"/>
+      <path d="M215 9 C215 26 215 39 215 58 C215 70 215 81 215 94" stroke-width=".95"/>
+      <path d="M207 42 C195 44 185 51 177 61 C190 58 199 62 208 72" stroke-width="1.25"/>
+      <path d="M223 42 C235 44 245 51 253 61 C240 58 231 62 222 72" stroke-width="1.25"/>
+      <path d="M204 67 C191 66 181 72 174 83 C188 78 198 84 208 94" stroke-width="1.05"/>
+      <path d="M226 67 C239 66 249 72 256 83 C242 78 232 84 222 94" stroke-width="1.05"/>
+      <path d="M209 96 C204 105 207 115 215 124 C223 115 226 105 221 96" stroke-width="1.15"/>
+      <path d="M215 121 C209 133 209 143 215 154 C221 143 221 133 215 121Z" fill="#0b0b0d" stroke="none"/>
+      <path d="M205 132 C198 140 200 151 208 157 M225 132 C232 140 230 151 222 157" stroke-width="1.05"/>
+    </g>
+
+    <!-- Fine slashes and tapered accents at the shoulders. -->
+    <g fill="#0b0b0d" stroke="none" opacity=".94">
+      <path d="M54 38 L69 48 L57 48Z"/>
+      <path d="M376 38 L361 48 L373 48Z"/>
+      <path d="M88 79 L103 86 L91 89Z"/>
+      <path d="M342 79 L327 86 L339 89Z"/>
+      <path d="M126 61 L139 66 L127 70Z"/>
+      <path d="M304 61 L291 66 L303 70Z"/>
+    </g>
+  </g>
+</svg>
