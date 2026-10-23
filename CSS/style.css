@@ -326,105 +326,120 @@ body::after {
 }
 
 
-/* 9. RENDA NEO-TRIBAL NAS LATERAIS */
+/* =========================================================
+   9. RENDA NEO-TRIBAL NAS LATERAIS
+   ========================================================= */
 
 .envelope__body {
-    background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 340'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0 0 Q23 19 13 40 T24 79 T13 119 T25 159 T13 200 T24 240 T13 280 T0 340'/%3E%3Cpath d='M8 0 Q37 22 26 44 T38 81 T27 120 T39 160 T27 200 T38 241 T27 280 T8 340'/%3E%3Cpath d='M0 40 L23 53 L8 67 L28 80 L12 94 L30 108'/%3E%3Cpath d='M13 119 L34 132 L18 146 L37 159 L21 173 L39 186'/%3E%3Cpath d='M13 200 L34 213 L18 227 L37 240 L21 254 L39 267'/%3E%3Cpath d='M0 280 L23 293 L8 307 L28 320'/%3E%3Cpath d='M35 25 Q48 36 35 48 Q22 36 35 25Z M40 54 L52 66 L40 78 L28 66Z'/%3E%3Cpath d='M48 103 Q61 114 48 126 Q35 114 48 103Z M52 133 L64 145 L52 157 L40 145Z'/%3E%3Cpath d='M48 184 Q61 195 48 207 Q35 195 48 184Z M52 214 L64 226 L52 238 L40 226Z'/%3E%3Cpath d='M35 265 Q48 276 35 288 Q22 276 35 265Z M40 294 L52 306 L40 318 L28 306Z'/%3E%3Cpath d='M0 15 L18 24 L0 33 M0 95 L18 104 L0 113 M0 175 L18 184 L0 193 M0 255 L18 264 L0 273'/%3E%3C/g%3E%3C/svg%3E"),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 340'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M150 0 Q127 19 137 40 T126 79 T137 119 T125 159 T137 200 T126 240 T137 280 T150 340'/%3E%3Cpath d='M142 0 Q113 22 124 44 T112 81 T123 120 T111 160 T123 200 T112 241 T123 280 T142 340'/%3E%3Cpath d='M150 40 L127 53 L142 67 L122 80 L138 94 L120 108'/%3E%3Cpath d='M137 119 L116 132 L132 146 L113 159 L129 173 L111 186'/%3E%3Cpath d='M137 200 L116 213 L132 227 L113 240 L129 254 L111 267'/%3E%3Cpath d='M150 280 L127 293 L142 307 L122 320'/%3E%3Cpath d='M115 25 Q102 36 115 48 Q128 36 115 25Z M110 54 L98 66 L110 78 L122 66Z'/%3E%3Cpath d='M102 103 Q89 114 102 126 Q115 114 102 103Z M98 133 L86 145 L98 157 L110 145Z'/%3E%3Cpath d='M102 184 Q89 195 102 207 Q115 195 102 184Z M98 214 L86 226 L98 238 L110 226Z'/%3E%3Cpath d='M115 265 Q102 276 115 288 Q128 276 115 265Z M110 294 L98 306 L110 318 L122 306Z'/%3E%3Cpath d='M150 15 L132 24 L150 33 M150 95 L132 104 L150 113 M150 175 L132 184 L150 193 M150 255 L132 264 L150 273'/%3E%3C/g%3E%3C/svg%3E");
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
 
-    background-size:
-        76px 100%,
-        76px 100%;
+    /* Corpo inteiro em vermelho */
+    background-color: #920608;
 
-    background-position:
-        left center,
-        right center;
-
+    /* Ornamentos pretos em SVG */
+    background-image: url("../IMGS/envelope-ornament.svg");
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(11, 11, 13, 0.54),
+        inset 0 0 0 5px rgba(11, 11, 13, 0.10),
+        inset 0 1px 0 rgba(255, 190, 190, 0.12);
+}
+
+/* Textura sutil de papel */
+.envelope__body::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+
+    opacity: 0.34;
+
+    background-image:
+        repeating-linear-gradient(
+            8deg,
+            rgba(35, 0, 2, 0.10) 0,
+            rgba(35, 0, 2, 0.10) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        repeating-linear-gradient(
+            94deg,
+            rgba(255, 190, 190, 0.035) 0,
+            rgba(255, 190, 190, 0.035) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+
+    mix-blend-mode: multiply;
+}
+
+/* Filete interno delicado */
+.envelope__body::after {
+    position: absolute;
+    inset: 9px;
+    content: "";
+    pointer-events: none;
+
+    border: 1px solid rgba(11, 11, 13, 0.38);
+    border-radius: 6px 8px 5px 7px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 180, 180, 0.06);
 }
 
 
-/* 10. ABA — VERMELHO COM ORNAMENTO SIMÉTRICO */
+/* =========================================================
+   10. ABA — VERMELHO COM ORNAMENTO SIMÉTRICO
+   ========================================================= */
 
 .envelope__flap {
+    position: absolute;
+    z-index: 4;
     inset: 0 0 auto;
 
-    height: 68%;
+    height: 58%;
+    overflow: hidden;
 
-    border-radius: 17px 17px 0 0;
+    border-radius: 8px 10px 0 0;
 
+    /* A aba mantém o mesmo vermelho do envelope */
+    background-color: #920608;
+
+    /* Ornamento preto da aba */
+    background-image: url("../IMGS/flap-ornament.svg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    /* Silhueta triangular da aba */
     clip-path: polygon(
         0 0,
         100% 0,
-        100% 4%,
-        50% 100%,
-        0 4%
+        50% 100%
     );
-
-    background: var(--blood-red);
 
     transform-origin: center top;
     transform: rotateX(0deg);
-
     backface-visibility: visible;
-    z-index: 4;
+
+    filter:
+        drop-shadow(
+            0 1px 0 rgba(11, 11, 13, 0.44)
+        );
 
     transition:
-        transform 750ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        transform 700ms cubic-bezier(0.22, 0.72, 0.24, 1),
         filter 500ms ease;
-}
 
-/* Linhas decorativas que acompanham a aba */
-
-.envelope__flap::before {
-    position: absolute;
-    inset: 0;
-
-    content: "";
     pointer-events: none;
-
-    background:
-        linear-gradient(
-            155deg,
-            transparent 49.2%,
-            rgba(11, 11, 13, 0.90) 49.6%,
-            rgba(11, 11, 13, 0.90) 50%,
-            transparent 50.4%
-        ),
-        linear-gradient(
-            25deg,
-            transparent 49.5%,
-            rgba(11, 11, 13, 0.65) 49.8%,
-            transparent 50.2%
-        );
 }
-
-/* Emblema geométrico central da aba */
-
-.envelope__flap::after {
-    position: absolute;
-    top: 7%;
-    left: 50%;
-
-    width: 47%;
-    height: 55%;
-
-    content: "";
-    pointer-events: none;
-
-    transform: translateX(-50%);
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 150'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M90 4 L100 30 L90 48 L80 30Z'/%3E%3Cpath d='M90 48 L90 126 M80 30 L60 42 L45 62 L65 57 L78 69 M100 30 L120 42 L135 62 L115 57 L102 69'/%3E%3Cpath d='M90 61 L72 79 L57 81 L70 94 L90 83 L110 94 L123 81 L108 79Z'/%3E%3Cpath d='M90 83 L90 139 M90 100 L76 116 L90 129 L104 116Z'/%3E%3Cpath d='M60 42 Q37 28 25 48 Q43 49 45 62 M120 42 Q143 28 155 48 Q137 49 135 62'/%3E%3Cpath d='M65 57 Q40 64 40 83 Q57 79 70 94 M115 57 Q140 64 140 83 Q123 79 110 94'/%3E%3Cpath d='M90 4 L90 0 M25 48 L16 38 M155 48 L164 38 M90 139 L90 149'/%3E%3C/g%3E%3C/svg%3E");
-
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    opacity: 0.92;
-}
-
 
 /* 11. CARTA INTERNA */
 
