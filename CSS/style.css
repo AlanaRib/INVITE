@@ -1,11 +1,9 @@
 /* ================================================
    CONVITE DE ANIVERSÁRIO — ALANA 19
-   ETAPA 1: ENVELOPE GÓTICO ORNAMENTADO
+   ETAPA 1: ENVELOPE GÓTICO / NEO-TRIBAL
 ================================================ */
 
-/* --------------------------------
-   1. VARIÁVEIS
--------------------------------- */
+/* 1. VARIÁVEIS */
 
 :root {
     --silver-light: #f2f1f1;
@@ -24,9 +22,7 @@
 }
 
 
-/* --------------------------------
-   2. RESET E BASE
--------------------------------- */
+/* 2. RESET E BASE */
 
 * {
     box-sizing: border-box;
@@ -78,18 +74,14 @@ input:focus-visible {
 }
 
 
-/* --------------------------------
-   3. FUNDO ATUAL — PRESERVADO
--------------------------------- */
+/* 3. FUNDO ATUAL — NÃO ALTERADO */
 
 body::before,
 body::after {
     position: fixed;
     inset: 0;
-
     content: "";
     pointer-events: none;
-
     z-index: -1;
 }
 
@@ -134,25 +126,17 @@ body::after {
             transparent 1.2px
         );
 
-    background-size:
-        23px 27px,
-        31px 35px;
-
-    background-position:
-        0 0,
-        13px 17px;
+    background-size: 23px 27px, 31px 35px;
+    background-position: 0 0, 13px 17px;
 
     mix-blend-mode: multiply;
 }
 
 
-/* --------------------------------
-   4. ABERTURA DO CONVITE
--------------------------------- */
+/* 4. ABERTURA DO CONVITE */
 
 .intro {
     position: relative;
-
     display: grid;
     place-items: center;
 
@@ -173,7 +157,6 @@ body::after {
 
     overflow: hidden;
     pointer-events: none;
-
     z-index: -1;
 }
 
@@ -185,7 +168,6 @@ body::after {
 
     border-radius: 50%;
     filter: blur(110px);
-
     opacity: 0.10;
 }
 
@@ -206,9 +188,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   5. ÁREA DO ENVELOPE
--------------------------------- */
+/* 5. POSICIONAMENTO */
 
 .intro__content {
     position: relative;
@@ -223,16 +203,13 @@ body::after {
 }
 
 
-/* --------------------------------
-   6. ENVELOPE
--------------------------------- */
+/* 6. ENVELOPE */
 
 .envelope {
     --envelope-width: clamp(280px, 70vw, 440px);
     --envelope-height: calc(var(--envelope-width) * 0.66);
 
     position: relative;
-
     display: block;
 
     width: var(--envelope-width);
@@ -240,7 +217,7 @@ body::after {
 
     padding: 0;
     border: 0;
-    border-radius: 4px;
+    border-radius: 18px 18px 10px 10px;
 
     background: transparent;
     color: var(--white);
@@ -270,9 +247,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   7. CAMADAS PRINCIPAIS
--------------------------------- */
+/* 7. CAMADAS */
 
 .envelope__shadow,
 .envelope__body,
@@ -284,8 +259,7 @@ body::after {
 }
 
 .envelope__shadow {
-    inset: 0;
-
+    inset: 2px;
     transform: translateY(12px);
 
     background: rgba(11, 11, 13, 0.35);
@@ -293,33 +267,24 @@ body::after {
 }
 
 
-/* --------------------------------
-   8. CORPO DO ENVELOPE
--------------------------------- */
+/* 8. CORPO — VERMELHO UNIFORME */
 
 .envelope__body {
     inset: 0;
-
     overflow: hidden;
 
-    background:
-        linear-gradient(
-            135deg,
-            #a91a20 0%,
-            #920608 30%,
-            #790409 66%,
-            #4b0307 100%
-        );
+    border: 1px solid #360205;
+    border-radius: 18px 18px 10px 10px;
 
-    border: 1px solid #210204;
+    background: var(--blood-red);
 
     box-shadow:
-        inset 0 0 0 3px rgba(11, 11, 13, 0.75),
-        inset 0 0 0 5px rgba(255, 255, 255, 0.09),
-        inset 0 -18px 28px rgba(37, 2, 5, 0.25);
+        inset 0 0 0 3px rgba(11, 11, 13, 0.78),
+        inset 0 0 0 5px rgba(255, 255, 255, 0.07),
+        inset 0 -14px 24px rgba(37, 2, 5, 0.17);
 }
 
-/* Textura sutil de papel e detalhes rendilhados */
+/* Textura de papel discreta */
 
 .envelope__body::before {
     position: absolute;
@@ -328,43 +293,23 @@ body::after {
     content: "";
     pointer-events: none;
 
-    background-image:
-        /* Pequenos motivos florais nos cantos */
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M-8 10 Q35 8 38 43 T80 77 Q110 94 92 126 T155 180'/%3E%3Cpath d='M5 -8 Q15 38 48 42 T72 85 Q100 105 133 93 T180 145'/%3E%3Cpath d='M4 38 C35 18 48 60 27 68 C8 75 1 49 20 47 C37 46 36 68 21 70'/%3E%3Cpath d='M49 4 C27 24 69 45 75 22 C80 4 55 -2 51 15 C48 28 68 32 69 17'/%3E%3Cpath d='M65 68 C34 45 26 91 54 93 C74 94 77 73 60 69 C47 67 45 84 58 84'/%3E%3Cpath d='M104 99 C80 78 65 112 86 123 C105 132 117 110 100 103 C89 98 83 114 96 117'/%3E%3Cpath d='M120 46 Q94 20 82 43 Q73 61 94 64 Q113 66 110 49 Q107 38 96 46'/%3E%3Cpath d='M123 133 Q148 103 163 125 Q176 145 154 151 Q135 154 139 136 Q144 124 155 137'/%3E%3Cpath d='M25 113 Q50 93 57 118 Q61 137 42 137 Q27 135 35 121 Q42 113 47 125'/%3E%3Cpath d='M5 88 Q24 79 31 96 Q36 111 19 113 Q4 113 11 98'/%3E%3Cpath d='M142 7 Q121 22 139 38 Q153 48 162 31 Q167 18 151 18 Q140 20 148 31'/%3E%3C/g%3E%3Cg fill='%230b0b0d'%3E%3Ccircle cx='39' cy='43' r='3'/%3E%3Ccircle cx='75' cy='85' r='3'/%3E%3Ccircle cx='92' cy='126' r='3'/%3E%3Ccircle cx='133' cy='93' r='3'/%3E%3C/g%3E%3C/svg%3E"),
-        /* Linhas finas imitando papel */
+    background:
         repeating-linear-gradient(
             0deg,
-            rgba(255, 255, 255, 0.025) 0,
-            rgba(255, 255, 255, 0.025) 1px,
+            rgba(255, 255, 255, 0.018) 0,
+            rgba(255, 255, 255, 0.018) 1px,
             transparent 1px,
             transparent 4px
         ),
         linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.08),
-            transparent 40%,
-            rgba(11, 11, 13, 0.18)
+            135deg,
+            rgba(255, 255, 255, 0.045),
+            transparent 42%,
+            rgba(11, 11, 13, 0.10)
         );
-
-    background-size:
-        150px 150px,
-        auto,
-        auto;
-
-    background-position:
-        left top,
-        center,
-        center;
-
-    background-repeat:
-        repeat,
-        repeat,
-        no-repeat;
-
-    opacity: 0.9;
 }
 
-/* Moldura interna com pequenas curvas nos cantos */
+/* Filete interno */
 
 .envelope__body::after {
     position: absolute;
@@ -373,62 +318,56 @@ body::after {
     content: "";
     pointer-events: none;
 
-    border: 1px solid rgba(11, 11, 13, 0.72);
+    border: 1px solid rgba(11, 11, 13, 0.65);
+    border-radius: 12px 12px 6px 6px;
 
-    background:
-        radial-gradient(
-            circle at 0 0,
-            transparent 0 10px,
-            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
-            transparent 12px
-        ),
-        radial-gradient(
-            circle at 100% 0,
-            transparent 0 10px,
-            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
-            transparent 12px
-        ),
-        radial-gradient(
-            circle at 0 100%,
-            transparent 0 10px,
-            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
-            transparent 12px
-        ),
-        radial-gradient(
-            circle at 100% 100%,
-            transparent 0 10px,
-            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
-            transparent 12px
-        );
-
-    z-index: 1;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
 }
 
 
-/* --------------------------------
-   9. ABA TRIANGULAR ORNAMENTADA
--------------------------------- */
+/* 9. RENDA NEO-TRIBAL NAS LATERAIS */
+
+.envelope__body {
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 340'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0 0 Q23 19 13 40 T24 79 T13 119 T25 159 T13 200 T24 240 T13 280 T0 340'/%3E%3Cpath d='M8 0 Q37 22 26 44 T38 81 T27 120 T39 160 T27 200 T38 241 T27 280 T8 340'/%3E%3Cpath d='M0 40 L23 53 L8 67 L28 80 L12 94 L30 108'/%3E%3Cpath d='M13 119 L34 132 L18 146 L37 159 L21 173 L39 186'/%3E%3Cpath d='M13 200 L34 213 L18 227 L37 240 L21 254 L39 267'/%3E%3Cpath d='M0 280 L23 293 L8 307 L28 320'/%3E%3Cpath d='M35 25 Q48 36 35 48 Q22 36 35 25Z M40 54 L52 66 L40 78 L28 66Z'/%3E%3Cpath d='M48 103 Q61 114 48 126 Q35 114 48 103Z M52 133 L64 145 L52 157 L40 145Z'/%3E%3Cpath d='M48 184 Q61 195 48 207 Q35 195 48 184Z M52 214 L64 226 L52 238 L40 226Z'/%3E%3Cpath d='M35 265 Q48 276 35 288 Q22 276 35 265Z M40 294 L52 306 L40 318 L28 306Z'/%3E%3Cpath d='M0 15 L18 24 L0 33 M0 95 L18 104 L0 113 M0 175 L18 184 L0 193 M0 255 L18 264 L0 273'/%3E%3C/g%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 340'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M150 0 Q127 19 137 40 T126 79 T137 119 T125 159 T137 200 T126 240 T137 280 T150 340'/%3E%3Cpath d='M142 0 Q113 22 124 44 T112 81 T123 120 T111 160 T123 200 T112 241 T123 280 T142 340'/%3E%3Cpath d='M150 40 L127 53 L142 67 L122 80 L138 94 L120 108'/%3E%3Cpath d='M137 119 L116 132 L132 146 L113 159 L129 173 L111 186'/%3E%3Cpath d='M137 200 L116 213 L132 227 L113 240 L129 254 L111 267'/%3E%3Cpath d='M150 280 L127 293 L142 307 L122 320'/%3E%3Cpath d='M115 25 Q102 36 115 48 Q128 36 115 25Z M110 54 L98 66 L110 78 L122 66Z'/%3E%3Cpath d='M102 103 Q89 114 102 126 Q115 114 102 103Z M98 133 L86 145 L98 157 L110 145Z'/%3E%3Cpath d='M102 184 Q89 195 102 207 Q115 195 102 184Z M98 214 L86 226 L98 238 L110 226Z'/%3E%3Cpath d='M115 265 Q102 276 115 288 Q128 276 115 265Z M110 294 L98 306 L110 318 L122 306Z'/%3E%3Cpath d='M150 15 L132 24 L150 33 M150 95 L132 104 L150 113 M150 175 L132 184 L150 193 M150 255 L132 264 L150 273'/%3E%3C/g%3E%3C/svg%3E");
+
+    background-size:
+        76px 100%,
+        76px 100%;
+
+    background-position:
+        left center,
+        right center;
+
+    background-repeat: no-repeat;
+}
+
+
+/* 10. ABA — VERMELHO COM ORNAMENTO SIMÉTRICO */
 
 .envelope__flap {
     inset: 0 0 auto;
 
-    height: 66%;
+    height: 68%;
 
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    border-radius: 17px 17px 0 0;
 
-    background:
-        linear-gradient(
-            155deg,
-            #a7191d 0%,
-            #920608 48%,
-            #5c0307 100%
-        );
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 4%,
+        50% 100%,
+        0 4%
+    );
+
+    background: var(--blood-red);
 
     transform-origin: center top;
     transform: rotateX(0deg);
 
     backface-visibility: visible;
-
     z-index: 4;
 
     transition:
@@ -436,64 +375,63 @@ body::after {
         filter 500ms ease;
 }
 
-/*
-   Filete duplo ao longo da aba.
-   A renda do corpo continua visível nas laterais.
-*/
+/* Linhas decorativas que acompanham a aba */
 
 .envelope__flap::before {
     position: absolute;
     inset: 0;
 
     content: "";
+    pointer-events: none;
 
     background:
         linear-gradient(
             155deg,
-            transparent 48.9%,
-            rgba(11, 11, 13, 0.9) 49.3%,
-            rgba(11, 11, 13, 0.9) 49.8%,
-            rgba(255, 255, 255, 0.18) 50%,
+            transparent 49.2%,
+            rgba(11, 11, 13, 0.90) 49.6%,
+            rgba(11, 11, 13, 0.90) 50%,
             transparent 50.4%
+        ),
+        linear-gradient(
+            25deg,
+            transparent 49.5%,
+            rgba(11, 11, 13, 0.65) 49.8%,
+            transparent 50.2%
         );
-
-    pointer-events: none;
 }
 
-/* Arabesco central da aba */
+/* Emblema geométrico central da aba */
 
 .envelope__flap::after {
     position: absolute;
-
-    top: 5%;
+    top: 7%;
     left: 50%;
 
-    width: 42%;
+    width: 47%;
     height: 55%;
 
     content: "";
+    pointer-events: none;
 
     transform: translateX(-50%);
 
     background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 130'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M80 125 V69 M80 69 C58 60 40 48 39 26 C59 29 73 42 80 58 C87 42 101 29 121 26 C120 48 102 60 80 69'/%3E%3Cpath d='M80 93 C57 94 42 83 30 68 C50 64 68 72 80 84 C92 72 110 64 130 68 C118 83 103 94 80 93'/%3E%3Cpath d='M80 57 C67 45 68 27 80 7 C92 27 93 45 80 57Z'/%3E%3Cpath d='M54 53 C38 53 25 44 17 30 C35 30 47 37 54 53Z M106 53 C122 53 135 44 143 30 C125 30 113 37 106 53Z'/%3E%3Cpath d='M80 105 C69 98 66 87 80 79 C94 87 91 98 80 105Z'/%3E%3Cpath d='M31 68 C22 62 16 53 17 43 C30 47 36 56 31 68Z M129 68 C138 62 144 53 143 43 C130 47 124 56 129 68Z'/%3E%3C/g%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 150'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M90 4 L100 30 L90 48 L80 30Z'/%3E%3Cpath d='M90 48 L90 126 M80 30 L60 42 L45 62 L65 57 L78 69 M100 30 L120 42 L135 62 L115 57 L102 69'/%3E%3Cpath d='M90 61 L72 79 L57 81 L70 94 L90 83 L110 94 L123 81 L108 79Z'/%3E%3Cpath d='M90 83 L90 139 M90 100 L76 116 L90 129 L104 116Z'/%3E%3Cpath d='M60 42 Q37 28 25 48 Q43 49 45 62 M120 42 Q143 28 155 48 Q137 49 135 62'/%3E%3Cpath d='M65 57 Q40 64 40 83 Q57 79 70 94 M115 57 Q140 64 140 83 Q123 79 110 94'/%3E%3Cpath d='M90 4 L90 0 M25 48 L16 38 M155 48 L164 38 M90 139 L90 149'/%3E%3C/g%3E%3C/svg%3E");
 
-    background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
 
     opacity: 0.92;
-
-    pointer-events: none;
 }
 
 
-/* --------------------------------
-   10. CARTA INTERNA
--------------------------------- */
+/* 11. CARTA INTERNA */
 
 .envelope__letter {
     inset: 10% 8% 7%;
+
+    border: 1px solid rgba(11, 11, 13, 0.65);
 
     background:
         linear-gradient(
@@ -501,8 +439,6 @@ body::after {
             #f4eeee,
             #ded5d7
         );
-
-    border: 1px solid rgba(11, 11, 13, 0.7);
 
     box-shadow:
         inset 0 0 0 4px rgba(255, 255, 255, 0.22),
@@ -517,9 +453,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   11. LACRE EM FORMATO DE MEDALHÃO
--------------------------------- */
+/* 12. LACRE PRATEADO — MEDALHÃO DELICADO */
 
 .envelope__seal {
     top: 49%;
@@ -528,30 +462,31 @@ body::after {
     display: grid;
     place-items: center;
 
-    width: clamp(58px, 12vw, 78px);
+    width: clamp(58px, 12vw, 76px);
     aspect-ratio: 1;
 
-    border: 2px solid #210204;
-
-    border-radius: 42% 48% 43% 47%;
+    border: 1px solid #f4f1f2;
+    border-radius: 50%;
 
     background:
         radial-gradient(
-            circle at 32% 25%,
-            #b22a2e 0%,
-            #920608 35%,
-            #650307 70%,
-            #250205 100%
+            circle at 32% 24%,
+            #ffffff 0%,
+            #e6e2e3 18%,
+            #bcb8bb 42%,
+            #e8e5e6 58%,
+            #969195 78%,
+            #d9d5d7 100%
         );
 
-    color: #e8c9c9;
+    color: #292629;
 
     box-shadow:
-        0 5px 10px rgba(37, 2, 5, 0.45),
-        inset 0 0 0 3px rgba(11, 11, 13, 0.58),
-        inset 0 0 0 5px rgba(255, 255, 255, 0.09),
-        inset 0 2px 3px rgba(255, 255, 255, 0.15),
-        inset 0 -4px 7px rgba(37, 2, 5, 0.45);
+        0 4px 10px rgba(11, 11, 13, 0.32),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.68),
+        inset 0 0 0 4px rgba(80, 76, 80, 0.22),
+        inset 0 1px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -3px 5px rgba(11, 11, 13, 0.20);
 
     transform: translate(-50%, -50%);
 
@@ -562,7 +497,7 @@ body::after {
         transform 400ms ease;
 }
 
-/* Anel interno do medalhão */
+/* Anel metálico interno */
 
 .envelope__seal::before {
     position: absolute;
@@ -570,13 +505,14 @@ body::after {
 
     content: "";
 
-    border: 1px solid rgba(232, 201, 201, 0.5);
-    border-radius: 40% 48% 42% 48%;
+    border: 1px solid rgba(77, 72, 77, 0.65);
+    border-radius: 50%;
 
-    transform: rotate(45deg);
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.42);
 }
 
-/* Pequenos pontos decorativos */
+/* Microdetalhes geométricos */
 
 .envelope__seal::after {
     position: absolute;
@@ -584,35 +520,54 @@ body::after {
 
     content: "";
 
-    border: 1px dotted rgba(232, 201, 201, 0.45);
+    border: 1px solid rgba(77, 72, 77, 0.28);
     border-radius: 50%;
+
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(65, 60, 65, 0.18) 0deg 1deg,
+            transparent 1deg 15deg
+        );
+
+    -webkit-mask: radial-gradient(
+        circle,
+        transparent 0 60%,
+        #000 62% 100%
+    );
+
+    mask: radial-gradient(
+        circle,
+        transparent 0 60%,
+        #000 62% 100%
+    );
 }
 
 .envelope__seal-symbol {
     position: relative;
-
     z-index: 1;
 
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.4rem, 4vw, 1.85rem);
     font-weight: 700;
     font-style: normal;
     line-height: 1;
 
+    color: #3c383c;
+
     text-shadow:
-        0 1px 1px rgba(11, 11, 13, 0.85);
+        0 1px 0 rgba(255, 255, 255, 0.85),
+        0 -1px 0 rgba(50, 46, 50, 0.24);
 }
 
 
-/* --------------------------------
-   12. TEXTO DO ENVELOPE
--------------------------------- */
+/* 13. TEXTO DO ENVELOPE */
 
 .envelope__label {
     position: absolute;
 
     left: 50%;
-    bottom: 12%;
+    bottom: 11%;
 
     width: 90%;
 
@@ -633,9 +588,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   13. ABERTURA ANIMADA
--------------------------------- */
+/* 14. ABERTURA ANIMADA */
 
 .envelope.is-opening,
 .intro.is-opening .envelope {
@@ -670,9 +623,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   14. PARTÍCULAS
--------------------------------- */
+/* 15. PARTÍCULAS */
 
 .particles {
     position: absolute;
@@ -694,7 +645,6 @@ body::after {
     height: 5px;
 
     border-radius: 50%;
-
     opacity: 0;
 
     animation:
@@ -740,9 +690,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   15. PERSONAGEM DECORATIVO
--------------------------------- */
+/* 16. PERSONAGEM DECORATIVO */
 
 .intro__character {
     position: absolute;
@@ -750,9 +698,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   16. RESPONSIVIDADE
--------------------------------- */
+/* 17. RESPONSIVIDADE */
 
 @media (max-width: 480px) {
     .intro {
@@ -767,22 +713,21 @@ body::after {
         --envelope-width: min(86vw, 360px);
     }
 
-    .envelope__label {
-        bottom: 11%;
-
-        font-size: 0.68rem;
-        letter-spacing: 0.12em;
-    }
-
-    .envelope__body::before {
+    .envelope__body {
         background-size:
-            115px 115px,
-            auto,
-            auto;
+            57px 100%,
+            57px 100%;
     }
 
     .envelope__body::after {
         inset: 8px;
+    }
+
+    .envelope__label {
+        bottom: 10%;
+
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
     }
 
     .intro__glow {
@@ -791,9 +736,7 @@ body::after {
 }
 
 
-/* --------------------------------
-   17. MOVIMENTO REDUZIDO
--------------------------------- */
+/* 18. MOVIMENTO REDUZIDO */
 
 @media (prefers-reduced-motion: reduce) {
     *,
