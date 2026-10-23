@@ -1,6 +1,6 @@
 /* ================================================
-   TASK: CONVITE DE ANIVERSÁRIO — ALANA 19
-   ETAPA 1: FUNDO E ENVELOPE GÓTICO
+   CONVITE DE ANIVERSÁRIO — ALANA 19
+   ETAPA 1: ENVELOPE GÓTICO ORNAMENTADO
 ================================================ */
 
 /* --------------------------------
@@ -20,7 +20,6 @@
     --white: #fffdfd;
 
     --page-padding: clamp(1.25rem, 5vw, 4rem);
-
     --transition-soft: 350ms ease;
 }
 
@@ -80,14 +79,8 @@ input:focus-visible {
 
 
 /* --------------------------------
-   3. ATMOSFERA GLOBAL
+   3. FUNDO ATUAL — PRESERVADO
 -------------------------------- */
-
-/*
-   O fundo usa tons de prata e cinza como base.
-   O vermelho aparece pelas laterais, sem formar
-   um círculo claro no centro da página.
-*/
 
 body::before,
 body::after {
@@ -125,11 +118,6 @@ body::before {
 
     background-color: #dedadb;
 }
-
-/*
-   Textura discreta de papel.
-   A opacidade baixa evita um aspecto excessivamente granulado.
-*/
 
 body::after {
     opacity: 0.12;
@@ -179,11 +167,6 @@ body::after {
     isolation: isolate;
 }
 
-/*
-   A atmosfera local deixa de criar um holofote.
-   Os tons ficam difusos e próximos do fundo global.
-*/
-
 .intro__atmosphere {
     position: absolute;
     inset: 0;
@@ -201,7 +184,6 @@ body::after {
     aspect-ratio: 1;
 
     border-radius: 50%;
-
     filter: blur(110px);
 
     opacity: 0.10;
@@ -212,7 +194,6 @@ body::after {
     bottom: -42%;
 
     background: var(--blood-red);
-
     opacity: 0.14;
 }
 
@@ -221,13 +202,12 @@ body::after {
     left: -35%;
 
     background: #eeeaeb;
-
     opacity: 0.12;
 }
 
 
 /* --------------------------------
-   5. CONTEÚDO DO ENVELOPE
+   5. ÁREA DO ENVELOPE
 -------------------------------- */
 
 .intro__content {
@@ -237,24 +217,19 @@ body::after {
     place-items: center;
 
     width: 100%;
-    min-height: 360px;
+    min-height: 390px;
 
     z-index: 1;
 }
 
 
 /* --------------------------------
-   6. ESTRUTURA DO ENVELOPE
+   6. ENVELOPE
 -------------------------------- */
 
-/*
-   Envelope vermelho profundo, bordas pretas,
-   detalhes ornamentais e aparência de papel.
-*/
-
 .envelope {
-    --envelope-width: clamp(280px, 65vw, 430px);
-    --envelope-height: calc(var(--envelope-width) * 0.68);
+    --envelope-width: clamp(280px, 70vw, 440px);
+    --envelope-height: calc(var(--envelope-width) * 0.66);
 
     position: relative;
 
@@ -264,20 +239,18 @@ body::after {
     height: var(--envelope-height);
 
     padding: 0;
+    border: 0;
+    border-radius: 4px;
 
-    border: 1px solid rgba(11, 11, 13, 0.9);
-    border-radius: 3px;
-
-    background: var(--blood-red);
+    background: transparent;
     color: var(--white);
 
     cursor: pointer;
-
-    perspective: 1000px;
+    perspective: 1200px;
 
     filter:
-        drop-shadow(0 20px 20px rgba(11, 11, 13, 0.22))
-        drop-shadow(0 4px 3px rgba(11, 11, 13, 0.15));
+        drop-shadow(0 20px 16px rgba(11, 11, 13, 0.27))
+        drop-shadow(0 4px 3px rgba(11, 11, 13, 0.20));
 
     transition:
         filter var(--transition-soft),
@@ -288,8 +261,8 @@ body::after {
     transform: translateY(-4px);
 
     filter:
-        drop-shadow(0 27px 25px rgba(11, 11, 13, 0.26))
-        drop-shadow(0 5px 4px rgba(11, 11, 13, 0.17));
+        drop-shadow(0 27px 22px rgba(11, 11, 13, 0.31))
+        drop-shadow(0 5px 4px rgba(11, 11, 13, 0.20));
 }
 
 .envelope:active {
@@ -298,7 +271,7 @@ body::after {
 
 
 /* --------------------------------
-   7. CAMADAS DO ENVELOPE
+   7. CAMADAS PRINCIPAIS
 -------------------------------- */
 
 .envelope__shadow,
@@ -313,16 +286,15 @@ body::after {
 .envelope__shadow {
     inset: 0;
 
-    transform: translateY(10px);
+    transform: translateY(12px);
 
-    background: rgba(11, 11, 13, 0.30);
-
-    filter: blur(15px);
+    background: rgba(11, 11, 13, 0.35);
+    filter: blur(16px);
 }
 
 
 /* --------------------------------
-   8. CORPO VERMELHO
+   8. CORPO DO ENVELOPE
 -------------------------------- */
 
 .envelope__body {
@@ -333,21 +305,21 @@ body::after {
     background:
         linear-gradient(
             135deg,
-            #a4161a 0%,
+            #a91a20 0%,
             #920608 30%,
-            #760408 70%,
+            #790409 66%,
             #4b0307 100%
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid #210204;
 
     box-shadow:
-        inset 0 0 0 4px rgba(11, 11, 13, 0.24),
-        inset 0 0 0 6px rgba(255, 255, 255, 0.07),
-        inset 0 -15px 25px rgba(37, 2, 5, 0.18);
+        inset 0 0 0 3px rgba(11, 11, 13, 0.75),
+        inset 0 0 0 5px rgba(255, 255, 255, 0.09),
+        inset 0 -18px 28px rgba(37, 2, 5, 0.25);
 }
 
-/* Textura suave do papel */
+/* Textura sutil de papel e detalhes rendilhados */
 
 .envelope__body::before {
     position: absolute;
@@ -356,123 +328,101 @@ body::after {
     content: "";
     pointer-events: none;
 
-    background:
+    background-image:
+        /* Pequenos motivos florais nos cantos */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M-8 10 Q35 8 38 43 T80 77 Q110 94 92 126 T155 180'/%3E%3Cpath d='M5 -8 Q15 38 48 42 T72 85 Q100 105 133 93 T180 145'/%3E%3Cpath d='M4 38 C35 18 48 60 27 68 C8 75 1 49 20 47 C37 46 36 68 21 70'/%3E%3Cpath d='M49 4 C27 24 69 45 75 22 C80 4 55 -2 51 15 C48 28 68 32 69 17'/%3E%3Cpath d='M65 68 C34 45 26 91 54 93 C74 94 77 73 60 69 C47 67 45 84 58 84'/%3E%3Cpath d='M104 99 C80 78 65 112 86 123 C105 132 117 110 100 103 C89 98 83 114 96 117'/%3E%3Cpath d='M120 46 Q94 20 82 43 Q73 61 94 64 Q113 66 110 49 Q107 38 96 46'/%3E%3Cpath d='M123 133 Q148 103 163 125 Q176 145 154 151 Q135 154 139 136 Q144 124 155 137'/%3E%3Cpath d='M25 113 Q50 93 57 118 Q61 137 42 137 Q27 135 35 121 Q42 113 47 125'/%3E%3Cpath d='M5 88 Q24 79 31 96 Q36 111 19 113 Q4 113 11 98'/%3E%3Cpath d='M142 7 Q121 22 139 38 Q153 48 162 31 Q167 18 151 18 Q140 20 148 31'/%3E%3C/g%3E%3Cg fill='%230b0b0d'%3E%3Ccircle cx='39' cy='43' r='3'/%3E%3Ccircle cx='75' cy='85' r='3'/%3E%3Ccircle cx='92' cy='126' r='3'/%3E%3Ccircle cx='133' cy='93' r='3'/%3E%3C/g%3E%3C/svg%3E"),
+        /* Linhas finas imitando papel */
         repeating-linear-gradient(
             0deg,
-            rgba(255, 255, 255, 0.018) 0,
-            rgba(255, 255, 255, 0.018) 1px,
+            rgba(255, 255, 255, 0.025) 0,
+            rgba(255, 255, 255, 0.025) 1px,
             transparent 1px,
             transparent 4px
         ),
         linear-gradient(
             145deg,
             rgba(255, 255, 255, 0.08),
-            transparent 35%,
-            rgba(11, 11, 13, 0.14)
+            transparent 40%,
+            rgba(11, 11, 13, 0.18)
         );
+
+    background-size:
+        150px 150px,
+        auto,
+        auto;
+
+    background-position:
+        left top,
+        center,
+        center;
+
+    background-repeat:
+        repeat,
+        repeat,
+        no-repeat;
+
+    opacity: 0.9;
 }
 
-/* Filete interno preto */
+/* Moldura interna com pequenas curvas nos cantos */
 
 .envelope__body::after {
     position: absolute;
-    inset: 12px;
+    inset: 10px;
 
     content: "";
     pointer-events: none;
 
-    border: 1px solid rgba(11, 11, 13, 0.58);
+    border: 1px solid rgba(11, 11, 13, 0.72);
 
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
-}
-
-
-/* --------------------------------
-   9. RENDA E ARABESCOS
--------------------------------- */
-
-/*
-   Os ornamentos são construídos com CSS:
-   cantos pretos, curvas e pequenos detalhes.
-   Não dependem de imagens externas.
-*/
-
-.envelope__body {
-    background-color: var(--blood-red);
-}
-
-/* Ornamentos de canto */
-
-.envelope__body {
-    --lace-size: 76px;
-}
-
-.envelope__body .lace-corner {
-    display: none;
-}
-
-/*
-   Como o HTML atual não possui elementos extras
-   para a renda, os quatro cantos são desenhados
-   com pseudo-elementos e gradientes.
-*/
-
-.envelope__body {
-    background-image:
+    background:
         radial-gradient(
-            ellipse at 0% 0%,
-            rgba(11, 11, 13, 0.94) 0 5px,
-            transparent 6px
+            circle at 0 0,
+            transparent 0 10px,
+            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
+            transparent 12px
         ),
         radial-gradient(
-            ellipse at 100% 0%,
-            rgba(11, 11, 13, 0.94) 0 5px,
-            transparent 6px
+            circle at 100% 0,
+            transparent 0 10px,
+            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
+            transparent 12px
         ),
         radial-gradient(
-            ellipse at 0% 100%,
-            rgba(11, 11, 13, 0.94) 0 5px,
-            transparent 6px
+            circle at 0 100%,
+            transparent 0 10px,
+            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
+            transparent 12px
         ),
         radial-gradient(
-            ellipse at 100% 100%,
-            rgba(11, 11, 13, 0.94) 0 5px,
-            transparent 6px
-        ),
-        linear-gradient(
-            135deg,
-            #a4161a 0%,
-            #920608 32%,
-            #760408 72%,
-            #4b0307 100%
+            circle at 100% 100%,
+            transparent 0 10px,
+            rgba(11, 11, 13, 0.85) 10.5px 11.5px,
+            transparent 12px
         );
+
+    z-index: 1;
 }
 
 
 /* --------------------------------
-   10. ABA DO ENVELOPE
+   9. ABA TRIANGULAR ORNAMENTADA
 -------------------------------- */
-
-/*
-   A aba mantém o vermelho e recebe bordas escuras.
-   A animação original de abertura continua funcionando.
-*/
 
 .envelope__flap {
     inset: 0 0 auto;
 
-    height: 58%;
+    height: 66%;
+
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
 
     background:
         linear-gradient(
             155deg,
             #a7191d 0%,
-            #920608 55%,
-            #650307 100%
+            #920608 48%,
+            #5c0307 100%
         );
-
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
 
     transform-origin: center top;
     transform: rotateX(0deg);
@@ -482,13 +432,16 @@ body::after {
     z-index: 4;
 
     transition:
-        transform 700ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        transform 750ms cubic-bezier(0.22, 0.72, 0.24, 1),
         filter 500ms ease;
 }
 
-/* Filete que acompanha a aba */
+/*
+   Filete duplo ao longo da aba.
+   A renda do corpo continua visível nas laterais.
+*/
 
-.envelope__flap::after {
+.envelope__flap::before {
     position: absolute;
     inset: 0;
 
@@ -497,35 +450,63 @@ body::after {
     background:
         linear-gradient(
             155deg,
-            transparent 48.8%,
-            rgba(11, 11, 13, 0.85) 49.5%,
-            rgba(11, 11, 13, 0.85) 50%,
-            transparent 50.7%
+            transparent 48.9%,
+            rgba(11, 11, 13, 0.9) 49.3%,
+            rgba(11, 11, 13, 0.9) 49.8%,
+            rgba(255, 255, 255, 0.18) 50%,
+            transparent 50.4%
         );
+
+    pointer-events: none;
+}
+
+/* Arabesco central da aba */
+
+.envelope__flap::after {
+    position: absolute;
+
+    top: 5%;
+    left: 50%;
+
+    width: 42%;
+    height: 55%;
+
+    content: "";
+
+    transform: translateX(-50%);
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 130'%3E%3Cg fill='none' stroke='%230b0b0d' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M80 125 V69 M80 69 C58 60 40 48 39 26 C59 29 73 42 80 58 C87 42 101 29 121 26 C120 48 102 60 80 69'/%3E%3Cpath d='M80 93 C57 94 42 83 30 68 C50 64 68 72 80 84 C92 72 110 64 130 68 C118 83 103 94 80 93'/%3E%3Cpath d='M80 57 C67 45 68 27 80 7 C92 27 93 45 80 57Z'/%3E%3Cpath d='M54 53 C38 53 25 44 17 30 C35 30 47 37 54 53Z M106 53 C122 53 135 44 143 30 C125 30 113 37 106 53Z'/%3E%3Cpath d='M80 105 C69 98 66 87 80 79 C94 87 91 98 80 105Z'/%3E%3Cpath d='M31 68 C22 62 16 53 17 43 C30 47 36 56 31 68Z M129 68 C138 62 144 53 143 43 C130 47 124 56 129 68Z'/%3E%3C/g%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    opacity: 0.92;
 
     pointer-events: none;
 }
 
 
 /* --------------------------------
-   11. CARTA INTERNA
+   10. CARTA INTERNA
 -------------------------------- */
 
 .envelope__letter {
-    inset: 12% 9% 8%;
+    inset: 10% 8% 7%;
 
     background:
         linear-gradient(
             180deg,
-            #f4f0f0,
-            #ded8da
+            #f4eeee,
+            #ded5d7
         );
 
-    border: 1px solid rgba(11, 11, 13, 0.65);
+    border: 1px solid rgba(11, 11, 13, 0.7);
 
     box-shadow:
-        inset 0 0 0 4px rgba(255, 255, 255, 0.24),
-        0 2px 8px rgba(11, 11, 13, 0.12);
+        inset 0 0 0 4px rgba(255, 255, 255, 0.22),
+        0 2px 8px rgba(11, 11, 13, 0.15);
 
     transform: translateY(0);
 
@@ -537,37 +518,40 @@ body::after {
 
 
 /* --------------------------------
-   12. LACRE PRETO E VERMELHO
+   11. LACRE EM FORMATO DE MEDALHÃO
 -------------------------------- */
 
 .envelope__seal {
-    top: 47%;
+    top: 49%;
     left: 50%;
 
     display: grid;
     place-items: center;
 
-    width: clamp(50px, 11vw, 70px);
+    width: clamp(58px, 12vw, 78px);
     aspect-ratio: 1;
 
-    border: 2px solid rgba(11, 11, 13, 0.92);
-    border-radius: 50%;
+    border: 2px solid #210204;
+
+    border-radius: 42% 48% 43% 47%;
 
     background:
         radial-gradient(
-            circle at 32% 24%,
-            #a4161a 0%,
-            #920608 42%,
-            #650307 74%,
+            circle at 32% 25%,
+            #b22a2e 0%,
+            #920608 35%,
+            #650307 70%,
             #250205 100%
         );
 
-    color: var(--white);
+    color: #e8c9c9;
 
     box-shadow:
-        0 4px 12px rgba(37, 2, 5, 0.38),
-        inset 0 1px 2px rgba(255, 255, 255, 0.16),
-        inset 0 -3px 5px rgba(37, 2, 5, 0.38);
+        0 5px 10px rgba(37, 2, 5, 0.45),
+        inset 0 0 0 3px rgba(11, 11, 13, 0.58),
+        inset 0 0 0 5px rgba(255, 255, 255, 0.09),
+        inset 0 2px 3px rgba(255, 255, 255, 0.15),
+        inset 0 -4px 7px rgba(37, 2, 5, 0.45);
 
     transform: translate(-50%, -50%);
 
@@ -578,48 +562,70 @@ body::after {
         transform 400ms ease;
 }
 
+/* Anel interno do medalhão */
+
 .envelope__seal::before {
     position: absolute;
-    inset: 5px;
+    inset: 7px;
 
     content: "";
 
-    border: 1px solid rgba(255, 255, 255, 0.24);
+    border: 1px solid rgba(232, 201, 201, 0.5);
+    border-radius: 40% 48% 42% 48%;
+
+    transform: rotate(45deg);
+}
+
+/* Pequenos pontos decorativos */
+
+.envelope__seal::after {
+    position: absolute;
+    inset: 12px;
+
+    content: "";
+
+    border: 1px dotted rgba(232, 201, 201, 0.45);
     border-radius: 50%;
 }
 
 .envelope__seal-symbol {
     position: relative;
 
-    font-size: clamp(1.35rem, 4vw, 1.8rem);
+    z-index: 1;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
-    font-style: italic;
+    font-style: normal;
     line-height: 1;
+
+    text-shadow:
+        0 1px 1px rgba(11, 11, 13, 0.85);
 }
 
 
 /* --------------------------------
-   13. TEXTO DO ENVELOPE
+   12. TEXTO DO ENVELOPE
 -------------------------------- */
 
 .envelope__label {
     position: absolute;
 
     left: 50%;
-    bottom: 15%;
+    bottom: 12%;
 
     width: 90%;
 
     color: var(--white);
 
-    font-size: clamp(0.73rem, 2.5vw, 0.95rem);
+    font-size: clamp(0.7rem, 2.5vw, 0.92rem);
     font-weight: 700;
-    letter-spacing: 0.20em;
+    letter-spacing: 0.17em;
     line-height: 1.6;
     text-align: center;
 
     text-shadow:
-        0 1px 2px rgba(11, 11, 13, 0.85);
+        0 2px 3px rgba(11, 11, 13, 0.9);
 
     transform: translateX(-50%);
 
@@ -628,38 +634,7 @@ body::after {
 
 
 /* --------------------------------
-   14. DETALHES ORNAMENTAIS
--------------------------------- */
-
-/*
-   Pequenos arabescos nas bordas do envelope.
-   Os elementos são desenhados em CSS para não
-   depender de arquivos externos.
-*/
-
-.envelope__body {
-    background-clip: padding-box;
-}
-
-/* Cantos decorativos superiores e inferiores */
-
-.envelope__body::marker {
-    content: "";
-}
-
-/*
-   As sombras e linhas internas dão acabamento
-   ornamental sem alterar a estrutura do HTML.
-*/
-
-.envelope__body {
-    outline: 1px solid rgba(11, 11, 13, 0.22);
-    outline-offset: -3px;
-}
-
-
-/* --------------------------------
-   15. ANIMAÇÃO DE ABERTURA
+   13. ABERTURA ANIMADA
 -------------------------------- */
 
 .envelope.is-opening,
@@ -680,10 +655,11 @@ body::after {
 .envelope.is-opening .envelope__seal,
 .intro.is-opening .envelope__seal {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.55);
-}
 
-/* Sem clarão durante a abertura */
+    transform:
+        translate(-50%, -50%)
+        scale(0.55);
+}
 
 .intro.is-opening .intro__glow--red {
     opacity: 0.18;
@@ -695,7 +671,7 @@ body::after {
 
 
 /* --------------------------------
-   16. PARTÍCULAS
+   14. PARTÍCULAS
 -------------------------------- */
 
 .particles {
@@ -752,6 +728,7 @@ body::after {
 
     100% {
         opacity: 0;
+
         transform:
             translate3d(
                 calc((var(--particle-x) - 50%) * 0.12),
@@ -764,7 +741,7 @@ body::after {
 
 
 /* --------------------------------
-   17. PERSONAGEM DECORATIVO
+   15. PERSONAGEM DECORATIVO
 -------------------------------- */
 
 .intro__character {
@@ -774,27 +751,38 @@ body::after {
 
 
 /* --------------------------------
-   18. RESPONSIVIDADE
+   16. RESPONSIVIDADE
 -------------------------------- */
 
 @media (max-width: 480px) {
     .intro {
-        padding:
-            2rem
-            1.25rem;
+        padding: 2rem 1.25rem;
     }
 
     .intro__content {
-        min-height: 300px;
+        min-height: 310px;
     }
 
     .envelope {
-        --envelope-width: min(82vw, 350px);
+        --envelope-width: min(86vw, 360px);
     }
 
     .envelope__label {
-        letter-spacing: 0.14em;
-        font-size: 0.72rem;
+        bottom: 11%;
+
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+    }
+
+    .envelope__body::before {
+        background-size:
+            115px 115px,
+            auto,
+            auto;
+    }
+
+    .envelope__body::after {
+        inset: 8px;
     }
 
     .intro__glow {
@@ -804,7 +792,7 @@ body::after {
 
 
 /* --------------------------------
-   19. MOVIMENTO REDUZIDO
+   17. MOVIMENTO REDUZIDO
 -------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
