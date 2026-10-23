@@ -89,11 +89,10 @@ input:focus-visible {
 }
 
 /* =========================================================
-   3. FUNDO — PRATA FRIA ATÉ VINHO ESCURO
+   3. FUNDO — HEXATOMBE / RITUAL DE SANGUE
 
-   Sem luz oval no centro e sem camadas radiais.
-   Um degradê linear contínuo, com prata fria, cinza neutro
-   e vinho nas extremidades. A escala se adapta à viewport.
+   Prata fria até vinho profundo, com textura e marcas rituais.
+   O envelope continua sendo o protagonista da composição.
    ========================================================= */
 
 body::before,
@@ -107,36 +106,52 @@ body::after {
 
 body::before {
     background-color: #30070d;
-    background-image: linear-gradient(
-        138deg,
-        #e3e8ee 0%,
-        #d9dfe6 14%,
-        #c8ccd4 28%,
-        #b2b1bd 41%,
-        #a092a3 52%,
-        #886575 64%,
-        #704151 76%,
-        #542330 89%,
-        #30070d 100%
-    );
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(7, 0, 2, 0.14) 0%,
+            transparent 20%,
+            transparent 65%,
+            rgba(7, 0, 2, 0.25) 100%
+        ),
+        linear-gradient(
+            138deg,
+            #e3e8ee 0%,
+            #d9dfe6 14%,
+            #c8ccd4 28%,
+            #b2b1bd 41%,
+            #998795 52%,
+            #805767 64%,
+            #682e3c 77%,
+            #4b1422 89%,
+            #30070d 100%
+        );
 }
 
-/* Textura fina e neutra. Ela não cria um ponto luminoso. */
+/* Textura de película e riscos muito discretos: sem foco luminoso. */
 body::after {
-    opacity: 0.045;
+    opacity: 0.075;
     background-image:
+        repeating-linear-gradient(
+            117deg,
+            transparent 0,
+            transparent 39px,
+            rgba(11, 0, 3, 0.18) 39.5px,
+            transparent 40.5px,
+            transparent 73px
+        ),
         radial-gradient(
             circle,
-            rgba(255, 255, 255, 0.75) 0 0.45px,
+            rgba(255, 255, 255, 0.68) 0 0.42px,
             transparent 0.8px
         ),
         radial-gradient(
             circle,
-            rgba(11, 11, 13, 0.55) 0 0.45px,
+            rgba(11, 11, 13, 0.66) 0 0.48px,
             transparent 0.9px
         );
-    background-size: 19px 23px, 29px 31px;
-    background-position: 0 0, 11px 13px;
+    background-size: 100% 100%, 19px 23px, 29px 31px;
+    background-position: center, 0 0, 11px 13px;
     mix-blend-mode: soft-light;
 }
 
@@ -171,9 +186,69 @@ body::after {
     z-index: -1;
 }
 
+/* Moldura ritual: filetes quebrados e cantos talhados. */
+.intro__atmosphere::before {
+    position: absolute;
+    inset: clamp(13px, 2vw, 30px);
+    content: "";
+    pointer-events: none;
+
+    border: 1px solid rgba(15, 0, 3, 0.43);
+    outline: 1px solid rgba(146, 6, 8, 0.40);
+    outline-offset: -7px;
+
+    clip-path: polygon(
+        0 22px,
+        22px 0,
+        calc(100% - 22px) 0,
+        100% 22px,
+        100% calc(100% - 22px),
+        calc(100% - 22px) 100%,
+        22px 100%,
+        0 calc(100% - 22px)
+    );
+
+    background:
+        linear-gradient(90deg, transparent, rgba(146, 6, 8, 0.65), transparent)
+            center top / min(34vw, 360px) 1px no-repeat,
+        linear-gradient(90deg, transparent, rgba(11, 11, 13, 0.48), transparent)
+            center bottom / min(34vw, 360px) 1px no-repeat;
+}
+
+/* Sigilos de Sangue e pequenas marcas de ritual. */
+.intro__atmosphere::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+
+    background-image:
+        url("../IMGS/sangue-sigil.svg"),
+        url("../IMGS/sangue-sigil.svg"),
+        url("../IMGS/hexatombe-rule.svg"),
+        url("../IMGS/hexatombe-rule.svg"),
+        linear-gradient(180deg, rgba(11, 11, 13, 0.30), transparent);
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size:
+        clamp(70px, 8vw, 124px) auto,
+        clamp(70px, 8vw, 124px) auto,
+        min(42vw, 560px) auto,
+        min(42vw, 560px) auto,
+        1px 18%;
+
+    background-position:
+        clamp(34px, 6vw, 92px) center,
+        calc(100% - clamp(34px, 6vw, 92px) - clamp(70px, 8vw, 124px)) center,
+        center 8%,
+        center 92%,
+        clamp(14px, 2vw, 30px) center;
+
+    opacity: 0.48;
+}
+
+/* Os brilhos antigos ficam desligados: nada de “ovo de luz”. */
 .intro__glow {
-    /* Os elementos existem no HTML, mas ficam desligados:
-       o fundo não deve ter um foco oval de luz. */
     display: none;
 }
 
@@ -656,6 +731,45 @@ body::after {
 
     .intro__glow {
         filter: blur(65px);
+    }
+}
+
+/* Em celulares, os sigilos passam para cima e para baixo do envelope
+   para não ficarem escondidos atrás dele nem apertar as laterais. */
+@media (max-width: 640px) {
+    .intro__atmosphere::before {
+        inset: 10px;
+        outline-offset: -5px;
+    }
+
+    .intro__atmosphere::after {
+        background-image:
+            url("../IMGS/sangue-sigil.svg"),
+            url("../IMGS/sangue-sigil.svg"),
+            url("../IMGS/hexatombe-rule.svg"),
+            url("../IMGS/hexatombe-rule.svg");
+        background-size:
+            clamp(34px, 9vw, 54px) auto,
+            clamp(34px, 9vw, 54px) auto,
+            min(70vw, 300px) auto,
+            min(70vw, 300px) auto;
+        background-position:
+            center 3.5%,
+            center 96.5%,
+            center 10%,
+            center 90%;
+        opacity: 0.42;
+    }
+}
+
+@media (max-height: 520px) {
+    .intro__atmosphere::after {
+        background-image:
+            linear-gradient(90deg, transparent, rgba(146, 6, 8, 0.55), transparent),
+            linear-gradient(90deg, transparent, rgba(11, 11, 13, 0.42), transparent);
+        background-size: min(26vw, 260px) 1px, min(26vw, 260px) 1px;
+        background-position: center 5%, center 95%;
+        opacity: 0.38;
     }
 }
 
