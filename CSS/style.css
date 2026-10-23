@@ -3,7 +3,6 @@
    ETAPA 1: ENVELOPE GÓTICO / NEO-TRIBAL
    ========================================================= */
 
-
 /* =========================================================
    1. VARIÁVEIS
    ========================================================= */
@@ -24,7 +23,6 @@
     --transition-soft: 350ms ease;
 }
 
-
 /* =========================================================
    2. RESET E BASE
    ========================================================= */
@@ -41,10 +39,8 @@ html {
 body {
     position: relative;
     isolation: isolate;
-
     min-height: 100vh;
     margin: 0;
-
     overflow-x: hidden;
     overflow-x: clip;
 
@@ -52,7 +48,6 @@ body {
     background: #dedadb;
 
     font-family: Georgia, "Times New Roman", serif;
-
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -62,6 +57,7 @@ input {
     font: inherit;
 }
 
+/* Mídias futuras do convite reduzem proporcionalmente, sem deformar. */
 img,
 video,
 canvas {
@@ -92,28 +88,24 @@ input:focus-visible {
     background: var(--blood-red);
 }
 
-
 /* =========================================================
    3. FUNDO — HEXATOMBE / RITUAL DE SANGUE
 
-   Prata fria até vinho profundo, com textura discreta.
-   Sem foco luminoso central.
+   Prata fria até vinho profundo, com textura e marcas rituais.
+   O envelope continua sendo o protagonista da composição.
    ========================================================= */
 
 body::before,
 body::after {
     position: fixed;
     inset: 0;
-
     content: "";
     pointer-events: none;
-
     z-index: -1;
 }
 
 body::before {
     background-color: #30070d;
-
     background-image:
         linear-gradient(
             180deg,
@@ -136,11 +128,9 @@ body::before {
         );
 }
 
-/* Textura de película e riscos muito discretos. */
-
+/* Textura de película e riscos muito discretos: sem foco luminoso. */
 body::after {
     opacity: 0.075;
-
     background-image:
         repeating-linear-gradient(
             117deg,
@@ -160,20 +150,10 @@ body::after {
             rgba(11, 11, 13, 0.66) 0 0.48px,
             transparent 0.9px
         );
-
-    background-size:
-        100% 100%,
-        19px 23px,
-        29px 31px;
-
-    background-position:
-        center,
-        0 0,
-        11px 13px;
-
+    background-size: 100% 100%, 19px 23px, 29px 31px;
+    background-position: center, 0 0, 11px 13px;
     mix-blend-mode: soft-light;
 }
-
 
 /* =========================================================
    4. ABERTURA DO CONVITE
@@ -181,19 +161,15 @@ body::after {
 
 .intro {
     position: relative;
-
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
     place-items: center;
 
-    width: 100%;
     min-height: 100vh;
     min-height: 100svh;
 
     padding:
         clamp(1.25rem, 5vh, 5rem)
         var(--page-padding);
-
     padding:
         clamp(1.25rem, 5svh, 5rem)
         var(--page-padding);
@@ -202,169 +178,57 @@ body::after {
     isolation: isolate;
 }
 
-/* Camada visual ocupa a abertura inteira. */
-
 .intro__atmosphere {
     position: absolute;
     inset: 0;
-
     overflow: hidden;
     pointer-events: none;
 
+    /* Acima do fundo e abaixo do envelope. */
     z-index: 0;
 }
 
-
-/* =========================================================
-   5. MOLDURA GÓTICA ELABORADA
-
-   Borda dupla, recortes angulares, linhas ornamentais
-   e pequenos detalhes nos quatro cantos.
-   ========================================================= */
-
+/* Moldura ritual: filetes quebrados e cantos talhados. */
 .intro__atmosphere::before {
     position: absolute;
-
-    inset: clamp(16px, 2.2vw, 34px);
-
+    inset: clamp(13px, 2vw, 30px);
     content: "";
     pointer-events: none;
 
-    border: 1px solid rgba(11, 11, 13, 0.66);
-
-    outline: 1px solid rgba(146, 6, 8, 0.56);
+    border: 1px solid rgba(15, 0, 3, 0.43);
+    outline: 1px solid rgba(146, 6, 8, 0.40);
     outline-offset: -7px;
 
-    /*
-       As sombras internas criam camadas adicionais,
-       dando profundidade à moldura sem acrescentar
-       uma caixa sólida ao centro.
-    */
-
-    box-shadow:
-        inset 0 0 0 4px rgba(11, 11, 13, 0.10),
-        inset 0 0 0 5px rgba(146, 6, 8, 0.24),
-        inset 0 0 0 10px rgba(11, 11, 13, 0.055);
-
-    /*
-       Os recortes diagonais repetem a linguagem angular
-       dos ornamentos do envelope.
-    */
-
     clip-path: polygon(
-        0 27px,
-        27px 0,
-        calc(100% - 27px) 0,
-        100% 27px,
-        100% calc(100% - 27px),
-        calc(100% - 27px) 100%,
-        27px 100%,
-        0 calc(100% - 27px)
+        0 22px,
+        22px 0,
+        calc(100% - 22px) 0,
+        100% 22px,
+        100% calc(100% - 22px),
+        calc(100% - 22px) 100%,
+        22px 100%,
+        0 calc(100% - 22px)
     );
 
     background:
-        /* Filete superior central. */
         linear-gradient(
             90deg,
             transparent,
-            rgba(146, 6, 8, 0.82),
+            rgba(146, 6, 8, 0.65),
             transparent
-        ) center top / min(31vw, 420px) 1px no-repeat,
-
-        /* Filete inferior central. */
+        ) center top / min(34vw, 360px) 1px no-repeat,
         linear-gradient(
             90deg,
             transparent,
-            rgba(11, 11, 13, 0.78),
+            rgba(11, 11, 13, 0.48),
             transparent
-        ) center bottom / min(31vw, 420px) 1px no-repeat,
-
-        /* Filete vertical esquerdo. */
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(146, 6, 8, 0.56),
-            transparent
-        ) left center / 1px min(40vh, 410px) no-repeat,
-
-        /* Filete vertical direito. */
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(11, 11, 13, 0.56),
-            transparent
-        ) right center / 1px min(40vh, 410px) no-repeat,
-
-        /* Canto superior esquerdo: horizontal. */
-        linear-gradient(
-            90deg,
-            rgba(146, 6, 8, 0.9),
-            rgba(146, 6, 8, 0.9)
-        ) left 27px top 0 / 43px 1px no-repeat,
-
-        /* Canto superior esquerdo: vertical. */
-        linear-gradient(
-            180deg,
-            rgba(146, 6, 8, 0.9),
-            rgba(146, 6, 8, 0.9)
-        ) left 0 top 27px / 1px 43px no-repeat,
-
-        /* Canto superior direito: horizontal. */
-        linear-gradient(
-            90deg,
-            rgba(11, 11, 13, 0.85),
-            rgba(11, 11, 13, 0.85)
-        ) right 27px top 0 / 43px 1px no-repeat,
-
-        /* Canto superior direito: vertical. */
-        linear-gradient(
-            180deg,
-            rgba(11, 11, 13, 0.85),
-            rgba(11, 11, 13, 0.85)
-        ) right 0 top 27px / 1px 43px no-repeat,
-
-        /* Canto inferior esquerdo: horizontal. */
-        linear-gradient(
-            90deg,
-            rgba(11, 11, 13, 0.85),
-            rgba(11, 11, 13, 0.85)
-        ) left 27px bottom 0 / 43px 1px no-repeat,
-
-        /* Canto inferior esquerdo: vertical. */
-        linear-gradient(
-            180deg,
-            rgba(11, 11, 13, 0.85),
-            rgba(11, 11, 13, 0.85)
-        ) left 0 bottom 27px / 1px 43px no-repeat,
-
-        /* Canto inferior direito: horizontal. */
-        linear-gradient(
-            90deg,
-            rgba(146, 6, 8, 0.9),
-            rgba(146, 6, 8, 0.9)
-        ) right 27px bottom 0 / 43px 1px no-repeat,
-
-        /* Canto inferior direito: vertical. */
-        linear-gradient(
-            180deg,
-            rgba(146, 6, 8, 0.9),
-            rgba(146, 6, 8, 0.9)
-        ) right 0 bottom 27px / 1px 43px no-repeat;
+        ) center bottom / min(34vw, 360px) 1px no-repeat;
 }
 
-
-/* =========================================================
-   6. SIGILOS ORIGINAIS DE SANGUE
-
-   Um no canto superior esquerdo e outro no inferior direito.
-   As posições usam afastamentos pelas bordas, em vez de
-   porcentagens, para manter os símbolos simétricos.
-   ========================================================= */
-
+/* Sigilos de Sangue e marcas de ritual. */
 .intro__atmosphere::after {
     position: absolute;
     inset: 0;
-
     content: "";
     pointer-events: none;
 
@@ -372,138 +236,117 @@ body::after {
         url("https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Sangue.png/revision/latest/scale-to-width-down/266?cb=20221031204745&path-prefix=pt-br"),
         url("https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Sangue.png/revision/latest/scale-to-width-down/266?cb=20221031204745&path-prefix=pt-br"),
         url("../IMGS/hexatombe-rule.svg"),
-        url("../IMGS/hexatombe-rule.svg"),
-        linear-gradient(
-            180deg,
-            rgba(11, 11, 13, 0.30),
-            transparent
-        );
+        url("../IMGS/hexatombe-rule.svg");
 
-    background-repeat:
-        no-repeat,
-        no-repeat,
-        no-repeat,
-        no-repeat,
-        no-repeat;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
 
     background-size:
-        clamp(88px, 8.8vw, 130px) auto,
-        clamp(88px, 8.8vw, 130px) auto,
-        min(38vw, 500px) auto,
-        min(38vw, 500px) auto,
-        1px 18%;
+        clamp(76px, 8vw, 112px) auto,
+        clamp(76px, 8vw, 112px) auto,
+        min(42vw, 520px) auto,
+        min(42vw, 520px) auto;
 
     background-position:
-        left clamp(30px, 4.5vw, 70px)
-        top clamp(58px, 8vh, 96px),
-
-        right clamp(30px, 4.5vw, 70px)
-        bottom clamp(58px, 8vh, 96px),
-
+        clamp(22px, 4vw, 62px) center,
+        calc(100% - clamp(22px, 4vw, 62px) - clamp(76px, 8vw, 112px)) center,
         center 7%,
-        center 93%,
-        clamp(14px, 2vw, 30px) center;
+        center 93%;
 
-    opacity: 0.88;
+    opacity: 0.94;
 }
 
-/* Remove os brilhos antigos para evitar manchas luminosas. */
-
+/* Sem brilho central artificial. */
 .intro__glow {
     display: none;
 }
 
-
 /* =========================================================
-   7. CENTRALIZAÇÃO REAL DO CONTEÚDO
-
-   O conteúdo se estende simetricamente para além do padding
-   lateral da abertura. Dessa maneira, o envelope fica
-   centralizado em relação à tela, e não apenas à área interna.
+   5. POSICIONAMENTO E AVISO
    ========================================================= */
 
 .intro__content {
     position: relative;
 
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.8rem, 2vh, 1.1rem);
 
-    justify-self: stretch;
-    align-self: center;
-
-    /*
-       Recupera a largura ocupada pelo padding da .intro.
-       As margens negativas iguais compensam essa expansão.
-    */
-
-    width: calc(
-        100% +
-        var(--page-padding) +
-        var(--page-padding)
-    );
-
+    width: 100%;
     min-width: 0;
+
     min-height: min(390px, 60vh);
     min-height: min(390px, 60svh);
 
-    margin-left: calc(0px - var(--page-padding));
-    margin-right: calc(0px - var(--page-padding));
-
-    padding: 0;
-
-    left: auto;
-    right: auto;
-
-    transform: none;
+    margin-inline: auto;
 
     z-index: 2;
 }
 
+/* Instrução discreta, fora do botão/envelope. */
+.envelope-hint {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+    padding: 0;
+
+    color: rgba(255, 253, 253, 0.58);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(0.65rem, 1.8vw, 0.76rem);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    text-align: center;
+
+    opacity: 0.62;
+    pointer-events: none;
+
+    animation: hint-breathe 3.8s ease-in-out infinite;
+    transition: opacity 300ms ease;
+}
+
+@keyframes hint-breathe {
+    0%,
+    100% {
+        opacity: 0.38;
+    }
+
+    50% {
+        opacity: 0.68;
+    }
+}
 
 /* =========================================================
-   8. ENVELOPE
+   6. ENVELOPE
    ========================================================= */
 
 .envelope {
     --envelope-width: min(
         440px,
-        calc(
-            100vw -
-            var(--page-padding) -
-            var(--page-padding)
-        ),
-        88vh
+        calc(100vw - var(--page-padding) - var(--page-padding)),
+        133vh
     );
 
     --envelope-width: min(
         440px,
-        calc(
-            100vw -
-            var(--page-padding) -
-            var(--page-padding)
-        ),
-        88svh
+        calc(100vw - var(--page-padding) - var(--page-padding)),
+        133svh
     );
 
-    --envelope-height: calc(var(--envelope-width) * 0.66);
-
     position: relative;
-
     display: block;
-    justify-self: center;
-    align-self: center;
+    isolation: isolate;
 
     width: var(--envelope-width);
     max-width: 100%;
     min-width: 0;
-    height: var(--envelope-height);
 
-    margin-left: auto;
-    margin-right: auto;
+    height: auto;
+    aspect-ratio: 1.515 / 1;
 
     padding: 0;
-
     border: 0;
     border-radius: 18px 18px 10px 10px;
 
@@ -511,14 +354,13 @@ body::after {
     color: var(--white);
 
     cursor: pointer;
+
     perspective: 1200px;
-    isolation: isolate;
+    transform-style: preserve-3d;
 
     filter:
         drop-shadow(0 20px 16px rgba(11, 11, 13, 0.27))
         drop-shadow(0 4px 3px rgba(11, 11, 13, 0.20));
-
-    transform-origin: center center;
 
     transition:
         filter var(--transition-soft),
@@ -537,9 +379,8 @@ body::after {
     transform: translateY(0) scale(0.985);
 }
 
-
 /* =========================================================
-   9. CAMADAS DO ENVELOPE
+   7. CAMADAS
    ========================================================= */
 
 .envelope__shadow,
@@ -553,19 +394,16 @@ body::after {
 
 .envelope__shadow {
     inset: 2px;
-
     transform: translateY(12px);
 
     background: rgba(11, 11, 13, 0.35);
-
     filter: blur(16px);
 
     pointer-events: none;
 }
 
-
 /* =========================================================
-   10. CORPO — VERMELHO UNIFORME
+   8. CORPO — VERMELHO UNIFORME
    ========================================================= */
 
 .envelope__body {
@@ -573,7 +411,6 @@ body::after {
     z-index: 1;
 
     inset: 0;
-
     overflow: hidden;
 
     border: 1px solid #360205;
@@ -592,7 +429,6 @@ body::after {
 }
 
 /* Textura delicada de papel. */
-
 .envelope__body::before {
     position: absolute;
     inset: 0;
@@ -618,16 +454,14 @@ body::after {
         );
 }
 
-/* Removido o filete interno: ele criava outra moldura retangular. */
-
+/* Sem filete retangular interno. */
 .envelope__body::after {
     content: none;
     display: none;
 }
 
-
 /* =========================================================
-   11. ORNAMENTOS PRETOS NAS LATERAIS
+   9. ORNAMENTOS PRETOS NAS LATERAIS
    ========================================================= */
 
 .envelope__body {
@@ -638,9 +472,8 @@ body::after {
     background-size: 100% 100%;
 }
 
-
 /* =========================================================
-   12. ABA — VERMELHA COM ORNAMENTO PRETO
+   10. ABA — VERMELHA COM ORNAMENTO PRETO
    ========================================================= */
 
 .envelope__flap {
@@ -648,11 +481,10 @@ body::after {
     z-index: 4;
 
     inset: 0 0 auto;
-
     height: 58%;
     overflow: hidden;
 
-    border-radius: 8px 10px 0 0;
+    border-radius: 18px 18px 0 0;
 
     background-color: #920608;
     background-image: url("../IMGS/flap-ornament.svg");
@@ -662,23 +494,25 @@ body::after {
 
     clip-path: polygon(0 0, 100% 0, 50% 100%);
 
-    transform-origin: center top;
+    transform-origin: 50% 0%;
     transform: rotateX(0deg);
+    transform-style: preserve-3d;
 
     backface-visibility: visible;
+    -webkit-backface-visibility: visible;
 
     filter: drop-shadow(0 1px 0 rgba(11, 11, 13, 0.44));
 
     transition:
-        transform 700ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        transform 850ms cubic-bezier(0.22, 0.72, 0.24, 1),
         filter 500ms ease;
 
     pointer-events: none;
 }
 
-
 /* =========================================================
-   13. CARTA INTERNA
+   11. CARTA INTERNA
+
    A carta cinza fica invisível enquanto o envelope está fechado.
    ========================================================= */
 
@@ -688,6 +522,7 @@ body::after {
 
     inset: 10% 8% 7%;
 
+    display: block;
     visibility: hidden;
     opacity: 0;
 
@@ -709,13 +544,13 @@ body::after {
     transform: translateY(0);
 
     transition:
-        transform 800ms cubic-bezier(0.2, 0.7, 0.25, 1),
-        opacity 420ms ease;
+        transform 850ms cubic-bezier(0.2, 0.7, 0.25, 1) 100ms,
+        opacity 350ms ease 100ms,
+        visibility 0s linear 0.1s;
 }
 
-
 /* =========================================================
-   14. SELO DE CERA + INICIAL PRATA
+   12. SELO DE CERA VERMELHO + INICIAL PRATA
    ========================================================= */
 
 .envelope__seal {
@@ -730,7 +565,6 @@ body::after {
 
     width: clamp(72px, 14vw, 91px);
     aspect-ratio: 1;
-
     overflow: visible;
 
     border: 0;
@@ -743,7 +577,6 @@ body::after {
     background-size: contain;
 
     color: var(--silver);
-
     box-shadow: none;
 
     transform: translate(-50%, -50%) rotate(-2deg);
@@ -755,19 +588,20 @@ body::after {
     pointer-events: none;
 }
 
+/* A forma e o monograma já estão no PNG transparente. */
 .envelope__seal::before,
 .envelope__seal::after {
     content: none;
     display: none;
 }
 
+/* Evita duplicar a inicial que já está integrada ao lacre. */
 .envelope__seal-symbol {
     display: none;
 }
 
-
 /* =========================================================
-   15. TEXTO DO ENVELOPE
+   13. TEXTO DO ENVELOPE
    ========================================================= */
 
 .envelope__label {
@@ -776,29 +610,24 @@ body::after {
 
     left: 50%;
     bottom: 11%;
-
     width: 90%;
 
     color: var(--white);
 
     font-size: clamp(0.7rem, 2.5vw, 0.92rem);
     font-weight: 700;
-
     letter-spacing: 0.17em;
     line-height: 1.6;
-
     text-align: center;
 
     text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
 
     transform: translateX(-50%);
-
     pointer-events: none;
 }
 
-
 /* =========================================================
-   16. ABERTURA ANIMADA
+   14. ABERTURA ANIMADA
    ========================================================= */
 
 .envelope.is-opening,
@@ -806,24 +635,33 @@ body::after {
     pointer-events: none;
 }
 
+/* A aba gira a partir da borda superior. */
 .envelope.is-opening .envelope__flap,
 .intro.is-opening .envelope__flap {
     transform: rotateX(180deg);
 }
 
+/* A carta sobe depois do início da abertura da aba. */
 .envelope.is-opening .envelope__letter,
 .intro.is-opening .envelope__letter {
     visibility: visible;
     opacity: 1;
-
     transform: translateY(-30%);
+
+    transition-delay: 100ms, 100ms, 0s;
 }
 
+/* O lacre desaparece suavemente. */
 .envelope.is-opening .envelope__seal,
 .intro.is-opening .envelope__seal {
     opacity: 0;
-
     transform: translate(-50%, -50%) scale(0.55) rotate(8deg);
+}
+
+/* O aviso desaparece durante a abertura. */
+.intro.is-opening .envelope-hint {
+    opacity: 0;
+    animation: none;
 }
 
 .intro.is-opening .intro__glow--red,
@@ -831,9 +669,8 @@ body::after {
     display: none;
 }
 
-
 /* =========================================================
-   17. PARTÍCULAS
+   15. PARTÍCULAS
    ========================================================= */
 
 .particles {
@@ -848,14 +685,13 @@ body::after {
 
 .particle {
     position: absolute;
-
     top: 50%;
     left: var(--particle-x);
 
     width: 5px;
     height: 5px;
-
     border-radius: 50%;
+
     opacity: 0;
 
     animation:
@@ -865,20 +701,17 @@ body::after {
 
 .particle--red {
     background: var(--blood-red);
-
     box-shadow: 0 0 10px rgba(146, 6, 8, 0.32);
 }
 
 .particle--silver {
     background: var(--white);
-
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
 }
 
 @keyframes particle-rise {
     0% {
         opacity: 0;
-
         transform: translate3d(0, 0, 0) scale(0.4);
     }
 
@@ -899,22 +732,20 @@ body::after {
     }
 }
 
-
 /* =========================================================
-   18. PERSONAGEM DECORATIVO
+   16. PERSONAGEM DECORATIVO
    ========================================================= */
 
 .intro__character {
     position: absolute;
+    z-index: 1;
 
     pointer-events: none;
-
-    z-index: 1;
 }
 
-
 /* =========================================================
-   19. RESPONSIVIDADE — CELULARES
+   17. RESPONSIVIDADE
+   Dimensões fluidas para telas estreitas, baixas e ultrawide.
    ========================================================= */
 
 @media (max-width: 480px) {
@@ -935,22 +766,14 @@ body::after {
     .envelope {
         --envelope-width: min(
             360px,
-            calc(
-                100vw -
-                var(--page-padding) -
-                var(--page-padding)
-            ),
-            88vh
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            133vh
         );
 
         --envelope-width: min(
             360px,
-            calc(
-                100vw -
-                var(--page-padding) -
-                var(--page-padding)
-            ),
-            88svh
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            133svh
         );
     }
 
@@ -958,7 +781,6 @@ body::after {
         bottom: 10%;
 
         font-size: clamp(0.58rem, 2.8vw, 0.68rem);
-
         letter-spacing: clamp(0.07em, 0.8vw, 0.12em);
     }
 
@@ -966,121 +788,12 @@ body::after {
         width: clamp(54px, 18vw, 84px);
     }
 
-    /* Moldura mais delicada, preservando os recortes. */
-
-    .intro__atmosphere::before {
-        inset: 10px;
-
-        outline-offset: -5px;
-
-        background:
-            linear-gradient(
-                90deg,
-                transparent,
-                rgba(146, 6, 8, 0.82),
-                transparent
-            ) center top / min(38vw, 190px) 1px no-repeat,
-
-            linear-gradient(
-                90deg,
-                transparent,
-                rgba(11, 11, 13, 0.78),
-                transparent
-            ) center bottom / min(38vw, 190px) 1px no-repeat,
-
-            linear-gradient(
-                90deg,
-                rgba(146, 6, 8, 0.9),
-                rgba(146, 6, 8, 0.9)
-            ) left 23px top 0 / 27px 1px no-repeat,
-
-            linear-gradient(
-                180deg,
-                rgba(146, 6, 8, 0.9),
-                rgba(146, 6, 8, 0.9)
-            ) left 0 top 23px / 1px 27px no-repeat,
-
-            linear-gradient(
-                90deg,
-                rgba(11, 11, 13, 0.85),
-                rgba(11, 11, 13, 0.85)
-            ) right 23px top 0 / 27px 1px no-repeat,
-
-            linear-gradient(
-                180deg,
-                rgba(11, 11, 13, 0.85),
-                rgba(11, 11, 13, 0.85)
-            ) right 0 top 23px / 1px 27px no-repeat,
-
-            linear-gradient(
-                90deg,
-                rgba(11, 11, 13, 0.85),
-                rgba(11, 11, 13, 0.85)
-            ) left 23px bottom 0 / 27px 1px no-repeat,
-
-            linear-gradient(
-                180deg,
-                rgba(11, 11, 13, 0.85),
-                rgba(11, 11, 13, 0.85)
-            ) left 0 bottom 23px / 1px 27px no-repeat,
-
-            linear-gradient(
-                90deg,
-                rgba(146, 6, 8, 0.9),
-                rgba(146, 6, 8, 0.9)
-            ) right 23px bottom 0 / 27px 1px no-repeat,
-
-            linear-gradient(
-                180deg,
-                rgba(146, 6, 8, 0.9),
-                rgba(146, 6, 8, 0.9)
-            ) right 0 bottom 23px / 1px 27px no-repeat;
-    }
-
-    /* Sigilos menores nos cantos opostos. */
-
-    .intro__atmosphere::after {
-        background-image:
-            url("https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Sangue.png/revision/latest/scale-to-width-down/266?cb=20221031204745&path-prefix=pt-br"),
-            url("https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Sangue.png/revision/latest/scale-to-width-down/266?cb=20221031204745&path-prefix=pt-br"),
-            url("../IMGS/hexatombe-rule.svg"),
-            url("../IMGS/hexatombe-rule.svg"),
-            linear-gradient(
-                180deg,
-                rgba(11, 11, 13, 0.30),
-                transparent
-            );
-
-        background-repeat:
-            no-repeat,
-            no-repeat,
-            no-repeat,
-            no-repeat,
-            no-repeat;
-
-        background-size:
-            clamp(42px, 12vw, 60px) auto,
-            clamp(42px, 12vw, 60px) auto,
-            min(62vw, 270px) auto,
-            min(62vw, 270px) auto,
-            1px 18%;
-
-        background-position:
-            left 13px top 14px,
-            right 13px bottom 14px,
-            center 7%,
-            center 93%,
-            12px center;
-
-        opacity: 0.86;
+    .intro__glow {
+        filter: blur(75px);
     }
 }
 
-
-/* =========================================================
-   20. CELULARES MUITO ESTREITOS
-   ========================================================= */
-
+/* Celulares muito estreitos. */
 @media (max-width: 320px) {
     :root {
         --page-padding: 0.875rem;
@@ -1094,29 +807,9 @@ body::after {
     .envelope__seal {
         width: 52px;
     }
-
-    .intro__atmosphere::after {
-        background-size:
-            38px auto,
-            38px auto,
-            min(58vw, 220px) auto,
-            min(58vw, 220px) auto,
-            1px 18%;
-
-        background-position:
-            left 10px top 12px,
-            right 10px bottom 12px,
-            center 7%,
-            center 93%,
-            10px center;
-    }
 }
 
-
-/* =========================================================
-   21. PAISAGEM E JANELAS BAIXAS
-   ========================================================= */
-
+/* Paisagem e janelas baixas. */
 @media (max-height: 520px) {
     .intro {
         padding-block: max(0.75rem, 3vh);
@@ -1130,195 +823,88 @@ body::after {
     .envelope {
         --envelope-width: min(
             440px,
-            calc(
-                100vw -
-                var(--page-padding) -
-                var(--page-padding)
-            ),
-            78vh
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            133vh
         );
 
         --envelope-width: min(
             440px,
-            calc(
-                100vw -
-                var(--page-padding) -
-                var(--page-padding)
-            ),
-            78svh
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            133svh
         );
     }
 
-    /* Em uma janela baixa, os sigilos ficam menores. */
-
-    .intro__atmosphere::after {
-        background-size:
-            clamp(40px, 5vw, 60px) auto,
-            clamp(40px, 5vw, 60px) auto,
-            min(26vw, 220px) auto,
-            min(26vw, 220px) auto,
-            1px 18%;
-
-        background-position:
-            left clamp(14px, 3vw, 36px) top 12px,
-            right clamp(14px, 3vw, 36px) bottom 12px,
-            center 5%,
-            center 95%,
-            12px center;
-
-        opacity: 0.82;
+    .intro__glow {
+        filter: blur(65px);
     }
 }
 
-/* Em celulares baixos, conservar os símbolos nos cantos diagonais. */
+/* Em celulares, os sigilos passam para cima e para baixo do envelope
+   para evitar que fiquem escondidos ou apertem as laterais. */
+@media (max-width: 640px) {
+    .intro__atmosphere::before {
+        inset: 10px;
+        outline-offset: -5px;
+    }
 
-@media (max-width: 640px) and (max-height: 520px) {
     .intro__atmosphere::after {
+        background-image:
+            url("https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Sangue.png/revision/latest/scale-to-width-down/266?cb=20221031204745&path-prefix=pt-br"),
+            url("https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Sangue.png/revision/latest/scale-to-width-down/266?cb=20221031204745&path-prefix=pt-br"),
+            url("../IMGS/hexatombe-rule.svg"),
+            url("../IMGS/hexatombe-rule.svg");
+
         background-size:
-            clamp(34px, 10vw, 46px) auto,
-            clamp(34px, 10vw, 46px) auto,
-            min(52vw, 190px) auto,
-            min(52vw, 190px) auto,
-            1px 18%;
+            clamp(34px, 10vw, 58px) auto,
+            clamp(34px, 10vw, 58px) auto,
+            min(70vw, 300px) auto,
+            min(70vw, 300px) auto;
 
         background-position:
-            left 10px top 10px,
-            right 10px bottom 10px,
-            center 5%,
-            center 95%,
-            10px center;
+            center 3.5%,
+            center 96.5%,
+            center 10%,
+            center 90%;
 
-        opacity: 0.80;
+        opacity: 0.94;
+    }
+}
+
+@media (max-height: 520px) {
+    /* Em telas baixas, os sigilos ficam nas laterais. */
+    .intro__atmosphere::after {
+        background-size:
+            clamp(38px, 6vw, 64px) auto,
+            clamp(38px, 6vw, 64px) auto,
+            min(25vw, 240px) auto,
+            min(25vw, 240px) auto;
+
+        background-position:
+            18px center,
+            calc(100% - 18px - clamp(38px, 6vw, 64px)) center,
+            center 5%,
+            center 95%;
+
+        opacity: 0.94;
     }
 }
 
 /* =========================================================
-   REFINAMENTO DA ANIMAÇÃO DO ENVELOPE
+   18. MOVIMENTO REDUZIDO
    ========================================================= */
-
-/* A aba permanece presa à borda superior. */
-
-.envelope__flap {
-    transform-origin: center top;
-    transform: rotateX(0deg);
-
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-
-    transition:
-        transform 900ms cubic-bezier(0.22, 0.72, 0.24, 1),
-        filter 500ms ease;
-
-    will-change: transform;
-}
-
-/* A aba se abre para trás, sem exibir o verso do ornamento. */
-
-.envelope.is-opening .envelope__flap,
-.intro.is-opening .envelope__flap {
-    transform: rotateX(-180deg);
-    filter: drop-shadow(0 3px 3px rgba(11, 11, 13, 0.18));
-}
-
-/* A carta começa a aparecer suavemente. */
-
-.envelope__letter {
-    transition:
-        transform 850ms cubic-bezier(0.2, 0.7, 0.25, 1) 120ms,
-        opacity 500ms ease 120ms;
-}
-
-.envelope.is-opening .envelope__letter,
-.intro.is-opening .envelope__letter {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(-30%);
-}
-
-/* O lacre desaparece durante a abertura. */
-
-.envelope__seal {
-    transition:
-        opacity 300ms ease,
-        transform 450ms cubic-bezier(0.2, 0.7, 0.25, 1);
-}
-
-.envelope.is-opening .envelope__seal,
-.intro.is-opening .envelope__seal {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.55) rotate(8deg);
-}
-
-/* =========================================================
-   AVISO DISCRETO ABAIXO DO ENVELOPE
-   ========================================================= */
-
-.envelope-hint {
-    position: relative;
-    z-index: 2;
-
-    margin: clamp(1rem, 2.5vh, 1.5rem) 0 0;
-    padding: 0;
-
-    color: rgba(255, 253, 253, 0.58);
-
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(0.65rem, 1.8vw, 0.76rem);
-    font-weight: 400;
-
-    letter-spacing: 0.12em;
-    line-height: 1.5;
-    text-align: center;
-
-    opacity: 0.65;
-
-    pointer-events: none;
-
-    animation: hint-breathe 3.8s ease-in-out infinite;
-    transition: opacity 350ms ease;
-}
-
-@keyframes hint-breathe {
-    0%,
-    100% {
-        opacity: 0.38;
-    }
-
-    50% {
-        opacity: 0.72;
-    }
-}
-
-/* O aviso desaparece enquanto o envelope abre. */
-
-.intro.is-opening .envelope-hint {
-    opacity: 0;
-    animation: none;
-}
-
-/* Respeita a preferência por movimento reduzido. */
 
 @media (prefers-reduced-motion: reduce) {
     .envelope-hint {
         animation: none;
         opacity: 0.55;
     }
-}
 
-
-/* =========================================================
-   22. MOVIMENTO REDUZIDO
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
         scroll-behavior: auto !important;
-
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-
         transition-duration: 0.01ms !important;
     }
 }

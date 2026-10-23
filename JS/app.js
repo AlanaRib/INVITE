@@ -37,6 +37,19 @@ const attendanceOptions = document.querySelectorAll(
 
 
 // ================================================
+// TEMPO DA ANIMAÇÃO
+// ================================================
+
+const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+const OPEN_ANIMATION_DURATION = prefersReducedMotion
+    ? 50
+    : 1250;
+
+
+// ================================================
 // ABERTURA DO ENVELOPE
 // ================================================
 
@@ -64,7 +77,7 @@ envelope?.addEventListener("click", () => {
         }
 
         invitation?.classList.add("is-visible");
-    }, 1000);
+    }, OPEN_ANIMATION_DURATION);
 });
 
 
