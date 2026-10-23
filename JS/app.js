@@ -5,7 +5,7 @@
 const CONFIG = {
     // Substituiremos pela URL do Web App do Google Apps
     // Script depois de publicar a integração.
-    SHEETS_URL: "COLE_A_URL_DO_GOOGLE_APPS_SCRIPT_AQUI",
+    SHEETS_URL: "https://script.google.com/macros/s/AKfycbzHBsqtEphQOgcTPlGJyX2KX_EdrZVTfIi5yJ6MR7oo1VBgm6b5613O5axV7G9QS9ur/exec",
 
     MAX_COMPANIONS: 4,
 
