@@ -90,9 +90,6 @@ input:focus-visible {
 
 /* =========================================================
    3. FUNDO — HEXATOMBE / RITUAL DE SANGUE
-
-   Prata fria até vinho profundo, com textura e marcas rituais.
-   O envelope continua sendo o protagonista da composição.
    ========================================================= */
 
 body::before,
@@ -184,8 +181,6 @@ body::after {
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-
-    /* Acima do fundo e abaixo do envelope. */
     z-index: 0;
 }
 
@@ -226,7 +221,9 @@ body::after {
         ) center bottom / min(34vw, 360px) 1px no-repeat;
 }
 
-/* Sigilo ORIGINAL de Sangue e pequenas marcas de ritual. */
+/* Sigilo ORIGINAL de Sangue e ornamentos rituais.
+   Desktop: diagonal entre a região superior esquerda
+   e a região inferior direita, emoldurando o envelope. */
 .intro__atmosphere::after {
     position: absolute;
     inset: 0;
@@ -252,23 +249,22 @@ body::after {
         no-repeat;
 
     background-size:
-        clamp(104px, 10vw, 152px) auto,
-        clamp(104px, 10vw, 152px) auto,
+        clamp(90px, 8.8vw, 130px) auto,
+        clamp(90px, 8.8vw, 130px) auto,
         min(42vw, 560px) auto,
         min(42vw, 560px) auto,
         1px 18%;
 
     background-position:
-        clamp(34px, 5.5vw, 88px) center,
+        clamp(22px, 4vw, 64px) 24%,
         calc(
-            100% - clamp(34px, 5.5vw, 88px) -
-            clamp(104px, 10vw, 152px)
-        ) center,
-        center 8%,
-        center 92%,
+            100% - clamp(22px, 4vw, 64px) -
+            clamp(90px, 8.8vw, 130px)
+        ) 76%,
+        center 7%,
+        center 93%,
         clamp(14px, 2vw, 30px) center;
 
-    /* Contraste para o sigilo permanecer visível sobre o fundo. */
     opacity: 0.88;
 }
 
@@ -396,8 +392,8 @@ body::after {
     position: absolute;
     z-index: 1;
     inset: 0;
-
     overflow: hidden;
+
     border: 1px solid #360205;
     border-radius: inherit;
 
@@ -696,12 +692,32 @@ body::after {
 .intro__character {
     position: absolute;
     pointer-events: none;
+    z-index: 0;
 }
 
 /* =========================================================
    17. RESPONSIVIDADE
    Dimensões fluidas para telas estreitas, baixas e ultrawide.
    ========================================================= */
+
+/* Tablets: sigilos menores para não se aproximarem demais do envelope. */
+@media (min-width: 641px) and (max-width: 800px) {
+    .intro__atmosphere::after {
+        background-size:
+            clamp(54px, 8vw, 74px) auto,
+            clamp(54px, 8vw, 74px) auto,
+            min(42vw, 360px) auto,
+            min(42vw, 360px) auto,
+            1px 18%;
+
+        background-position:
+            18px 21%,
+            calc(100% - 18px - clamp(54px, 8vw, 74px)) 79%,
+            center 7%,
+            center 93%,
+            18px center;
+    }
+}
 
 @media (max-width: 480px) {
     :root {
@@ -801,8 +817,8 @@ body::after {
     }
 }
 
-/* Em celulares, o sigilo original passa para cima e para baixo
-   do envelope, para não ficar escondido atrás dele. */
+/* Celulares: um sigilo no canto superior esquerdo e outro no inferior direito.
+   Os símbolos ficam afastados da região central ocupada pelo envelope. */
 @media (max-width: 640px) {
     .intro__atmosphere::before {
         inset: 10px;
@@ -823,23 +839,25 @@ body::after {
             no-repeat;
 
         background-size:
-            clamp(50px, 12vw, 74px) auto,
-            clamp(50px, 12vw, 74px) auto,
+            clamp(48px, 13vw, 64px) auto,
+            clamp(48px, 13vw, 64px) auto,
             min(70vw, 300px) auto,
             min(70vw, 300px) auto;
 
         background-position:
-            center 4%,
-            center 96%,
-            center 10%,
-            center 90%;
+            14px 10%,
+            calc(100% - 14px - clamp(48px, 13vw, 64px)) 90%,
+            center 12%,
+            center 88%;
 
-        opacity: 0.82;
+        opacity: 0.86;
     }
 }
 
+/* Telas baixas:
+   em celulares, os sigilos ficam em cima e embaixo;
+   em telas mais largas, permanecem nas laterais. */
 @media (max-height: 520px) {
-    /* Em telas baixas, as marcas passam para as laterais. */
     .intro__atmosphere::after {
         background-image:
             url("https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Sangue.png/revision/latest/scale-to-width-down/266?cb=20221031204745&path-prefix=pt-br"),
@@ -854,16 +872,38 @@ body::after {
             no-repeat;
 
         background-size:
-            clamp(42px, 6vw, 68px) auto,
-            clamp(42px, 6vw, 68px) auto,
+            clamp(38px, 5vw, 58px) auto,
+            clamp(38px, 5vw, 58px) auto,
             min(25vw, 240px) auto,
             min(25vw, 240px) auto;
 
         background-position:
-            18px center,
-            calc(100% - 18px - clamp(42px, 6vw, 68px)) center,
+            clamp(10px, 2vw, 24px) 36%,
+            calc(
+                100% - clamp(10px, 2vw, 24px) -
+                clamp(38px, 5vw, 58px)
+            ) 64%,
             center 5%,
             center 95%;
+
+        opacity: 0.82;
+    }
+}
+
+/* Em celulares baixos, evita que os sigilos disputem espaço lateral com o envelope. */
+@media (max-width: 640px) and (max-height: 520px) {
+    .intro__atmosphere::after {
+        background-size:
+            clamp(36px, 11vw, 48px) auto,
+            clamp(36px, 11vw, 48px) auto,
+            min(58vw, 220px) auto,
+            min(58vw, 220px) auto;
+
+        background-position:
+            12px 5%,
+            calc(100% - 12px - clamp(36px, 11vw, 48px)) 95%,
+            center 7%,
+            center 93%;
 
         opacity: 0.80;
     }
