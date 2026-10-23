@@ -57,7 +57,7 @@ input {
     font: inherit;
 }
 
-/* Mídias futuras do convite reduzem proporcionalmente, sem deformar. */
+/* Mídias futuras do convite reduzem proporcionalmente. */
 img,
 video,
 canvas {
@@ -90,9 +90,6 @@ input:focus-visible {
 
 /* =========================================================
    3. FUNDO — HEXATOMBE / RITUAL DE SANGUE
-
-   Prata fria até vinho profundo, com textura e marcas rituais.
-   O envelope continua sendo o protagonista da composição.
    ========================================================= */
 
 body::before,
@@ -106,6 +103,7 @@ body::after {
 
 body::before {
     background-color: #30070d;
+
     background-image:
         linear-gradient(
             180deg,
@@ -128,9 +126,10 @@ body::before {
         );
 }
 
-/* Textura de película e riscos muito discretos: sem foco luminoso. */
+/* Textura discreta, sem foco luminoso no centro. */
 body::after {
     opacity: 0.075;
+
     background-image:
         repeating-linear-gradient(
             117deg,
@@ -150,8 +149,17 @@ body::after {
             rgba(11, 11, 13, 0.66) 0 0.48px,
             transparent 0.9px
         );
-    background-size: 100% 100%, 19px 23px, 29px 31px;
-    background-position: center, 0 0, 11px 13px;
+
+    background-size:
+        100% 100%,
+        19px 23px,
+        29px 31px;
+
+    background-position:
+        center,
+        0 0,
+        11px 13px;
+
     mix-blend-mode: soft-light;
 }
 
@@ -161,6 +169,7 @@ body::after {
 
 .intro {
     position: relative;
+
     display: grid;
     place-items: center;
 
@@ -170,6 +179,7 @@ body::after {
     padding:
         clamp(1.25rem, 5vh, 5rem)
         var(--page-padding);
+
     padding:
         clamp(1.25rem, 5svh, 5rem)
         var(--page-padding);
@@ -181,21 +191,23 @@ body::after {
 .intro__atmosphere {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
     pointer-events: none;
 
-    /* Acima do fundo e abaixo do envelope. */
     z-index: 0;
 }
 
-/* Moldura ritual: filetes quebrados e cantos talhados. */
+/* Moldura ritual com cantos talhados. */
 .intro__atmosphere::before {
     position: absolute;
     inset: clamp(13px, 2vw, 30px);
+
     content: "";
     pointer-events: none;
 
     border: 1px solid rgba(15, 0, 3, 0.43);
+
     outline: 1px solid rgba(146, 6, 8, 0.40);
     outline-offset: -7px;
 
@@ -217,6 +229,7 @@ body::after {
             rgba(146, 6, 8, 0.65),
             transparent
         ) center top / min(34vw, 360px) 1px no-repeat,
+
         linear-gradient(
             90deg,
             transparent,
@@ -225,10 +238,11 @@ body::after {
         ) center bottom / min(34vw, 360px) 1px no-repeat;
 }
 
-/* Sigilos de Sangue e marcas de ritual. */
+/* Sigilo de Sangue e ornamentos de Hexatombe. */
 .intro__atmosphere::after {
     position: absolute;
     inset: 0;
+
     content: "";
     pointer-events: none;
 
@@ -238,7 +252,11 @@ body::after {
         url("../IMGS/hexatombe-rule.svg"),
         url("../IMGS/hexatombe-rule.svg");
 
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat;
 
     background-size:
         clamp(76px, 8vw, 112px) auto,
@@ -255,7 +273,7 @@ body::after {
     opacity: 0.94;
 }
 
-/* Sem brilho central artificial. */
+/* Desliga os brilhos antigos. */
 .intro__glow {
     display: none;
 }
@@ -271,6 +289,7 @@ body::after {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     gap: clamp(0.8rem, 2vh, 1.1rem);
 
     width: 100%;
@@ -284,7 +303,7 @@ body::after {
     z-index: 2;
 }
 
-/* Instrução discreta, fora do botão/envelope. */
+/* Aviso abaixo do envelope, fora do botão. */
 .envelope-hint {
     position: relative;
     z-index: 2;
@@ -293,9 +312,11 @@ body::after {
     padding: 0;
 
     color: rgba(255, 253, 253, 0.58);
+
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(0.65rem, 1.8vw, 0.76rem);
     font-weight: 400;
+
     letter-spacing: 0.1em;
     line-height: 1.5;
     text-align: center;
@@ -304,6 +325,7 @@ body::after {
     pointer-events: none;
 
     animation: hint-breathe 3.8s ease-in-out infinite;
+
     transition: opacity 300ms ease;
 }
 
@@ -336,6 +358,7 @@ body::after {
     );
 
     position: relative;
+
     display: block;
     isolation: isolate;
 
@@ -348,6 +371,7 @@ body::after {
 
     padding: 0;
     border: 0;
+
     border-radius: 18px 18px 10px 10px;
 
     background: transparent;
@@ -394,6 +418,7 @@ body::after {
 
 .envelope__shadow {
     inset: 2px;
+
     transform: translateY(12px);
 
     background: rgba(11, 11, 13, 0.35);
@@ -403,7 +428,7 @@ body::after {
 }
 
 /* =========================================================
-   8. CORPO — VERMELHO UNIFORME
+   8. CORPO DO ENVELOPE
    ========================================================= */
 
 .envelope__body {
@@ -446,6 +471,7 @@ body::after {
             transparent 1px,
             transparent 4px
         ),
+
         linear-gradient(
             135deg,
             rgba(255, 255, 255, 0.035),
@@ -454,16 +480,13 @@ body::after {
         );
 }
 
-/* Sem filete retangular interno. */
+/* Remove o filete interno retangular. */
 .envelope__body::after {
     content: none;
     display: none;
 }
 
-/* =========================================================
-   9. ORNAMENTOS PRETOS NAS LATERAIS
-   ========================================================= */
-
+/* Mantém os ornamentos laterais do SVG. */
 .envelope__body {
     background-color: #920608;
     background-image: url("../IMGS/envelope-ornament.svg");
@@ -473,7 +496,7 @@ body::after {
 }
 
 /* =========================================================
-   10. ABA — VERMELHA COM ORNAMENTO PRETO
+   9. ABA DO ENVELOPE
    ========================================================= */
 
 .envelope__flap {
@@ -482,6 +505,7 @@ body::after {
 
     inset: 0 0 auto;
     height: 58%;
+
     overflow: hidden;
 
     border-radius: 18px 18px 0 0;
@@ -511,9 +535,7 @@ body::after {
 }
 
 /* =========================================================
-   11. CARTA INTERNA
-
-   A carta cinza fica invisível enquanto o envelope está fechado.
+   10. CARTA INTERNA
    ========================================================= */
 
 .envelope__letter {
@@ -523,6 +545,7 @@ body::after {
     inset: 10% 8% 7%;
 
     display: block;
+
     visibility: hidden;
     opacity: 0;
 
@@ -546,11 +569,11 @@ body::after {
     transition:
         transform 850ms cubic-bezier(0.2, 0.7, 0.25, 1) 100ms,
         opacity 350ms ease 100ms,
-        visibility 0s linear 0.1s;
+        visibility 0s linear 100ms;
 }
 
 /* =========================================================
-   12. SELO DE CERA VERMELHO + INICIAL PRATA
+   11. SELO DE CERA
    ========================================================= */
 
 .envelope__seal {
@@ -565,6 +588,7 @@ body::after {
 
     width: clamp(72px, 14vw, 91px);
     aspect-ratio: 1;
+
     overflow: visible;
 
     border: 0;
@@ -577,6 +601,7 @@ body::after {
     background-size: contain;
 
     color: var(--silver);
+
     box-shadow: none;
 
     transform: translate(-50%, -50%) rotate(-2deg);
@@ -588,20 +613,19 @@ body::after {
     pointer-events: none;
 }
 
-/* A forma e o monograma já estão no PNG transparente. */
+/* O PNG já contém a forma e o monograma. */
 .envelope__seal::before,
 .envelope__seal::after {
     content: none;
     display: none;
 }
 
-/* Evita duplicar a inicial que já está integrada ao lacre. */
 .envelope__seal-symbol {
     display: none;
 }
 
 /* =========================================================
-   13. TEXTO DO ENVELOPE
+   12. TEXTO DO ENVELOPE
    ========================================================= */
 
 .envelope__label {
@@ -610,24 +634,28 @@ body::after {
 
     left: 50%;
     bottom: 11%;
+
     width: 90%;
 
     color: var(--white);
 
     font-size: clamp(0.7rem, 2.5vw, 0.92rem);
     font-weight: 700;
+
     letter-spacing: 0.17em;
     line-height: 1.6;
+
     text-align: center;
 
     text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
 
     transform: translateX(-50%);
+
     pointer-events: none;
 }
 
 /* =========================================================
-   14. ABERTURA ANIMADA
+   13. ANIMAÇÃO DE ABERTURA
    ========================================================= */
 
 .envelope.is-opening,
@@ -635,42 +663,39 @@ body::after {
     pointer-events: none;
 }
 
-/* A aba gira a partir da borda superior. */
+/* A aba gira pela borda superior. */
 .envelope.is-opening .envelope__flap,
 .intro.is-opening .envelope__flap {
     transform: rotateX(180deg);
 }
 
-/* A carta sobe depois do início da abertura da aba. */
+/* A carta sobe depois do início da abertura. */
 .envelope.is-opening .envelope__letter,
 .intro.is-opening .envelope__letter {
     visibility: visible;
     opacity: 1;
+
     transform: translateY(-30%);
 
     transition-delay: 100ms, 100ms, 0s;
 }
 
-/* O lacre desaparece suavemente. */
+/* O selo desaparece durante a abertura. */
 .envelope.is-opening .envelope__seal,
 .intro.is-opening .envelope__seal {
     opacity: 0;
+
     transform: translate(-50%, -50%) scale(0.55) rotate(8deg);
 }
 
-/* O aviso desaparece durante a abertura. */
+/* O texto de instrução desaparece. */
 .intro.is-opening .envelope-hint {
     opacity: 0;
     animation: none;
 }
 
-.intro.is-opening .intro__glow--red,
-.intro.is-opening .intro__glow--silver {
-    display: none;
-}
-
 /* =========================================================
-   15. PARTÍCULAS
+   14. PARTÍCULAS
    ========================================================= */
 
 .particles {
@@ -685,11 +710,13 @@ body::after {
 
 .particle {
     position: absolute;
+
     top: 50%;
     left: var(--particle-x);
 
     width: 5px;
     height: 5px;
+
     border-radius: 50%;
 
     opacity: 0;
@@ -712,6 +739,7 @@ body::after {
 @keyframes particle-rise {
     0% {
         opacity: 0;
+
         transform: translate3d(0, 0, 0) scale(0.4);
     }
 
@@ -733,7 +761,7 @@ body::after {
 }
 
 /* =========================================================
-   16. PERSONAGEM DECORATIVO
+   15. PERSONAGEM DECORATIVO
    ========================================================= */
 
 .intro__character {
@@ -744,8 +772,7 @@ body::after {
 }
 
 /* =========================================================
-   17. RESPONSIVIDADE
-   Dimensões fluidas para telas estreitas, baixas e ultrawide.
+   16. RESPONSIVIDADE — CELULARES
    ========================================================= */
 
 @media (max-width: 480px) {
@@ -809,7 +836,10 @@ body::after {
     }
 }
 
-/* Paisagem e janelas baixas. */
+/* =========================================================
+   17. RESPONSIVIDADE — TELAS BAIXAS
+   ========================================================= */
+
 @media (max-height: 520px) {
     .intro {
         padding-block: max(0.75rem, 3vh);
@@ -839,8 +869,7 @@ body::after {
     }
 }
 
-/* Em celulares, os sigilos passam para cima e para baixo do envelope
-   para evitar que fiquem escondidos ou apertem as laterais. */
+/* Celulares: sigilos nas extremidades verticais. */
 @media (max-width: 640px) {
     .intro__atmosphere::before {
         inset: 10px;
@@ -870,8 +899,8 @@ body::after {
     }
 }
 
+/* Telas baixas: sigilos nas laterais. */
 @media (max-height: 520px) {
-    /* Em telas baixas, os sigilos ficam nas laterais. */
     .intro__atmosphere::after {
         background-size:
             clamp(38px, 6vw, 64px) auto,
@@ -891,20 +920,38 @@ body::after {
 
 /* =========================================================
    18. MOVIMENTO REDUZIDO
+   Mantém a abertura visível, com duração mais curta.
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .envelope-hint {
         animation: none;
         opacity: 0.55;
     }
 
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    .envelope__flap {
+        transition-duration: 550ms, 500ms;
+    }
+
+    .envelope__letter {
+        transition-duration: 500ms, 250ms, 0s;
+    }
+
+    .envelope.is-opening .envelope__letter,
+    .intro.is-opening .envelope__letter {
+        transition-delay: 50ms, 50ms, 0s;
+    }
+
+    .envelope__seal {
+        transition-duration: 250ms, 250ms;
+    }
+
+    .particle {
+        animation: none;
+        opacity: 0;
     }
 }

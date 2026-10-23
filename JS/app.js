@@ -45,7 +45,7 @@ const prefersReducedMotion = window.matchMedia(
 ).matches;
 
 const OPEN_ANIMATION_DURATION = prefersReducedMotion
-    ? 50
+    ? 800
     : 1250;
 
 
