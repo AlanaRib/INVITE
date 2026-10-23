@@ -1,1 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="theme-color"
+        content="#0b0b0d"
+    >
+
+    <meta
+        name="description"
+        content="Um convite especial para celebrar os 19 anos da Alana."
+    >
+
+    <title>Alana faz 19! — Um convite especial</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <script src="JS/app.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =========================================
+         ABERTURA — ENVELOPE
+    ========================================== -->
+
+    <section
+        class="intro"
+        id="intro"
+        aria-label="Abertura do convite"
+    >
+
+        <div class="intro__atmosphere" aria-hidden="true">
+            <div class="intro__glow intro__glow--red"></div>
+            <div class="intro__glow intro__glow--silver"></div>
+        </div>
+
+        <div class="intro__content">
+
+            <p class="intro__eyebrow">
+                UMA CORRESPONDÊNCIA ESPECIAL
+            </p>
+
+            <button
+                class="envelope"
+                id="open-envelope"
+                type="button"
+                aria-label="Abrir o convite"
+                aria-controls="invitation"
+            >
+
+                <span class="envelope__shadow" aria-hidden="true"></span>
+
+                <span class="envelope__body" aria-hidden="true"></span>
+
+                <span class="envelope__flap" aria-hidden="true"></span>
+
+                <span class="envelope__letter" aria-hidden="true"></span>
+
+                <span class="envelope__seal" aria-hidden="true">
+                    <span class="envelope__seal-symbol">A</span>
+                </span>
+
+                <span class="envelope__label">
+                    VOCÊ ESTÁ CONVIDADO
+                </span>
+
+            </button>
+
+            <p class="intro__instruction">
+                Toque no envelope para abrir
+            </p>
+
+        </div>
+
+        <!-- Partículas geradas pelo JavaScript -->
+
+        <div
+            class="particles"
+            id="particles"
+            aria-hidden="true"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================================
+         CONVITE PRINCIPAL
+    ========================================== -->
+
+    <main
+        class="invitation"
+        id="invitation"
+        aria-label="Convite de aniversário"
+        hidden
+    >
+
+        <!-- Identidade editorial -->
+
+        <header class="masthead">
+
+            <span class="masthead__edition">
+                EDIÇÃO ESPECIAL
+            </span>
+
+            <span class="masthead__divider" aria-hidden="true"></span>
+
+            <span class="masthead__occasion">
+                ANIVERSÁRIO Nº 19
+            </span>
+
+        </header>
+
+
+        <!-- =====================================
+             HERO — APRESENTAÇÃO
+        ====================================== -->
+
+        <section
+            class="hero"
+            id="inicio"
+            aria-labelledby="hero-title"
+        >
+
+            <div
+                class="hero__collage"
+                aria-label="Colagem de referências visuais"
+            >
+
+                <!--
+                    Espaços reservados para as imagens
+                    e figurinhas que já escolhemos.
+
+                    As referências serão adicionadas
+                    na etapa de composição visual.
+                -->
+
+                <div
+                    class="sticker sticker--one"
+                    data-art="sticker-one"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="sticker sticker--two"
+                    data-art="sticker-two"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="sticker sticker--three"
+                    data-art="sticker-three"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="sticker sticker--four"
+                    data-art="sticker-four"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="sticker sticker--five"
+                    data-art="sticker-five"
+                    aria-hidden="true"
+                ></div>
+
+            </div>
+
+
+            <div class="hero__copy">
+
+                <p class="hero__pretitle">
+                    VOCÊ FOI CONVOCADO PARA
+                </p>
+
+                <h1 class="hero__title" id="hero-title">
+                    Alana
+                    <span>faz 19!</span>
+                </h1>
+
+                <p class="hero__subtitle">
+                    Pro meu aniversário.
+                </p>
+
+                <div class="hero__ornament" aria-hidden="true">
+                    <span></span>
+                    <span class="hero__ornament-symbol">✦</span>
+                    <span></span>
+                </div>
+
+                <p class="hero__description">
+                    Um dia, algumas pessoas especiais
+                    e uma quantidade questionável de caos.
+                </p>
+
+                <a class="hero__scroll" href="#detalhes">
+                    DESCUBRA O QUE VEM AÍ
+                    <span aria-hidden="true">↓</span>
+                </a>
+
+            </div>
+
+            <span class="hero__index" aria-hidden="true">
+                01 / 04
+            </span>
+
+        </section>
+
+
+        <!-- =====================================
+             DETALHES DO EVENTO
+        ====================================== -->
+
+        <section
+            class="details"
+            id="detalhes"
+            aria-labelledby="details-title"
+        >
+
+            <header class="section-heading">
+
+                <span class="section-heading__eyebrow">
+                    ANOTE AÍ
+                </span>
+
+                <h2 id="details-title">
+                    O encontro
+                    <span>está marcado.</span>
+                </h2>
+
+                <p>
+                    Agora que você recebeu o chamado,
+                    aqui estão os detalhes importantes.
+                </p>
+
+            </header>
+
+
+            <div class="details__grid">
+
+                <article class="detail detail--date">
+
+                    <span class="detail__number">
+                        01
+                    </span>
+
+                    <span class="detail__label">
+                        DATA
+                    </span>
+
+                    <p class="detail__value">
+                        08 NOV
+                    </p>
+
+                    <p class="detail__description">
+                        Domingo, 8 de novembro de 2026.
+                    </p>
+
+                </article>
+
+
+                <article class="detail detail--time">
+
+                    <span class="detail__number">
+                        02
+                    </span>
+
+                    <span class="detail__label">
+                        HORÁRIO
+                    </span>
+
+                    <p class="detail__value">
+                        11h30
+                    </p>
+
+                    <p class="detail__description">
+                        Chegue no horário para aproveitar
+                        desde o começo.
+                    </p>
+
+                </article>
+
+
+                <article class="detail detail--location">
+
+                    <span class="detail__number">
+                        03
+                    </span>
+
+                    <span class="detail__label">
+                        LOCAL
+                    </span>
+
+                    <p class="detail__value">
+                        Curitiba
+                    </p>
+
+                    <p class="detail__description">
+                        Curitiba — Paraná.
+                    </p>
+
+                    <!--
+                        O endereço completo poderá ser
+                        inserido quando estiver definido.
+                    -->
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CARDÁPIO
+        ====================================== -->
+
+        <section
+            class="menu"
+            id="cardapio"
+            aria-labelledby="menu-title"
+        >
+
+            <div class="menu__decoration" aria-hidden="true">
+                <span>✦</span>
+                <span>✧</span>
+                <span>✦</span>
+            </div>
+
+            <header class="section-heading">
+
+                <span class="section-heading__eyebrow">
+                    PARA SOBREVIVER À FESTA
+                </span>
+
+                <h2 id="menu-title">
+                    O que vai ter
+                    <span>de bom?</span>
+                </h2>
+
+                <p>
+                    Comida, bebida e outros detalhes
+                    serão revelados aqui.
+                </p>
+
+            </header>
+
+
+            <div class="menu__content">
+
+                <div class="menu__placeholder">
+
+                    <span class="menu__placeholder-symbol"
+                          aria-hidden="true">
+                        ✦
+                    </span>
+
+                    <p>
+                        Cardápio em preparação.
+                    </p>
+
+                    <span>
+                        AGUARDE OS PRÓXIMOS CAPÍTULOS
+                    </span>
+
+                </div>
+
+                <aside class="menu__notice">
+
+                    <span
+                        class="menu__notice-icon"
+                        aria-hidden="true"
+                    >
+                        !
+                    </span>
+
+                    <div>
+
+                        <h3>Um aviso importante</h3>
+
+                        <p>
+                            Cada convidado deve levar sua
+                            própria bebida alcoólica.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             REFERÊNCIAS / COLAGEM
+        ====================================== -->
+
+        <section
+            class="scrapbook"
+            id="scrapbook"
+            aria-labelledby="scrapbook-title"
+        >
+
+            <header class="section-heading">
+
+                <span class="section-heading__eyebrow">
+                    UM POUCO DA MINHA CABEÇA
+                </span>
+
+                <h2 id="scrapbook-title">
+                    Sem contexto.
+                    <span>Com personalidade.</span>
+                </h2>
+
+                <p>
+                    Uma coleção de coisas que fazem
+                    sentido na minha cabeça.
+                </p>
+
+            </header>
+
+
+            <div
+                class="scrapbook__canvas"
+                aria-label="Área de colagem de imagens e referências"
+            >
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--one"
+                    data-art="collage-one"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--two"
+                    data-art="collage-two"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--three"
+                    data-art="collage-three"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--four"
+                    data-art="collage-four"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--five"
+                    data-art="collage-five"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--six"
+                    data-art="collage-six"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--seven"
+                    data-art="collage-seven"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="scrapbook__piece scrapbook__piece--eight"
+                    data-art="collage-eight"
+                    aria-hidden="true"
+                ></div>
+
+                <span
+                    class="scrapbook__scribble scrapbook__scribble--one"
+                    aria-hidden="true"
+                >
+                    NO THOUGHTS.
+                </span>
+
+                <span
+                    class="scrapbook__scribble scrapbook__scribble--two"
+                    aria-hidden="true"
+                >
+                    JUST VIBES.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONFIRMAÇÃO DE PRESENÇA
+        ====================================== -->
+
+        <section
+            class="rsvp"
+            id="confirmacao"
+            aria-labelledby="rsvp-title"
+        >
+
+            <header class="section-heading">
+
+                <span class="section-heading__eyebrow">
+                    PRECISAMOS SABER
+                </span>
+
+                <h2 id="rsvp-title">
+                    Você
+                    <span>vem?</span>
+                </h2>
+
+                <p>
+                    Confirme sua presença para que
+                    possamos organizar tudo direitinho.
+                </p>
+
+            </header>
+
+
+            <div class="rsvp__card">
+
+                <form
+                    class="rsvp__form"
+                    id="rsvp-form"
+                >
+
+                    <div class="form-field">
+
+                        <label for="guest-name">
+                            Seu nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="guest-name"
+                            name="nome"
+                            placeholder="Como podemos te identificar?"
+                            autocomplete="name"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <fieldset class="form-field form-field--attendance">
+
+                        <legend>
+                            Você poderá comparecer?
+                        </legend>
+
+                        <div class="attendance-options">
+
+                            <label class="attendance-option">
+
+                                <input
+                                    type="radio"
+                                    name="presenca"
+                                    value="Sim"
+                                    required
+                                >
+
+                                <span class="attendance-option__content">
+                                    <span
+                                        class="attendance-option__symbol"
+                                        aria-hidden="true"
+                                    >
+                                        ✓
+                                    </span>
+
+                                    <span>
+                                        <strong>Sim!</strong>
+                                        <small>Estarei lá.</small>
+                                    </span>
+                                </span>
+
+                            </label>
+
+
+                            <label class="attendance-option">
+
+                                <input
+                                    type="radio"
+                                    name="presenca"
+                                    value="Não"
+                                    required
+                                >
+
+                                <span class="attendance-option__content">
+                                    <span
+                                        class="attendance-option__symbol"
+                                        aria-hidden="true"
+                                    >
+                                        ×
+                                    </span>
+
+                                    <span>
+                                        <strong>Não consigo</strong>
+                                        <small>Infelizmente.</small>
+                                    </span>
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <div
+                        class="form-field"
+                        id="companions-field"
+                    >
+
+                        <label for="companions">
+                            Quantos acompanhantes você levará?
+                        </label>
+
+                        <p class="form-field__hint">
+                            Conte apenas as pessoas que irão
+                            com você. Se for sozinho, selecione zero.
+                        </p>
+
+                        <select
+                            id="companions"
+                            name="acompanhantes"
+                            disabled
+                        >
+
+                            <option value="0">
+                                Vou sozinho(a)
+                            </option>
+
+                            <option value="1">
+                                1 acompanhante
+                            </option>
+
+                            <option value="2">
+                                2 acompanhantes
+                            </option>
+
+                            <option value="3">
+                                3 acompanhantes
+                            </option>
+
+                            <option value="4">
+                                4 acompanhantes
+                            </option>
+
+                            <option value="5">
+                                5 acompanhantes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="rsvp__submit"
+                        id="rsvp-submit"
+                        type="submit"
+                    >
+
+                        <span>ENVIAR RESPOSTA</span>
+
+                        <span aria-hidden="true">
+                            ↗
+                        </span>
+
+                    </button>
+
+
+                    <p
+                        class="rsvp__feedback"
+                        id="rsvp-feedback"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+
+                    <p class="rsvp__privacy">
+                        Sua resposta será registrada para
+                        ajudar na organização da festa.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RODAPÉ
+        ====================================== -->
+
+        <footer class="footer">
+
+            <div class="footer__ornament" aria-hidden="true">
+                ✦
+            </div>
+
+            <p class="footer__message">
+                Te espero lá.
+            </p>
+
+            <p class="footer__signature">
+                COM AMOR,
+            </p>
+
+            <p class="footer__name">
+                ALANA
+            </p>
+
+            <span class="footer__copyright">
+                NOVEMBRO · 2026
+            </span>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>
