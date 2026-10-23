@@ -39,11 +39,15 @@ html {
 body {
     position: relative;
     isolation: isolate;
+
     min-height: 100vh;
     margin: 0;
 
+    overflow-x: hidden;
+    overflow-x: clip;
+
     color: var(--black);
-    background: #dedadb;
+    background: #410d16;
 
     font-family: Georgia, "Times New Roman", serif;
     -webkit-font-smoothing: antialiased;
@@ -53,6 +57,18 @@ body {
 button,
 input {
     font: inherit;
+}
+
+/* Mídias reduzem proporcionalmente, sem deformação. */
+img,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    max-width: 100%;
 }
 
 button {
@@ -75,13 +91,17 @@ input:focus-visible {
 }
 
 /* =========================================================
-   3. FUNDO ATUAL — MANTIDO
+   3. FUNDO — PRATA FRIA ATÉ VINHO ESCURO
+
+   Transição contínua, sem faixas diagonais e sem um ponto
+   de luz marcado. O degradê é vetorial e se adapta à tela.
    ========================================================= */
 
 body::before,
 body::after {
     position: fixed;
     inset: 0;
+
     content: "";
     pointer-events: none;
     z-index: -1;
@@ -89,48 +109,40 @@ body::after {
 
 body::before {
     background:
-        linear-gradient(
-            115deg,
-            rgba(146, 6, 8, 0.20) 0%,
-            rgba(146, 6, 8, 0.10) 22%,
-            transparent 48%
-        ),
-        linear-gradient(
-            295deg,
-            rgba(146, 6, 8, 0.19) 0%,
-            rgba(146, 6, 8, 0.09) 24%,
-            transparent 51%
-        ),
-        linear-gradient(
-            180deg,
-            #d2cdcf 0%,
-            #e1dddf 24%,
-            #e9e6e7 52%,
-            #ded9db 78%,
-            #cfc8ca 100%
+        radial-gradient(
+            ellipse 72% 72% at 50% 43%,
+            #e9e5e7 0%,
+            #e3dfe1 18%,
+            #d3c9ce 37%,
+            #c0aab2 53%,
+            #9a6973 69%,
+            #702f3a 84%,
+            #410d16 100%
         );
 
-    background-color: #dedadb;
+    background-color: #410d16;
 }
 
+/* Textura fina, quase imperceptível. */
 body::after {
-    opacity: 0.12;
+    opacity: 0.055;
 
     background-image:
         radial-gradient(
             circle,
-            rgba(255, 255, 255, 0.70) 0 0.6px,
-            transparent 1px
+            rgba(255, 255, 255, 0.75) 0 0.45px,
+            transparent 0.8px
         ),
         radial-gradient(
             circle,
-            rgba(11, 11, 13, 0.40) 0 0.6px,
-            transparent 1.2px
+            rgba(11, 11, 13, 0.55) 0 0.45px,
+            transparent 0.9px
         );
 
-    background-size: 23px 27px, 31px 35px;
-    background-position: 0 0, 13px 17px;
-    mix-blend-mode: multiply;
+    background-size: 19px 23px, 29px 31px;
+    background-position: 0 0, 11px 13px;
+
+    mix-blend-mode: soft-light;
 }
 
 /* =========================================================
@@ -139,14 +151,21 @@ body::after {
 
 .intro {
     position: relative;
+
     display: grid;
     place-items: center;
 
     min-height: 100vh;
     min-height: 100svh;
 
+    /* Fallback para navegadores sem suporte a svh. */
     padding:
-        clamp(2rem, 6vh, 5rem)
+        clamp(1.25rem, 5vh, 5rem)
+        var(--page-padding);
+
+    /* Altura útil em navegadores móveis modernos. */
+    padding:
+        clamp(1.25rem, 5svh, 5rem)
         var(--page-padding);
 
     overflow: hidden;
@@ -156,32 +175,39 @@ body::after {
 .intro__atmosphere {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
     pointer-events: none;
+
     z-index: -1;
 }
 
+/* Efeitos ambientais discretos para não criar outro holofote. */
 .intro__glow {
     position: absolute;
+
     width: min(70vw, 620px);
     aspect-ratio: 1;
+
     border-radius: 50%;
-    filter: blur(110px);
-    opacity: 0.10;
+    filter: blur(140px);
+    opacity: 0.04;
 }
 
 .intro__glow--red {
     right: -32%;
     bottom: -42%;
+
     background: var(--blood-red);
-    opacity: 0.14;
+    opacity: 0.045;
 }
 
 .intro__glow--silver {
     top: -48%;
     left: -35%;
+
     background: #eeeaeb;
-    opacity: 0.12;
+    opacity: 0.025;
 }
 
 /* =========================================================
@@ -190,19 +216,38 @@ body::after {
 
 .intro__content {
     position: relative;
+
     display: grid;
     place-items: center;
+
     width: 100%;
-    min-height: 390px;
+
+    min-height: min(390px, 60vh);
+    min-height: min(390px, 60svh);
+
     z-index: 1;
 }
 
 /* =========================================================
    6. ENVELOPE
+   A largura se adapta à tela e à altura disponível.
+   A proporção original do envelope é preservada.
    ========================================================= */
 
 .envelope {
-    --envelope-width: clamp(280px, 70vw, 440px);
+    /* Fallback de viewport para navegadores mais antigos. */
+    --envelope-width: min(
+        440px,
+        calc(100vw - var(--page-padding) - var(--page-padding)),
+        88vh
+    );
+
+    --envelope-width: min(
+        440px,
+        calc(100vw - var(--page-padding) - var(--page-padding)),
+        88svh
+    );
+
     --envelope-height: calc(var(--envelope-width) * 0.66);
 
     position: relative;
@@ -258,9 +303,12 @@ body::after {
 
 .envelope__shadow {
     inset: 2px;
+
     transform: translateY(12px);
+
     background: rgba(11, 11, 13, 0.35);
     filter: blur(16px);
+
     pointer-events: none;
 }
 
@@ -271,8 +319,10 @@ body::after {
 .envelope__body {
     position: absolute;
     z-index: 1;
+
     inset: 0;
     overflow: hidden;
+
     border: 1px solid #360205;
     border-radius: inherit;
 
@@ -292,8 +342,10 @@ body::after {
 .envelope__body::before {
     position: absolute;
     inset: 0;
+
     content: "";
     pointer-events: none;
+
     opacity: 0.30;
 
     background:
@@ -312,7 +364,7 @@ body::after {
         );
 }
 
-/* Remove a moldura interna que reforçava o aspecto quadrado. */
+/* Retira a moldura que criava outro quadrado visual. */
 .envelope__body::after {
     content: none;
     display: none;
@@ -337,10 +389,11 @@ body::after {
 .envelope__flap {
     position: absolute;
     z-index: 4;
+
     inset: 0 0 auto;
     height: 58%;
-    overflow: hidden;
 
+    overflow: hidden;
     border-radius: 8px 10px 0 0;
 
     background-color: #920608;
@@ -353,6 +406,7 @@ body::after {
 
     transform-origin: center top;
     transform: rotateX(0deg);
+
     backface-visibility: visible;
 
     filter: drop-shadow(0 1px 0 rgba(11, 11, 13, 0.44));
@@ -366,12 +420,13 @@ body::after {
 
 /* =========================================================
    11. CARTA INTERNA
-   A carta fica oculta enquanto o envelope está fechado.
+   Fica escondida enquanto o envelope está fechado.
    ========================================================= */
 
 .envelope__letter {
     position: absolute;
     z-index: 2;
+
     inset: 10% 8% 7%;
 
     visibility: hidden;
@@ -400,18 +455,22 @@ body::after {
 
 /* =========================================================
    12. SELO DE CERA VERMELHO + INICIAL PRATA
+   O selo aprovado é uma imagem transparente.
    ========================================================= */
 
 .envelope__seal {
     position: absolute;
     z-index: 6;
+
     top: 49%;
     left: 50%;
 
     display: grid;
     place-items: center;
+
     width: clamp(72px, 14vw, 91px);
     aspect-ratio: 1;
+
     overflow: visible;
 
     border: 0;
@@ -435,14 +494,14 @@ body::after {
     pointer-events: none;
 }
 
-/* A forma e o monograma já estão no PNG transparente. */
+/* Não adiciona aros artificiais à imagem do lacre. */
 .envelope__seal::before,
 .envelope__seal::after {
     content: none;
     display: none;
 }
 
-/* Evita duplicar a inicial que já está integrada ao selo. */
+/* A inicial já faz parte do PNG. */
 .envelope__seal-symbol {
     display: none;
 }
@@ -454,8 +513,10 @@ body::after {
 .envelope__label {
     position: absolute;
     z-index: 5;
+
     left: 50%;
     bottom: 11%;
+
     width: 90%;
 
     color: var(--white);
@@ -469,6 +530,7 @@ body::after {
     text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
 
     transform: translateX(-50%);
+
     pointer-events: none;
 }
 
@@ -490,21 +552,27 @@ body::after {
 .intro.is-opening .envelope__letter {
     visibility: visible;
     opacity: 1;
+
     transform: translateY(-30%);
 }
 
 .envelope.is-opening .envelope__seal,
 .intro.is-opening .envelope__seal {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.55) rotate(8deg);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.55)
+        rotate(8deg);
 }
 
+/* Brilho de abertura discreto. */
 .intro.is-opening .intro__glow--red {
-    opacity: 0.18;
+    opacity: 0.10;
 }
 
 .intro.is-opening .intro__glow--silver {
-    opacity: 0.14;
+    opacity: 0.06;
 }
 
 /* =========================================================
@@ -514,13 +582,16 @@ body::after {
 .particles {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
     pointer-events: none;
+
     z-index: 10;
 }
 
 .particle {
     position: absolute;
+
     top: 50%;
     left: var(--particle-x);
 
@@ -537,12 +608,16 @@ body::after {
 
 .particle--red {
     background: var(--blood-red);
-    box-shadow: 0 0 10px rgba(146, 6, 8, 0.32);
+
+    box-shadow:
+        0 0 10px rgba(146, 6, 8, 0.32);
 }
 
 .particle--silver {
     background: var(--white);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.45);
 }
 
 @keyframes particle-rise {
@@ -579,41 +654,97 @@ body::after {
 
 /* =========================================================
    17. RESPONSIVIDADE
+   Dimensões fluidas para telas estreitas, baixas e ultrawide.
    ========================================================= */
 
 @media (max-width: 480px) {
+    :root {
+        --page-padding: clamp(1rem, 5vw, 1.25rem);
+    }
+
     .intro {
-        padding: 2rem 1.25rem;
+        padding-block: clamp(1.25rem, 5vh, 2rem);
+        padding-block: clamp(1.25rem, 5svh, 2rem);
     }
 
     .intro__content {
-        min-height: 310px;
+        min-height: min(310px, 58vh);
+        min-height: min(310px, 58svh);
     }
 
     .envelope {
-        --envelope-width: min(86vw, 360px);
-    }
+        --envelope-width: min(
+            360px,
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            88vh
+        );
 
-    .envelope__body {
-        background-size: 100% 100%;
-    }
-
-    .envelope__flap {
-        background-size: 100% 100%;
+        --envelope-width: min(
+            360px,
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            88svh
+        );
     }
 
     .envelope__label {
         bottom: 10%;
-        font-size: 0.68rem;
-        letter-spacing: 0.12em;
+
+        font-size: clamp(0.58rem, 2.8vw, 0.68rem);
+        letter-spacing: clamp(0.07em, 0.8vw, 0.12em);
     }
 
     .envelope__seal {
-        width: clamp(68px, 19vw, 84px);
+        width: clamp(54px, 18vw, 84px);
     }
 
     .intro__glow {
         filter: blur(75px);
+    }
+}
+
+/* Celulares muito estreitos. */
+@media (max-width: 320px) {
+    :root {
+        --page-padding: 0.875rem;
+    }
+
+    .envelope__label {
+        font-size: 0.56rem;
+        letter-spacing: 0.065em;
+    }
+
+    .envelope__seal {
+        width: 52px;
+    }
+}
+
+/* Celulares em paisagem e janelas com pouca altura. */
+@media (max-height: 520px) {
+    .intro {
+        padding-block: max(0.75rem, 3vh);
+        padding-block: max(0.75rem, 3svh);
+    }
+
+    .intro__content {
+        min-height: 0;
+    }
+
+    .envelope {
+        --envelope-width: min(
+            440px,
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            78vh
+        );
+
+        --envelope-width: min(
+            440px,
+            calc(100vw - var(--page-padding) - var(--page-padding)),
+            78svh
+        );
+    }
+
+    .intro__glow {
+        filter: blur(65px);
     }
 }
 
