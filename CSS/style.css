@@ -183,7 +183,9 @@ body::after {
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: -1;
+    /* Fica acima do fundo da página, mas abaixo do envelope.
+       Com z-index negativo, os sigilos podiam desaparecer atrás do fundo. */
+    z-index: 0;
 }
 
 /* Moldura ritual: filetes quebrados e cantos talhados. */
@@ -231,20 +233,21 @@ body::after {
 
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
     background-size:
-        clamp(70px, 8vw, 124px) auto,
-        clamp(70px, 8vw, 124px) auto,
+        clamp(104px, 10vw, 152px) auto,
+        clamp(104px, 10vw, 152px) auto,
         min(42vw, 560px) auto,
         min(42vw, 560px) auto,
         1px 18%;
 
     background-position:
-        clamp(34px, 6vw, 92px) center,
-        calc(100% - clamp(34px, 6vw, 92px) - clamp(70px, 8vw, 124px)) center,
+        clamp(34px, 5.5vw, 88px) center,
+        calc(100% - clamp(34px, 5.5vw, 88px) - clamp(104px, 10vw, 152px)) center,
         center 8%,
         center 92%,
         clamp(14px, 2vw, 30px) center;
 
-    opacity: 0.48;
+    /* Mais contraste, para o sigilo ser visível também sobre o vinho. */
+    opacity: 0.88;
 }
 
 /* Os brilhos antigos ficam desligados: nada de “ovo de luz”. */
@@ -749,27 +752,40 @@ body::after {
             url("../IMGS/hexatombe-rule.svg"),
             url("../IMGS/hexatombe-rule.svg");
         background-size:
-            clamp(34px, 9vw, 54px) auto,
-            clamp(34px, 9vw, 54px) auto,
+            clamp(50px, 12vw, 74px) auto,
+            clamp(50px, 12vw, 74px) auto,
             min(70vw, 300px) auto,
             min(70vw, 300px) auto;
         background-position:
-            center 3.5%,
-            center 96.5%,
+            center 4%,
+            center 96%,
             center 10%,
             center 90%;
-        opacity: 0.42;
+        opacity: 0.82;
     }
 }
 
 @media (max-height: 520px) {
+    /* Em telas baixas, mantemos o sigilo e movemos as marcas para as laterais.
+       A versão anterior substituía os SVGs por linhas e removia os sigilos. */
     .intro__atmosphere::after {
         background-image:
-            linear-gradient(90deg, transparent, rgba(146, 6, 8, 0.55), transparent),
-            linear-gradient(90deg, transparent, rgba(11, 11, 13, 0.42), transparent);
-        background-size: min(26vw, 260px) 1px, min(26vw, 260px) 1px;
-        background-position: center 5%, center 95%;
-        opacity: 0.38;
+            url("../IMGS/sangue-sigil.svg"),
+            url("../IMGS/sangue-sigil.svg"),
+            url("../IMGS/hexatombe-rule.svg"),
+            url("../IMGS/hexatombe-rule.svg");
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+        background-size:
+            clamp(42px, 6vw, 68px) auto,
+            clamp(42px, 6vw, 68px) auto,
+            min(25vw, 240px) auto,
+            min(25vw, 240px) auto;
+        background-position:
+            18px center,
+            calc(100% - 18px - clamp(42px, 6vw, 68px)) center,
+            center 5%,
+            center 95%;
+        opacity: 0.80;
     }
 }
 
