@@ -15,9 +15,8 @@ const CONFIG = {
     }
 };
 
-
 /* ================================================
-   ELEMENTOS DO HTML
+   ELEMENTOS
    ================================================ */
 
 const intro = document.querySelector("#intro");
@@ -36,29 +35,24 @@ const attendanceOptions = document.querySelectorAll(
     'input[name="presenca"]'
 );
 
-
 /* ================================================
-   TEMPO DA ANIMAÇÃO
+   CONFIGURAÇÃO DA ANIMAÇÃO
    ================================================ */
-
-/*
-   A animação da aba dura 850 ms no CSS.
-
-   Acrescentamos uma pequena margem para a
-   transição terminar antes de exibir o convite.
-
-   Em dispositivos com preferência por movimento
-   reduzido, não aplicamos tempo de espera.
-*/
 
 const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 ).matches;
 
+/*
+   O selo desaparece primeiro.
+   Depois a aba se dobra.
+   A carta aparece parcialmente.
+   Em seguida, a página principal é exibida.
+*/
+
 const OPEN_ANIMATION_DURATION = prefersReducedMotion
     ? 0
-    : 1050;
-
+    : 1650;
 
 /* ================================================
    ABERTURA DO ENVELOPE
@@ -77,13 +71,6 @@ envelope?.addEventListener("click", () => {
     intro?.classList.add("is-opening");
 
     createParticles();
-
-    /*
-       A abertura visual é controlada pelo CSS.
-
-       Após o tempo definido, ocultamos a tela
-       inicial e exibimos o convite principal.
-    */
 
     const showInvitation = () => {
         if (intro) {
@@ -106,9 +93,8 @@ envelope?.addEventListener("click", () => {
     }
 });
 
-
 /* ================================================
-   PARTÍCULAS DA ABERTURA
+   PARTÍCULAS
    ================================================ */
 
 function createParticles() {
@@ -150,9 +136,8 @@ function createParticles() {
     }
 }
 
-
 /* ================================================
-   CONTROLE DA PRESENÇA
+   CONTROLE DE PRESENÇA
    ================================================ */
 
 function getAttendance() {
@@ -161,10 +146,13 @@ function getAttendance() {
     )?.value ?? "";
 }
 
-
 function updateCompanionsField() {
     const attendance = getAttendance();
     const willAttend = attendance === "Sim";
+
+    if (!companions) {
+        return;
+    }
 
     companions.disabled = !willAttend;
     companions.required = willAttend;
@@ -181,11 +169,9 @@ function updateCompanionsField() {
     clearFeedback();
 }
 
-
 attendanceOptions.forEach((option) => {
     option.addEventListener("change", updateCompanionsField);
 });
-
 
 /* ================================================
    VALIDAÇÃO DE ACOMPANHANTES
@@ -230,7 +216,6 @@ function validateCompanions() {
     return true;
 }
 
-
 companions?.addEventListener("input", () => {
     companions.setCustomValidity("");
     clearFeedback();
@@ -248,7 +233,6 @@ companions?.addEventListener("input", () => {
     }
 });
 
-
 /* ================================================
    MENSAGENS DO FORMULÁRIO
    ================================================ */
@@ -262,7 +246,6 @@ function showFeedback(message, type) {
     feedback.dataset.state = type;
 }
 
-
 function clearFeedback() {
     if (!feedback) {
         return;
@@ -272,9 +255,8 @@ function clearFeedback() {
     delete feedback.dataset.state;
 }
 
-
 /* ================================================
-   ENVIO PARA O GOOGLE SHEETS
+   ENVIO PARA GOOGLE SHEETS
    ================================================ */
 
 let sending = false;
@@ -387,7 +369,6 @@ form?.addEventListener("submit", async (event) => {
         submitButton.textContent = originalButtonText;
     }
 });
-
 
 /* ================================================
    ESTADO INICIAL

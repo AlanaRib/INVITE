@@ -1,14 +1,8 @@
 /* =========================================================
    CONVITE — ALANA 19
    ENVELOPE GÓTICO / NEO-TRIBAL
-   MOLDURA 02 POLIDA + SELO DE CERA
-
-   AJUSTES:
-   - borda acompanha o degradê do fundo
-   - parte vermelha/escura fica mais prateada
-   - cantos voltam a ser opacos e escuros
-   - envelope menor no mobile
-   - animação da abertura corrigida
+   MOLDURA 02 POLIDA — BORDA E DETALHES COM DEGRADÊ
+   ANIMAÇÃO DE ABERTURA RESTAURADA
    ========================================================= */
 
 /* =========================================================
@@ -32,7 +26,7 @@
 }
 
 /* =========================================================
-   2. RESET E BASE
+   2. RESET
    ========================================================= */
 
 * {
@@ -49,13 +43,10 @@ body {
     isolation: isolate;
     min-height: 100vh;
     margin: 0;
-
     overflow-x: hidden;
     overflow-x: clip;
-
     color: var(--black);
     background: #dedadb;
-
     font-family: Georgia, "Times New Roman", serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -68,13 +59,15 @@ input {
 
 img,
 video,
-canvas {
-    max-width: 100%;
-    height: auto;
-}
-
+canvas,
 iframe {
     max-width: 100%;
+}
+
+img,
+video,
+canvas {
+    height: auto;
 }
 
 button {
@@ -97,7 +90,7 @@ input:focus-visible {
 }
 
 /* =========================================================
-   3. FUNDO — HEXATOMBE / RITUAL DE SANGUE
+   3. FUNDO
    ========================================================= */
 
 body::before,
@@ -111,7 +104,6 @@ body::after {
 
 body::before {
     background-color: #30070d;
-
     background-image:
         linear-gradient(
             180deg,
@@ -136,7 +128,6 @@ body::before {
 
 body::after {
     opacity: 0.075;
-
     background-image:
         repeating-linear-gradient(
             117deg,
@@ -156,40 +147,27 @@ body::after {
             rgba(11, 11, 13, 0.66) 0 0.48px,
             transparent 0.9px
         );
-
-    background-size:
-        100% 100%,
-        19px 23px,
-        29px 31px;
-
-    background-position:
-        center,
-        0 0,
-        11px 13px;
-
+    background-size: 100% 100%, 19px 23px, 29px 31px;
+    background-position: center, 0 0, 11px 13px;
     mix-blend-mode: soft-light;
 }
 
 /* =========================================================
-   4. ABERTURA DO CONVITE
+   4. ABERTURA
    ========================================================= */
 
 .intro {
     position: relative;
     display: grid;
     place-items: center;
-
     min-height: 100vh;
     min-height: 100svh;
-
     padding:
         clamp(1.25rem, 5vh, 5rem)
         var(--page-padding);
-
     padding:
         clamp(1.25rem, 5svh, 5rem)
         var(--page-padding);
-
     overflow: hidden;
     isolation: isolate;
 }
@@ -214,8 +192,9 @@ body::after {
 
 /* =========================================================
    5. MOLDURA 02 POLIDA
-   LINHAS ACOMPANHAM O DEGRADÊ
-   CANTOS ESCUROS E OPACOS
+   AGORA COM A LÓGICA CORRETA:
+   PARTE CLARA = PRETO ESCURO
+   PARTE ESCURA/VINHO = PRATA
    ========================================================= */
 
 .intro__frame {
@@ -223,12 +202,13 @@ body::after {
     inset: clamp(20px, 2.2vw, 34px);
     pointer-events: none;
 
-    --frame-dark: rgba(33, 20, 28, 0.86);
-    --frame-dark-soft: rgba(49, 34, 43, 0.74);
-
-    --frame-silver-mid: rgba(172, 177, 187, 0.72);
-    --frame-silver: rgba(200, 206, 215, 0.82);
-    --frame-silver-strong: rgba(221, 227, 235, 0.92);
+    --frame-black-strong: rgba(16, 10, 15, 0.96);
+    --frame-black: rgba(24, 15, 22, 0.90);
+    --frame-black-soft: rgba(40, 28, 36, 0.82);
+    --frame-mid: rgba(112, 108, 119, 0.62);
+    --frame-silver-mid: rgba(187, 194, 204, 0.76);
+    --frame-silver: rgba(214, 221, 229, 0.88);
+    --frame-silver-strong: rgba(236, 241, 246, 0.98);
 
     --rail-thickness: 1.4px;
     --corner-reach: clamp(92px, 13vw, 168px);
@@ -236,17 +216,14 @@ body::after {
 }
 
 /* =========================================================
-   5.1. LINHAS DE CONEXÃO
+   5.1. LINHAS PRINCIPAIS
    ========================================================= */
 
 .intro__frame .rail {
     position: absolute;
     display: block;
     opacity: 1;
-
-    filter: drop-shadow(
-        0 1px 1px rgba(0, 0, 0, 0.08)
-    );
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
 }
 
 .intro__frame .rail.top,
@@ -265,50 +242,50 @@ body::after {
 
 .intro__frame .rail.top {
     top: 0;
-
     background: linear-gradient(
         90deg,
-        var(--frame-dark-soft) 0%,
-        rgba(92, 84, 97, 0.58) 48%,
+        var(--frame-black-strong) 0%,
+        var(--frame-black) 38%,
+        var(--frame-mid) 68%,
         var(--frame-silver-mid) 100%
     );
 }
 
 .intro__frame .rail.bottom {
     bottom: 0;
-
     background: linear-gradient(
         90deg,
-        rgba(82, 72, 84, 0.62) 0%,
-        var(--frame-silver) 58%,
+        var(--frame-black-soft) 0%,
+        rgba(92, 86, 96, 0.66) 42%,
+        var(--frame-silver-mid) 72%,
         var(--frame-silver-strong) 100%
     );
 }
 
 .intro__frame .rail.left {
     left: 0;
-
     background: linear-gradient(
         180deg,
-        var(--frame-dark-soft) 0%,
-        rgba(90, 79, 92, 0.56) 58%,
-        rgba(140, 141, 152, 0.68) 100%
+        var(--frame-black-strong) 0%,
+        var(--frame-black) 42%,
+        rgba(78, 72, 82, 0.60) 76%,
+        rgba(138, 141, 151, 0.62) 100%
     );
 }
 
 .intro__frame .rail.right {
     right: 0;
-
     background: linear-gradient(
         180deg,
-        rgba(126, 121, 133, 0.58) 0%,
-        var(--frame-silver) 55%,
+        rgba(116, 112, 122, 0.60) 0%,
+        var(--frame-silver-mid) 44%,
+        var(--frame-silver) 72%,
         var(--frame-silver-strong) 100%
     );
 }
 
 /* =========================================================
-   5.2. CANTOS DA MOLDURA
+   5.2. CANTOS
    ========================================================= */
 
 .intro__frame .corner {
@@ -316,19 +293,17 @@ body::after {
     width: var(--corner-reach);
     height: var(--corner-reach);
     overflow: hidden;
-
-    filter: drop-shadow(
-        0 1px 1px rgba(0, 0, 0, 0.14)
-    );
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.14));
 }
 
 .intro__frame .corner.tl {
     top: 0;
     left: 0;
 
-    --piece-main: rgba(26, 16, 23, 0.78);
-    --piece-accent: rgba(56, 37, 48, 0.42);
-    --piece-shadow: 0.82;
+    --piece-main: rgba(20, 11, 17, 0.94);
+    --piece-accent: rgba(53, 39, 49, 0.46);
+    --piece-shadow: 0.94;
+    --piece-line: rgba(29, 16, 24, 0.90);
 }
 
 .intro__frame .corner.tr {
@@ -336,9 +311,10 @@ body::after {
     right: 0;
     transform: scaleX(-1);
 
-    --piece-main: rgba(22, 10, 17, 0.88);
-    --piece-accent: rgba(58, 24, 40, 0.46);
-    --piece-shadow: 0.9;
+    --piece-main: rgba(188, 194, 204, 0.84);
+    --piece-accent: rgba(229, 234, 240, 0.56);
+    --piece-shadow: 0.98;
+    --piece-line: rgba(241, 245, 249, 0.92);
 }
 
 .intro__frame .corner.bl {
@@ -346,9 +322,10 @@ body::after {
     left: 0;
     transform: scaleY(-1);
 
-    --piece-main: rgba(28, 16, 24, 0.86);
-    --piece-accent: rgba(59, 33, 46, 0.44);
-    --piece-shadow: 0.88;
+    --piece-main: rgba(26, 16, 24, 0.90);
+    --piece-accent: rgba(62, 44, 55, 0.48);
+    --piece-shadow: 0.92;
+    --piece-line: rgba(33, 19, 28, 0.86);
 }
 
 .intro__frame .corner.br {
@@ -356,9 +333,10 @@ body::after {
     right: 0;
     transform: scale(-1);
 
-    --piece-main: rgba(18, 7, 12, 0.96);
-    --piece-accent: rgba(50, 18, 31, 0.52);
-    --piece-shadow: 0.98;
+    --piece-main: rgba(227, 232, 238, 0.96);
+    --piece-accent: rgba(248, 251, 254, 0.62);
+    --piece-shadow: 1;
+    --piece-line: rgba(248, 251, 255, 0.98);
 }
 
 .intro__frame .corner .piece {
@@ -375,7 +353,6 @@ body::after {
     height: 96%;
     opacity: var(--piece-shadow);
     transform: scale(0.82);
-
     clip-path: polygon(
         0 0,
         100% 0,
@@ -399,11 +376,9 @@ body::after {
     top: 8%;
     width: 79%;
     height: 80%;
-
     background: var(--piece-accent);
     opacity: 0.95;
     transform: scale(0.77);
-
     clip-path: polygon(
         0 0,
         27% 8%,
@@ -424,9 +399,8 @@ body::after {
     top: 12%;
     width: 69%;
     height: 61%;
-    opacity: 0.72;
+    opacity: 0.74;
     transform: scale(0.76);
-
     clip-path: polygon(
         0 0,
         40% 20%,
@@ -444,9 +418,8 @@ body::after {
     top: 18%;
     width: 65%;
     height: 76%;
-    opacity: 0.62;
+    opacity: 0.64;
     transform: scale(0.79);
-
     clip-path: polygon(
         0 0,
         35% 28%,
@@ -464,9 +437,8 @@ body::after {
     top: 6%;
     width: 1.8px;
     height: 58%;
-
-    background: var(--piece-accent);
-    opacity: 0.84;
+    background: var(--piece-line);
+    opacity: 0.88;
     transform: rotate(-34deg);
 }
 
@@ -475,15 +447,13 @@ body::after {
     top: 41%;
     width: 60%;
     height: 1.4px;
-
     background: linear-gradient(
         90deg,
         transparent 0%,
         var(--piece-main) 16%,
-        var(--piece-accent) 100%
+        var(--piece-line) 100%
     );
-
-    opacity: 0.72;
+    opacity: 0.78;
     transform: rotate(36deg);
 }
 
@@ -492,11 +462,9 @@ body::after {
     top: 52%;
     width: 12%;
     height: 12%;
-
-    background: var(--piece-main);
-    opacity: 0.68;
+    background: var(--piece-line);
+    opacity: 0.74;
     transform: scale(0.68);
-
     clip-path: polygon(
         50% 0,
         100% 50%,
@@ -512,10 +480,8 @@ body::after {
 .intro__frame .mid {
     position: absolute;
     left: 50%;
-
     width: clamp(42px, 5.2vw, 76px);
     height: 24px;
-
     transform: translateX(-50%);
     pointer-events: none;
 }
@@ -533,14 +499,13 @@ body::after {
     content: "";
     position: absolute;
     inset: 0;
-
     background: linear-gradient(
         90deg,
-        rgba(61, 50, 63, 0.56) 0%,
-        var(--frame-silver-mid) 58%,
+        var(--frame-black) 0%,
+        rgba(88, 82, 92, 0.68) 44%,
+        var(--frame-silver-mid) 72%,
         var(--frame-silver-strong) 100%
     );
-
     clip-path: polygon(
         0 0,
         25% 0,
@@ -562,10 +527,8 @@ body::after {
 .intro__frame .side {
     position: absolute;
     top: 50%;
-
     width: 16px;
     height: clamp(28px, 4vw, 46px);
-
     transform: translateY(-50%);
 }
 
@@ -582,14 +545,12 @@ body::after {
     content: "";
     position: absolute;
     inset: 0;
-
     background: linear-gradient(
         180deg,
-        rgba(70, 58, 71, 0.58) 0%,
-        var(--frame-silver-mid) 64%,
-        var(--frame-silver-strong) 100%
+        var(--frame-black) 0%,
+        rgba(96, 91, 101, 0.68) 54%,
+        var(--frame-silver) 100%
     );
-
     clip-path: polygon(
         0 0,
         0 100%,
@@ -600,7 +561,7 @@ body::after {
 }
 
 /* =========================================================
-   6. POSICIONAMENTO DO ENVELOPE
+   6. POSICIONAMENTO
    ========================================================= */
 
 .intro__content {
@@ -609,15 +570,11 @@ body::after {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: clamp(0.8rem, 2vh, 1.1rem);
-
     width: 100%;
     min-width: 0;
-
     min-height: min(390px, 60vh);
     min-height: min(390px, 60svh);
-
     margin-inline: auto;
     z-index: 2;
 }
@@ -625,22 +582,15 @@ body::after {
 .envelope-hint {
     position: relative;
     z-index: 2;
-
     margin: 0;
     padding: 0;
-
     color: rgba(255, 253, 253, 0.58);
-
-    font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(0.65rem, 1.8vw, 0.76rem);
-    font-weight: 400;
     letter-spacing: 0.1em;
     line-height: 1.5;
     text-align: center;
-
     opacity: 0.62;
     pointer-events: none;
-
     animation: hint-breathe 3.8s ease-in-out infinite;
     transition: opacity 300ms ease;
 }
@@ -663,52 +613,35 @@ body::after {
 .envelope {
     --envelope-width: min(
         500px,
-        calc(
-            100vw
-            - var(--page-padding)
-            - var(--page-padding)
-            - 32px
-        ),
+        calc(100vw - var(--page-padding) * 2 - 32px),
         72vh
     );
 
     --envelope-width: min(
         500px,
-        calc(
-            100vw
-            - var(--page-padding)
-            - var(--page-padding)
-            - 32px
-        ),
+        calc(100vw - var(--page-padding) * 2 - 32px),
         72svh
     );
 
     position: relative;
     display: block;
     isolation: isolate;
-
     width: var(--envelope-width);
     max-width: 100%;
     min-width: 0;
     height: auto;
-
     aspect-ratio: 1.515 / 1;
-
     padding: 0;
     border: 0;
     border-radius: 18px 18px 10px 10px;
-
     background: transparent;
     color: var(--white);
-
     cursor: pointer;
     perspective: 1200px;
     transform-style: preserve-3d;
-
     filter:
         drop-shadow(0 20px 16px rgba(11, 11, 13, 0.27))
-        drop-shadow(0 4px 3px rgba(11, 11, 13, 0.20));
-
+        drop-shadow(0 4px 3px rgba(11, 11, 13, 0.2));
     transition:
         filter var(--transition-soft),
         transform var(--transition-soft);
@@ -716,19 +649,14 @@ body::after {
 
 .envelope:hover {
     transform: translateY(-4px);
-
     filter:
         drop-shadow(0 27px 22px rgba(11, 11, 13, 0.31))
-        drop-shadow(0 5px 4px rgba(11, 11, 13, 0.20));
+        drop-shadow(0 5px 4px rgba(11, 11, 13, 0.2));
 }
 
 .envelope:active {
     transform: translateY(0) scale(0.985);
 }
-
-/* =========================================================
-   8. CAMADAS DO ENVELOPE
-   ========================================================= */
 
 .envelope__shadow,
 .envelope__body,
@@ -742,14 +670,13 @@ body::after {
 .envelope__shadow {
     inset: 2px;
     transform: translateY(12px);
-
     background: rgba(11, 11, 13, 0.35);
     filter: blur(16px);
     pointer-events: none;
 }
 
 /* =========================================================
-   9. CORPO DO ENVELOPE
+   8. CORPO DO ENVELOPE
    ========================================================= */
 
 .envelope__body {
@@ -757,19 +684,16 @@ body::after {
     z-index: 1;
     inset: 0;
     overflow: hidden;
-
     border: 1px solid #360205;
     border-radius: inherit;
-
     background-color: var(--blood-red);
     background-image: url("../IMGS/envelope-ornament.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-
     box-shadow:
         inset 0 0 0 1px rgba(11, 11, 13, 0.54),
-        inset 0 0 0 4px rgba(11, 11, 13, 0.10),
+        inset 0 0 0 4px rgba(11, 11, 13, 0.1),
         inset 0 -14px 24px rgba(37, 2, 5, 0.17);
 }
 
@@ -778,15 +702,12 @@ body::after {
     inset: 0;
     content: "";
     pointer-events: none;
-    opacity: 0.30;
-
+    opacity: 0.3;
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(255, 255, 255, 0.018) 0,
-            rgba(255, 255, 255, 0.018) 1px,
-            transparent 1px,
-            transparent 4px
+            rgba(255, 255, 255, 0.018) 0 1px,
+            transparent 1px 4px
         ),
         linear-gradient(
             135deg,
@@ -802,119 +723,101 @@ body::after {
 }
 
 /* =========================================================
-   10. ABA DO ENVELOPE
+   9. ABA
    ========================================================= */
 
 .envelope__flap {
     position: absolute;
     z-index: 4;
-
     inset: 0 0 auto;
     height: 58%;
     overflow: hidden;
-
     border-radius: 18px 18px 0 0;
-
-    background-color: #920608;
+    background-color: var(--blood-red);
     background-image: url("../IMGS/flap-ornament.svg");
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
-
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
     transform-origin: 50% 0%;
     transform: rotateX(0deg);
     transform-style: preserve-3d;
-
-    backface-visibility: visible;
-    -webkit-backface-visibility: visible;
-
-    filter: drop-shadow(
-        0 1px 0 rgba(11, 11, 13, 0.44)
-    );
-
-    transition:
-        transform 850ms cubic-bezier(0.22, 0.72, 0.24, 1),
-        filter 500ms ease;
-
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     pointer-events: none;
+    transition:
+        transform 750ms cubic-bezier(0.22, 0.72, 0.24, 1) 250ms,
+        opacity 200ms ease 900ms;
 }
 
 /* =========================================================
-   11. CARTA INTERNA
-   CORRIGIDA PARA NÃO APARECER COMO RETÂNGULO
+   10. CARTA INTERNA
    ========================================================= */
 
 .envelope__letter {
     position: absolute;
-    z-index: 2;
-    inset: 10% 8% 7%;
-
+    z-index: 3;
+    left: 17%;
+    right: 17%;
+    top: 24%;
+    bottom: 29%;
     display: block;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-
-    border: 1px solid rgba(11, 11, 13, 0.45);
-    border-radius: 2px 4px 2px 3px;
-
-    background: linear-gradient(
-        180deg,
-        #f4eeee 0%,
-        #ded5d7 100%
-    );
-
+    border: 1px solid rgba(65, 37, 47, 0.5);
+    border-radius: 3px;
+    background:
+        linear-gradient(
+            155deg,
+            #f3eded 0%,
+            #ded5d8 65%,
+            #c5b9be 100%
+        );
     box-shadow:
         inset 0 0 0 4px rgba(255, 255, 255, 0.18),
-        0 2px 8px rgba(11, 11, 13, 0.15);
-
-    transform: translateY(0);
-
+        0 4px 14px rgba(11, 11, 13, 0.22);
+    transform: translateY(18%) scale(0.94);
     transition:
-        transform 850ms cubic-bezier(0.2, 0.7, 0.25, 1),
         opacity 350ms ease,
+        transform 550ms cubic-bezier(0.2, 0.7, 0.25, 1),
         visibility 0s linear 350ms;
 }
 
+.envelope__letter::after {
+    content: "";
+    position: absolute;
+    inset: 10%;
+    border: 1px solid rgba(90, 65, 75, 0.17);
+    pointer-events: none;
+}
+
 /* =========================================================
-   12. SELO DE CERA — IMAGEM APROVADA
+   11. SELO
    ========================================================= */
 
 .envelope__seal {
     position: absolute;
     z-index: 6;
-
     top: 48%;
     left: 50%;
-
     display: block;
-
     width: clamp(78px, 15vw, 98px);
     aspect-ratio: 1;
     overflow: visible;
-
     border: 0;
-
     background-image: url("../IMGS/wax-seal.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-
     transform: translate(-50%, -50%) rotate(-2deg);
     pointer-events: none;
-
     filter:
         drop-shadow(0 7px 9px rgba(11, 11, 13, 0.28))
         drop-shadow(0 2px 2px rgba(11, 11, 13, 0.17));
-
     transition:
-        opacity 250ms ease,
-        transform 400ms ease;
+        opacity 300ms ease,
+        transform 450ms ease;
 }
 
 .envelope__seal::before,
@@ -927,34 +830,29 @@ body::after {
 }
 
 /* =========================================================
-   13. TEXTO DO ENVELOPE
+   12. TEXTO
    ========================================================= */
 
 .envelope__label {
     position: absolute;
     z-index: 5;
-
     left: 50%;
     bottom: 11%;
     width: 90%;
-
     color: var(--white);
-
     font-size: clamp(0.7rem, 2.5vw, 0.92rem);
     font-weight: 700;
     letter-spacing: 0.17em;
     line-height: 1.6;
     text-align: center;
-
-    text-shadow:
-        0 2px 3px rgba(11, 11, 13, 0.9);
-
+    text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
     transform: translateX(-50%);
     pointer-events: none;
+    transition: opacity 350ms ease 850ms;
 }
 
 /* =========================================================
-   14. ABERTURA ANIMADA — CORRIGIDA
+   13. ANIMAÇÃO DE ABERTURA
    ========================================================= */
 
 .envelope.is-opening,
@@ -962,27 +860,35 @@ body::after {
     pointer-events: none;
 }
 
+.envelope.is-opening .envelope__seal,
+.intro.is-opening .envelope__seal {
+    opacity: 0;
+    transform:
+        translate(-50%, -54%)
+        scale(0.64)
+        rotate(8deg);
+}
+
 .envelope.is-opening .envelope__flap,
 .intro.is-opening .envelope__flap {
-    transform: rotateX(85deg);
+    transform: rotateX(165deg);
+    opacity: 0;
 }
 
 .envelope.is-opening .envelope__letter,
 .intro.is-opening .envelope__letter {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(0);
-    transition: none;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-18%) scale(1);
+    transition:
+        opacity 380ms ease 850ms,
+        transform 550ms ease 850ms,
+        visibility 0s;
 }
 
-.envelope.is-opening .envelope__seal,
-.intro.is-opening .envelope__seal {
+.envelope.is-opening .envelope__label,
+.intro.is-opening .envelope__label {
     opacity: 0;
-
-    transform:
-        translate(-50%, -54%)
-        scale(0.6)
-        rotate(10deg);
 }
 
 .intro.is-opening .envelope-hint {
@@ -990,13 +896,8 @@ body::after {
     animation: none;
 }
 
-.intro.is-opening .intro__glow--red,
-.intro.is-opening .intro__glow--silver {
-    display: none;
-}
-
 /* =========================================================
-   15. PARTÍCULAS
+   14. PARTÍCULAS
    ========================================================= */
 
 .particles {
@@ -1011,13 +912,10 @@ body::after {
     position: absolute;
     top: 50%;
     left: var(--particle-x);
-
     width: 5px;
     height: 5px;
-
     border-radius: 50%;
     opacity: 0;
-
     animation:
         particle-rise var(--particle-duration) ease-out
         var(--particle-delay) forwards;
@@ -1036,10 +934,7 @@ body::after {
 @keyframes particle-rise {
     0% {
         opacity: 0;
-
-        transform:
-            translate3d(0, 0, 0)
-            scale(0.4);
+        transform: translate3d(0, 0, 0) scale(0.4);
     }
 
     20% {
@@ -1048,7 +943,6 @@ body::after {
 
     100% {
         opacity: 0;
-
         transform:
             translate3d(
                 calc((var(--particle-x) - 50%) * 0.12),
@@ -1060,7 +954,7 @@ body::after {
 }
 
 /* =========================================================
-   16. PERSONAGEM DECORATIVO
+   15. PERSONAGEM
    ========================================================= */
 
 .intro__character {
@@ -1070,13 +964,12 @@ body::after {
 }
 
 /* =========================================================
-   17. RESPONSIVIDADE
+   16. RESPONSIVIDADE
    ========================================================= */
 
 @media (max-width: 540px) {
     .intro__frame {
         inset: 14px;
-
         --corner-reach: 84px;
         --rail-gap: calc(var(--corner-reach) * 0.8);
     }
@@ -1091,10 +984,6 @@ body::after {
         height: 28px;
     }
 }
-
-/* =========================================================
-   17.1. MOBILE — ENVELOPE MENOR
-   ========================================================= */
 
 @media (max-width: 480px) {
     :root {
@@ -1114,41 +1003,21 @@ body::after {
     .envelope {
         --envelope-width: min(
             325px,
-            calc(
-                100vw
-                - var(--page-padding)
-                - var(--page-padding)
-                - 12px
-            ),
+            calc(100vw - var(--page-padding) * 2 - 12px),
             133vh
         );
 
         --envelope-width: min(
             325px,
-            calc(
-                100vw
-                - var(--page-padding)
-                - var(--page-padding)
-                - 12px
-            ),
+            calc(100vw - var(--page-padding) * 2 - 12px),
             133svh
         );
     }
 
     .envelope__label {
         bottom: 10%;
-
-        font-size: clamp(
-            0.58rem,
-            2.8vw,
-            0.68rem
-        );
-
-        letter-spacing: clamp(
-            0.07em,
-            0.8vw,
-            0.12em
-        );
+        font-size: clamp(0.58rem, 2.8vw, 0.68rem);
+        letter-spacing: clamp(0.07em, 0.8vw, 0.12em);
     }
 
     .envelope__seal {
@@ -1172,7 +1041,7 @@ body::after {
 }
 
 /* =========================================================
-   18. TELAS BAIXAS / MODO PAISAGEM
+   17. TELAS BAIXAS
    ========================================================= */
 
 @media (max-height: 520px) {
@@ -1188,21 +1057,13 @@ body::after {
     .envelope {
         --envelope-width: min(
             440px,
-            calc(
-                100vw
-                - var(--page-padding)
-                - var(--page-padding)
-            ),
+            calc(100vw - var(--page-padding) * 2),
             133vh
         );
 
         --envelope-width: min(
             440px,
-            calc(
-                100vw
-                - var(--page-padding)
-                - var(--page-padding)
-            ),
+            calc(100vw - var(--page-padding) * 2),
             133svh
         );
     }
@@ -1211,7 +1072,6 @@ body::after {
 @media (max-height: 520px) and (min-width: 541px) {
     .intro__frame {
         inset: 14px;
-
         --corner-reach: clamp(72px, 13svh, 108px);
         --rail-gap: calc(var(--corner-reach) * 0.8);
     }
@@ -1226,7 +1086,7 @@ body::after {
 }
 
 /* =========================================================
-   19. MOVIMENTO REDUZIDO
+   18. MOVIMENTO REDUZIDO
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
