@@ -117,7 +117,7 @@ body::before {
 }
 
 /* =========================================================
-   MOLDURA 02 POLIDA
+   MOLDURA 02 POLIDA — PRESERVADA
 ========================================================= */
 
 .intro__frame {
@@ -497,6 +497,7 @@ body::before {
     inset: 0;
     display: block;
     border-radius: inherit;
+    perspective: none;
     overflow: visible;
 }
 
@@ -511,7 +512,7 @@ body::before {
 }
 
 /* =========================================================
-   FUNDO E ABA
+   FUNDO DO ENVELOPE
 ========================================================= */
 
 .envelope__back {
@@ -529,55 +530,14 @@ body::before {
     );
 }
 
-.envelope__back::before {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    width: 100%;
-    height: 48%;
-    content: "";
-
-    background-image:
-        url("../IMGS/flap-ornament.svg"),
-        linear-gradient(
-            160deg,
-            #461224,
-            #5e2033,
-            #361021
-        );
-
-    background-size:
-        100% 100%,
-        100% 100%;
-
-    clip-path: polygon(
-        50% 0,
-        100% 100%,
-        0 100%
-    );
-
-    transform-origin: bottom center;
-    transform: scaleY(.015);
-    opacity: 0;
-
-    transition:
-        transform 650ms cubic-bezier(.22, .72, .24, 1) 200ms,
-        opacity 130ms ease 190ms;
-}
-
-.envelope.is-opening .envelope__back::before {
-    transform: scaleY(1);
-    opacity: 1;
-}
-
 /* =========================================================
-   CARTA — ACIMA DO BOLSO
+   CARTA INSERIDA NO BOLSO
 ========================================================= */
 
 .envelope__letter-track {
     position: absolute;
     inset: 0;
-    z-index: 5;
+    z-index: 2;
     display: block;
     pointer-events: none;
 
@@ -640,7 +600,7 @@ body::before {
 }
 
 /* =========================================================
-   BOLSO
+   BOLSO FRONTAL
 ========================================================= */
 
 .envelope__pocket {
@@ -787,6 +747,51 @@ body::before {
 }
 
 /* =========================================================
+   ABA SUPERIOR
+========================================================= */
+
+.envelope__back::before {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 48%;
+    content: "";
+
+    background-image:
+        url("../IMGS/flap-ornament.svg"),
+        linear-gradient(
+            160deg,
+            #461224,
+            #5e2033,
+            #361021
+        );
+
+    background-size:
+        100% 100%,
+        100% 100%;
+
+    clip-path: polygon(
+        50% 0,
+        100% 100%,
+        0 100%
+    );
+
+    transform-origin: bottom center;
+    transform: scaleY(.015);
+    opacity: 0;
+
+    transition:
+        transform 650ms cubic-bezier(.22, .72, .24, 1) 200ms,
+        opacity 130ms ease 190ms;
+}
+
+.envelope.is-opening .envelope__back::before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+/* =========================================================
    SELO E TEXTO
 ========================================================= */
 
@@ -843,7 +848,7 @@ body::before {
 }
 
 /* =========================================================
-   ESTADOS DA ANIMAÇÃO
+   ANIMAÇÃO
 ========================================================= */
 
 .envelope__stage.is-seal-released .envelope__seal {
@@ -1005,7 +1010,8 @@ body::before {
 
 @media (max-height: 520px) {
     .intro {
-        padding-block: max(.75rem, 3svh);
+        padding-block:
+            max(.75rem, 3svh);
     }
 
     .envelope {
