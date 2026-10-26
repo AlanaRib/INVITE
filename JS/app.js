@@ -1,6 +1,7 @@
-// ================================================
-// CONFIGURAÇÃO
-// ================================================
+
+/* ================================================
+   CONFIGURAÇÃO
+   ================================================ */
 
 const CONFIG = {
     SHEETS_URL: "https://script.google.com/macros/s/AKfycbzHBsqtEphQOgcTPlGJyX2KX_EdrZVTfIi5yJ6MR7oo1VBgm6b5613O5axV7G9QS9ur/exec",
@@ -15,9 +16,9 @@ const CONFIG = {
 };
 
 
-// ================================================
-// ELEMENTOS DO HTML
-// ================================================
+/* ================================================
+   ELEMENTOS DO HTML
+   ================================================ */
 
 const intro = document.querySelector("#intro");
 const envelope = document.querySelector("#open-envelope");
@@ -36,25 +37,32 @@ const attendanceOptions = document.querySelectorAll(
 );
 
 
-// ================================================
-// TEMPO DA ANIMAÇÃO
-// ================================================
+/* ================================================
+   TEMPO DA ANIMAÇÃO
+   ================================================ */
+
+/*
+   A animação da aba dura 850 ms no CSS.
+
+   Acrescentamos uma pequena margem para a
+   transição terminar antes de exibir o convite.
+
+   Em dispositivos com preferência por movimento
+   reduzido, não aplicamos tempo de espera.
+*/
 
 const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 ).matches;
 
-// A animação da carta dura cerca de 1.29 s no modo normal.
-// A troca de tela acontece somente depois de ela terminar.
-
 const OPEN_ANIMATION_DURATION = prefersReducedMotion
-    ? 1100
-    : 1650;
+    ? 0
+    : 1050;
 
 
-// ================================================
-// ABERTURA DO ENVELOPE
-// ================================================
+/* ================================================
+   ABERTURA DO ENVELOPE
+   ================================================ */
 
 let envelopeOpened = false;
 
@@ -70,23 +78,38 @@ envelope?.addEventListener("click", () => {
 
     createParticles();
 
-    window.setTimeout(() => {
+    /*
+       A abertura visual é controlada pelo CSS.
+
+       Após o tempo definido, ocultamos a tela
+       inicial e exibimos o convite principal.
+    */
+
+    const showInvitation = () => {
         if (intro) {
             intro.hidden = true;
         }
 
         if (invitation) {
             invitation.hidden = false;
+            invitation.classList.add("is-visible");
         }
+    };
 
-        invitation?.classList.add("is-visible");
-    }, OPEN_ANIMATION_DURATION);
+    if (prefersReducedMotion) {
+        showInvitation();
+    } else {
+        window.setTimeout(
+            showInvitation,
+            OPEN_ANIMATION_DURATION
+        );
+    }
 });
 
 
-// ================================================
-// PARTÍCULAS DA ABERTURA
-// ================================================
+/* ================================================
+   PARTÍCULAS DA ABERTURA
+   ================================================ */
 
 function createParticles() {
     if (!particles) {
@@ -128,9 +151,9 @@ function createParticles() {
 }
 
 
-// ================================================
-// CONTROLE DA PRESENÇA
-// ================================================
+/* ================================================
+   CONTROLE DA PRESENÇA
+   ================================================ */
 
 function getAttendance() {
     return document.querySelector(
@@ -164,9 +187,9 @@ attendanceOptions.forEach((option) => {
 });
 
 
-// ================================================
-// VALIDAÇÃO DE ACOMPANHANTES
-// ================================================
+/* ================================================
+   VALIDAÇÃO DE ACOMPANHANTES
+   ================================================ */
 
 function validateCompanions() {
     if (getAttendance() !== "Sim") {
@@ -226,9 +249,9 @@ companions?.addEventListener("input", () => {
 });
 
 
-// ================================================
-// MENSAGENS DO FORMULÁRIO
-// ================================================
+/* ================================================
+   MENSAGENS DO FORMULÁRIO
+   ================================================ */
 
 function showFeedback(message, type) {
     if (!feedback) {
@@ -250,9 +273,9 @@ function clearFeedback() {
 }
 
 
-// ================================================
-// ENVIO PARA O GOOGLE SHEETS
-// ================================================
+/* ================================================
+   ENVIO PARA O GOOGLE SHEETS
+   ================================================ */
 
 let sending = false;
 
@@ -337,12 +360,9 @@ form?.addEventListener("submit", async (event) => {
             body
         });
 
-        // Limpa o formulário primeiro.
         form.reset();
         updateCompanionsField();
 
-        // Exibe a mensagem depois da limpeza.
-        // Assim, updateCompanionsField não a apaga.
         showFeedback(
             CONFIG.MESSAGES[
                 attendance === "Sim" ? "yes" : "no"
@@ -356,7 +376,10 @@ form?.addEventListener("submit", async (event) => {
             error
         );
 
-        showFeedback(CONFIG.MESSAGES.error, "error");
+        showFeedback(
+            CONFIG.MESSAGES.error,
+            "error"
+        );
 
     } finally {
         sending = false;
@@ -366,8 +389,8 @@ form?.addEventListener("submit", async (event) => {
 });
 
 
-// ================================================
-// ESTADO INICIAL
-// ================================================
+/* ================================================
+   ESTADO INICIAL
+   ================================================ */
 
 updateCompanionsField();

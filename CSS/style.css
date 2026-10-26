@@ -1,7 +1,14 @@
+
 /* =========================================================
    CONVITE — ALANA 19
    ENVELOPE GÓTICO / NEO-TRIBAL
    MOLDURA 02 POLIDA + SELO DE CERA
+
+   AJUSTES:
+   - Moldura acompanha o degradê da página
+   - Envelope menor no mobile
+   - Animação da aba corrigida
+   - Carta branca não aparece durante a abertura
    ========================================================= */
 
 /* =========================================================
@@ -207,7 +214,7 @@ body::after {
 
 /* =========================================================
    5. MOLDURA 02 POLIDA
-   AGORA ACOMPANHANDO O DEGRADÊ DA PÁGINA
+   ACOMPANHA O DEGRADÊ DA PÁGINA
    ========================================================= */
 
 .intro__frame {
@@ -237,7 +244,10 @@ body::after {
     position: absolute;
     display: block;
     opacity: 1;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
+
+    filter: drop-shadow(
+        0 1px 1px rgba(0, 0, 0, 0.08)
+    );
 }
 
 .intro__frame .rail.top,
@@ -256,6 +266,7 @@ body::after {
 
 .intro__frame .rail.top {
     top: 0;
+
     background: linear-gradient(
         90deg,
         var(--frame-light) 0%,
@@ -266,6 +277,7 @@ body::after {
 
 .intro__frame .rail.bottom {
     bottom: 0;
+
     background: linear-gradient(
         90deg,
         rgba(28, 14, 21, 0.72) 0%,
@@ -276,6 +288,7 @@ body::after {
 
 .intro__frame .rail.left {
     left: 0;
+
     background: linear-gradient(
         180deg,
         var(--frame-light) 0%,
@@ -286,6 +299,7 @@ body::after {
 
 .intro__frame .rail.right {
     right: 0;
+
     background: linear-gradient(
         180deg,
         rgba(28, 12, 20, 0.78) 0%,
@@ -411,7 +425,6 @@ body::after {
     top: 12%;
     width: 69%;
     height: 61%;
-
     opacity: 0.7;
     transform: scale(0.76);
 
@@ -432,7 +445,6 @@ body::after {
     top: 18%;
     width: 65%;
     height: 76%;
-
     opacity: 0.6;
     transform: scale(0.79);
 
@@ -836,6 +848,7 @@ body::after {
 
 /* =========================================================
    11. CARTA INTERNA
+   CORRIGIDA PARA NÃO APARECER COMO RETÂNGULO
    ========================================================= */
 
 .envelope__letter {
@@ -864,9 +877,9 @@ body::after {
     transform: translateY(0);
 
     transition:
-        transform 850ms cubic-bezier(0.2, 0.7, 0.25, 1) 100ms,
-        opacity 350ms ease 100ms,
-        visibility 0s linear 0.1s;
+        transform 850ms cubic-bezier(0.2, 0.7, 0.25, 1),
+        opacity 350ms ease,
+        visibility 0s linear 350ms;
 }
 
 /* =========================================================
@@ -894,7 +907,6 @@ body::after {
     background-size: contain;
 
     transform: translate(-50%, -50%) rotate(-2deg);
-
     pointer-events: none;
 
     filter:
@@ -943,8 +955,19 @@ body::after {
 }
 
 /* =========================================================
-   14. ABERTURA ANIMADA
+   14. ABERTURA ANIMADA — CORRIGIDA
    ========================================================= */
+
+/*
+   A aba recolhe pela profundidade em vez de
+   completar uma rotação de 180 graus.
+
+   A carta interna permanece escondida para não
+   aparecer como um retângulo vazio.
+
+   O JavaScript continua responsável pela
+   transição para a página principal.
+*/
 
 .envelope.is-opening,
 .intro.is-opening .envelope {
@@ -953,20 +976,15 @@ body::after {
 
 .envelope.is-opening .envelope__flap,
 .intro.is-opening .envelope__flap {
-    transform: rotateX(180deg);
+    transform: rotateX(85deg);
 }
 
 .envelope.is-opening .envelope__letter,
 .intro.is-opening .envelope__letter {
-    visibility: visible;
-    opacity: 1;
-
-    transform: translateY(-30%);
-
-    transition-delay:
-        100ms,
-        100ms,
-        0s;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(0);
+    transition: none;
 }
 
 .envelope.is-opening .envelope__seal,
@@ -1086,6 +1104,10 @@ body::after {
     }
 }
 
+/* =========================================================
+   17.1. MOBILE — ENVELOPE MENOR
+   ========================================================= */
+
 @media (max-width: 480px) {
     :root {
         --page-padding: clamp(1rem, 5vw, 1.25rem);
@@ -1110,16 +1132,16 @@ body::after {
                 - var(--page-padding)
                 - 12px
             ),
-            133svh
+            133vh
         );
-    }
 
         --envelope-width: min(
-            360px,
+            325px,
             calc(
                 100vw
                 - var(--page-padding)
                 - var(--page-padding)
+                - 12px
             ),
             133svh
         );
