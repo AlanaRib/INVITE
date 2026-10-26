@@ -2,7 +2,7 @@
    CONVITE — ALANA 19
    ENVELOPE GÓTICO / NEO-TRIBAL
    MOLDURA 02 POLIDA — BORDA E DETALHES COM DEGRADÊ
-   ANIMAÇÃO DE ABERTURA RESTAURADA
+   AJUSTE: REMOÇÃO DAS “ANTENINHAS” DOS CANTOS
    ========================================================= */
 
 /* =========================================================
@@ -192,7 +192,6 @@ body::after {
 
 /* =========================================================
    5. MOLDURA 02 POLIDA
-   AGORA COM A LÓGICA CORRETA:
    PARTE CLARA = PRETO ESCURO
    PARTE ESCURA/VINHO = PRATA
    ========================================================= */
@@ -432,29 +431,10 @@ body::after {
     );
 }
 
-.intro__frame .c5 {
-    left: 42%;
-    top: 6%;
-    width: 1.8px;
-    height: 58%;
-    background: var(--piece-line);
-    opacity: 0.88;
-    transform: rotate(-34deg);
-}
-
+/* Removidas as “antenninhas” dos cantos */
+.intro__frame .c5,
 .intro__frame .c6 {
-    left: 8%;
-    top: 41%;
-    width: 60%;
-    height: 1.4px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--piece-main) 16%,
-        var(--piece-line) 100%
-    );
-    opacity: 0.78;
-    transform: rotate(36deg);
+    display: none;
 }
 
 .intro__frame .c7 {
