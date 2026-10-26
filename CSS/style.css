@@ -1,4 +1,3 @@
-
 /* =========================================================
    CONVITE — ALANA 19
    ENVELOPE GÓTICO / NEO-TRIBAL
@@ -208,6 +207,7 @@ body::after {
 
 /* =========================================================
    5. MOLDURA 02 POLIDA
+   AGORA ACOMPANHANDO O DEGRADÊ DA PÁGINA
    ========================================================= */
 
 .intro__frame {
@@ -215,8 +215,15 @@ body::after {
     inset: clamp(20px, 2.2vw, 34px);
     pointer-events: none;
 
-    --f: #180d13;
-    --f2: #4c0a1e;
+    --frame-light: rgba(30, 16, 24, 0.52);
+    --frame-light-accent: rgba(66, 14, 30, 0.28);
+
+    --frame-mid: rgba(29, 14, 22, 0.72);
+    --frame-mid-accent: rgba(72, 12, 28, 0.36);
+
+    --frame-dark: rgba(24, 10, 16, 0.9);
+    --frame-dark-accent: rgba(76, 10, 30, 0.48);
+
     --rail-thickness: 1.4px;
     --corner-reach: clamp(92px, 13vw, 168px);
     --rail-gap: calc(var(--corner-reach) * 0.78);
@@ -229,13 +236,8 @@ body::after {
 .intro__frame .rail {
     position: absolute;
     display: block;
-    opacity: 0.92;
-
-    background: linear-gradient(
-        110deg,
-        var(--f),
-        var(--f2)
-    );
+    opacity: 1;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
 }
 
 .intro__frame .rail.top,
@@ -254,18 +256,42 @@ body::after {
 
 .intro__frame .rail.top {
     top: 0;
+    background: linear-gradient(
+        90deg,
+        var(--frame-light) 0%,
+        var(--frame-mid) 52%,
+        var(--frame-dark) 100%
+    );
 }
 
 .intro__frame .rail.bottom {
     bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(28, 14, 21, 0.72) 0%,
+        rgba(31, 12, 19, 0.88) 58%,
+        rgba(20, 7, 12, 0.98) 100%
+    );
 }
 
 .intro__frame .rail.left {
     left: 0;
+    background: linear-gradient(
+        180deg,
+        var(--frame-light) 0%,
+        rgba(28, 14, 21, 0.7) 55%,
+        rgba(25, 11, 18, 0.82) 100%
+    );
 }
 
 .intro__frame .rail.right {
     right: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(28, 12, 20, 0.78) 0%,
+        rgba(24, 10, 16, 0.9) 55%,
+        rgba(18, 6, 11, 0.98) 100%
+    );
 }
 
 /* =========================================================
@@ -279,37 +305,53 @@ body::after {
     overflow: hidden;
 
     filter: drop-shadow(
-        0 1px 1px rgba(0, 0, 0, 0.18)
+        0 1px 1px rgba(0, 0, 0, 0.14)
     );
 }
 
 .intro__frame .corner.tl {
     top: 0;
     left: 0;
+
+    --piece-main: var(--frame-light);
+    --piece-accent: var(--frame-light-accent);
+    --piece-shadow: 0.74;
 }
 
 .intro__frame .corner.tr {
     top: 0;
     right: 0;
     transform: scaleX(-1);
+
+    --piece-main: rgba(27, 12, 20, 0.76);
+    --piece-accent: rgba(76, 10, 30, 0.34);
+    --piece-shadow: 0.82;
 }
 
 .intro__frame .corner.bl {
     bottom: 0;
     left: 0;
     transform: scaleY(-1);
+
+    --piece-main: rgba(26, 11, 19, 0.8);
+    --piece-accent: rgba(76, 10, 30, 0.38);
+    --piece-shadow: 0.86;
 }
 
 .intro__frame .corner.br {
     bottom: 0;
     right: 0;
     transform: scale(-1);
+
+    --piece-main: rgba(19, 7, 13, 0.96);
+    --piece-accent: rgba(76, 10, 30, 0.5);
+    --piece-shadow: 0.96;
 }
 
 .intro__frame .corner .piece {
     position: absolute;
     display: block;
-    background: var(--f);
+    background: var(--piece-main);
     transform-origin: top left;
 }
 
@@ -318,7 +360,7 @@ body::after {
     top: 0;
     width: 96%;
     height: 96%;
-    opacity: 0.88;
+    opacity: var(--piece-shadow);
     transform: scale(0.82);
 
     clip-path: polygon(
@@ -345,8 +387,8 @@ body::after {
     width: 79%;
     height: 80%;
 
-    background: var(--f2);
-    opacity: 0.36;
+    background: var(--piece-accent);
+    opacity: 0.95;
     transform: scale(0.77);
 
     clip-path: polygon(
@@ -370,7 +412,7 @@ body::after {
     width: 69%;
     height: 61%;
 
-    opacity: 0.74;
+    opacity: 0.7;
     transform: scale(0.76);
 
     clip-path: polygon(
@@ -391,7 +433,7 @@ body::after {
     width: 65%;
     height: 76%;
 
-    opacity: 0.66;
+    opacity: 0.6;
     transform: scale(0.79);
 
     clip-path: polygon(
@@ -412,8 +454,8 @@ body::after {
     width: 1.8px;
     height: 58%;
 
-    background: var(--f2);
-    opacity: 0.7;
+    background: var(--piece-accent);
+    opacity: 0.8;
     transform: rotate(-34deg);
 }
 
@@ -423,7 +465,14 @@ body::after {
     width: 60%;
     height: 1.4px;
 
-    opacity: 0.65;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--piece-main) 16%,
+        var(--piece-accent) 100%
+    );
+
+    opacity: 0.68;
     transform: rotate(36deg);
 }
 
@@ -433,7 +482,8 @@ body::after {
     width: 12%;
     height: 12%;
 
-    opacity: 0.58;
+    background: var(--piece-main);
+    opacity: 0.64;
     transform: scale(0.68);
 
     clip-path: polygon(
@@ -473,7 +523,12 @@ body::after {
     position: absolute;
     inset: 0;
 
-    background: var(--f);
+    background: linear-gradient(
+        90deg,
+        rgba(27, 15, 22, 0.65) 0%,
+        rgba(38, 13, 24, 0.82) 50%,
+        rgba(21, 7, 13, 0.95) 100%
+    );
 
     clip-path: polygon(
         0 0,
@@ -517,7 +572,12 @@ body::after {
     position: absolute;
     inset: 0;
 
-    background: var(--f);
+    background: linear-gradient(
+        180deg,
+        rgba(31, 16, 24, 0.66) 0%,
+        rgba(27, 12, 19, 0.84) 60%,
+        rgba(20, 7, 13, 0.96) 100%
+    );
 
     clip-path: polygon(
         0 0,
@@ -813,19 +873,6 @@ body::after {
    12. SELO DE CERA — IMAGEM APROVADA
    ========================================================= */
 
-/*
-   O arquivo wax-seal.png já contém:
-   - a textura de cera;
-   - as bordas irregulares;
-   - o sigilo de Sangue prateado.
-
-   Não adicionamos outros símbolos nem desenhamos
-   uma segunda camada de cera com CSS.
-
-   Localização:
-   INVITE/IMGS/wax-seal.png
-*/
-
 .envelope__seal {
     position: absolute;
     z-index: 6;
@@ -858,9 +905,6 @@ body::after {
         opacity 250ms ease,
         transform 400ms ease;
 }
-
-/* Remove as camadas da versão anterior do selo.
-   O sigilo agora já faz parte da imagem PNG. */
 
 .envelope__seal::before,
 .envelope__seal::after,
@@ -1059,14 +1103,16 @@ body::after {
 
     .envelope {
         --envelope-width: min(
-            360px,
+            325px,
             calc(
                 100vw
                 - var(--page-padding)
                 - var(--page-padding)
+                - 12px
             ),
-            133vh
+            133svh
         );
+    }
 
         --envelope-width: min(
             360px,
