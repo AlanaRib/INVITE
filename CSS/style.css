@@ -117,7 +117,7 @@ body::before {
 }
 
 /* =========================================================
-   MOLDURA 02 POLIDA — PRESERVADA
+   MOLDURA 02 POLIDA — PRETO UNIFORME
 ========================================================= */
 
 .intro__frame {
@@ -125,13 +125,8 @@ body::before {
     inset: clamp(20px, 2.2vw, 34px);
     pointer-events: none;
 
-    --frame-black-strong: rgba(16, 10, 15, .96);
-    --frame-black: rgba(24, 15, 22, .9);
-    --frame-black-soft: rgba(40, 28, 36, .82);
-    --frame-mid: rgba(112, 108, 119, .62);
-    --frame-silver-mid: rgba(187, 194, 204, .76);
-    --frame-silver: rgba(214, 221, 229, .88);
-    --frame-silver-strong: rgba(236, 241, 246, .98);
+    --frame-black: #171319;
+    --frame-black-soft: rgba(23, 19, 25, .85);
 
     --rail-thickness: 1.4px;
     --corner-reach: clamp(92px, 13vw, 168px);
@@ -164,50 +159,22 @@ body::before {
 
 .intro__frame .rail.top {
     top: 0;
-
-    background: linear-gradient(
-        90deg,
-        var(--frame-black-strong) 0%,
-        var(--frame-black) 38%,
-        var(--frame-mid) 68%,
-        var(--frame-silver-mid) 100%
-    );
+    background: var(--frame-black);
 }
 
 .intro__frame .rail.bottom {
     bottom: 0;
-
-    background: linear-gradient(
-        90deg,
-        var(--frame-black-soft) 0%,
-        rgba(92, 86, 96, .66) 42%,
-        var(--frame-silver-mid) 72%,
-        var(--frame-silver-strong) 100%
-    );
+    background: var(--frame-black);
 }
 
 .intro__frame .rail.left {
     left: 0;
-
-    background: linear-gradient(
-        180deg,
-        var(--frame-black-strong) 0%,
-        var(--frame-black) 42%,
-        rgba(78, 72, 82, .60) 76%,
-        rgba(138, 141, 151, .62) 100%
-    );
+    background: var(--frame-black);
 }
 
 .intro__frame .rail.right {
     right: 0;
-
-    background: linear-gradient(
-        180deg,
-        rgba(116, 112, 122, .60) 0%,
-        var(--frame-silver-mid) 44%,
-        var(--frame-silver) 72%,
-        var(--frame-silver-strong) 100%
-    );
+    background: var(--frame-black);
 }
 
 .intro__frame .corner {
@@ -225,10 +192,9 @@ body::before {
     top: 0;
     left: 0;
 
-    --piece-main: rgba(20, 11, 17, .94);
-    --piece-accent: rgba(53, 39, 49, .46);
+    --piece-main: #171319;
+    --piece-accent: rgba(23, 19, 25, .68);
     --piece-shadow: .94;
-    --piece-line: rgba(29, 16, 24, .90);
 }
 
 .intro__frame .corner.tr {
@@ -236,10 +202,9 @@ body::before {
     right: 0;
     transform: scaleX(-1);
 
-    --piece-main: rgba(188, 194, 204, .84);
-    --piece-accent: rgba(229, 234, 240, .56);
-    --piece-shadow: .98;
-    --piece-line: rgba(241, 245, 249, .92);
+    --piece-main: #171319;
+    --piece-accent: rgba(23, 19, 25, .68);
+    --piece-shadow: .94;
 }
 
 .intro__frame .corner.bl {
@@ -247,10 +212,9 @@ body::before {
     left: 0;
     transform: scaleY(-1);
 
-    --piece-main: rgba(26, 16, 24, .90);
-    --piece-accent: rgba(62, 44, 55, .48);
-    --piece-shadow: .92;
-    --piece-line: rgba(33, 19, 28, .86);
+    --piece-main: #171319;
+    --piece-accent: rgba(23, 19, 25, .68);
+    --piece-shadow: .94;
 }
 
 .intro__frame .corner.br {
@@ -258,10 +222,9 @@ body::before {
     right: 0;
     transform: scale(-1);
 
-    --piece-main: rgba(227, 232, 238, .96);
-    --piece-accent: rgba(248, 251, 254, .62);
-    --piece-shadow: 1;
-    --piece-line: rgba(248, 251, 255, .98);
+    --piece-main: #171319;
+    --piece-accent: rgba(23, 19, 25, .68);
+    --piece-shadow: .94;
 }
 
 .intro__frame .corner .piece {
@@ -389,14 +352,7 @@ body::before {
     content: "";
     position: absolute;
     inset: 0;
-
-    background: linear-gradient(
-        90deg,
-        var(--frame-black) 0%,
-        rgba(88, 82, 92, .68) 44%,
-        var(--frame-silver-mid) 72%,
-        var(--frame-silver-strong) 100%
-    );
+    background: var(--frame-black);
 
     clip-path: polygon(
         0 0,
@@ -437,13 +393,7 @@ body::before {
     content: "";
     position: absolute;
     inset: 0;
-
-    background: linear-gradient(
-        180deg,
-        var(--frame-black) 0%,
-        rgba(96, 91, 101, .68) 54%,
-        var(--frame-silver) 100%
-    );
+    background: var(--frame-black);
 
     clip-path: polygon(
         0 0,
