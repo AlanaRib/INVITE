@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -13,7 +14,6 @@
 
     <title>Convite</title>
 
-    <link rel="icon" type="image/svg+xml" href="/INVITE/IMGS/favicon.svg">
     <link rel="stylesheet" href="CSS/style.css">
     <script src="JS/app.js" defer></script>
 </head>
@@ -22,7 +22,7 @@
 
     <!-- =========================================
          ABERTURA DO CONVITE
-         ========================================== -->
+    ========================================== -->
 
     <section
         class="intro"
@@ -31,8 +31,79 @@
     >
 
         <div class="intro__atmosphere" aria-hidden="true">
+
+            <!-- MOLDURA 02 POLIDA — HTML/CSS -->
+
+            <div class="intro__frame" aria-hidden="true">
+
+                <!-- Linhas estruturais -->
+
+                <i class="rail top"></i>
+                <i class="rail right"></i>
+                <i class="rail bottom"></i>
+                <i class="rail left"></i>
+
+                <!-- Canto superior esquerdo -->
+
+                <div class="corner tl">
+                    <i class="piece c1"></i>
+                    <i class="piece c2"></i>
+                    <i class="piece c3"></i>
+                    <i class="piece c4"></i>
+                    <i class="piece c5"></i>
+                    <i class="piece c6"></i>
+                    <i class="piece c7"></i>
+                </div>
+
+                <!-- Canto superior direito -->
+
+                <div class="corner tr">
+                    <i class="piece c1"></i>
+                    <i class="piece c2"></i>
+                    <i class="piece c3"></i>
+                    <i class="piece c4"></i>
+                    <i class="piece c5"></i>
+                    <i class="piece c6"></i>
+                    <i class="piece c7"></i>
+                </div>
+
+                <!-- Canto inferior esquerdo -->
+
+                <div class="corner bl">
+                    <i class="piece c1"></i>
+                    <i class="piece c2"></i>
+                    <i class="piece c3"></i>
+                    <i class="piece c4"></i>
+                    <i class="piece c5"></i>
+                    <i class="piece c6"></i>
+                    <i class="piece c7"></i>
+                </div>
+
+                <!-- Canto inferior direito -->
+
+                <div class="corner br">
+                    <i class="piece c1"></i>
+                    <i class="piece c2"></i>
+                    <i class="piece c3"></i>
+                    <i class="piece c4"></i>
+                    <i class="piece c5"></i>
+                    <i class="piece c6"></i>
+                    <i class="piece c7"></i>
+                </div>
+
+                <!-- Ornamentos centrais -->
+
+                <div class="mid top"></div>
+                <div class="mid bottom"></div>
+
+                <div class="side left"></div>
+                <div class="side right"></div>
+
+            </div>
+
             <div class="intro__glow intro__glow--red"></div>
             <div class="intro__glow intro__glow--silver"></div>
+
         </div>
 
         <!-- Personagem decorativo próximo ao envelope -->
@@ -86,11 +157,6 @@
 
             </button>
 
-            <!-- Aviso fora do botão, logo abaixo do envelope -->
-            <p class="envelope-hint">
-                Clique no envelope para abrir
-            </p>
-
         </div>
 
         <div
@@ -101,10 +167,9 @@
 
     </section>
 
-
     <!-- =========================================
-         CONVITE
-         ========================================== -->
+         PÁGINA PRINCIPAL DO CONVITE
+    ========================================== -->
 
     <main
         class="invitation"
@@ -115,7 +180,7 @@
 
         <!-- =====================================
              IDENTIDADE EDITORIAL
-             ====================================== -->
+        ====================================== -->
 
         <header class="masthead">
 
@@ -134,10 +199,9 @@
 
         </header>
 
-
         <!-- =====================================
              APRESENTAÇÃO
-             ====================================== -->
+        ====================================== -->
 
         <section
             class="hero"
@@ -185,18 +249,15 @@
 
         </section>
 
-
         <!-- =====================================
              INFORMAÇÕES DO ANIVERSÁRIO
-             ====================================== -->
+        ====================================== -->
 
         <section
             class="details"
             id="detalhes"
             aria-label="Informações do aniversário"
         >
-
-            <!-- Elemento decorativo -->
 
             <div
                 class="details__character details__character--one"
@@ -244,8 +305,6 @@
 
             </div>
 
-            <!-- Outro personagem distribuído pela página -->
-
             <div
                 class="details__character details__character--two"
                 data-art="details-character-two"
@@ -254,10 +313,9 @@
 
         </section>
 
-
         <!-- =====================================
              CARDÁPIO
-             ====================================== -->
+        ====================================== -->
 
         <section
             class="menu"
@@ -275,7 +333,7 @@
                 Cardápio
             </h2>
 
-            <!-- Espaço para preencher o cardápio posteriormente -->
+            <!-- Espaço para preenchimento posterior -->
 
             <div class="menu__content">
 
@@ -303,10 +361,9 @@
 
         </section>
 
-
         <!-- =====================================
              CONFIRMAÇÃO DE PRESENÇA
-             ====================================== -->
+        ====================================== -->
 
         <section
             class="rsvp"
@@ -331,7 +388,7 @@
                     id="rsvp-form"
                 >
 
-                    <!-- Nome -->
+                    <!-- Nome do convidado -->
 
                     <div class="form-field">
 
@@ -351,8 +408,7 @@
 
                     </div>
 
-
-                    <!-- Presença -->
+                    <!-- Confirmação de presença -->
 
                     <fieldset class="form-field form-field--attendance">
 
@@ -396,7 +452,6 @@
 
                     </fieldset>
 
-
                     <!-- Quantidade de acompanhantes -->
 
                     <div
@@ -422,8 +477,7 @@
 
                     </div>
 
-
-                    <!-- Envio -->
+                    <!-- Enviar confirmação -->
 
                     <button
                         class="rsvp__submit"
@@ -433,8 +487,7 @@
                         Enviar resposta
                     </button>
 
-
-                    <!-- Retorno do formulário -->
+                    <!-- Mensagem de retorno -->
 
                     <p
                         class="rsvp__feedback"
@@ -458,5 +511,4 @@
     </main>
 
 </body>
-
 </html>
