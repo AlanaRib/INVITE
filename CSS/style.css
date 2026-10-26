@@ -4,15 +4,18 @@
 
 :root {
     --blood-red: #920608;
-    --page-padding: clamp(1.25rem, 5vw, 4rem);
-    --white: #fffdfd;
-    --black: #0b0b0d;
-    --transition-soft: 350ms ease;
 
     --envelope-cold-top: #6d2338;
     --envelope-cold-mid: #52182b;
     --envelope-cold-dark: #320b1c;
     --envelope-edge: #230712;
+
+    --page-padding: clamp(1.25rem, 5vw, 4rem);
+
+    --white: #fffdfd;
+    --black: #0b0b0d;
+
+    --transition-soft: 350ms ease;
 }
 
 /* =========================================================
@@ -114,7 +117,7 @@ body::before {
 }
 
 /* =========================================================
-   MOLDURA 02 POLIDA — PRESERVADA
+   MOLDURA 02 POLIDA
 ========================================================= */
 
 .intro__frame {
@@ -494,7 +497,6 @@ body::before {
     inset: 0;
     display: block;
     border-radius: inherit;
-    perspective: 1200px;
     overflow: visible;
 }
 
@@ -509,14 +511,13 @@ body::before {
 }
 
 /* =========================================================
-   FUNDO DO ENVELOPE
+   FUNDO E ABA
 ========================================================= */
 
 .envelope__back {
     position: absolute;
     inset: 0;
     z-index: 1;
-    display: block;
     border: 1px solid var(--envelope-edge);
     border-radius: inherit;
 
@@ -528,17 +529,59 @@ body::before {
     );
 }
 
+.envelope__back::before {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 48%;
+    content: "";
+
+    background-image:
+        url("../IMGS/flap-ornament.svg"),
+        linear-gradient(
+            160deg,
+            #461224,
+            #5e2033,
+            #361021
+        );
+
+    background-size:
+        100% 100%,
+        100% 100%;
+
+    clip-path: polygon(
+        50% 0,
+        100% 100%,
+        0 100%
+    );
+
+    transform-origin: bottom center;
+    transform: scaleY(.015);
+    opacity: 0;
+
+    transition:
+        transform 650ms cubic-bezier(.22, .72, .24, 1) 200ms,
+        opacity 130ms ease 190ms;
+}
+
+.envelope.is-opening .envelope__back::before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
 /* =========================================================
-   CARTA
+   CARTA — ACIMA DO BOLSO
 ========================================================= */
 
 .envelope__letter-track {
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: 5;
     display: block;
     pointer-events: none;
-    transform: translate3d(0, 0, 0);
+
+    transform: translateY(0);
 
     transition:
         transform 670ms cubic-bezier(.22, .75, .22, 1);
@@ -546,11 +589,12 @@ body::before {
 
 .envelope__letter {
     position: absolute;
+    top: 12%;
     left: 17%;
     right: 17%;
-    top: 12%;
     height: 86%;
     display: block;
+
     border: 1px solid rgba(132, 118, 124, .34);
     border-radius: 3px;
 
@@ -579,6 +623,7 @@ body::before {
     left: 50%;
     width: 18px;
     height: 18px;
+
     transform: translateX(-50%);
     background: rgba(144, 98, 110, .32);
 
@@ -595,16 +640,17 @@ body::before {
 }
 
 /* =========================================================
-   BOLSO DO ENVELOPE
+   BOLSO
 ========================================================= */
 
 .envelope__pocket {
     position: absolute;
     inset: 0;
-    z-index: 4;
+    z-index: 3;
     display: block;
     overflow: hidden;
     border-radius: inherit;
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -688,9 +734,10 @@ body::before {
 .envelope__body {
     position: absolute;
     inset: 0;
-    z-index: 4;
+    z-index: 6;
     display: block;
     overflow: hidden;
+
     border: 1px solid var(--envelope-edge);
     border-radius: inherit;
 
@@ -740,103 +787,16 @@ body::before {
 }
 
 /* =========================================================
-   ABA
-========================================================= */
-
-.envelope__flap-hinge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 48%;
-    z-index: 5;
-    display: block;
-
-    transform-origin: 50% 0;
-    transform: rotateX(0deg);
-    transform-style: preserve-3d;
-
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    transition:
-        transform 650ms cubic-bezier(.22, .72, .24, 1),
-        opacity 180ms ease,
-        visibility 0s linear 180ms;
-}
-
-.envelope__flap {
-    position: absolute;
-    inset: 0;
-    display: block;
-    transform-style: preserve-3d;
-}
-
-.envelope__flap-front,
-.envelope__flap-back {
-    position: absolute;
-    inset: 0;
-    display: block;
-
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
-
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-.envelope__flap-front {
-    background-image:
-        url("../IMGS/flap-ornament.svg"),
-        linear-gradient(
-            170deg,
-            var(--envelope-cold-top),
-            var(--envelope-cold-mid),
-            var(--envelope-cold-dark)
-        );
-
-    background-size:
-        100% 100%,
-        100% 100%;
-}
-
-.envelope__flap-back {
-    clip-path: polygon(
-        50% 0,
-        100% 100%,
-        0 100%
-    );
-
-    background-image:
-        url("../IMGS/flap-ornament.svg"),
-        linear-gradient(
-            160deg,
-            #461224,
-            #5e2033,
-            #361021
-        );
-
-    background-size:
-        100% 100%,
-        100% 100%;
-
-    transform: rotateX(180deg);
-}
-
-/* =========================================================
-   SELO
+   SELO E TEXTO
 ========================================================= */
 
 .envelope__seal {
     position: absolute;
-    z-index: 6;
+    z-index: 8;
     top: 48%;
     left: 50%;
     display: block;
+
     width: clamp(78px, 15vw, 98px);
     aspect-ratio: 1;
 
@@ -861,7 +821,7 @@ body::before {
 
 .envelope__label {
     position: absolute;
-    z-index: 7;
+    z-index: 9;
     left: 50%;
     bottom: 11%;
     width: 90%;
@@ -901,7 +861,6 @@ body::before {
 }
 
 .envelope.is-opening .envelope__pocket {
-    z-index: 4;
     opacity: 1;
     visibility: visible;
 
@@ -910,34 +869,12 @@ body::before {
         visibility 0s;
 }
 
-.envelope.is-opening .envelope__flap-hinge {
-    opacity: 1;
-    visibility: visible;
-
-    transition:
-        transform 650ms cubic-bezier(.22, .72, .24, 1),
-        opacity 180ms ease 150ms,
-        visibility 0s;
-}
-
-.envelope__flap-hinge.is-flap-open {
-    transform: rotateX(-165deg);
-}
-
 .envelope__letter-track.is-letter-revealed {
-    transform: translate3d(0, -24%, 0);
-}
-
-.envelope.is-opening .envelope__letter-track {
-    z-index: 3;
+    transform: translateY(-24%);
 }
 
 .envelope.is-opening .envelope__label {
     opacity: 0;
-}
-
-.envelope__letter-visible-track {
-    display: none !important;
 }
 
 /* =========================================================
@@ -1068,8 +1005,7 @@ body::before {
 
 @media (max-height: 520px) {
     .intro {
-        padding-block:
-            max(.75rem, 3svh);
+        padding-block: max(.75rem, 3svh);
     }
 
     .envelope {
@@ -1114,7 +1050,6 @@ body::before {
     .envelope__seal,
     .envelope__body,
     .envelope__pocket,
-    .envelope__flap-hinge,
     .envelope__letter-track,
     .envelope__label {
         transition-duration: 220ms !important;

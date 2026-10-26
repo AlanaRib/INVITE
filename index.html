@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
     <meta name="theme-color" content="#0b0b0d">
+
     <meta
         name="description"
         content="Convite de aniversário da Alana."
     >
+
     <title>Convite</title>
+
     <link
         rel="icon"
         type="image/svg+xml"
         href="/INVITE/IMGS/favicon.svg"
     >
-    <link
-        rel="stylesheet"
-        href="CSS/style.css"
-    >
-    <script
-        src="JS/app.js"
-        defer
-    ></script>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <script src="JS/app.js" defer></script>
 </head>
+
 <body>
+
+    <!-- ABERTURA -->
+
     <section
         class="intro"
         id="intro"
         aria-label="Abertura do convite"
     >
+
         <div
             class="intro__atmosphere"
             aria-hidden="true"
         >
+
             <!-- MOLDURA 02 POLIDA -->
+
             <div class="intro__frame">
-                <!-- Linhas estruturais -->
+
                 <i class="rail top"></i>
                 <i class="rail right"></i>
                 <i class="rail bottom"></i>
                 <i class="rail left"></i>
 
-                <!-- Canto superior esquerdo -->
                 <div class="corner tl">
                     <i class="piece c1"></i>
                     <i class="piece c2"></i>
@@ -55,7 +63,6 @@
                     <i class="piece c7"></i>
                 </div>
 
-                <!-- Canto superior direito -->
                 <div class="corner tr">
                     <i class="piece c1"></i>
                     <i class="piece c2"></i>
@@ -66,7 +73,6 @@
                     <i class="piece c7"></i>
                 </div>
 
-                <!-- Canto inferior esquerdo -->
                 <div class="corner bl">
                     <i class="piece c1"></i>
                     <i class="piece c2"></i>
@@ -77,7 +83,6 @@
                     <i class="piece c7"></i>
                 </div>
 
-                <!-- Canto inferior direito -->
                 <div class="corner br">
                     <i class="piece c1"></i>
                     <i class="piece c2"></i>
@@ -88,16 +93,17 @@
                     <i class="piece c7"></i>
                 </div>
 
-                <!-- Ornamentos centrais -->
                 <div class="mid top"></div>
                 <div class="mid bottom"></div>
+
                 <div class="side left"></div>
                 <div class="side right"></div>
+
             </div>
 
-            <!-- Camadas atmosféricas -->
             <div class="intro__glow intro__glow--red"></div>
             <div class="intro__glow intro__glow--silver"></div>
+
         </div>
 
         <div
@@ -107,6 +113,7 @@
         ></div>
 
         <div class="intro__content">
+
             <button
                 class="envelope"
                 id="open-envelope"
@@ -115,39 +122,61 @@
                 aria-controls="invitation"
                 aria-expanded="false"
             >
+
                 <span class="envelope__stage" aria-hidden="true">
+
                     <span class="envelope__shadow"></span>
+
                     <span class="envelope__back"></span>
 
+                    <!-- CARTA -->
+
                     <span class="envelope__letter-track">
+
                         <span class="envelope__letter">
+
                             <span class="envelope__letter-inner">
-                                <span class="envelope__letter-ornament"></span>
+
+                                <span
+                                    class="envelope__letter-ornament"
+                                ></span>
+
                             </span>
+
                         </span>
+
                     </span>
 
-                    <!-- Frente do bolso -->
+                    <!-- BOLSO -->
+
                     <span class="envelope__pocket">
+
                         <span class="envelope__pocket-front"></span>
-                        <span class="envelope__pocket-crease envelope__pocket-crease--left"></span>
-                        <span class="envelope__pocket-crease envelope__pocket-crease--right"></span>
+
+                        <span
+                            class="envelope__pocket-crease envelope__pocket-crease--left"
+                        ></span>
+
+                        <span
+                            class="envelope__pocket-crease envelope__pocket-crease--right"
+                        ></span>
+
                     </span>
 
-                    <!-- Superfície decorada -->
+                    <!-- SUPERFÍCIE FECHADA -->
+
                     <span class="envelope__body"></span>
 
-                    <span class="envelope__flap-hinge">
-                        <span class="envelope__flap">
-                            <span class="envelope__flap-front"></span>
-                            <span class="envelope__flap-back"></span>
-                        </span>
+                    <span class="envelope__seal"></span>
+
+                    <span class="envelope__label">
+                        VOCÊ ESTÁ CONVIDADO
                     </span>
 
-                    <span class="envelope__seal"></span>
-                    <span class="envelope__label">VOCÊ ESTÁ CONVIDADO</span>
                 </span>
+
             </button>
+
         </div>
 
         <div
@@ -155,7 +184,10 @@
             id="particles"
             aria-hidden="true"
         ></div>
+
     </section>
+
+    <!-- PÁGINA PRINCIPAL -->
 
     <main
         class="invitation"
@@ -163,7 +195,9 @@
         aria-label="Convite de aniversário"
         hidden
     >
+
         <header class="masthead">
+
             <span class="masthead__edition">
                 ALANA
             </span>
@@ -176,13 +210,17 @@
             <span class="masthead__occasion">
                 19 ANOS
             </span>
+
         </header>
+
+        <!-- APRESENTAÇÃO -->
 
         <section
             class="hero"
             id="inicio"
             aria-labelledby="hero-title"
         >
+
             <div
                 class="hero__character hero__character--one"
                 data-art="hero-character-one"
@@ -202,6 +240,7 @@
             ></div>
 
             <div class="hero__copy">
+
                 <p class="hero__subtitle">
                     Pro meu aniversário.
                 </p>
@@ -213,19 +252,24 @@
                     Alana
                     <span>faz 19!</span>
                 </h1>
+
             </div>
 
             <span
                 class="hero__ornament"
                 aria-hidden="true"
             ></span>
+
         </section>
+
+        <!-- INFORMAÇÕES -->
 
         <section
             class="details"
             id="detalhes"
             aria-label="Informações do aniversário"
         >
+
             <div
                 class="details__character details__character--one"
                 data-art="details-character-one"
@@ -233,36 +277,44 @@
             ></div>
 
             <div class="details__grid">
-                <!-- DATA -->
+
                 <article class="detail detail--date">
+
                     <span class="detail__label">
                         DATA
                     </span>
+
                     <p class="detail__value">
                         08/11/2026
                     </p>
+
                 </article>
 
-                <!-- HORÁRIO -->
                 <article class="detail detail--time">
+
                     <span class="detail__label">
                         HORÁRIO
                     </span>
+
                     <p class="detail__value">
                         A partir das 11h30
                     </p>
+
                 </article>
 
-                <!-- LOCAL -->
                 <article class="detail detail--location">
+
                     <span class="detail__label">
                         LOCAL
                     </span>
+
                     <p class="detail__value">
                         R. Diva Regnier Barrozo, 116
                         <span>Curitiba — PR</span>
                     </p>
+
                 </article>
+
             </div>
 
             <div
@@ -270,13 +322,17 @@
                 data-art="details-character-two"
                 aria-hidden="true"
             ></div>
+
         </section>
+
+        <!-- CARDÁPIO -->
 
         <section
             class="menu"
             id="cardapio"
             aria-labelledby="menu-title"
         >
+
             <div
                 class="menu__character menu__character--one"
                 data-art="menu-character-one"
@@ -291,17 +347,21 @@
             </h2>
 
             <div class="menu__content">
+
                 <div
                     class="menu__items"
                     id="menu-items"
                 ></div>
+
             </div>
 
             <aside class="menu__notice">
+
                 <p>
                     Cada convidado deve levar sua própria
                     bebida alcoólica.
                 </p>
+
             </aside>
 
             <div
@@ -309,13 +369,17 @@
                 data-art="menu-character-two"
                 aria-hidden="true"
             ></div>
+
         </section>
+
+        <!-- CONFIRMAÇÃO -->
 
         <section
             class="rsvp"
             id="confirmacao"
             aria-labelledby="rsvp-title"
         >
+
             <div
                 class="rsvp__character rsvp__character--one"
                 data-art="rsvp-character-one"
@@ -330,12 +394,14 @@
             </h2>
 
             <div class="rsvp__card">
+
                 <form
                     class="rsvp__form"
                     id="rsvp-form"
                 >
-                    <!-- Nome -->
+
                     <div class="form-field">
+
                         <label for="guest-name">
                             Nome
                         </label>
@@ -349,49 +415,59 @@
                             maxlength="100"
                             required
                         >
+
                     </div>
 
-                    <!-- Presença -->
                     <fieldset
                         class="form-field form-field--attendance"
                     >
+
                         <legend>
                             Você poderá comparecer?
                         </legend>
 
                         <div class="attendance-options">
+
                             <label class="attendance-option">
+
                                 <input
                                     type="radio"
                                     name="presenca"
                                     value="Sim"
                                     required
                                 >
+
                                 <span class="attendance-option__content">
                                     Sim
                                 </span>
+
                             </label>
 
                             <label class="attendance-option">
+
                                 <input
                                     type="radio"
                                     name="presenca"
                                     value="Não"
                                     required
                                 >
+
                                 <span class="attendance-option__content">
                                     Não
                                 </span>
+
                             </label>
+
                         </div>
+
                     </fieldset>
 
-                    <!-- Acompanhantes -->
                     <div
                         class="form-field"
                         id="companions-field"
                         hidden
                     >
+
                         <label for="companions">
                             Quantos acompanhantes você levará?
                         </label>
@@ -407,9 +483,9 @@
                             placeholder="De 0 a 4"
                             disabled
                         >
+
                     </div>
 
-                    <!-- Envio -->
                     <button
                         class="rsvp__submit"
                         id="rsvp-submit"
@@ -418,14 +494,15 @@
                         Enviar resposta
                     </button>
 
-                    <!-- Mensagem de retorno -->
                     <p
                         class="rsvp__feedback"
                         id="rsvp-feedback"
                         role="status"
                         aria-live="polite"
                     ></p>
+
                 </form>
+
             </div>
 
             <div
@@ -433,7 +510,10 @@
                 data-art="rsvp-character-two"
                 aria-hidden="true"
             ></div>
+
         </section>
+
     </main>
+
 </body>
 </html>
