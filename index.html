@@ -19,7 +19,9 @@
 
     <title>Convite</title>
 
-    <!-- Favicon -->
+    <!-- =========================================
+         FAVICON
+    ========================================== -->
 
     <link
         rel="icon"
@@ -27,13 +29,23 @@
         href="/INVITE/IMGS/favicon.svg"
     >
 
-    <!-- CSS -->
+    <!-- =========================================
+         CSS
+    ========================================== -->
 
-    <link rel="stylesheet" href="CSS/style.css">
+    <link
+        rel="stylesheet"
+        href="CSS/style.css"
+    >
 
-    <!-- JavaScript -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
-    <script src="JS/app.js" defer></script>
+    <script
+        src="JS/app.js"
+        defer
+    ></script>
 
 </head>
 
@@ -49,15 +61,16 @@
         aria-label="Abertura do convite"
     >
 
+        <!-- =====================================
+             ATMOSFERA E MOLDURA
+        ====================================== -->
+
         <div
             class="intro__atmosphere"
             aria-hidden="true"
         >
 
-            <!-- =================================
-                 MOLDURA 02 POLIDA
-                 Construída com HTML + CSS
-            ================================== -->
+            <!-- MOLDURA 02 POLIDA -->
 
             <div class="intro__frame">
 
@@ -144,10 +157,14 @@
         ></div>
 
         <!-- =====================================
-             ENVELOPE
+             CONTEÚDO CENTRAL
         ====================================== -->
 
         <div class="intro__content">
+
+            <!-- =================================
+                 ENVELOPE INTERATIVO
+            ================================== -->
 
             <button
                 class="envelope"
@@ -155,63 +172,95 @@
                 type="button"
                 aria-label="Abrir o convite"
                 aria-controls="invitation"
+                aria-expanded="false"
             >
 
-                <!-- Sombra -->
-
-                <span
-                    class="envelope__shadow"
-                    aria-hidden="true"
-                ></span>
-
-                <!-- Corpo vermelho com ornamentação -->
-
-                <span
-                    class="envelope__body"
-                    aria-hidden="true"
-                ></span>
-
-                <!-- Aba triangular -->
-
-                <span
-                    class="envelope__flap"
-                    aria-hidden="true"
-                ></span>
-
-                <!-- Carta interna -->
-
-                <span
-                    class="envelope__letter"
-                    aria-hidden="true"
-                ></span>
-
                 <!-- =================================
-                     SELO DE CERA RITUALÍSTICO
-                     COM SIGILO DE SANGUE
+                     PALCO DO ENVELOPE
+
+                     Camada dedicada à perspectiva,
+                     sem o filtro de sombra aplicado
+                     diretamente sobre as partes 3D.
                 ================================== -->
 
                 <span
-                    class="envelope__seal"
+                    class="envelope__stage"
                     aria-hidden="true"
                 >
 
-                    <span class="envelope__seal-core">
+                    <!-- Sombra independente -->
 
-                        <img
-                            class="envelope__seal-sigil"
-                            src="IMGS/sangue-sigil.svg"
-                            alt=""
-                            draggable="false"
-                        >
+                    <span class="envelope__shadow"></span>
+
+                    <!-- =================================
+                         PARTE TRASEIRA
+                    ================================== -->
+
+                    <span class="envelope__back"></span>
+
+                    <!-- =================================
+                         CARTA INTERNA
+
+                         A carta ficará dentro do envelope
+                         e poderá deslizar para cima.
+                    ================================== -->
+
+                    <span class="envelope__letter-track">
+
+                        <span class="envelope__letter">
+
+                            <span class="envelope__letter-inner">
+
+                                <span
+                                    class="envelope__letter-ornament"
+                                ></span>
+
+                            </span>
+
+                        </span>
 
                     </span>
 
-                </span>
+                    <!-- =================================
+                         CORPO FRONTAL
 
-                <!-- Texto do envelope -->
+                         Preserva a ornamentação vermelha
+                         que já estamos utilizando.
+                    ================================== -->
 
-                <span class="envelope__label">
-                    VOCÊ ESTÁ CONVIDADO
+                    <span class="envelope__body"></span>
+
+                    <!-- =================================
+                         ABA TRIDIMENSIONAL
+
+                         A dobradiça e a aba ficam
+                         separadas para controlar
+                         a rotação corretamente.
+                    ================================== -->
+
+                    <span class="envelope__flap-hinge">
+
+                        <span class="envelope__flap"></span>
+
+                    </span>
+
+                    <!-- =================================
+                         SELO DE CERA
+
+                         Utiliza o PNG aprovado,
+                         já contendo o sigilo de Sangue.
+                    ================================== -->
+
+                    <span class="envelope__seal"></span>
+
+                    <!-- =================================
+                         TEXTO DO ENVELOPE
+                    ================================== -->
+
+                    <span class="envelope__label">
+                        VOCÊ ESTÁ CONVIDADO
+                    </span>
+
                 </span>
 
             </button>
@@ -219,7 +268,7 @@
         </div>
 
         <!-- =====================================
-             PARTÍCULAS DE ABERTURA
+             PARTÍCULAS
         ====================================== -->
 
         <div
@@ -271,8 +320,6 @@
             id="inicio"
             aria-labelledby="hero-title"
         >
-
-            <!-- Personagens decorativos -->
 
             <div
                 class="hero__character hero__character--one"
@@ -333,7 +380,7 @@
 
             <div class="details__grid">
 
-                <!-- Data -->
+                <!-- DATA -->
 
                 <article class="detail detail--date">
 
@@ -347,7 +394,7 @@
 
                 </article>
 
-                <!-- Horário -->
+                <!-- HORÁRIO -->
 
                 <article class="detail detail--time">
 
@@ -361,7 +408,7 @@
 
                 </article>
 
-                <!-- Local -->
+                <!-- LOCAL -->
 
                 <article class="detail detail--location">
 
@@ -409,8 +456,6 @@
                 Cardápio
             </h2>
 
-            <!-- Conteúdo configurável -->
-
             <div class="menu__content">
 
                 <div
@@ -419,8 +464,6 @@
                 ></div>
 
             </div>
-
-            <!-- Observação sobre bebidas -->
 
             <aside class="menu__notice">
 
@@ -540,6 +583,7 @@
                     <div
                         class="form-field"
                         id="companions-field"
+                        hidden
                     >
 
                         <label for="companions">
@@ -560,7 +604,7 @@
 
                     </div>
 
-                    <!-- Enviar -->
+                    <!-- Envio -->
 
                     <button
                         class="rsvp__submit"
@@ -570,7 +614,7 @@
                         Enviar resposta
                     </button>
 
-                    <!-- Feedback -->
+                    <!-- Mensagem de retorno -->
 
                     <p
                         class="rsvp__feedback"
