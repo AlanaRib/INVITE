@@ -1,16 +1,9 @@
 
-/* CONVITE — ALANA 19 */
-
 :root {
-    --silver-light: #e8edf2;
-    --silver: #cbd2db;
-    --silver-dark: #8f98a4;
     --blood-red: #920608;
-    --blood-dark: #4b0307;
-    --blood-deep: #250205;
-    --black: #0b0b0d;
-    --white: #fffdfd;
     --page-padding: clamp(1.25rem, 5vw, 4rem);
+    --white: #fffdfd;
+    --black: #0b0b0d;
     --transition-soft: 350ms ease;
 }
 
@@ -30,13 +23,11 @@ body {
     isolation: isolate;
     min-height: 100vh;
     margin: 0;
-    overflow-x: hidden;
     overflow-x: clip;
-    color: var(--black);
     background: #dedadb;
+    color: var(--black);
     font-family: Georgia, "Times New Roman", serif;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
 }
 
 button,
@@ -44,97 +35,27 @@ input {
     font: inherit;
 }
 
-img,
-video,
-canvas,
-iframe {
-    max-width: 100%;
-}
-
-img,
-video,
-canvas {
-    height: auto;
-}
-
-button {
-    -webkit-tap-highlight-color: transparent;
-}
-
-button:focus-visible,
-input:focus-visible {
-    outline: 2px solid var(--blood-red);
-    outline-offset: 5px;
-}
-
 [hidden] {
     display: none !important;
 }
 
-::selection {
-    color: var(--white);
-    background: var(--blood-red);
-}
-
-/* FUNDO */
-
-body::before,
-body::after {
+body::before {
     position: fixed;
     inset: 0;
     content: "";
-    pointer-events: none;
     z-index: -1;
-}
-
-body::before {
-    background-color: #30070d;
-    background-image:
-        linear-gradient(
-            180deg,
-            rgba(7, 0, 2, 0.14) 0%,
-            transparent 20%,
-            transparent 65%,
-            rgba(7, 0, 2, 0.25) 100%
-        ),
-        linear-gradient(
-            138deg,
-            #e3e8ee 0%,
-            #d9dfe6 14%,
-            #c8ccd4 28%,
-            #b2b1bd 41%,
-            #998795 52%,
-            #805767 64%,
-            #682e3c 77%,
-            #4b1422 89%,
-            #30070d 100%
-        );
-}
-
-body::after {
-    opacity: 0.075;
-    background-image:
-        repeating-linear-gradient(
-            117deg,
-            transparent 0,
-            transparent 39px,
-            rgba(11, 0, 3, 0.18) 39.5px,
-            transparent 40.5px,
-            transparent 73px
-        ),
-        radial-gradient(
-            circle,
-            rgba(255, 255, 255, 0.68) 0 0.42px,
-            transparent 0.8px
-        ),
-        radial-gradient(
-            circle,
-            rgba(11, 11, 13, 0.66) 0 0.48px,
-            transparent 0.9px
-        );
-    background-size: 100% 100%, 19px 23px, 29px 31px;
-    background-position: center, 0 0, 11px 13px;
-    mix-blend-mode: soft-light;
+    background: linear-gradient(
+        138deg,
+        #e3e8ee 0%,
+        #d9dfe6 14%,
+        #c8ccd4 28%,
+        #b2b1bd 41%,
+        #998795 52%,
+        #805767 64%,
+        #682e3c 77%,
+        #4b1422 89%,
+        #30070d 100%
+    );
 }
 
 /* INTRODUÇÃO */
@@ -143,7 +64,6 @@ body::after {
     position: relative;
     display: grid;
     place-items: center;
-    min-height: 100vh;
     min-height: 100svh;
     padding: clamp(1.25rem, 5svh, 5rem) var(--page-padding);
     overflow: hidden;
@@ -155,44 +75,52 @@ body::after {
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
-}
-
-.intro__atmosphere::before,
-.intro__atmosphere::after {
-    content: none;
-    display: none;
 }
 
 .intro__glow {
     display: none;
 }
 
-/* MOLDURA 02 POLIDA — SEM ALTERAÇÕES */
+.intro__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    z-index: 2;
+}
+
+.intro__character {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* MOLDURA 02 POLIDA — PRESERVADA */
 
 .intro__frame {
     position: absolute;
     inset: clamp(20px, 2.2vw, 34px);
     pointer-events: none;
 
-    --frame-black-strong: rgba(16, 10, 15, 0.96);
-    --frame-black: rgba(24, 15, 22, 0.90);
-    --frame-black-soft: rgba(40, 28, 36, 0.82);
-    --frame-mid: rgba(112, 108, 119, 0.62);
-    --frame-silver-mid: rgba(187, 194, 204, 0.76);
-    --frame-silver: rgba(214, 221, 229, 0.88);
-    --frame-silver-strong: rgba(236, 241, 246, 0.98);
+    --frame-black-strong: rgba(16, 10, 15, .96);
+    --frame-black: rgba(24, 15, 22, .9);
+    --frame-black-soft: rgba(40, 28, 36, .82);
+    --frame-mid: rgba(112, 108, 119, .62);
+    --frame-silver-mid: rgba(187, 194, 204, .76);
+    --frame-silver: rgba(214, 221, 229, .88);
+    --frame-silver-strong: rgba(236, 241, 246, .98);
 
     --rail-thickness: 1.4px;
     --corner-reach: clamp(92px, 13vw, 168px);
-    --rail-gap: calc(var(--corner-reach) * 0.65);
+    --rail-gap: calc(var(--corner-reach) * .65);
 }
 
 .intro__frame .rail {
     position: absolute;
     display: block;
     opacity: 1;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .08));
 }
 
 .intro__frame .rail.top,
@@ -225,7 +153,7 @@ body::after {
     background: linear-gradient(
         90deg,
         var(--frame-black-soft) 0%,
-        rgba(92, 86, 96, 0.66) 42%,
+        rgba(92, 86, 96, .66) 42%,
         var(--frame-silver-mid) 72%,
         var(--frame-silver-strong) 100%
     );
@@ -237,8 +165,8 @@ body::after {
         180deg,
         var(--frame-black-strong) 0%,
         var(--frame-black) 42%,
-        rgba(78, 72, 82, 0.60) 76%,
-        rgba(138, 141, 151, 0.62) 100%
+        rgba(78, 72, 82, .60) 76%,
+        rgba(138, 141, 151, .62) 100%
     );
 }
 
@@ -246,7 +174,7 @@ body::after {
     right: 0;
     background: linear-gradient(
         180deg,
-        rgba(116, 112, 122, 0.60) 0%,
+        rgba(116, 112, 122, .60) 0%,
         var(--frame-silver-mid) 44%,
         var(--frame-silver) 72%,
         var(--frame-silver-strong) 100%
@@ -258,46 +186,46 @@ body::after {
     width: var(--corner-reach);
     height: var(--corner-reach);
     overflow: hidden;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.14));
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .14));
 }
 
 .intro__frame .corner.tl {
     top: 0;
     left: 0;
-    --piece-main: rgba(20, 11, 17, 0.94);
-    --piece-accent: rgba(53, 39, 49, 0.46);
-    --piece-shadow: 0.94;
-    --piece-line: rgba(29, 16, 24, 0.90);
+    --piece-main: rgba(20, 11, 17, .94);
+    --piece-accent: rgba(53, 39, 49, .46);
+    --piece-shadow: .94;
+    --piece-line: rgba(29, 16, 24, .90);
 }
 
 .intro__frame .corner.tr {
     top: 0;
     right: 0;
     transform: scaleX(-1);
-    --piece-main: rgba(188, 194, 204, 0.84);
-    --piece-accent: rgba(229, 234, 240, 0.56);
-    --piece-shadow: 0.98;
-    --piece-line: rgba(241, 245, 249, 0.92);
+    --piece-main: rgba(188, 194, 204, .84);
+    --piece-accent: rgba(229, 234, 240, .56);
+    --piece-shadow: .98;
+    --piece-line: rgba(241, 245, 249, .92);
 }
 
 .intro__frame .corner.bl {
     bottom: 0;
     left: 0;
     transform: scaleY(-1);
-    --piece-main: rgba(26, 16, 24, 0.90);
-    --piece-accent: rgba(62, 44, 55, 0.48);
-    --piece-shadow: 0.92;
-    --piece-line: rgba(33, 19, 28, 0.86);
+    --piece-main: rgba(26, 16, 24, .90);
+    --piece-accent: rgba(62, 44, 55, .48);
+    --piece-shadow: .92;
+    --piece-line: rgba(33, 19, 28, .86);
 }
 
 .intro__frame .corner.br {
     bottom: 0;
     right: 0;
     transform: scale(-1);
-    --piece-main: rgba(227, 232, 238, 0.96);
-    --piece-accent: rgba(248, 251, 254, 0.62);
+    --piece-main: rgba(227, 232, 238, .96);
+    --piece-accent: rgba(248, 251, 254, .62);
     --piece-shadow: 1;
-    --piece-line: rgba(248, 251, 255, 0.98);
+    --piece-line: rgba(248, 251, 255, .98);
 }
 
 .intro__frame .corner .piece {
@@ -313,22 +241,11 @@ body::after {
     width: 88%;
     height: 88%;
     opacity: var(--piece-shadow);
-    transform: scale(0.82);
+    transform: scale(.82);
     clip-path: polygon(
-        0 0,
-        100% 0,
-        77% 10%,
-        61% 15%,
-        70% 27%,
-        53% 24%,
-        48% 40%,
-        59% 46%,
-        44% 49%,
-        40% 63%,
-        28% 55%,
-        20% 70%,
-        10% 85%,
-        0 100%
+        0 0, 100% 0, 77% 10%, 61% 15%, 70% 27%,
+        53% 24%, 48% 40%, 59% 46%, 44% 49%,
+        40% 63%, 28% 55%, 20% 70%, 10% 85%, 0 100%
     );
 }
 
@@ -338,20 +255,12 @@ body::after {
     width: 76%;
     height: 76%;
     background: var(--piece-accent);
-    opacity: 0.95;
-    transform: scale(0.77);
+    opacity: .95;
+    transform: scale(.77);
     clip-path: polygon(
-        0 0,
-        27% 8%,
-        51% 25%,
-        73% 30%,
-        91% 51%,
-        67% 49%,
-        46% 41%,
-        38% 61%,
-        24% 85%,
-        24% 57%,
-        11% 38%
+        0 0, 27% 8%, 51% 25%, 73% 30%, 91% 51%,
+        67% 49%, 46% 41%, 38% 61%, 24% 85%,
+        24% 57%, 11% 38%
     );
 }
 
@@ -360,17 +269,11 @@ body::after {
     top: 12%;
     width: 58%;
     height: 55%;
-    opacity: 0.74;
-    transform: scale(0.76);
+    opacity: .74;
+    transform: scale(.76);
     clip-path: polygon(
-        0 0,
-        39% 20%,
-        57% 16%,
-        52% 36%,
-        82% 54%,
-        58% 55%,
-        47% 80%,
-        36% 52%
+        0 0, 39% 20%, 57% 16%, 52% 36%,
+        82% 54%, 58% 55%, 47% 80%, 36% 52%
     );
 }
 
@@ -379,17 +282,11 @@ body::after {
     top: 18%;
     width: 55%;
     height: 66%;
-    opacity: 0.64;
-    transform: scale(0.79);
+    opacity: .64;
+    transform: scale(.79);
     clip-path: polygon(
-        0 0,
-        34% 27%,
-        42% 13%,
-        46% 48%,
-        80% 62%,
-        53% 65%,
-        20% 81%,
-        27% 56%
+        0 0, 34% 27%, 42% 13%, 46% 48%,
+        80% 62%, 53% 65%, 20% 81%, 27% 56%
     );
 }
 
@@ -424,25 +321,14 @@ body::after {
     background: linear-gradient(
         90deg,
         var(--frame-black) 0%,
-        rgba(88, 82, 92, 0.68) 44%,
+        rgba(88, 82, 92, .68) 44%,
         var(--frame-silver-mid) 72%,
         var(--frame-silver-strong) 100%
     );
     clip-path: polygon(
-        0 0,
-        25% 0,
-        36% 27%,
-        45% 13%,
-        50% 100%,
-        55% 13%,
-        64% 27%,
-        75% 0,
-        100% 0,
-        70% 40%,
-        57% 45%,
-        50% 85%,
-        43% 45%,
-        30% 40%
+        0 0, 25% 0, 36% 27%, 45% 13%, 50% 100%,
+        55% 13%, 64% 27%, 75% 0, 100% 0,
+        70% 40%, 57% 45%, 50% 85%, 43% 45%, 30% 40%
     );
 }
 
@@ -470,38 +356,12 @@ body::after {
     background: linear-gradient(
         180deg,
         var(--frame-black) 0%,
-        rgba(96, 91, 101, 0.68) 54%,
+        rgba(96, 91, 101, .68) 54%,
         var(--frame-silver) 100%
     );
     clip-path: polygon(
-        0 0,
-        0 100%,
-        20% 70%,
-        100% 50%,
-        20% 30%
+        0 0, 0 100%, 20% 70%, 100% 50%, 20% 30%
     );
-}
-
-/* POSICIONAMENTO */
-
-.intro__content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    width: 100%;
-    min-width: 0;
-    min-height: 0;
-    margin: 0 auto;
-    z-index: 2;
-}
-
-.intro__character {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
 }
 
 /* ENVELOPE */
@@ -518,15 +378,13 @@ body::after {
     isolation: isolate;
     width: var(--envelope-width);
     max-width: 100%;
-    min-width: 0;
-    height: auto;
     aspect-ratio: 1.515 / 1;
     margin: 0;
     padding: 0;
     border: 0;
     border-radius: 18px 18px 10px 10px;
     background: transparent;
-    color: var(--white);
+    color: white;
     cursor: pointer;
     transition: transform var(--transition-soft);
 }
@@ -535,13 +393,8 @@ body::after {
     transform: translateY(-4px);
 }
 
-.envelope:active {
-    transform: translateY(0) scale(0.985);
-}
-
 .envelope.is-opening,
-.envelope.is-opening:hover,
-.envelope.is-opening:active {
+.envelope.is-opening:hover {
     transform: none;
     pointer-events: none;
 }
@@ -559,12 +412,10 @@ body::after {
     position: absolute;
     inset: 3% 3% 2%;
     z-index: 0;
-    display: block;
     border-radius: 18px;
-    background: rgba(11, 11, 13, 0.35);
+    background: rgba(11, 11, 13, .35);
     transform: translateY(15px);
     filter: blur(17px);
-    pointer-events: none;
 }
 
 .envelope__back {
@@ -572,21 +423,17 @@ body::after {
     inset: 0;
     z-index: 1;
     display: block;
-    overflow: hidden;
     border: 1px solid #360205;
     border-radius: inherit;
     background: linear-gradient(
         180deg,
-        #a10c10 0%,
+        #a10c10,
         #920608 48%,
-        #680407 100%
+        #680407
     );
-    box-shadow:
-        inset 0 0 0 1px rgba(11, 11, 13, 0.42),
-        inset 0 -12px 20px rgba(37, 2, 5, 0.18);
 }
 
-/* CARTA — MAIS ALTA, COM A BASE DENTRO DO BOLSO */
+/* CARTA */
 
 .envelope__letter-track {
     position: absolute;
@@ -595,35 +442,34 @@ body::after {
     display: block;
     pointer-events: none;
     transform: translateY(0);
-    transition:
-        transform 620ms cubic-bezier(0.2, 0.75, 0.25, 1);
+    transition: transform 620ms cubic-bezier(.2, .75, .25, 1);
 }
 
 .envelope__letter {
     position: absolute;
     left: 17%;
     right: 17%;
-    top: 18%;
-    height: 91%;
+    top: 12%;
+    height: 86%;
     display: block;
-    border: 1px solid rgba(132, 118, 124, 0.34);
-    border-radius: 3px 3px 2px 2px;
+    border: 1px solid rgba(132, 118, 124, .34);
+    border-radius: 3px;
     background: linear-gradient(
         180deg,
-        #f5f0f0 0%,
+        #f5f0f0,
         #ebe2e2 72%,
-        #dbd1d3 100%
+        #dbd1d3
     );
     box-shadow:
-        0 6px 14px rgba(11, 11, 13, 0.18),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+        0 6px 14px rgba(11, 11, 13, .18),
+        inset 0 0 0 1px rgba(255, 255, 255, .25);
 }
 
 .envelope__letter-inner {
     position: absolute;
     inset: 9%;
     display: block;
-    border: 1px solid rgba(167, 150, 156, 0.24);
+    border: 1px solid rgba(167, 150, 156, .24);
 }
 
 .envelope__letter-ornament {
@@ -633,20 +479,14 @@ body::after {
     width: 18px;
     height: 18px;
     transform: translateX(-50%);
-    background: rgba(144, 98, 110, 0.32);
+    background: rgba(144, 98, 110, .32);
     clip-path: polygon(
-        50% 0,
-        62% 38%,
-        100% 50%,
-        62% 62%,
-        50% 100%,
-        38% 62%,
-        0 50%,
-        38% 38%
+        50% 0, 62% 38%, 100% 50%, 62% 62%,
+        50% 100%, 38% 62%, 0 50%, 38% 38%
     );
 }
 
-/* BOLSO — COBRE APENAS A PARTE INFERIOR DA CARTA */
+/* BOLSO */
 
 .envelope__pocket {
     position: absolute;
@@ -659,8 +499,8 @@ body::after {
     visibility: hidden;
     pointer-events: none;
     transition:
-        opacity 200ms ease 170ms,
-        visibility 0s linear 370ms;
+        opacity 180ms ease 160ms,
+        visibility 0s linear 340ms;
 }
 
 .envelope__pocket-front {
@@ -674,9 +514,9 @@ body::after {
         #720408 100%
     );
     clip-path: polygon(
-        0 70%,
-        50% 82%,
-        100% 70%,
+        0 48%,
+        50% 63%,
+        100% 48%,
         100% 100%,
         0 100%
     );
@@ -686,37 +526,33 @@ body::after {
     position: absolute;
     inset: 0;
     display: block;
-    opacity: 0.5;
+    opacity: .5;
     pointer-events: none;
 }
 
 .envelope__pocket-crease--left {
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, .07),
         transparent 65%
     );
     clip-path: polygon(
-        0 70%,
-        50% 82%,
-        0 100%
+        0 48%, 50% 63%, 0 100%
     );
 }
 
 .envelope__pocket-crease--right {
     background: linear-gradient(
         225deg,
-        rgba(0, 0, 0, 0.12),
+        rgba(0, 0, 0, .12),
         transparent 65%
     );
     clip-path: polygon(
-        100% 70%,
-        50% 82%,
-        100% 100%
+        100% 48%, 50% 63%, 100% 100%
     );
 }
 
-/* SUPERFÍCIE ORIGINAL FECHADA */
+/* SUPERFÍCIE FECHADA */
 
 .envelope__body {
     position: absolute;
@@ -732,57 +568,49 @@ body::after {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     box-shadow:
-        inset 0 0 0 1px rgba(11, 11, 13, 0.54),
-        inset 0 0 0 4px rgba(11, 11, 13, 0.1),
-        inset 0 -14px 24px rgba(37, 2, 5, 0.17);
+        inset 0 0 0 1px rgba(11, 11, 13, .54),
+        inset 0 0 0 4px rgba(11, 11, 13, .1),
+        inset 0 -14px 24px rgba(37, 2, 5, .17);
     opacity: 1;
     visibility: visible;
-    pointer-events: none;
     transition:
-        opacity 180ms ease 180ms,
-        visibility 0s linear 360ms;
+        opacity 180ms ease 170ms,
+        visibility 0s linear 350ms;
 }
 
 .envelope__body::before {
     position: absolute;
     inset: 0;
     content: "";
-    pointer-events: none;
-    opacity: 0.3;
-    background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(255, 255, 255, 0.018) 0 1px,
-            transparent 1px 4px
-        ),
-        linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.035),
-            transparent 42%,
-            rgba(11, 11, 13, 0.08)
-        );
+    opacity: .3;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, .035),
+        transparent 42%,
+        rgba(11, 11, 13, .08)
+    );
 }
 
 /* ABA */
 
 .envelope__flap-hinge {
     position: absolute;
-    top: -52%;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 52%;
+    height: 48%;
     z-index: 5;
     display: block;
-    transform-origin: 50% 100%;
-    transform: scaleY(0.02);
+    transform-origin: 50% 0;
+    transform: rotateX(0deg);
     transform-style: preserve-3d;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition:
-        transform 650ms cubic-bezier(0.22, 0.72, 0.24, 1),
-        opacity 160ms ease,
-        visibility 0s linear 160ms;
+        transform 650ms cubic-bezier(.22, .72, .24, 1),
+        opacity 180ms ease,
+        visibility 0s linear 180ms;
 }
 
 .envelope__flap {
@@ -790,7 +618,6 @@ body::after {
     inset: 0;
     display: block;
     transform-style: preserve-3d;
-    pointer-events: none;
 }
 
 .envelope__flap-front,
@@ -799,26 +626,32 @@ body::after {
     inset: 0;
     display: block;
     clip-path: polygon(
-        50% 0,
-        100% 100%,
-        0 100%
+        0 0, 100% 0, 50% 100%
     );
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    pointer-events: none;
 }
 
 .envelope__flap-front {
     background: linear-gradient(
         180deg,
-        #710407 0%,
+        #a30a0e,
         #920608 58%,
-        #a30a0e 100%
+        #710407
     );
 }
 
 .envelope__flap-back {
-    display: none;
+    clip-path: polygon(
+        50% 0, 100% 100%, 0 100%
+    );
+    background: linear-gradient(
+        180deg,
+        #640407,
+        #8b060a 65%,
+        #a10a0e
+    );
+    transform: rotateX(180deg);
 }
 
 /* SELO E TEXTO */
@@ -831,16 +664,10 @@ body::after {
     display: block;
     width: clamp(78px, 15vw, 98px);
     aspect-ratio: 1;
-    border: 0;
-    background-image: url("../IMGS/wax-seal.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    background: url("../IMGS/wax-seal.png") center / contain no-repeat;
     transform: translate(-50%, -50%) rotate(-2deg);
     pointer-events: none;
-    filter:
-        drop-shadow(0 7px 9px rgba(11, 11, 13, 0.28))
-        drop-shadow(0 2px 2px rgba(11, 11, 13, 0.17));
+    filter: drop-shadow(0 7px 9px rgba(11, 11, 13, .28));
     transition:
         opacity 220ms ease,
         transform 260ms ease;
@@ -852,25 +679,25 @@ body::after {
     left: 50%;
     bottom: 11%;
     width: 90%;
-    color: var(--white);
-    font-size: clamp(0.7rem, 2.5vw, 0.92rem);
+    color: white;
+    font-size: clamp(.7rem, 2.5vw, .92rem);
     font-weight: 700;
-    letter-spacing: 0.17em;
+    letter-spacing: .17em;
     line-height: 1.6;
     text-align: center;
-    text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
+    text-shadow: 0 2px 3px rgba(11, 11, 13, .9);
     transform: translateX(-50%);
     pointer-events: none;
     transition: opacity 220ms ease;
 }
 
-/* ESTADOS DA ABERTURA */
+/* ANIMAÇÃO */
 
 .envelope__stage.is-seal-released .envelope__seal {
     opacity: 0;
     transform:
         translate(-50%, -54%)
-        scale(0.7)
+        scale(.7)
         rotate(8deg);
 }
 
@@ -883,7 +710,7 @@ body::after {
     opacity: 1;
     visibility: visible;
     transition:
-        opacity 180ms ease 160ms,
+        opacity 180ms ease 170ms,
         visibility 0s;
 }
 
@@ -891,17 +718,17 @@ body::after {
     opacity: 1;
     visibility: visible;
     transition:
-        transform 650ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        transform 650ms cubic-bezier(.22, .72, .24, 1),
         opacity 180ms ease 150ms,
         visibility 0s;
 }
 
 .envelope__flap-hinge.is-flap-open {
-    transform: scaleY(1);
+    transform: rotateX(-165deg);
 }
 
 .envelope__letter-track.is-letter-revealed {
-    transform: translateY(-33%);
+    transform: translateY(-23%);
 }
 
 .envelope.is-opening .envelope__label {
@@ -933,33 +760,25 @@ body::after {
 
 .particle--red {
     background: var(--blood-red);
-    box-shadow: 0 0 10px rgba(146, 6, 8, 0.32);
 }
 
 .particle--silver {
-    background: var(--white);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+    background: white;
 }
 
 @keyframes particle-rise {
     0% {
         opacity: 0;
-        transform: translate3d(0, 0, 0) scale(0.4);
+        transform: translate3d(0, 0, 0) scale(.4);
     }
 
     20% {
-        opacity: 0.75;
+        opacity: .75;
     }
 
     100% {
         opacity: 0;
-        transform:
-            translate3d(
-                calc((var(--particle-x) - 50%) * 0.08),
-                -32vh,
-                0
-            )
-            scale(1.05);
+        transform: translate3d(0, -32vh, 0) scale(1.05);
     }
 }
 
@@ -969,7 +788,7 @@ body::after {
     .intro__frame {
         inset: 14px;
         --corner-reach: 84px;
-        --rail-gap: calc(var(--corner-reach) * 0.65);
+        --rail-gap: calc(var(--corner-reach) * .65);
     }
 
     .intro__frame .mid {
@@ -1002,8 +821,8 @@ body::after {
 
     .envelope__label {
         bottom: 10%;
-        font-size: clamp(0.58rem, 2.8vw, 0.68rem);
-        letter-spacing: clamp(0.07em, 0.8vw, 0.12em);
+        font-size: clamp(.58rem, 2.8vw, .68rem);
+        letter-spacing: .1em;
     }
 
     .envelope__seal {
@@ -1018,12 +837,11 @@ body::after {
 
 @media (max-width: 320px) {
     :root {
-        --page-padding: 0.875rem;
+        --page-padding: .875rem;
     }
 
     .envelope__label {
-        font-size: 0.56rem;
-        letter-spacing: 0.065em;
+        font-size: .56rem;
     }
 
     .envelope__seal {
@@ -1033,7 +851,7 @@ body::after {
 
 @media (max-height: 520px) {
     .intro {
-        padding-block: max(0.75rem, 3svh);
+        padding-block: max(.75rem, 3svh);
     }
 
     .envelope {
@@ -1049,7 +867,7 @@ body::after {
     .intro__frame {
         inset: 14px;
         --corner-reach: clamp(72px, 13svh, 108px);
-        --rail-gap: calc(var(--corner-reach) * 0.65);
+        --rail-gap: calc(var(--corner-reach) * .65);
     }
 
     .intro__frame .mid {
