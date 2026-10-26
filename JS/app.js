@@ -1,18 +1,10 @@
-
 /* =========================================================
    CONVITE — ALANA 19
-   JAVASCRIPT PRINCIPAL
-
-   - Animação de abertura do envelope
-   - Partículas decorativas
-   - Controle de confirmação de presença
-   - Validação de acompanhantes
-   - Integração com Google Sheets
+   JS PRINCIPAL
    ========================================================= */
 
-
 /* =========================================================
-   1. CONFIGURAÇÕES
+   1. CONFIGURAÇÃO
    ========================================================= */
 
 const CONFIG = {
@@ -24,19 +16,11 @@ const CONFIG = {
         yes: "Eba! Aguardo você!",
         no: "Aw :c resposta enviada com sucesso",
         error: "Não foi possível enviar sua resposta. Tente novamente."
-    },
-
-    ANIMATION: {
-        seal: 300,
-        flap: 1050,
-        letter: 1650,
-        transition: 1900
     }
 };
 
-
 /* =========================================================
-   2. ELEMENTOS DO HTML
+   2. ELEMENTOS
    ========================================================= */
 
 const intro = document.querySelector("#intro");
@@ -59,18 +43,44 @@ const attendanceOptions = document.querySelectorAll(
     'input[name="presenca"]'
 );
 
-
 /* =========================================================
-   3. PREFERÊNCIA DE MOVIMENTO
+   3. MOVIMENTO REDUZIDO
    ========================================================= */
 
-const prefersReducedMotion = window.matchMedia(
+const motionQuery = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
-).matches;
+);
 
+function getAnimationTimings() {
+    if (motionQuery.matches) {
+        return {
+            flapStart: 90,
+            letterStart: 180,
+            transitionEnd: 700
+        };
+    }
+
+    return {
+        flapStart: 220,
+        letterStart: 760,
+        transitionEnd: 1550
+    };
+}
+
+let animationTimings = getAnimationTimings();
+
+function updateMotionPreference() {
+    animationTimings = getAnimationTimings();
+}
+
+if (typeof motionQuery.addEventListener === "function") {
+    motionQuery.addEventListener("change", updateMotionPreference);
+} else if (typeof motionQuery.addListener === "function") {
+    motionQuery.addListener(updateMotionPreference);
+}
 
 /* =========================================================
-   4. CONTROLE DA ANIMAÇÃO
+   4. ABERTURA DO ENVELOPE
    ========================================================= */
 
 let envelopeOpened = false;
@@ -90,11 +100,6 @@ function showInvitation() {
     }
 }
 
-
-/* =========================================================
-   5. ABERTURA DO ENVELOPE
-   ========================================================= */
-
 function openEnvelope() {
     if (envelopeOpened) {
         return;
@@ -110,75 +115,45 @@ function openEnvelope() {
     envelope.classList.add("is-opening");
     intro.classList.add("is-opening");
 
-    if (prefersReducedMotion) {
-        showInvitation();
-        return;
-    }
-
-    createParticles();
-
     /*
-       Etapa 1 — O lacre se solta.
-
-       O CSS anima a opacidade e a escala
-       do selo quando recebe a classe
-       is-opening.
+        Mesmo com movimento reduzido,
+        mantemos a abertura — só deixamos
+        mais curta e sem partículas.
     */
 
     envelopeStage?.classList.add("is-seal-released");
 
-    /*
-       Etapa 2 — A aba se abre.
-
-       O JavaScript adiciona a classe
-       responsável pela dobra da aba
-       após a saída do selo.
-    */
+    if (!motionQuery.matches) {
+        createParticles();
+    }
 
     window.setTimeout(() => {
         envelopeFlap?.classList.add("is-flap-open");
-    }, CONFIG.ANIMATION.seal);
-
-    /*
-       Etapa 3 — A carta é revelada.
-
-       A classe abaixo permite que o CSS
-       deslize a carta para fora do envelope,
-       sem interferir na aba.
-    */
+    }, animationTimings.flapStart);
 
     window.setTimeout(() => {
         envelopeLetter?.classList.add("is-letter-revealed");
-    }, CONFIG.ANIMATION.flap);
-
-    /*
-       Etapa 4 — Exibe o convite.
-
-       A troca de tela ocorre após o
-       movimento completo das camadas.
-    */
+    }, animationTimings.letterStart);
 
     window.setTimeout(() => {
         showInvitation();
-    }, CONFIG.ANIMATION.transition);
+    }, animationTimings.transitionEnd);
 }
-
 
 envelope?.addEventListener("click", openEnvelope);
 
-
 /* =========================================================
-   6. PARTÍCULAS DECORATIVAS
+   5. PARTÍCULAS
    ========================================================= */
 
 function createParticles() {
-    if (!particles || prefersReducedMotion) {
+    if (!particles) {
         return;
     }
 
     particles.replaceChildren();
 
-    const particleCount = 28;
+    const particleCount = 18;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement("span");
@@ -192,12 +167,12 @@ function createParticles() {
 
         particle.style.setProperty(
             "--particle-delay",
-            `${Math.random() * 0.6}s`
+            `${Math.random() * 0.4}s`
         );
 
         particle.style.setProperty(
             "--particle-duration",
-            `${1 + Math.random() * 1.5}s`
+            `${0.9 + Math.random() * 0.8}s`
         );
 
         particle.classList.add(
@@ -210,9 +185,8 @@ function createParticles() {
     }
 }
 
-
 /* =========================================================
-   7. CONTROLE DA PRESENÇA
+   6. CONTROLE DE PRESENÇA
    ========================================================= */
 
 function getAttendance() {
@@ -220,7 +194,6 @@ function getAttendance() {
         'input[name="presenca"]:checked'
     )?.value ?? "";
 }
-
 
 function updateCompanionsField() {
     const attendance = getAttendance();
@@ -245,14 +218,12 @@ function updateCompanionsField() {
     clearFeedback();
 }
 
-
 attendanceOptions.forEach((option) => {
     option.addEventListener("change", updateCompanionsField);
 });
 
-
 /* =========================================================
-   8. VALIDAÇÃO DE ACOMPANHANTES
+   7. VALIDAÇÃO DE ACOMPANHANTES
    ========================================================= */
 
 function validateCompanions() {
@@ -272,7 +243,6 @@ function validateCompanions() {
         );
 
         companions.reportValidity();
-
         return false;
     }
 
@@ -289,15 +259,12 @@ function validateCompanions() {
         );
 
         companions.reportValidity();
-
         return false;
     }
 
     companions.setCustomValidity("");
-
     return true;
 }
-
 
 companions?.addEventListener("input", () => {
     companions.setCustomValidity("");
@@ -316,9 +283,8 @@ companions?.addEventListener("input", () => {
     }
 });
 
-
 /* =========================================================
-   9. MENSAGENS DO FORMULÁRIO
+   8. FEEDBACK
    ========================================================= */
 
 function showFeedback(message, type) {
@@ -330,7 +296,6 @@ function showFeedback(message, type) {
     feedback.dataset.state = type;
 }
 
-
 function clearFeedback() {
     if (!feedback) {
         return;
@@ -340,9 +305,8 @@ function clearFeedback() {
     delete feedback.dataset.state;
 }
 
-
 /* =========================================================
-   10. ENVIO PARA GOOGLE SHEETS
+   9. ENVIO PARA GOOGLE SHEETS
    ========================================================= */
 
 let sending = false;
@@ -369,7 +333,6 @@ form?.addEventListener("submit", async (event) => {
         );
 
         guestName.reportValidity();
-
         return;
     }
 
@@ -380,7 +343,6 @@ form?.addEventListener("submit", async (event) => {
             "Selecione uma opção de presença.",
             "error"
         );
-
         return;
     }
 
@@ -409,7 +371,6 @@ form?.addEventListener("submit", async (event) => {
             "O formulário está pronto, mas falta conectar a planilha.",
             "error"
         );
-
         return;
     }
 
@@ -460,9 +421,8 @@ form?.addEventListener("submit", async (event) => {
     }
 });
 
-
 /* =========================================================
-   11. ESTADO INICIAL
+   10. ESTADO INICIAL
    ========================================================= */
 
 updateCompanionsField();
