@@ -1,14 +1,14 @@
-
 /* =========================================================
    CONVITE — ALANA 19
    ENVELOPE GÓTICO / NEO-TRIBAL
    MOLDURA 02 POLIDA + SELO DE CERA
 
    AJUSTES:
-   - Moldura acompanha o degradê da página
-   - Envelope menor no mobile
-   - Animação da aba corrigida
-   - Carta branca não aparece durante a abertura
+   - borda acompanha o degradê do fundo
+   - parte vermelha/escura fica mais prateada
+   - cantos voltam a ser opacos e escuros
+   - envelope menor no mobile
+   - animação da abertura corrigida
    ========================================================= */
 
 /* =========================================================
@@ -214,7 +214,8 @@ body::after {
 
 /* =========================================================
    5. MOLDURA 02 POLIDA
-   ACOMPANHA O DEGRADÊ DA PÁGINA
+   LINHAS ACOMPANHAM O DEGRADÊ
+   CANTOS ESCUROS E OPACOS
    ========================================================= */
 
 .intro__frame {
@@ -222,14 +223,12 @@ body::after {
     inset: clamp(20px, 2.2vw, 34px);
     pointer-events: none;
 
-    --frame-light: rgba(30, 16, 24, 0.52);
-    --frame-light-accent: rgba(66, 14, 30, 0.28);
+    --frame-dark: rgba(33, 20, 28, 0.86);
+    --frame-dark-soft: rgba(49, 34, 43, 0.74);
 
-    --frame-mid: rgba(29, 14, 22, 0.72);
-    --frame-mid-accent: rgba(72, 12, 28, 0.36);
-
-    --frame-dark: rgba(24, 10, 16, 0.9);
-    --frame-dark-accent: rgba(76, 10, 30, 0.48);
+    --frame-silver-mid: rgba(172, 177, 187, 0.72);
+    --frame-silver: rgba(200, 206, 215, 0.82);
+    --frame-silver-strong: rgba(221, 227, 235, 0.92);
 
     --rail-thickness: 1.4px;
     --corner-reach: clamp(92px, 13vw, 168px);
@@ -269,9 +268,9 @@ body::after {
 
     background: linear-gradient(
         90deg,
-        var(--frame-light) 0%,
-        var(--frame-mid) 52%,
-        var(--frame-dark) 100%
+        var(--frame-dark-soft) 0%,
+        rgba(92, 84, 97, 0.58) 48%,
+        var(--frame-silver-mid) 100%
     );
 }
 
@@ -280,9 +279,9 @@ body::after {
 
     background: linear-gradient(
         90deg,
-        rgba(28, 14, 21, 0.72) 0%,
-        rgba(31, 12, 19, 0.88) 58%,
-        rgba(20, 7, 12, 0.98) 100%
+        rgba(82, 72, 84, 0.62) 0%,
+        var(--frame-silver) 58%,
+        var(--frame-silver-strong) 100%
     );
 }
 
@@ -291,9 +290,9 @@ body::after {
 
     background: linear-gradient(
         180deg,
-        var(--frame-light) 0%,
-        rgba(28, 14, 21, 0.7) 55%,
-        rgba(25, 11, 18, 0.82) 100%
+        var(--frame-dark-soft) 0%,
+        rgba(90, 79, 92, 0.56) 58%,
+        rgba(140, 141, 152, 0.68) 100%
     );
 }
 
@@ -302,9 +301,9 @@ body::after {
 
     background: linear-gradient(
         180deg,
-        rgba(28, 12, 20, 0.78) 0%,
-        rgba(24, 10, 16, 0.9) 55%,
-        rgba(18, 6, 11, 0.98) 100%
+        rgba(126, 121, 133, 0.58) 0%,
+        var(--frame-silver) 55%,
+        var(--frame-silver-strong) 100%
     );
 }
 
@@ -327,9 +326,9 @@ body::after {
     top: 0;
     left: 0;
 
-    --piece-main: var(--frame-light);
-    --piece-accent: var(--frame-light-accent);
-    --piece-shadow: 0.74;
+    --piece-main: rgba(26, 16, 23, 0.78);
+    --piece-accent: rgba(56, 37, 48, 0.42);
+    --piece-shadow: 0.82;
 }
 
 .intro__frame .corner.tr {
@@ -337,9 +336,9 @@ body::after {
     right: 0;
     transform: scaleX(-1);
 
-    --piece-main: rgba(27, 12, 20, 0.76);
-    --piece-accent: rgba(76, 10, 30, 0.34);
-    --piece-shadow: 0.82;
+    --piece-main: rgba(22, 10, 17, 0.88);
+    --piece-accent: rgba(58, 24, 40, 0.46);
+    --piece-shadow: 0.9;
 }
 
 .intro__frame .corner.bl {
@@ -347,9 +346,9 @@ body::after {
     left: 0;
     transform: scaleY(-1);
 
-    --piece-main: rgba(26, 11, 19, 0.8);
-    --piece-accent: rgba(76, 10, 30, 0.38);
-    --piece-shadow: 0.86;
+    --piece-main: rgba(28, 16, 24, 0.86);
+    --piece-accent: rgba(59, 33, 46, 0.44);
+    --piece-shadow: 0.88;
 }
 
 .intro__frame .corner.br {
@@ -357,9 +356,9 @@ body::after {
     right: 0;
     transform: scale(-1);
 
-    --piece-main: rgba(19, 7, 13, 0.96);
-    --piece-accent: rgba(76, 10, 30, 0.5);
-    --piece-shadow: 0.96;
+    --piece-main: rgba(18, 7, 12, 0.96);
+    --piece-accent: rgba(50, 18, 31, 0.52);
+    --piece-shadow: 0.98;
 }
 
 .intro__frame .corner .piece {
@@ -425,7 +424,7 @@ body::after {
     top: 12%;
     width: 69%;
     height: 61%;
-    opacity: 0.7;
+    opacity: 0.72;
     transform: scale(0.76);
 
     clip-path: polygon(
@@ -445,7 +444,7 @@ body::after {
     top: 18%;
     width: 65%;
     height: 76%;
-    opacity: 0.6;
+    opacity: 0.62;
     transform: scale(0.79);
 
     clip-path: polygon(
@@ -467,7 +466,7 @@ body::after {
     height: 58%;
 
     background: var(--piece-accent);
-    opacity: 0.8;
+    opacity: 0.84;
     transform: rotate(-34deg);
 }
 
@@ -484,7 +483,7 @@ body::after {
         var(--piece-accent) 100%
     );
 
-    opacity: 0.68;
+    opacity: 0.72;
     transform: rotate(36deg);
 }
 
@@ -495,7 +494,7 @@ body::after {
     height: 12%;
 
     background: var(--piece-main);
-    opacity: 0.64;
+    opacity: 0.68;
     transform: scale(0.68);
 
     clip-path: polygon(
@@ -537,9 +536,9 @@ body::after {
 
     background: linear-gradient(
         90deg,
-        rgba(27, 15, 22, 0.65) 0%,
-        rgba(38, 13, 24, 0.82) 50%,
-        rgba(21, 7, 13, 0.95) 100%
+        rgba(61, 50, 63, 0.56) 0%,
+        var(--frame-silver-mid) 58%,
+        var(--frame-silver-strong) 100%
     );
 
     clip-path: polygon(
@@ -586,9 +585,9 @@ body::after {
 
     background: linear-gradient(
         180deg,
-        rgba(31, 16, 24, 0.66) 0%,
-        rgba(27, 12, 19, 0.84) 60%,
-        rgba(20, 7, 13, 0.96) 100%
+        rgba(70, 58, 71, 0.58) 0%,
+        var(--frame-silver-mid) 64%,
+        var(--frame-silver-strong) 100%
     );
 
     clip-path: polygon(
@@ -957,17 +956,6 @@ body::after {
 /* =========================================================
    14. ABERTURA ANIMADA — CORRIGIDA
    ========================================================= */
-
-/*
-   A aba recolhe pela profundidade em vez de
-   completar uma rotação de 180 graus.
-
-   A carta interna permanece escondida para não
-   aparecer como um retângulo vazio.
-
-   O JavaScript continua responsável pela
-   transição para a página principal.
-*/
 
 .envelope.is-opening,
 .intro.is-opening .envelope {
