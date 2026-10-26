@@ -1,17 +1,9 @@
-/* =========================================================
-   CONVITE — ALANA 19
-   JS PRINCIPAL
-   ========================================================= */
 
-/* =========================================================
-   1. CONFIGURAÇÃO
-   ========================================================= */
+/* CONVITE — ALANA 19 */
 
 const CONFIG = {
     SHEETS_URL: "https://script.google.com/macros/s/AKfycbzHBsqtEphQOgcTPlGJyX2KX_EdrZVTfIi5yJ6MR7oo1VBgm6b5613O5axV7G9QS9ur/exec",
-
     MAX_COMPANIONS: 4,
-
     MESSAGES: {
         yes: "Eba! Aguardo você!",
         no: "Aw :c resposta enviada com sucesso",
@@ -19,15 +11,12 @@ const CONFIG = {
     }
 };
 
-/* =========================================================
-   2. ELEMENTOS
-   ========================================================= */
+/* ELEMENTOS */
 
 const intro = document.querySelector("#intro");
 const envelope = document.querySelector("#open-envelope");
 const invitation = document.querySelector("#invitation");
 const particles = document.querySelector("#particles");
-
 const envelopeStage = document.querySelector(".envelope__stage");
 const envelopeFlap = document.querySelector(".envelope__flap-hinge");
 const envelopeLetter = document.querySelector(".envelope__letter-track");
@@ -38,57 +27,15 @@ const companions = document.querySelector("#companions");
 const companionsField = document.querySelector("#companions-field");
 const feedback = document.querySelector("#rsvp-feedback");
 const submitButton = document.querySelector("#rsvp-submit");
+const attendanceOptions = document.querySelectorAll('input[name="presenca"]');
+const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-const attendanceOptions = document.querySelectorAll(
-    'input[name="presenca"]'
-);
-
-/* =========================================================
-   3. MOVIMENTO REDUZIDO
-   ========================================================= */
-
-const motionQuery = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-);
-
-function getAnimationTimings() {
-    if (motionQuery.matches) {
-        return {
-            flapStart: 90,
-            letterStart: 180,
-            transitionEnd: 700
-        };
-    }
-
-    return {
-        flapStart: 220,
-        letterStart: 760,
-        transitionEnd: 1550
-    };
-}
-
-let animationTimings = getAnimationTimings();
-
-function updateMotionPreference() {
-    animationTimings = getAnimationTimings();
-}
-
-if (typeof motionQuery.addEventListener === "function") {
-    motionQuery.addEventListener("change", updateMotionPreference);
-} else if (typeof motionQuery.addListener === "function") {
-    motionQuery.addListener(updateMotionPreference);
-}
-
-/* =========================================================
-   4. ABERTURA DO ENVELOPE
-   ========================================================= */
+/* ANIMAÇÃO DO ENVELOPE */
 
 let envelopeOpened = false;
 
 function showInvitation() {
-    if (intro) {
-        intro.hidden = true;
-    }
+    if (intro) intro.hidden = true;
 
     if (invitation) {
         invitation.hidden = false;
@@ -98,67 +45,28 @@ function showInvitation() {
     if (envelope) {
         envelope.setAttribute("aria-expanded", "true");
     }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 }
-
-function openEnvelope() {
-    if (envelopeOpened) {
-        return;
-    }
-
-    envelopeOpened = true;
-
-    if (!envelope || !intro) {
-        showInvitation();
-        return;
-    }
-
-    envelope.classList.add("is-opening");
-    intro.classList.add("is-opening");
-
-    /*
-        Mesmo com movimento reduzido,
-        mantemos a abertura — só deixamos
-        mais curta e sem partículas.
-    */
-
-    envelopeStage?.classList.add("is-seal-released");
-
-    if (!motionQuery.matches) {
-        createParticles();
-    }
-
-    window.setTimeout(() => {
-        envelopeFlap?.classList.add("is-flap-open");
-    }, animationTimings.flapStart);
-
-    window.setTimeout(() => {
-        envelopeLetter?.classList.add("is-letter-revealed");
-    }, animationTimings.letterStart);
-
-    window.setTimeout(() => {
-        showInvitation();
-    }, animationTimings.transitionEnd);
-}
-
-envelope?.addEventListener("click", openEnvelope);
-
-/* =========================================================
-   5. PARTÍCULAS
-   ========================================================= */
 
 function createParticles() {
-    if (!particles) {
-        return;
-    }
+    if (!particles || motionQuery.matches) return;
 
     particles.replaceChildren();
 
-    const particleCount = 18;
+    const count = 18;
 
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < count; i++) {
         const particle = document.createElement("span");
 
-        particle.classList.add("particle");
+        particle.className = `particle ${
+            Math.random() > 0.5
+                ? "particle--red"
+                : "particle--silver"
+        }`;
 
         particle.style.setProperty(
             "--particle-x",
@@ -175,19 +83,56 @@ function createParticles() {
             `${0.9 + Math.random() * 0.8}s`
         );
 
-        particle.classList.add(
-            Math.random() > 0.5
-                ? "particle--red"
-                : "particle--silver"
-        );
-
         particles.appendChild(particle);
     }
 }
 
-/* =========================================================
-   6. CONTROLE DE PRESENÇA
-   ========================================================= */
+function openEnvelope() {
+    if (envelopeOpened) return;
+
+    envelopeOpened = true;
+
+    if (!envelope || !intro || !invitation) {
+        showInvitation();
+        return;
+    }
+
+    const reduced = motionQuery.matches;
+
+    const timings = reduced
+        ? {
+            flap: 90,
+            letter: 310,
+            finish: 780
+        }
+        : {
+            flap: 220,
+            letter: 760,
+            finish: 1550
+        };
+
+    envelope.classList.add("is-opening");
+    intro.classList.add("is-opening");
+    envelopeStage?.classList.add("is-seal-released");
+
+    if (!reduced) {
+        createParticles();
+    }
+
+    window.setTimeout(() => {
+        envelopeFlap?.classList.add("is-flap-open");
+    }, timings.flap);
+
+    window.setTimeout(() => {
+        envelopeLetter?.classList.add("is-letter-revealed");
+    }, timings.letter);
+
+    window.setTimeout(showInvitation, timings.finish);
+}
+
+envelope?.addEventListener("click", openEnvelope);
+
+/* CONFIRMAÇÃO DE PRESENÇA */
 
 function getAttendance() {
     return document.querySelector(
@@ -195,22 +140,33 @@ function getAttendance() {
     )?.value ?? "";
 }
 
+function clearFeedback() {
+    if (!feedback) return;
+
+    feedback.textContent = "";
+    delete feedback.dataset.state;
+}
+
+function showFeedback(message, state) {
+    if (!feedback) return;
+
+    feedback.textContent = message;
+    feedback.dataset.state = state;
+}
+
 function updateCompanionsField() {
-    const attendance = getAttendance();
-    const willAttend = attendance === "Sim";
+    if (!companions) return;
 
-    if (!companions) {
-        return;
-    }
+    const attending = getAttendance() === "Sim";
 
-    companions.disabled = !willAttend;
-    companions.required = willAttend;
+    companions.disabled = !attending;
+    companions.required = attending;
 
     if (companionsField) {
-        companionsField.hidden = !willAttend;
+        companionsField.hidden = !attending;
     }
 
-    if (!willAttend) {
+    if (!attending) {
         companions.value = "";
         companions.setCustomValidity("");
     }
@@ -222,107 +178,52 @@ attendanceOptions.forEach((option) => {
     option.addEventListener("change", updateCompanionsField);
 });
 
-/* =========================================================
-   7. VALIDAÇÃO DE ACOMPANHANTES
-   ========================================================= */
-
-function validateCompanions() {
-    if (getAttendance() !== "Sim") {
-        return true;
-    }
-
-    if (!companions) {
-        return false;
-    }
-
-    const rawValue = companions.value.trim();
-
-    if (rawValue === "") {
-        companions.setCustomValidity(
-            "Informe a quantidade de acompanhantes."
-        );
-
-        companions.reportValidity();
-        return false;
-    }
-
-    const quantity = Number(rawValue);
-
-    const valid =
-        Number.isInteger(quantity) &&
-        quantity >= 0 &&
-        quantity <= CONFIG.MAX_COMPANIONS;
-
-    if (!valid) {
-        companions.setCustomValidity(
-            "Informe um número inteiro de 0 a 4."
-        );
-
-        companions.reportValidity();
-        return false;
-    }
-
-    companions.setCustomValidity("");
-    return true;
-}
+guestName?.addEventListener("input", () => {
+    guestName.setCustomValidity("");
+    clearFeedback();
+});
 
 companions?.addEventListener("input", () => {
     companions.setCustomValidity("");
     clearFeedback();
-
-    if (companions.value !== "") {
-        const quantity = Number(companions.value);
-
-        if (quantity > CONFIG.MAX_COMPANIONS) {
-            companions.value = String(CONFIG.MAX_COMPANIONS);
-        }
-
-        if (quantity < 0) {
-            companions.value = "0";
-        }
-    }
 });
 
-/* =========================================================
-   8. FEEDBACK
-   ========================================================= */
+function validateCompanions() {
+    if (getAttendance() !== "Sim") return true;
+    if (!companions) return false;
 
-function showFeedback(message, type) {
-    if (!feedback) {
-        return;
+    const raw = companions.value.trim();
+    const count = Number(raw);
+
+    const valid =
+        raw !== "" &&
+        Number.isInteger(count) &&
+        count >= 0 &&
+        count <= CONFIG.MAX_COMPANIONS;
+
+    companions.setCustomValidity(
+        valid
+            ? ""
+            : "Informe um número inteiro de 0 a 4."
+    );
+
+    if (!valid) {
+        companions.reportValidity();
     }
 
-    feedback.textContent = message;
-    feedback.dataset.state = type;
+    return valid;
 }
 
-function clearFeedback() {
-    if (!feedback) {
-        return;
-    }
-
-    feedback.textContent = "";
-    delete feedback.dataset.state;
-}
-
-/* =========================================================
-   9. ENVIO PARA GOOGLE SHEETS
-   ========================================================= */
+/* ENVIO PARA O GOOGLE SHEETS */
 
 let sending = false;
 
 form?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (sending) {
-        return;
-    }
+    if (sending || !guestName || !submitButton) return;
 
     clearFeedback();
-
-    if (!guestName || !submitButton) {
-        return;
-    }
 
     const name = guestName.value.trim();
     const attendance = getAttendance();
@@ -346,47 +247,24 @@ form?.addEventListener("submit", async (event) => {
         return;
     }
 
-    if (!validateCompanions()) {
-        return;
-    }
+    if (!validateCompanions()) return;
 
-    const companionCount =
-        attendance === "Sim"
-            ? Number(companions.value)
-            : "";
-
-    const payload = {
+    const body = new URLSearchParams({
         nome: name,
         presenca: attendance,
-        acompanhantes: companionCount
-    };
-
-    if (
-        !CONFIG.SHEETS_URL ||
-        CONFIG.SHEETS_URL.includes(
-            "COLE_A_URL_DO_GOOGLE_APPS_SCRIPT_AQUI"
-        )
-    ) {
-        showFeedback(
-            "O formulário está pronto, mas falta conectar a planilha.",
-            "error"
-        );
-        return;
-    }
+        acompanhantes:
+            attendance === "Sim"
+                ? companions.value
+                : ""
+    });
 
     sending = true;
     submitButton.disabled = true;
 
-    const originalButtonText = submitButton.textContent;
+    const originalLabel = submitButton.textContent;
     submitButton.textContent = "Enviando...";
 
     try {
-        const body = new URLSearchParams({
-            nome: payload.nome,
-            presenca: payload.presenca,
-            acompanhantes: String(payload.acompanhantes)
-        });
-
         await fetch(CONFIG.SHEETS_URL, {
             method: "POST",
             mode: "no-cors",
@@ -397,9 +275,9 @@ form?.addEventListener("submit", async (event) => {
         updateCompanionsField();
 
         showFeedback(
-            CONFIG.MESSAGES[
-                attendance === "Sim" ? "yes" : "no"
-            ],
+            attendance === "Sim"
+                ? CONFIG.MESSAGES.yes
+                : CONFIG.MESSAGES.no,
             "success"
         );
 
@@ -417,12 +295,10 @@ form?.addEventListener("submit", async (event) => {
     } finally {
         sending = false;
         submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
+        submitButton.textContent = originalLabel;
     }
 });
 
-/* =========================================================
-   10. ESTADO INICIAL
-   ========================================================= */
+/* ESTADO INICIAL */
 
 updateCompanionsField();

@@ -4,14 +4,11 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <meta name="theme-color" content="#0b0b0d">
-
     <meta
         name="description"
         content="Convite de aniversário da Alana."
@@ -19,41 +16,18 @@
 
     <title>Convite</title>
 
-    <!-- =========================================
-        FAVICON
-    ========================================== -->
-
     <link
         rel="icon"
         type="image/svg+xml"
         href="/INVITE/IMGS/favicon.svg"
     >
-
-    <!-- =========================================
-        CSS
-    ========================================== -->
-
-    <link
-        rel="stylesheet"
-        href="CSS/style.css"
-    >
-
-    <!-- =========================================
-        JAVASCRIPT
-    ========================================== -->
-
-    <script
-        src="JS/app.js"
-        defer
-    ></script>
-
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/app.js" defer></script>
 </head>
 
 <body>
 
-    <!-- =========================================
-        ABERTURA DO CONVITE
-    ========================================== -->
+    <!-- ABERTURA -->
 
     <section
         class="intro"
@@ -61,27 +35,19 @@
         aria-label="Abertura do convite"
     >
 
-        <!-- =====================================
-            ATMOSFERA E MOLDURA
-        ====================================== -->
-
         <div
             class="intro__atmosphere"
             aria-hidden="true"
         >
 
-            <!-- MOLDURA 02 POLIDA — INTOCÁVEL -->
+            <!-- MOLDURA 02 POLIDA — PRESERVADA -->
 
             <div class="intro__frame">
-
-                <!-- Linhas estruturais -->
 
                 <i class="rail top"></i>
                 <i class="rail right"></i>
                 <i class="rail bottom"></i>
                 <i class="rail left"></i>
-
-                <!-- Canto superior esquerdo -->
 
                 <div class="corner tl">
                     <i class="piece c1"></i>
@@ -93,8 +59,6 @@
                     <i class="piece c7"></i>
                 </div>
 
-                <!-- Canto superior direito -->
-
                 <div class="corner tr">
                     <i class="piece c1"></i>
                     <i class="piece c2"></i>
@@ -104,8 +68,6 @@
                     <i class="piece c6"></i>
                     <i class="piece c7"></i>
                 </div>
-
-                <!-- Canto inferior esquerdo -->
 
                 <div class="corner bl">
                     <i class="piece c1"></i>
@@ -117,8 +79,6 @@
                     <i class="piece c7"></i>
                 </div>
 
-                <!-- Canto inferior direito -->
-
                 <div class="corner br">
                     <i class="piece c1"></i>
                     <i class="piece c2"></i>
@@ -129,8 +89,6 @@
                     <i class="piece c7"></i>
                 </div>
 
-                <!-- Ornamentos centrais -->
-
                 <div class="mid top"></div>
                 <div class="mid bottom"></div>
 
@@ -139,16 +97,10 @@
 
             </div>
 
-            <!-- Camadas atmosféricas -->
-
             <div class="intro__glow intro__glow--red"></div>
             <div class="intro__glow intro__glow--silver"></div>
 
         </div>
-
-        <!-- =====================================
-            PERSONAGEM DECORATIVO
-        ====================================== -->
 
         <div
             class="intro__character"
@@ -156,15 +108,9 @@
             aria-hidden="true"
         ></div>
 
-        <!-- =====================================
-            CONTEÚDO CENTRAL
-        ====================================== -->
-
         <div class="intro__content">
 
-            <!-- =================================
-                ENVELOPE INTERATIVO
-            ================================== -->
+            <!-- ENVELOPE -->
 
             <button
                 class="envelope"
@@ -175,30 +121,16 @@
                 aria-expanded="false"
             >
 
-                <!-- =================================
-                    PALCO DO ENVELOPE
-                ================================== -->
-
                 <span
                     class="envelope__stage"
                     aria-hidden="true"
                 >
 
-                    <!-- =================================
-                        1. SOMBRA INDEPENDENTE
-                    ================================== -->
-
                     <span class="envelope__shadow"></span>
-
-                    <!-- =================================
-                        2. PARTE TRASEIRA.
-                    ================================== -->
 
                     <span class="envelope__back"></span>
 
-                    <!-- =================================
-                        3. CARTA INTERNA
-                    ================================== -->
+                    <!-- CARTA -->
 
                     <span class="envelope__letter-track">
 
@@ -216,53 +148,37 @@
 
                     </span>
 
-                    <!-- =================================
-                        4. BOLSO FRONTAL ABERTO
-                    ================================== -->
+                    <!-- BOLSO DO ENVELOPE ABERTO -->
 
                     <span class="envelope__pocket">
 
-                        <!-- Dobra lateral esquerda -->
-
                         <span
-                            class="envelope__pocket-left"
+                            class="envelope__pocket-front"
                         ></span>
 
-                        <!-- Dobra lateral direita -->
-
                         <span
-                            class="envelope__pocket-right"
+                            class="envelope__pocket-crease envelope__pocket-crease--left"
                         ></span>
 
-                        <!-- Dobra inferior -->
-
                         <span
-                            class="envelope__pocket-bottom"
+                            class="envelope__pocket-crease envelope__pocket-crease--right"
                         ></span>
 
                     </span>
 
-                    <!-- =================================
-                        5. SUPERFÍCIE ORIGINAL
-                    ================================== -->
+                    <!-- SUPERFÍCIE ORIGINAL DO ENVELOPE -->
 
                     <span class="envelope__body"></span>
 
-                    <!-- =================================
-                        6. ABA SUPERIOR
-                    ================================== -->
+                    <!-- ABA COM FRENTE E VERSO -->
 
                     <span class="envelope__flap-hinge">
 
                         <span class="envelope__flap">
 
-                            <!-- Face externa -->
-
                             <span
                                 class="envelope__flap-front"
                             ></span>
-
-                            <!-- Face interna -->
 
                             <span
                                 class="envelope__flap-back"
@@ -272,15 +188,9 @@
 
                     </span>
 
-                    <!-- =================================
-                        7. SELO DE CERA
-                    ================================== -->
+                    <!-- SELO ORIGINAL -->
 
                     <span class="envelope__seal"></span>
-
-                    <!-- =================================
-                        8. TEXTO ORIGINAL
-                    ================================== -->
 
                     <span class="envelope__label">
                         VOCÊ ESTÁ CONVIDADO
@@ -292,10 +202,6 @@
 
         </div>
 
-        <!-- =====================================
-            PARTÍCULAS
-        ====================================== -->
-
         <div
             class="particles"
             id="particles"
@@ -304,9 +210,7 @@
 
     </section>
 
-    <!-- =========================================
-        PÁGINA PRINCIPAL DO CONVITE
-    ========================================== -->
+    <!-- PÁGINA PRINCIPAL -->
 
     <main
         class="invitation"
@@ -315,9 +219,7 @@
         hidden
     >
 
-        <!-- =====================================
-            CABEÇALHO
-        ====================================== -->
+        <!-- CABEÇALHO -->
 
         <header class="masthead">
 
@@ -336,9 +238,7 @@
 
         </header>
 
-        <!-- =====================================
-            APRESENTAÇÃO
-        ====================================== -->
+        <!-- APRESENTAÇÃO -->
 
         <section
             class="hero"
@@ -387,9 +287,7 @@
 
         </section>
 
-        <!-- =====================================
-            INFORMAÇÕES DO ANIVERSÁRIO
-        ====================================== -->
+        <!-- INFORMAÇÕES -->
 
         <section
             class="details"
@@ -405,8 +303,6 @@
 
             <div class="details__grid">
 
-                <!-- DATA -->
-
                 <article class="detail detail--date">
 
                     <span class="detail__label">
@@ -419,8 +315,6 @@
 
                 </article>
 
-                <!-- HORÁRIO -->
-
                 <article class="detail detail--time">
 
                     <span class="detail__label">
@@ -432,8 +326,6 @@
                     </p>
 
                 </article>
-
-                <!-- LOCAL -->
 
                 <article class="detail detail--location">
 
@@ -458,9 +350,7 @@
 
         </section>
 
-        <!-- =====================================
-            CARDÁPIO
-        ====================================== -->
+        <!-- CARDÁPIO -->
 
         <section
             class="menu"
@@ -507,9 +397,7 @@
 
         </section>
 
-        <!-- =====================================
-            CONFIRMAÇÃO DE PRESENÇA
-        ====================================== -->
+        <!-- CONFIRMAÇÃO -->
 
         <section
             class="rsvp"
@@ -537,8 +425,6 @@
                     id="rsvp-form"
                 >
 
-                    <!-- Nome -->
-
                     <div class="form-field">
 
                         <label for="guest-name">
@@ -556,8 +442,6 @@
                         >
 
                     </div>
-
-                    <!-- Presença -->
 
                     <fieldset
                         class="form-field form-field--attendance"
@@ -603,8 +487,6 @@
 
                     </fieldset>
 
-                    <!-- Acompanhantes -->
-
                     <div
                         class="form-field"
                         id="companions-field"
@@ -629,8 +511,6 @@
 
                     </div>
 
-                    <!-- Envio -->
-
                     <button
                         class="rsvp__submit"
                         id="rsvp-submit"
@@ -638,8 +518,6 @@
                     >
                         Enviar resposta
                     </button>
-
-                    <!-- Mensagem de retorno -->
 
                     <p
                         class="rsvp__feedback"

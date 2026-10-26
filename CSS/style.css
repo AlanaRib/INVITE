@@ -1,26 +1,20 @@
 
-/* =========================================================
-   CONVITE — ALANA 19
-   ========================================================= */
+/* CONVITE — ALANA 19 */
 
 :root {
     --silver-light: #e8edf2;
     --silver: #cbd2db;
     --silver-dark: #8f98a4;
-
     --blood-red: #920608;
-    --blood-red-soft: #a10d10;
     --blood-dark: #4b0307;
     --blood-deep: #250205;
-
     --black: #0b0b0d;
     --white: #fffdfd;
-
     --page-padding: clamp(1.25rem, 5vw, 4rem);
     --transition-soft: 350ms ease;
 }
 
-/* RESET */
+/* BASE */
 
 * {
     box-sizing: border-box;
@@ -151,12 +145,7 @@ body::after {
     place-items: center;
     min-height: 100vh;
     min-height: 100svh;
-    padding:
-        clamp(1.25rem, 5vh, 5rem)
-        var(--page-padding);
-    padding:
-        clamp(1.25rem, 5svh, 5rem)
-        var(--page-padding);
+    padding: clamp(1.25rem, 5svh, 5rem) var(--page-padding);
     overflow: hidden;
     isolation: isolate;
 }
@@ -493,7 +482,7 @@ body::after {
     );
 }
 
-/* CONTEÚDO CENTRAL */
+/* POSICIONAMENTO */
 
 .intro__content {
     position: relative;
@@ -521,12 +510,6 @@ body::after {
     --envelope-width: min(
         500px,
         calc(100vw - var(--page-padding) * 2 - 32px),
-        72vh
-    );
-
-    --envelope-width: min(
-        500px,
-        calc(100vw - var(--page-padding) * 2 - 32px),
         72svh
     );
 
@@ -545,7 +528,6 @@ body::after {
     background: transparent;
     color: var(--white);
     cursor: pointer;
-    filter: none;
     transition: transform var(--transition-soft);
 }
 
@@ -572,8 +554,6 @@ body::after {
     perspective: 1200px;
     overflow: visible;
 }
-
-/* SOMBRA E PARTE TRASEIRA */
 
 .envelope__shadow {
     position: absolute;
@@ -666,7 +646,7 @@ body::after {
     );
 }
 
-/* BOLSO FRONTAL ABERTO */
+/* BOLSO ABERTO */
 
 .envelope__pocket {
     position: absolute;
@@ -679,85 +659,64 @@ body::after {
     visibility: hidden;
     pointer-events: none;
     transition:
-        opacity 180ms ease 240ms,
-        visibility 0s linear 420ms;
+        opacity 200ms ease 170ms,
+        visibility 0s linear 370ms;
 }
 
-.envelope__pocket-left,
-.envelope__pocket-right,
-.envelope__pocket-bottom {
+.envelope__pocket-front {
     position: absolute;
     inset: 0;
     display: block;
-}
-
-/* Dobras laterais apoiadas sobre a dobra inferior. */
-
-.envelope__pocket-left {
-    z-index: 2;
     background: linear-gradient(
-        135deg,
-        #a80c10 0%,
-        #920608 60%,
-        #730407 100%
+        150deg,
+        #a20a0e 0%,
+        #920608 48%,
+        #720408 100%
     );
     clip-path: polygon(
-        0 30%,
-        52% 62%,
+        0 43%,
+        50% 62%,
+        100% 43%,
+        100% 100%,
         0 100%
     );
 }
 
-.envelope__pocket-right {
-    z-index: 2;
+.envelope__pocket-crease {
+    position: absolute;
+    inset: 0;
+    display: block;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.envelope__pocket-crease--left {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.07),
+        transparent 65%
+    );
+    clip-path: polygon(
+        0 43%,
+        50% 62%,
+        0 100%
+    );
+}
+
+.envelope__pocket-crease--right {
     background: linear-gradient(
         225deg,
-        #a80c10 0%,
-        #920608 60%,
-        #730407 100%
+        rgba(0, 0, 0, 0.12),
+        transparent 65%
     );
     clip-path: polygon(
-        100% 30%,
-        48% 62%,
+        100% 43%,
+        50% 62%,
         100% 100%
     );
 }
 
-.envelope__pocket-bottom {
-    z-index: 3;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.025),
-            rgba(35, 1, 5, 0.10)
-        ),
-        linear-gradient(
-            180deg,
-            #a10a0e 0%,
-            #920608 50%,
-            #790407 100%
-        );
-    clip-path: polygon(
-        0 100%,
-        50% 52%,
-        100% 100%
-    );
-}
-
-/*
-   Uma base contínua impede que apareçam frestas
-   entre as três dobras.
-*/
-
-.envelope__pocket::before {
-    position: absolute;
-    inset: 29% 0 0;
-    z-index: 0;
-    content: "";
-    background: #8b0509;
-}
-
-/* SUPERFÍCIE ORIGINAL DO ENVELOPE FECHADO */
+/* SUPERFÍCIE ORIGINAL */
 
 .envelope__body {
     position: absolute;
@@ -780,8 +739,8 @@ body::after {
     visibility: visible;
     pointer-events: none;
     transition:
-        opacity 240ms ease 160ms,
-        visibility 0s linear 400ms;
+        opacity 180ms ease 180ms,
+        visibility 0s linear 360ms;
 }
 
 .envelope__body::before {
@@ -804,31 +763,26 @@ body::after {
         );
 }
 
-.envelope__body::after {
-    content: none;
-    display: none;
-}
-
-/* ABA COM DUAS FACES */
+/* ABA */
 
 .envelope__flap-hinge {
     position: absolute;
-    top: 30%;
+    top: -52%;
     left: 0;
     width: 100%;
-    height: 39%;
+    height: 52%;
     z-index: 5;
     display: block;
-    transform-origin: 50% 0%;
-    transform: rotateX(0deg);
+    transform-origin: 50% 100%;
+    transform: scaleY(0.02);
     transform-style: preserve-3d;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition:
-        transform 680ms cubic-bezier(0.22, 0.72, 0.24, 1),
-        opacity 150ms ease,
-        visibility 0s linear 150ms;
+        transform 650ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        opacity 160ms ease,
+        visibility 0s linear 160ms;
 }
 
 .envelope__flap {
@@ -845,9 +799,9 @@ body::after {
     inset: 0;
     display: block;
     clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
+        50% 0,
+        100% 100%,
+        0 100%
     );
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -857,20 +811,14 @@ body::after {
 .envelope__flap-front {
     background: linear-gradient(
         180deg,
-        #a30a0e 0%,
+        #710407 0%,
         #920608 58%,
-        #710407 100%
+        #a30a0e 100%
     );
 }
 
 .envelope__flap-back {
-    background: linear-gradient(
-        180deg,
-        #640407 0%,
-        #8b060a 65%,
-        #a10a0e 100%
-    );
-    transform: rotateX(180deg);
+    display: none;
 }
 
 /* SELO E TEXTO */
@@ -916,7 +864,7 @@ body::after {
     transition: opacity 220ms ease;
 }
 
-/* ANIMAÇÃO */
+/* ESTADOS DA ANIMAÇÃO */
 
 .envelope__stage.is-seal-released .envelope__seal {
     opacity: 0;
@@ -943,17 +891,17 @@ body::after {
     opacity: 1;
     visibility: visible;
     transition:
-        transform 680ms cubic-bezier(0.22, 0.72, 0.24, 1),
-        opacity 150ms ease 200ms,
+        transform 650ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        opacity 180ms ease 150ms,
         visibility 0s;
 }
 
 .envelope__flap-hinge.is-flap-open {
-    transform: rotateX(160deg);
+    transform: scaleY(1);
 }
 
 .envelope__letter-track.is-letter-revealed {
-    transform: translateY(-32%);
+    transform: translateY(-35%);
 }
 
 .envelope.is-opening .envelope__label {
@@ -1041,17 +989,10 @@ body::after {
     }
 
     .intro {
-        padding-block: clamp(1.25rem, 5vh, 2rem);
         padding-block: clamp(1.25rem, 5svh, 2rem);
     }
 
     .envelope {
-        --envelope-width: min(
-            325px,
-            calc(100vw - var(--page-padding) * 2 - 12px),
-            133vh
-        );
-
         --envelope-width: min(
             325px,
             calc(100vw - var(--page-padding) * 2 - 12px),
@@ -1092,7 +1033,6 @@ body::after {
 
 @media (max-height: 520px) {
     .intro {
-        padding-block: max(0.75rem, 3vh);
         padding-block: max(0.75rem, 3svh);
     }
 
@@ -1100,13 +1040,7 @@ body::after {
         --envelope-width: min(
             440px,
             calc(100vw - var(--page-padding) * 2),
-            133vh
-        );
-
-        --envelope-width: min(
-            440px,
-            calc(100vw - var(--page-padding) * 2),
-            133svh
+            115svh
         );
     }
 }
