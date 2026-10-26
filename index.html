@@ -4,7 +4,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <meta name="theme-color" content="#0b0b0d">
 
     <meta
@@ -14,9 +19,22 @@
 
     <title>Convite</title>
 
-    <link rel="icon" type="image/svg+xml" href="/INVITE/IMGS/favicon.svg">
+    <!-- Favicon -->
+
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="/INVITE/IMGS/favicon.svg"
+    >
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- JavaScript -->
+
     <script src="JS/app.js" defer></script>
+
 </head>
 
 <body>
@@ -31,11 +49,17 @@
         aria-label="Abertura do convite"
     >
 
-        <div class="intro__atmosphere" aria-hidden="true">
+        <div
+            class="intro__atmosphere"
+            aria-hidden="true"
+        >
 
-            <!-- MOLDURA 02 POLIDA — HTML/CSS -->
+            <!-- =================================
+                 MOLDURA 02 POLIDA
+                 Construída com HTML + CSS
+            ================================== -->
 
-            <div class="intro__frame" aria-hidden="true">
+            <div class="intro__frame">
 
                 <!-- Linhas estruturais -->
 
@@ -102,18 +126,26 @@
 
             </div>
 
+            <!-- Camadas atmosféricas -->
+
             <div class="intro__glow intro__glow--red"></div>
             <div class="intro__glow intro__glow--silver"></div>
 
         </div>
 
-        <!-- Personagem decorativo próximo ao envelope -->
+        <!-- =====================================
+             PERSONAGEM DECORATIVO
+        ====================================== -->
 
         <div
             class="intro__character"
             data-art="intro-character"
             aria-hidden="true"
         ></div>
+
+        <!-- =====================================
+             ENVELOPE
+        ====================================== -->
 
         <div class="intro__content">
 
@@ -125,32 +157,58 @@
                 aria-controls="invitation"
             >
 
+                <!-- Sombra -->
+
                 <span
                     class="envelope__shadow"
                     aria-hidden="true"
                 ></span>
+
+                <!-- Corpo vermelho com ornamentação -->
 
                 <span
                     class="envelope__body"
                     aria-hidden="true"
                 ></span>
 
+                <!-- Aba triangular -->
+
                 <span
                     class="envelope__flap"
                     aria-hidden="true"
                 ></span>
+
+                <!-- Carta interna -->
 
                 <span
                     class="envelope__letter"
                     aria-hidden="true"
                 ></span>
 
+                <!-- =================================
+                     SELO DE CERA RITUALÍSTICO
+                     COM SIGILO DE SANGUE
+                ================================== -->
+
                 <span
                     class="envelope__seal"
                     aria-hidden="true"
                 >
-                    <span class="envelope__seal-symbol">A</span>
+
+                    <span class="envelope__seal-core">
+
+                        <img
+                            class="envelope__seal-sigil"
+                            src="IMGS/sangue-sigil.svg"
+                            alt=""
+                            draggable="false"
+                        >
+
+                    </span>
+
                 </span>
+
+                <!-- Texto do envelope -->
 
                 <span class="envelope__label">
                     VOCÊ ESTÁ CONVIDADO
@@ -159,6 +217,10 @@
             </button>
 
         </div>
+
+        <!-- =====================================
+             PARTÍCULAS DE ABERTURA
+        ====================================== -->
 
         <div
             class="particles"
@@ -180,7 +242,7 @@
     >
 
         <!-- =====================================
-             IDENTIDADE EDITORIAL
+             CABEÇALHO
         ====================================== -->
 
         <header class="masthead">
@@ -210,7 +272,7 @@
             aria-labelledby="hero-title"
         >
 
-            <!-- Personagens integrados à composição -->
+            <!-- Personagens decorativos -->
 
             <div
                 class="hero__character hero__character--one"
@@ -236,7 +298,10 @@
                     Pro meu aniversário.
                 </p>
 
-                <h1 class="hero__title" id="hero-title">
+                <h1
+                    class="hero__title"
+                    id="hero-title"
+                >
                     Alana
                     <span>faz 19!</span>
                 </h1>
@@ -268,6 +333,8 @@
 
             <div class="details__grid">
 
+                <!-- Data -->
+
                 <article class="detail detail--date">
 
                     <span class="detail__label">
@@ -280,6 +347,8 @@
 
                 </article>
 
+                <!-- Horário -->
+
                 <article class="detail detail--time">
 
                     <span class="detail__label">
@@ -287,10 +356,12 @@
                     </span>
 
                     <p class="detail__value">
-                        11h30
+                        A partir das 11h30
                     </p>
 
                 </article>
+
+                <!-- Local -->
 
                 <article class="detail detail--location">
 
@@ -299,7 +370,8 @@
                     </span>
 
                     <p class="detail__value">
-                        Curitiba — PR
+                        R. Diva Regnier Barrozo, 116
+                        <span>Curitiba — PR</span>
                     </p>
 
                 </article>
@@ -330,11 +402,14 @@
                 aria-hidden="true"
             ></div>
 
-            <h2 class="menu__title" id="menu-title">
+            <h2
+                class="menu__title"
+                id="menu-title"
+            >
                 Cardápio
             </h2>
 
-            <!-- Espaço para preenchimento posterior -->
+            <!-- Conteúdo configurável -->
 
             <div class="menu__content">
 
@@ -344,6 +419,8 @@
                 ></div>
 
             </div>
+
+            <!-- Observação sobre bebidas -->
 
             <aside class="menu__notice">
 
@@ -378,7 +455,10 @@
                 aria-hidden="true"
             ></div>
 
-            <h2 class="rsvp__title" id="rsvp-title">
+            <h2
+                class="rsvp__title"
+                id="rsvp-title"
+            >
                 Confirmação de presença
             </h2>
 
@@ -389,7 +469,7 @@
                     id="rsvp-form"
                 >
 
-                    <!-- Nome do convidado -->
+                    <!-- Nome -->
 
                     <div class="form-field">
 
@@ -409,9 +489,11 @@
 
                     </div>
 
-                    <!-- Confirmação de presença -->
+                    <!-- Presença -->
 
-                    <fieldset class="form-field form-field--attendance">
+                    <fieldset
+                        class="form-field form-field--attendance"
+                    >
 
                         <legend>
                             Você poderá comparecer?
@@ -453,7 +535,7 @@
 
                     </fieldset>
 
-                    <!-- Quantidade de acompanhantes -->
+                    <!-- Acompanhantes -->
 
                     <div
                         class="form-field"
@@ -478,7 +560,7 @@
 
                     </div>
 
-                    <!-- Enviar confirmação -->
+                    <!-- Enviar -->
 
                     <button
                         class="rsvp__submit"
@@ -488,7 +570,7 @@
                         Enviar resposta
                     </button>
 
-                    <!-- Mensagem de retorno -->
+                    <!-- Feedback -->
 
                     <p
                         class="rsvp__feedback"

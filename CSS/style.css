@@ -1,8 +1,8 @@
 
 /* =========================================================
-   CONVITE DE ANIVERSÁRIO — ALANA 19
+   CONVITE — ALANA 19
    ENVELOPE GÓTICO / NEO-TRIBAL
-   MOLDURA 02 POLIDA — INTEGRAÇÃO CORRIGIDA
+   MOLDURA 02 POLIDA + SELO DE CERA
    ========================================================= */
 
 /* =========================================================
@@ -43,6 +43,7 @@ body {
     isolation: isolate;
     min-height: 100vh;
     margin: 0;
+
     overflow-x: hidden;
     overflow-x: clip;
 
@@ -201,6 +202,10 @@ body::after {
     display: none;
 }
 
+.intro__glow {
+    display: none;
+}
+
 /* =========================================================
    5. MOLDURA 02 POLIDA
    ========================================================= */
@@ -308,8 +313,6 @@ body::after {
     transform-origin: top left;
 }
 
-/* Espinho estrutural */
-
 .intro__frame .c1 {
     left: 0;
     top: 0;
@@ -336,8 +339,6 @@ body::after {
     );
 }
 
-/* Sobreposição em vinho */
-
 .intro__frame .c2 {
     left: 7%;
     top: 8%;
@@ -363,8 +364,6 @@ body::after {
     );
 }
 
-/* Espinho intermediário */
-
 .intro__frame .c3 {
     left: 16%;
     top: 12%;
@@ -385,8 +384,6 @@ body::after {
         35% 52%
     );
 }
-
-/* Ramificação angular */
 
 .intro__frame .c4 {
     left: 3%;
@@ -409,8 +406,6 @@ body::after {
     );
 }
 
-/* Linhas finas ornamentais */
-
 .intro__frame .c5 {
     left: 42%;
     top: 6%;
@@ -431,8 +426,6 @@ body::after {
     opacity: 0.65;
     transform: rotate(36deg);
 }
-
-/* Pequeno losango */
 
 .intro__frame .c7 {
     left: 68%;
@@ -817,52 +810,65 @@ body::after {
 }
 
 /* =========================================================
-   12. SELO DE CERA
+   12. SELO DE CERA — IMAGEM APROVADA
    ========================================================= */
+
+/*
+   O arquivo wax-seal.png já contém:
+   - a textura de cera;
+   - as bordas irregulares;
+   - o sigilo de Sangue prateado.
+
+   Não adicionamos outros símbolos nem desenhamos
+   uma segunda camada de cera com CSS.
+
+   Localização:
+   INVITE/IMGS/wax-seal.png
+*/
 
 .envelope__seal {
     position: absolute;
     z-index: 6;
 
-    top: 49%;
+    top: 48%;
     left: 50%;
 
-    display: grid;
-    place-items: center;
+    display: block;
 
-    width: clamp(72px, 14vw, 91px);
+    width: clamp(78px, 15vw, 98px);
     aspect-ratio: 1;
     overflow: visible;
 
     border: 0;
-    border-radius: 0;
 
-    background-color: transparent;
     background-image: url("../IMGS/wax-seal.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 
-    color: var(--silver);
-    box-shadow: none;
-
     transform: translate(-50%, -50%) rotate(-2deg);
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 7px 9px rgba(11, 11, 13, 0.28))
+        drop-shadow(0 2px 2px rgba(11, 11, 13, 0.17));
 
     transition:
         opacity 250ms ease,
         transform 400ms ease;
-
-    pointer-events: none;
 }
+
+/* Remove as camadas da versão anterior do selo.
+   O sigilo agora já faz parte da imagem PNG. */
 
 .envelope__seal::before,
-.envelope__seal::after {
-    content: none;
-    display: none;
-}
-
+.envelope__seal::after,
+.envelope__seal-core,
+.envelope__seal-sigil,
 .envelope__seal-symbol {
     display: none;
+    content: none;
 }
 
 /* =========================================================
@@ -885,7 +891,8 @@ body::after {
     line-height: 1.6;
     text-align: center;
 
-    text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
+    text-shadow:
+        0 2px 3px rgba(11, 11, 13, 0.9);
 
     transform: translateX(-50%);
     pointer-events: none;
@@ -909,9 +916,13 @@ body::after {
 .intro.is-opening .envelope__letter {
     visibility: visible;
     opacity: 1;
+
     transform: translateY(-30%);
 
-    transition-delay: 100ms, 100ms, 0s;
+    transition-delay:
+        100ms,
+        100ms,
+        0s;
 }
 
 .envelope.is-opening .envelope__seal,
@@ -919,14 +930,19 @@ body::after {
     opacity: 0;
 
     transform:
-        translate(-50%, -50%)
-        scale(0.55)
-        rotate(8deg);
+        translate(-50%, -54%)
+        scale(0.6)
+        rotate(10deg);
 }
 
 .intro.is-opening .envelope-hint {
     opacity: 0;
     animation: none;
+}
+
+.intro.is-opening .intro__glow--red,
+.intro.is-opening .intro__glow--silver {
+    display: none;
 }
 
 /* =========================================================
@@ -970,7 +986,10 @@ body::after {
 @keyframes particle-rise {
     0% {
         opacity: 0;
-        transform: translate3d(0, 0, 0) scale(0.4);
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(0.4);
     }
 
     20% {
@@ -1007,6 +1026,7 @@ body::after {
 @media (max-width: 540px) {
     .intro__frame {
         inset: 14px;
+
         --corner-reach: 84px;
         --rail-gap: calc(var(--corner-reach) * 0.8);
     }
@@ -1061,12 +1081,22 @@ body::after {
 
     .envelope__label {
         bottom: 10%;
-        font-size: clamp(0.58rem, 2.8vw, 0.68rem);
-        letter-spacing: clamp(0.07em, 0.8vw, 0.12em);
+
+        font-size: clamp(
+            0.58rem,
+            2.8vw,
+            0.68rem
+        );
+
+        letter-spacing: clamp(
+            0.07em,
+            0.8vw,
+            0.12em
+        );
     }
 
     .envelope__seal {
-        width: clamp(54px, 18vw, 84px);
+        width: clamp(64px, 19vw, 84px);
     }
 }
 
@@ -1081,7 +1111,7 @@ body::after {
     }
 
     .envelope__seal {
-        width: 52px;
+        width: 60px;
     }
 }
 
@@ -1125,6 +1155,7 @@ body::after {
 @media (max-height: 520px) and (min-width: 541px) {
     .intro__frame {
         inset: 14px;
+
         --corner-reach: clamp(72px, 13svh, 108px);
         --rail-gap: calc(var(--corner-reach) * 0.8);
     }
