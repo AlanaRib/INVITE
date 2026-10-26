@@ -111,6 +111,39 @@ body::before {
     z-index: 2;
 }
 
+/* INSTRUÇÃO DE ABERTURA */
+
+.intro__content::after {
+    position: absolute;
+    top: calc(100% + clamp(22px, 4svh, 34px));
+    left: 50%;
+    width: max-content;
+    max-width: calc(100vw - 48px);
+
+    content: "CLIQUE NO ENVELOPE PARA ABRIR";
+
+    color: #171319;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(0.65rem, 1.5vw, 0.82rem);
+    font-weight: 600;
+    letter-spacing: 0.19em;
+    line-height: 1.6;
+    text-align: center;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+
+    transition:
+        opacity 350ms ease,
+        transform 350ms ease;
+}
+
+.intro.is-opening .intro__content::after {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+}
+
 .intro__character {
     position: absolute;
     pointer-events: none;
@@ -938,6 +971,11 @@ body::before {
         width: clamp(64px, 19vw, 84px);
     }
 
+    .intro__content::after {
+        font-size: 0.64rem;
+        letter-spacing: 0.12em;
+    }
+
     .envelope__letter {
         left: 16%;
         right: 16%;
@@ -956,6 +994,12 @@ body::before {
     .envelope__seal {
         width: 60px;
     }
+
+    .intro__content::after {
+        max-width: calc(100vw - 36px);
+        font-size: 0.58rem;
+        letter-spacing: 0.07em;
+    }
 }
 
 @media (max-height: 520px) {
@@ -970,6 +1014,11 @@ body::before {
             calc(100vw - var(--page-padding) * 2),
             115svh
         );
+    }
+
+    .intro__content::after {
+        top: calc(100% + 12px);
+        font-size: 0.62rem;
     }
 }
 
@@ -1007,7 +1056,8 @@ body::before {
     .envelope__body,
     .envelope__pocket,
     .envelope__letter-track,
-    .envelope__label {
+    .envelope__label,
+    .intro__content::after {
         transition-duration: 220ms !important;
         transition-delay: 0ms !important;
     }
