@@ -1,9 +1,10 @@
-
 /* CONVITE — ALANA 19 */
 
 const CONFIG = {
     SHEETS_URL: "https://script.google.com/macros/s/AKfycbzHBsqtEphQOgcTPlGJyX2KX_EdrZVTfIi5yJ6MR7oo1VBgm6b5613O5axV7G9QS9ur/exec",
+
     MAX_COMPANIONS: 4,
+
     MESSAGES: {
         yes: "Eba! Aguardo você!",
         no: "Aw :c resposta enviada com sucesso",
@@ -17,9 +18,17 @@ const intro = document.querySelector("#intro");
 const envelope = document.querySelector("#open-envelope");
 const invitation = document.querySelector("#invitation");
 const particles = document.querySelector("#particles");
+
 const envelopeStage = document.querySelector(".envelope__stage");
 const envelopeFlap = document.querySelector(".envelope__flap-hinge");
-const envelopeLetter = document.querySelector(".envelope__letter-track");
+
+const envelopeLetter = document.querySelector(
+    ".envelope__letter-track"
+);
+
+const envelopeLetterVisible = document.querySelector(
+    ".envelope__letter-visible-track"
+);
 
 const form = document.querySelector("#rsvp-form");
 const guestName = document.querySelector("#guest-name");
@@ -27,15 +36,23 @@ const companions = document.querySelector("#companions");
 const companionsField = document.querySelector("#companions-field");
 const feedback = document.querySelector("#rsvp-feedback");
 const submitButton = document.querySelector("#rsvp-submit");
-const attendanceOptions = document.querySelectorAll('input[name="presenca"]');
-const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+const attendanceOptions = document.querySelectorAll(
+    'input[name="presenca"]'
+);
+
+const motionQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+);
 
 /* ANIMAÇÃO DO ENVELOPE */
 
 let envelopeOpened = false;
 
 function showInvitation() {
-    if (intro) intro.hidden = true;
+    if (intro) {
+        intro.hidden = true;
+    }
 
     if (invitation) {
         invitation.hidden = false;
@@ -53,20 +70,24 @@ function showInvitation() {
 }
 
 function createParticles() {
-    if (!particles || motionQuery.matches) return;
+    if (!particles || motionQuery.matches) {
+        return;
+    }
 
     particles.replaceChildren();
 
-    const count = 18;
+    const particleCount = 18;
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement("span");
 
-        particle.className = `particle ${
+        particle.classList.add("particle");
+
+        particle.classList.add(
             Math.random() > 0.5
                 ? "particle--red"
                 : "particle--silver"
-        }`;
+        );
 
         particle.style.setProperty(
             "--particle-x",
@@ -88,7 +109,9 @@ function createParticles() {
 }
 
 function openEnvelope() {
-    if (envelopeOpened) return;
+    if (envelopeOpened) {
+        return;
+    }
 
     envelopeOpened = true;
 
@@ -97,9 +120,9 @@ function openEnvelope() {
         return;
     }
 
-    const reduced = motionQuery.matches;
+    const reducedMotion = motionQuery.matches;
 
-    const timings = reduced
+    const timings = reducedMotion
         ? {
             flap: 90,
             letter: 310,
@@ -113,21 +136,32 @@ function openEnvelope() {
 
     envelope.classList.add("is-opening");
     intro.classList.add("is-opening");
+
     envelopeStage?.classList.add("is-seal-released");
 
-    if (!reduced) {
+    if (!reducedMotion) {
         createParticles();
     }
+
+    // A aba abre após a saída do selo.
 
     window.setTimeout(() => {
         envelopeFlap?.classList.add("is-flap-open");
     }, timings.flap);
 
+    // As duas renderizações do papel sobem juntas.
+
     window.setTimeout(() => {
         envelopeLetter?.classList.add("is-letter-revealed");
+
+        envelopeLetterVisible?.classList.add(
+            "is-letter-revealed"
+        );
     }, timings.letter);
 
-    window.setTimeout(showInvitation, timings.finish);
+    window.setTimeout(() => {
+        showInvitation();
+    }, timings.finish);
 }
 
 envelope?.addEventListener("click", openEnvelope);
@@ -141,21 +175,27 @@ function getAttendance() {
 }
 
 function clearFeedback() {
-    if (!feedback) return;
+    if (!feedback) {
+        return;
+    }
 
     feedback.textContent = "";
     delete feedback.dataset.state;
 }
 
 function showFeedback(message, state) {
-    if (!feedback) return;
+    if (!feedback) {
+        return;
+    }
 
     feedback.textContent = message;
     feedback.dataset.state = state;
 }
 
 function updateCompanionsField() {
-    if (!companions) return;
+    if (!companions) {
+        return;
+    }
 
     const attending = getAttendance() === "Sim";
 
@@ -188,18 +228,25 @@ companions?.addEventListener("input", () => {
     clearFeedback();
 });
 
-function validateCompanions() {
-    if (getAttendance() !== "Sim") return true;
-    if (!companions) return false;
+/* VALIDAÇÃO */
 
-    const raw = companions.value.trim();
-    const count = Number(raw);
+function validateCompanions() {
+    if (getAttendance() !== "Sim") {
+        return true;
+    }
+
+    if (!companions) {
+        return false;
+    }
+
+    const rawValue = companions.value.trim();
+    const quantity = Number(rawValue);
 
     const valid =
-        raw !== "" &&
-        Number.isInteger(count) &&
-        count >= 0 &&
-        count <= CONFIG.MAX_COMPANIONS;
+        rawValue !== "" &&
+        Number.isInteger(quantity) &&
+        quantity >= 0 &&
+        quantity <= CONFIG.MAX_COMPANIONS;
 
     companions.setCustomValidity(
         valid
@@ -221,7 +268,9 @@ let sending = false;
 form?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (sending || !guestName || !submitButton) return;
+    if (sending || !guestName || !submitButton) {
+        return;
+    }
 
     clearFeedback();
 
@@ -244,10 +293,13 @@ form?.addEventListener("submit", async (event) => {
             "Selecione uma opção de presença.",
             "error"
         );
+
         return;
     }
 
-    if (!validateCompanions()) return;
+    if (!validateCompanions()) {
+        return;
+    }
 
     const body = new URLSearchParams({
         nome: name,
