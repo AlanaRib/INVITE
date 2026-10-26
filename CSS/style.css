@@ -5,12 +5,12 @@
 
    MOLDURA 02 POLIDA — PRESERVADA
 
-   AJUSTES:
-   - Centralização real do envelope
-   - Estado fechado restaurado
-   - Ornamentação original preservada
-   - Abertura com estrutura de envelope
-   - Carta deslizando para fora
+   AJUSTES DESTA VERSÃO:
+   - Carta mais visível durante a abertura
+   - Bolso frontal com abertura em V
+   - Aba superior mais proporcional
+   - Envelope centralizado
+   - Estado fechado preservado
    - Movimento reduzido sem cancelar a abertura
    ========================================================= */
 
@@ -156,7 +156,7 @@ body::after {
             transparent 0,
             transparent 39px,
             rgba(11, 0, 3, 0.18) 39.5px,
-            transparent 40.5px,
+            transparent 0.8px,
             transparent 73px
         ),
         radial-gradient(
@@ -621,11 +621,7 @@ body::after {
 
 
 /* =========================================================
-   6. CENTRALIZAÇÃO DO CONTEÚDO
-
-   O envelope é o elemento de referência.
-   Não há altura mínima extra deslocando
-   o centro visual.
+   6. CENTRALIZAÇÃO
    ========================================================= */
 
 .intro__content {
@@ -650,7 +646,7 @@ body::after {
 
 
 /* =========================================================
-   7. ENVELOPE — ESTADO BASE
+   7. ENVELOPE
    ========================================================= */
 
 .envelope {
@@ -675,9 +671,7 @@ body::after {
     );
 
     position: relative;
-
     display: block;
-
     isolation: isolate;
 
     width: var(--envelope-width);
@@ -697,11 +691,6 @@ body::after {
     color: var(--white);
 
     cursor: pointer;
-
-    /*
-       Nenhum filter no botão:
-       preserva a perspectiva da aba.
-    */
 
     filter: none;
 
@@ -728,7 +717,7 @@ body::after {
 
 
 /* =========================================================
-   8. PALCO DO ENVELOPE
+   8. PALCO
    ========================================================= */
 
 .envelope__stage {
@@ -742,17 +731,12 @@ body::after {
     perspective: 1200px;
     transform-style: preserve-3d;
 
-    /*
-       A sombra é independente.
-       O palco não recorta a aba nem a carta.
-    */
-
     overflow: visible;
 }
 
 
 /* =========================================================
-   9. SOMBRA INDEPENDENTE
+   9. SOMBRA
    ========================================================= */
 
 .envelope__shadow {
@@ -777,15 +761,10 @@ body::after {
 
 /* =========================================================
    10. PARTE TRASEIRA
-
-   Fica atrás da carta.
-   No estado fechado, o corpo vermelho
-   original cobre essa camada.
    ========================================================= */
 
 .envelope__back {
     position: absolute;
-
     inset: 0;
 
     z-index: 1;
@@ -812,9 +791,8 @@ body::after {
 /* =========================================================
    11. TRILHO DA CARTA
 
-   A carta permanece atrás do corpo.
-   Somente a parte que sai pela abertura
-   fica visível.
+   A carta permanece entre a parte traseira
+   e o bolso frontal do envelope.
    ========================================================= */
 
 .envelope__letter-track {
@@ -837,17 +815,20 @@ body::after {
 
 
 /* =========================================================
-   12. PAPEL
+   12. CARTA
+
+   MAIS ALTA E MAIS ESTREITA PARA FICAR
+   BEM ENCAIXADA NA ABERTURA.
    ========================================================= */
 
 .envelope__letter {
     position: absolute;
 
-    left: 16.5%;
-    right: 16.5%;
+    left: 17%;
+    right: 17%;
 
-    top: 12%;
-    height: 72%;
+    top: 9%;
+    height: 69%;
 
     display: block;
 
@@ -869,7 +850,6 @@ body::after {
 
 .envelope__letter-inner {
     position: absolute;
-
     inset: 9%;
 
     display: block;
@@ -904,22 +884,19 @@ body::after {
 
 
 /* =========================================================
-   13. CORPO VERMELHO ORIGINAL
+   13. CORPO ORIGINAL DO ENVELOPE
 
-   ESTADO FECHADO:
-   - O corpo ocupa 100% do envelope.
-   - SVG não é deformado.
-   - Nenhum recorte deixa frestas brancas.
+   Fechado:
+   - Superfície vermelha inteira.
+   - Ornamentos em suas posições originais.
 
-   ESTADO ABERTO:
-   - A parte superior forma a abertura.
-   - A ornamentação mantém seu tamanho
-     e posicionamento originais.
+   Aberto:
+   - O topo ganha um recorte em V.
+   - A carta fica exposta acima do bolso.
    ========================================================= */
 
 .envelope__body {
     position: absolute;
-
     inset: 0;
 
     z-index: 3;
@@ -944,10 +921,6 @@ body::after {
         inset 0 0 0 1px rgba(11, 11, 13, 0.54),
         inset 0 0 0 4px rgba(11, 11, 13, 0.1),
         inset 0 -14px 24px rgba(37, 2, 5, 0.17);
-
-    /*
-       Corpo inteiro no estado fechado.
-    */
 
     clip-path: polygon(
         0 0,
@@ -995,20 +968,16 @@ body::after {
 /* =========================================================
    14. ABA SUPERIOR
 
-   ESTADO FECHADO:
-   - Oculta atrás da superfície original.
-   - Não cria triângulos nem saliências.
-
-   ESTADO ABERTO:
-   - Surge como aba triangular.
-   - Gira para revelar a carta.
+   Reduzida de 56% para 40% da altura.
+   Isso evita a aba gigantesca acima
+   do envelope durante a rotação.
    ========================================================= */
 
 .envelope__flap-hinge {
     position: absolute;
 
     inset: 0 0 auto;
-    height: 56%;
+    height: 40%;
 
     z-index: 5;
 
@@ -1033,7 +1002,6 @@ body::after {
 
 .envelope__flap {
     position: absolute;
-
     inset: 0;
 
     display: block;
@@ -1062,7 +1030,6 @@ body::after {
 
 .envelope__flap::after {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -1086,9 +1053,7 @@ body::after {
 
 
 /* =========================================================
-   15. SELO DE CERA
-
-   Mesmo PNG aprovado, sem modificações.
+   15. SELO DE CERA — PRESERVADO
    ========================================================= */
 
 .envelope__seal {
@@ -1134,7 +1099,7 @@ body::after {
 
 
 /* =========================================================
-   16. TEXTO DO ENVELOPE
+   16. TEXTO — PRESERVADO
    ========================================================= */
 
 .envelope__label {
@@ -1169,10 +1134,7 @@ body::after {
 
 
 /* =========================================================
-   17. ANIMAÇÃO — PRIMEIRA ETAPA
-
-   O selo se solta.
-   O corpo começa a revelar a abertura.
+   17. ANIMAÇÃO — ETAPA 1
    ========================================================= */
 
 .envelope__stage.is-seal-released .envelope__seal {
@@ -1184,11 +1146,21 @@ body::after {
         rotate(8deg);
 }
 
+
+/* =========================================================
+   18. ANIMAÇÃO — ESTADO ABERTO
+
+   O topo do bolso fica mais baixo nas
+   laterais e forma um V menos profundo.
+
+   Isso deixa a carta mais exposta.
+   ========================================================= */
+
 .envelope.is-opening .envelope__body {
     clip-path: polygon(
-        0 35%,
-        50% 58%,
-        100% 35%,
+        0 43%,
+        50% 59%,
+        100% 43%,
         100% 100%,
         0 100%
     );
@@ -1207,13 +1179,11 @@ body::after {
 
 
 /* =========================================================
-   18. ANIMAÇÃO — SEGUNDA ETAPA
-
-   Aba gira após a saída do selo.
+   19. ANIMAÇÃO — ETAPA 2: ABA
    ========================================================= */
 
 .envelope__flap-hinge.is-flap-open {
-    transform: rotateX(175deg);
+    transform: rotateX(155deg);
 }
 
 .envelope__flap-hinge.is-flap-open .envelope__flap::after {
@@ -1222,20 +1192,22 @@ body::after {
 
 
 /* =========================================================
-   19. ANIMAÇÃO — TERCEIRA ETAPA
+   20. ANIMAÇÃO — ETAPA 3: CARTA
 
-   Carta se desloca para cima.
-   O corpo vermelho permanece na frente
-   da parte inferior do papel.
+   Aumentamos o deslocamento de 38% para
+   49% da altura do envelope.
+
+   A parte superior da carta fica bem
+   mais visível acima do bolso frontal.
    ========================================================= */
 
 .envelope__letter-track.is-letter-revealed {
-    transform: translateY(-38%);
+    transform: translateY(-49%);
 }
 
 
 /* =========================================================
-   20. TEXTO DURANTE A ABERTURA
+   21. TEXTO DURANTE A ABERTURA
    ========================================================= */
 
 .envelope.is-opening .envelope__label {
@@ -1244,7 +1216,7 @@ body::after {
 
 
 /* =========================================================
-   21. PARTÍCULAS
+   22. PARTÍCULAS
    ========================================================= */
 
 .particles {
@@ -1259,7 +1231,6 @@ body::after {
 
 .particle {
     position: absolute;
-
     top: 50%;
     left: var(--particle-x);
 
@@ -1319,7 +1290,7 @@ body::after {
 
 
 /* =========================================================
-   22. PERSONAGEM DECORATIVO
+   23. PERSONAGEM DECORATIVO
    ========================================================= */
 
 .intro__character {
@@ -1330,7 +1301,7 @@ body::after {
 
 
 /* =========================================================
-   23. RESPONSIVIDADE — MOLDURA PRESERVADA
+   24. RESPONSIVIDADE — MOLDURA PRESERVADA
    ========================================================= */
 
 @media (max-width: 540px) {
@@ -1356,7 +1327,7 @@ body::after {
 
 
 /* =========================================================
-   24. MOBILE
+   25. MOBILE
    ========================================================= */
 
 @media (max-width: 480px) {
@@ -1427,17 +1398,16 @@ body::after {
     }
 
     .envelope__letter {
-        left: 15%;
-        right: 15%;
-
-        top: 12%;
-        height: 70%;
+        left: 16%;
+        right: 16%;
+        top: 10%;
+        height: 68%;
     }
 }
 
 
 /* =========================================================
-   25. TELAS MUITO ESTREITAS
+   26. TELAS MUITO ESTREITAS
    ========================================================= */
 
 @media (max-width: 320px) {
@@ -1457,9 +1427,7 @@ body::after {
 
 
 /* =========================================================
-   26. TELAS BAIXAS / PAISAGEM
-
-   O envelope continua centralizado.
+   27. TELAS BAIXAS / PAISAGEM
    ========================================================= */
 
 @media (max-height: 520px) {
@@ -1522,10 +1490,11 @@ body::after {
 
 
 /* =========================================================
-   27. MOVIMENTO REDUZIDO
+   28. MOVIMENTO REDUZIDO
 
-   Não cancela a abertura.
-   Remove partículas e encurta transições.
+   A abertura continua funcionando,
+   mas sem partículas e com movimentos
+   mais curtos.
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
