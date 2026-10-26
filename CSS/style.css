@@ -1,27 +1,23 @@
-/* CONVITE — ALANA 19 */
+/* =========================================================
+   VARIÁVEIS
+========================================================= */
 
 :root {
-    --silver-light: #e8edf2;
-    --silver: #cbd2db;
-    --silver-dark: #8f98a4;
-
     --blood-red: #920608;
-    --blood-dark: #4b0307;
-    --blood-deep: #250205;
-
-    --envelope-plum-1: #7a1024;
-    --envelope-plum-2: #5f1222;
-    --envelope-plum-3: #350914;
-    --envelope-line: #29050d;
-
-    --black: #0b0b0d;
-    --white: #fffdfd;
-
     --page-padding: clamp(1.25rem, 5vw, 4rem);
+    --white: #fffdfd;
+    --black: #0b0b0d;
     --transition-soft: 350ms ease;
+
+    --envelope-cold-top: #6d2338;
+    --envelope-cold-mid: #52182b;
+    --envelope-cold-dark: #320b1c;
+    --envelope-edge: #230712;
 }
 
-/* BASE */
+/* =========================================================
+   BASE
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -37,13 +33,11 @@ body {
     isolation: isolate;
     min-height: 100vh;
     margin: 0;
-    overflow-x: hidden;
     overflow-x: clip;
-    color: var(--black);
     background: #dedadb;
+    color: var(--black);
     font-family: Georgia, "Times New Roman", serif;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
 }
 
 button,
@@ -51,116 +45,38 @@ input {
     font: inherit;
 }
 
-img,
-video,
-canvas,
-iframe {
-    max-width: 100%;
-}
-
-img,
-video,
-canvas {
-    height: auto;
-}
-
-button {
-    -webkit-tap-highlight-color: transparent;
-}
-
-button:focus-visible,
-input:focus-visible {
-    outline: 2px solid var(--blood-red);
-    outline-offset: 5px;
-}
-
 [hidden] {
     display: none !important;
 }
 
-::selection {
-    color: var(--white);
-    background: var(--blood-red);
-}
-
-/* FUNDO */
-
-body::before,
-body::after {
+body::before {
     position: fixed;
     inset: 0;
     content: "";
-    pointer-events: none;
     z-index: -1;
+
+    background: linear-gradient(
+        138deg,
+        #e3e8ee 0%,
+        #d9dfe6 14%,
+        #c8ccd4 28%,
+        #b2b1bd 41%,
+        #998795 52%,
+        #805767 64%,
+        #682e3c 77%,
+        #4b1422 89%,
+        #30070d 100%
+    );
 }
 
-body::before {
-    background-color: #30070d;
-    background-image:
-        linear-gradient(
-            180deg,
-            rgba(7, 0, 2, 0.14) 0%,
-            transparent 20%,
-            transparent 65%,
-            rgba(7, 0, 2, 0.25) 100%
-        ),
-        linear-gradient(
-            138deg,
-            #e3e8ee 0%,
-            #d9dfe6 14%,
-            #c8ccd4 28%,
-            #b2b1bd 41%,
-            #998795 52%,
-            #805767 64%,
-            #682e3c 77%,
-            #4b1422 89%,
-            #30070d 100%
-        );
-}
-
-body::after {
-    opacity: 0.075;
-    background-image:
-        repeating-linear-gradient(
-            117deg,
-            transparent 0,
-            transparent 39px,
-            rgba(11, 0, 3, 0.18) 39.5px,
-            transparent 40.5px,
-            transparent 73px
-        ),
-        radial-gradient(
-            circle,
-            rgba(255, 255, 255, 0.68) 0 0.42px,
-            transparent 0.8px
-        ),
-        radial-gradient(
-            circle,
-            rgba(11, 11, 13, 0.66) 0 0.48px,
-            transparent 0.9px
-        );
-
-    background-size:
-        100% 100%,
-        19px 23px,
-        29px 31px;
-
-    background-position:
-        center,
-        0 0,
-        11px 13px;
-
-    mix-blend-mode: soft-light;
-}
-
-/* INTRODUÇÃO */
+/* =========================================================
+   INTRODUÇÃO
+========================================================= */
 
 .intro {
     position: relative;
     display: grid;
     place-items: center;
-
-    min-height: 100vh;
     min-height: 100svh;
 
     padding:
@@ -176,44 +92,57 @@ body::after {
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
-}
-
-.intro__atmosphere::before,
-.intro__atmosphere::after {
-    content: none;
-    display: none;
 }
 
 .intro__glow {
     display: none;
 }
 
-/* MOLDURA 02 POLIDA — PRESERVADA */
+.intro__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    z-index: 2;
+}
+
+.intro__character {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* =========================================================
+   MOLDURA 02 POLIDA — PRESERVADA
+========================================================= */
 
 .intro__frame {
     position: absolute;
     inset: clamp(20px, 2.2vw, 34px);
     pointer-events: none;
 
-    --frame-black-strong: rgba(16, 10, 15, 0.96);
-    --frame-black: rgba(24, 15, 22, 0.90);
-    --frame-black-soft: rgba(40, 28, 36, 0.82);
-    --frame-mid: rgba(112, 108, 119, 0.62);
-    --frame-silver-mid: rgba(187, 194, 204, 0.76);
-    --frame-silver: rgba(214, 221, 229, 0.88);
-    --frame-silver-strong: rgba(236, 241, 246, 0.98);
+    --frame-black-strong: rgba(16, 10, 15, .96);
+    --frame-black: rgba(24, 15, 22, .9);
+    --frame-black-soft: rgba(40, 28, 36, .82);
+    --frame-mid: rgba(112, 108, 119, .62);
+    --frame-silver-mid: rgba(187, 194, 204, .76);
+    --frame-silver: rgba(214, 221, 229, .88);
+    --frame-silver-strong: rgba(236, 241, 246, .98);
 
     --rail-thickness: 1.4px;
     --corner-reach: clamp(92px, 13vw, 168px);
-    --rail-gap: calc(var(--corner-reach) * 0.65);
+    --rail-gap: calc(var(--corner-reach) * .65);
 }
 
 .intro__frame .rail {
     position: absolute;
     display: block;
     opacity: 1;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
+
+    filter: drop-shadow(
+        0 1px 1px rgba(0, 0, 0, .08)
+    );
 }
 
 .intro__frame .rail.top,
@@ -232,6 +161,7 @@ body::after {
 
 .intro__frame .rail.top {
     top: 0;
+
     background: linear-gradient(
         90deg,
         var(--frame-black-strong) 0%,
@@ -243,10 +173,11 @@ body::after {
 
 .intro__frame .rail.bottom {
     bottom: 0;
+
     background: linear-gradient(
         90deg,
         var(--frame-black-soft) 0%,
-        rgba(92, 86, 96, 0.66) 42%,
+        rgba(92, 86, 96, .66) 42%,
         var(--frame-silver-mid) 72%,
         var(--frame-silver-strong) 100%
     );
@@ -254,20 +185,22 @@ body::after {
 
 .intro__frame .rail.left {
     left: 0;
+
     background: linear-gradient(
         180deg,
         var(--frame-black-strong) 0%,
         var(--frame-black) 42%,
-        rgba(78, 72, 82, 0.60) 76%,
-        rgba(138, 141, 151, 0.62) 100%
+        rgba(78, 72, 82, .60) 76%,
+        rgba(138, 141, 151, .62) 100%
     );
 }
 
 .intro__frame .rail.right {
     right: 0;
+
     background: linear-gradient(
         180deg,
-        rgba(116, 112, 122, 0.60) 0%,
+        rgba(116, 112, 122, .60) 0%,
         var(--frame-silver-mid) 44%,
         var(--frame-silver) 72%,
         var(--frame-silver-strong) 100%
@@ -279,17 +212,20 @@ body::after {
     width: var(--corner-reach);
     height: var(--corner-reach);
     overflow: hidden;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.14));
+
+    filter: drop-shadow(
+        0 1px 1px rgba(0, 0, 0, .14)
+    );
 }
 
 .intro__frame .corner.tl {
     top: 0;
     left: 0;
 
-    --piece-main: rgba(20, 11, 17, 0.94);
-    --piece-accent: rgba(53, 39, 49, 0.46);
-    --piece-shadow: 0.94;
-    --piece-line: rgba(29, 16, 24, 0.90);
+    --piece-main: rgba(20, 11, 17, .94);
+    --piece-accent: rgba(53, 39, 49, .46);
+    --piece-shadow: .94;
+    --piece-line: rgba(29, 16, 24, .90);
 }
 
 .intro__frame .corner.tr {
@@ -297,10 +233,10 @@ body::after {
     right: 0;
     transform: scaleX(-1);
 
-    --piece-main: rgba(188, 194, 204, 0.84);
-    --piece-accent: rgba(229, 234, 240, 0.56);
-    --piece-shadow: 0.98;
-    --piece-line: rgba(241, 245, 249, 0.92);
+    --piece-main: rgba(188, 194, 204, .84);
+    --piece-accent: rgba(229, 234, 240, .56);
+    --piece-shadow: .98;
+    --piece-line: rgba(241, 245, 249, .92);
 }
 
 .intro__frame .corner.bl {
@@ -308,10 +244,10 @@ body::after {
     left: 0;
     transform: scaleY(-1);
 
-    --piece-main: rgba(26, 16, 24, 0.90);
-    --piece-accent: rgba(62, 44, 55, 0.48);
-    --piece-shadow: 0.92;
-    --piece-line: rgba(33, 19, 28, 0.86);
+    --piece-main: rgba(26, 16, 24, .90);
+    --piece-accent: rgba(62, 44, 55, .48);
+    --piece-shadow: .92;
+    --piece-line: rgba(33, 19, 28, .86);
 }
 
 .intro__frame .corner.br {
@@ -319,10 +255,10 @@ body::after {
     right: 0;
     transform: scale(-1);
 
-    --piece-main: rgba(227, 232, 238, 0.96);
-    --piece-accent: rgba(248, 251, 254, 0.62);
+    --piece-main: rgba(227, 232, 238, .96);
+    --piece-accent: rgba(248, 251, 254, .62);
     --piece-shadow: 1;
-    --piece-line: rgba(248, 251, 255, 0.98);
+    --piece-line: rgba(248, 251, 255, .98);
 }
 
 .intro__frame .corner .piece {
@@ -338,7 +274,7 @@ body::after {
     width: 88%;
     height: 88%;
     opacity: var(--piece-shadow);
-    transform: scale(0.82);
+    transform: scale(.82);
 
     clip-path: polygon(
         0 0,
@@ -364,8 +300,8 @@ body::after {
     width: 76%;
     height: 76%;
     background: var(--piece-accent);
-    opacity: 0.95;
-    transform: scale(0.77);
+    opacity: .95;
+    transform: scale(.77);
 
     clip-path: polygon(
         0 0,
@@ -387,8 +323,8 @@ body::after {
     top: 12%;
     width: 58%;
     height: 55%;
-    opacity: 0.74;
-    transform: scale(0.76);
+    opacity: .74;
+    transform: scale(.76);
 
     clip-path: polygon(
         0 0,
@@ -407,8 +343,8 @@ body::after {
     top: 18%;
     width: 55%;
     height: 66%;
-    opacity: 0.64;
-    transform: scale(0.79);
+    opacity: .64;
+    transform: scale(.79);
 
     clip-path: polygon(
         0 0,
@@ -454,7 +390,7 @@ body::after {
     background: linear-gradient(
         90deg,
         var(--frame-black) 0%,
-        rgba(88, 82, 92, 0.68) 44%,
+        rgba(88, 82, 92, .68) 44%,
         var(--frame-silver-mid) 72%,
         var(--frame-silver-strong) 100%
     );
@@ -502,7 +438,7 @@ body::after {
     background: linear-gradient(
         180deg,
         var(--frame-black) 0%,
-        rgba(96, 91, 101, 0.68) 54%,
+        rgba(96, 91, 101, .68) 54%,
         var(--frame-silver) 100%
     );
 
@@ -515,29 +451,9 @@ body::after {
     );
 }
 
-/* POSICIONAMENTO */
-
-.intro__content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    width: 100%;
-    min-width: 0;
-    min-height: 0;
-    margin: 0 auto;
-    z-index: 2;
-}
-
-.intro__character {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* ENVELOPE */
+/* =========================================================
+   ENVELOPE
+========================================================= */
 
 .envelope {
     --envelope-width: min(
@@ -549,20 +465,15 @@ body::after {
     position: relative;
     display: block;
     isolation: isolate;
-
     width: var(--envelope-width);
     max-width: 100%;
-    min-width: 0;
-    height: auto;
     aspect-ratio: 1.515 / 1;
-
     margin: 0;
     padding: 0;
     border: 0;
     border-radius: 18px 18px 10px 10px;
-
     background: transparent;
-    color: var(--white);
+    color: white;
     cursor: pointer;
 
     transition: transform var(--transition-soft);
@@ -572,13 +483,8 @@ body::after {
     transform: translateY(-4px);
 }
 
-.envelope:active {
-    transform: translateY(0) scale(0.985);
-}
-
 .envelope.is-opening,
-.envelope.is-opening:hover,
-.envelope.is-opening:active {
+.envelope.is-opening:hover {
     transform: none;
     pointer-events: none;
 }
@@ -588,7 +494,7 @@ body::after {
     inset: 0;
     display: block;
     border-radius: inherit;
-    perspective: 1400px;
+    perspective: 1200px;
     overflow: visible;
 }
 
@@ -596,57 +502,46 @@ body::after {
     position: absolute;
     inset: 3% 3% 2%;
     z-index: 0;
-    display: block;
     border-radius: 18px;
-    background: rgba(11, 11, 13, 0.35);
+    background: rgba(11, 11, 13, .35);
     transform: translateY(15px);
     filter: blur(17px);
-    pointer-events: none;
 }
+
+/* =========================================================
+   FUNDO DO ENVELOPE
+========================================================= */
 
 .envelope__back {
     position: absolute;
     inset: 0;
     z-index: 1;
     display: block;
-    border: 1px solid var(--envelope-line);
+    border: 1px solid var(--envelope-edge);
     border-radius: inherit;
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.05) 0%,
-            rgba(255, 255, 255, 0.01) 35%,
-            rgba(7, 7, 12, 0.16) 100%
-        ),
-        linear-gradient(
-            180deg,
-            var(--envelope-plum-1) 0%,
-            var(--envelope-plum-2) 55%,
-            var(--envelope-plum-3) 100%
-        );
-
-    box-shadow:
-        inset 0 0 0 1px rgba(11, 11, 13, 0.35),
-        inset 0 -10px 18px rgba(19, 7, 14, 0.18);
+    background: linear-gradient(
+        165deg,
+        var(--envelope-cold-top),
+        var(--envelope-cold-mid) 52%,
+        var(--envelope-cold-dark)
+    );
 }
 
-/* PAPEL INTERNO */
-
-.envelope__letter-track,
-.envelope__letter-visible-track {
-    position: absolute;
-    inset: 0;
-    display: block;
-    pointer-events: none;
-}
+/* =========================================================
+   CARTA
+========================================================= */
 
 .envelope__letter-track {
-    z-index: 2;
-    transform: translateY(0);
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+    pointer-events: none;
+    transform: translate3d(0, 0, 0);
 
     transition:
-        transform 620ms cubic-bezier(0.2, 0.75, 0.25, 1);
+        transform 670ms cubic-bezier(.22, .75, .22, 1);
 }
 
 .envelope__letter {
@@ -656,27 +551,26 @@ body::after {
     top: 12%;
     height: 86%;
     display: block;
-
-    border: 1px solid rgba(132, 118, 124, 0.34);
+    border: 1px solid rgba(132, 118, 124, .34);
     border-radius: 3px;
 
     background: linear-gradient(
         180deg,
-        #f5f0f0 0%,
+        #f5f0f0,
         #ebe2e2 72%,
-        #dbd1d3 100%
+        #dbd1d3
     );
 
     box-shadow:
-        0 6px 14px rgba(11, 11, 13, 0.18),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+        0 6px 14px rgba(11, 11, 13, .18),
+        inset 0 0 0 1px rgba(255, 255, 255, .25);
 }
 
 .envelope__letter-inner {
     position: absolute;
     inset: 9%;
     display: block;
-    border: 1px solid rgba(167, 150, 156, 0.24);
+    border: 1px solid rgba(167, 150, 156, .24);
 }
 
 .envelope__letter-ornament {
@@ -685,9 +579,8 @@ body::after {
     left: 50%;
     width: 18px;
     height: 18px;
-
     transform: translateX(-50%);
-    background: rgba(144, 98, 110, 0.32);
+    background: rgba(144, 98, 110, .32);
 
     clip-path: polygon(
         50% 0,
@@ -701,55 +594,24 @@ body::after {
     );
 }
 
-/* MÁSCARA DO PAPEL EXPOSTO */
-
-.envelope__letter-visible-track {
-    z-index: 4;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(0);
-
-    /*
-       A máscara acompanha a abertura do bolso,
-       mas não cobre a dobra vermelha.
-    */
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 56%,
-        50% 70%,
-        0 56%
-    );
-
-    transition:
-        transform 620ms cubic-bezier(0.2, 0.75, 0.25, 1),
-        opacity 120ms ease,
-        visibility 0s linear 120ms;
-}
-
-.envelope__letter--visible {
-    box-shadow:
-        0 6px 14px rgba(11, 11, 13, 0.10),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.25);
-}
-
-/* BOLSO */
+/* =========================================================
+   BOLSO DO ENVELOPE
+========================================================= */
 
 .envelope__pocket {
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: 4;
     display: block;
     overflow: hidden;
     border-radius: inherit;
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 
     transition:
-        opacity 180ms ease 160ms,
-        visibility 0s linear 340ms;
+        opacity 190ms ease 90ms,
+        visibility 0s linear 280ms;
 }
 
 .envelope__pocket-front {
@@ -757,151 +619,129 @@ body::after {
     inset: 0;
     display: block;
 
-    background:
+    background-color: var(--envelope-cold-mid);
+
+    background-image:
+        url("../IMGS/envelope-ornament.svg"),
         linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0.01) 35%,
-            rgba(8, 7, 13, 0.12) 100%
-        ),
-        linear-gradient(
-            180deg,
-            var(--envelope-plum-1) 0%,
-            var(--envelope-plum-2) 58%,
-            var(--envelope-plum-3) 100%
+            160deg,
+            var(--envelope-cold-top),
+            var(--envelope-cold-mid) 55%,
+            var(--envelope-cold-dark)
         );
 
+    background-size:
+        100% 100%,
+        100% 100%;
+
+    background-position: center;
+
     clip-path: polygon(
-        0 56%,
-        50% 70%,
-        100% 56%,
+        0 47%,
+        50% 64%,
+        100% 47%,
         100% 100%,
         0 100%
     );
-}
-
-.envelope__pocket-front::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("../IMGS/envelope-ornament.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
 }
 
 .envelope__pocket-crease {
     position: absolute;
     inset: 0;
     display: block;
+    opacity: .5;
     pointer-events: none;
 }
 
 .envelope__pocket-crease--left {
-    opacity: 0.5;
-
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, .07),
         transparent 65%
     );
 
     clip-path: polygon(
-        0 56%,
-        50% 70%,
+        0 47%,
+        50% 64%,
         0 100%
     );
 }
 
 .envelope__pocket-crease--right {
-    opacity: 0.5;
-
     background: linear-gradient(
         225deg,
-        rgba(0, 0, 0, 0.14),
+        rgba(0, 0, 0, .12),
         transparent 65%
     );
 
     clip-path: polygon(
-        100% 56%,
-        50% 70%,
+        100% 47%,
+        50% 64%,
         100% 100%
     );
 }
 
-/* SUPERFÍCIE FECHADA */
+/* =========================================================
+   SUPERFÍCIE FECHADA
+========================================================= */
 
 .envelope__body {
     position: absolute;
     inset: 0;
-    z-index: 5;
+    z-index: 4;
     display: block;
     overflow: hidden;
-
-    border: 1px solid var(--envelope-line);
+    border: 1px solid var(--envelope-edge);
     border-radius: inherit;
 
-    background:
+    background-color: var(--envelope-cold-mid);
+
+    background-image:
+        url("../IMGS/envelope-ornament.svg"),
         linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0.01) 36%,
-            rgba(7, 7, 12, 0.14) 100%
-        ),
-        linear-gradient(
-            180deg,
-            var(--envelope-plum-1) 0%,
-            var(--envelope-plum-2) 54%,
-            var(--envelope-plum-3) 100%
+            165deg,
+            var(--envelope-cold-top),
+            var(--envelope-cold-mid) 55%,
+            var(--envelope-cold-dark)
         );
 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-size:
+        100% 100%,
+        100% 100%;
+
     box-shadow:
-        inset 0 0 0 1px rgba(11, 11, 13, 0.54),
-        inset 0 0 0 4px rgba(11, 11, 13, 0.10),
-        inset 0 -14px 24px rgba(20, 7, 15, 0.17);
+        inset 0 0 0 1px rgba(11, 11, 13, .54),
+        inset 0 0 0 4px rgba(11, 11, 13, .1),
+        inset 0 -14px 24px rgba(37, 2, 5, .17);
 
     opacity: 1;
     visibility: visible;
-    pointer-events: none;
 
     transition:
-        opacity 180ms ease 170ms,
-        visibility 0s linear 350ms;
+        opacity 190ms ease 90ms,
+        visibility 0s linear 280ms;
 }
 
 .envelope__body::before {
-    content: "";
     position: absolute;
     inset: 0;
-
-    background-image: url("../IMGS/envelope-ornament.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-}
-
-.envelope__body::after {
     content: "";
-    position: absolute;
-    inset: 0;
+    opacity: .3;
 
-    opacity: 0.22;
-
-    background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(255, 255, 255, 0.016) 0 1px,
-            transparent 1px 4px
-        ),
-        linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.03),
-            transparent 42%,
-            rgba(11, 11, 13, 0.08)
-        );
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, .035),
+        transparent 42%,
+        rgba(11, 11, 13, .08)
+    );
 }
 
-/* ABA */
+/* =========================================================
+   ABA
+========================================================= */
 
 .envelope__flap-hinge {
     position: absolute;
@@ -909,7 +749,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 48%;
-    z-index: 6;
+    z-index: 5;
     display: block;
 
     transform-origin: 50% 0;
@@ -921,7 +761,7 @@ body::after {
     pointer-events: none;
 
     transition:
-        transform 650ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        transform 650ms cubic-bezier(.22, .72, .24, 1),
         opacity 180ms ease,
         visibility 0s linear 180ms;
 }
@@ -939,41 +779,29 @@ body::after {
     inset: 0;
     display: block;
 
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-.envelope__flap-front {
     clip-path: polygon(
         0 0,
         100% 0,
         50% 100%
     );
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.05) 0%,
-            rgba(255, 255, 255, 0.01) 35%,
-            rgba(8, 7, 13, 0.14) 100%
-        ),
-        linear-gradient(
-            180deg,
-            var(--envelope-plum-1) 0%,
-            var(--envelope-plum-2) 54%,
-            var(--envelope-plum-3) 100%
-        );
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
-.envelope__flap-front::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+.envelope__flap-front {
+    background-image:
+        url("../IMGS/flap-ornament.svg"),
+        linear-gradient(
+            170deg,
+            var(--envelope-cold-top),
+            var(--envelope-cold-mid),
+            var(--envelope-cold-dark)
+        );
 
-    background-image: url("../IMGS/flap-ornament.svg");
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: 100% 100%;
+    background-size:
+        100% 100%,
+        100% 100%;
 }
 
 .envelope__flap-back {
@@ -983,46 +811,38 @@ body::after {
         0 100%
     );
 
-    background: linear-gradient(
-        180deg,
-        #651020 0%,
-        #4f1020 58%,
-        #2d0812 100%
-    );
+    background-image:
+        url("../IMGS/flap-ornament.svg"),
+        linear-gradient(
+            160deg,
+            #461224,
+            #5e2033,
+            #361021
+        );
+
+    background-size:
+        100% 100%,
+        100% 100%;
 
     transform: rotateX(180deg);
 }
 
-.envelope__flap-back::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background-image: url("../IMGS/flap-ornament.svg");
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: 100% 100%;
-
-    opacity: 0.82;
-    transform: scaleY(-1);
-}
-
-/* SELO E TEXTO */
+/* =========================================================
+   SELO
+========================================================= */
 
 .envelope__seal {
     position: absolute;
-    z-index: 7;
+    z-index: 6;
     top: 48%;
     left: 50%;
-
     display: block;
     width: clamp(78px, 15vw, 98px);
     aspect-ratio: 1;
 
-    background-image: url("../IMGS/wax-seal.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    background:
+        url("../IMGS/wax-seal.png")
+        center / contain no-repeat;
 
     transform:
         translate(-50%, -50%)
@@ -1030,9 +850,9 @@ body::after {
 
     pointer-events: none;
 
-    filter:
-        drop-shadow(0 7px 9px rgba(11, 11, 13, 0.28))
-        drop-shadow(0 2px 2px rgba(11, 11, 13, 0.16));
+    filter: drop-shadow(
+        0 7px 9px rgba(11, 11, 13, .28)
+    );
 
     transition:
         opacity 220ms ease,
@@ -1041,20 +861,20 @@ body::after {
 
 .envelope__label {
     position: absolute;
-    z-index: 8;
+    z-index: 7;
     left: 50%;
     bottom: 11%;
     width: 90%;
 
-    color: var(--white);
-    font-size: clamp(0.7rem, 2.5vw, 0.92rem);
+    color: white;
+    font-size: clamp(.7rem, 2.5vw, .92rem);
     font-weight: 700;
-    letter-spacing: 0.17em;
+    letter-spacing: .17em;
     line-height: 1.6;
     text-align: center;
 
     text-shadow:
-        0 2px 3px rgba(11, 11, 13, 0.9);
+        0 2px 3px rgba(11, 11, 13, .9);
 
     transform: translateX(-50%);
     pointer-events: none;
@@ -1062,13 +882,16 @@ body::after {
     transition: opacity 220ms ease;
 }
 
-/* ANIMAÇÃO */
+/* =========================================================
+   ESTADOS DA ANIMAÇÃO
+========================================================= */
 
 .envelope__stage.is-seal-released .envelope__seal {
     opacity: 0;
+
     transform:
         translate(-50%, -54%)
-        scale(0.7)
+        scale(.7)
         rotate(8deg);
 }
 
@@ -1078,11 +901,12 @@ body::after {
 }
 
 .envelope.is-opening .envelope__pocket {
+    z-index: 4;
     opacity: 1;
     visibility: visible;
 
     transition:
-        opacity 180ms ease 170ms,
+        opacity 190ms ease 90ms,
         visibility 0s;
 }
 
@@ -1091,7 +915,7 @@ body::after {
     visibility: visible;
 
     transition:
-        transform 650ms cubic-bezier(0.22, 0.72, 0.24, 1),
+        transform 650ms cubic-bezier(.22, .72, .24, 1),
         opacity 180ms ease 150ms,
         visibility 0s;
 }
@@ -1101,25 +925,24 @@ body::after {
 }
 
 .envelope__letter-track.is-letter-revealed {
-    transform: translateY(-24%);
+    transform: translate3d(0, -24%, 0);
 }
 
-.envelope.is-opening .envelope__letter-visible-track {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(-24%);
-
-    transition:
-        transform 620ms cubic-bezier(0.2, 0.75, 0.25, 1) 760ms,
-        opacity 120ms ease 760ms,
-        visibility 0s linear 760ms;
+.envelope.is-opening .envelope__letter-track {
+    z-index: 3;
 }
 
 .envelope.is-opening .envelope__label {
     opacity: 0;
 }
 
-/* PARTÍCULAS */
+.envelope__letter-visible-track {
+    display: none !important;
+}
+
+/* =========================================================
+   PARTÍCULAS
+========================================================= */
 
 .particles {
     position: absolute;
@@ -1145,41 +968,43 @@ body::after {
 
 .particle--red {
     background: var(--blood-red);
-    box-shadow: 0 0 10px rgba(146, 6, 8, 0.32);
 }
 
 .particle--silver {
-    background: var(--white);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+    background: white;
 }
 
 @keyframes particle-rise {
     0% {
         opacity: 0;
+
         transform:
             translate3d(0, 0, 0)
-            scale(0.4);
+            scale(.4);
     }
 
     20% {
-        opacity: 0.75;
+        opacity: .75;
     }
 
     100% {
         opacity: 0;
+
         transform:
             translate3d(0, -32vh, 0)
             scale(1.05);
     }
 }
 
-/* RESPONSIVIDADE */
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
 
 @media (max-width: 540px) {
     .intro__frame {
         inset: 14px;
         --corner-reach: 84px;
-        --rail-gap: calc(var(--corner-reach) * 0.65);
+        --rail-gap: calc(var(--corner-reach) * .65);
     }
 
     .intro__frame .mid {
@@ -1213,8 +1038,8 @@ body::after {
 
     .envelope__label {
         bottom: 10%;
-        font-size: clamp(0.58rem, 2.8vw, 0.68rem);
-        letter-spacing: 0.1em;
+        font-size: clamp(.58rem, 2.8vw, .68rem);
+        letter-spacing: .1em;
     }
 
     .envelope__seal {
@@ -1229,12 +1054,11 @@ body::after {
 
 @media (max-width: 320px) {
     :root {
-        --page-padding: 0.875rem;
+        --page-padding: .875rem;
     }
 
     .envelope__label {
-        font-size: 0.56rem;
-        letter-spacing: 0.065em;
+        font-size: .56rem;
     }
 
     .envelope__seal {
@@ -1245,7 +1069,7 @@ body::after {
 @media (max-height: 520px) {
     .intro {
         padding-block:
-            max(0.75rem, 3svh);
+            max(.75rem, 3svh);
     }
 
     .envelope {
@@ -1261,7 +1085,7 @@ body::after {
     .intro__frame {
         inset: 14px;
         --corner-reach: clamp(72px, 13svh, 108px);
-        --rail-gap: calc(var(--corner-reach) * 0.65);
+        --rail-gap: calc(var(--corner-reach) * .65);
     }
 
     .intro__frame .mid {
@@ -1273,7 +1097,9 @@ body::after {
     }
 }
 
-/* MOVIMENTO REDUZIDO */
+/* =========================================================
+   MOVIMENTO REDUZIDO
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -1290,7 +1116,6 @@ body::after {
     .envelope__pocket,
     .envelope__flap-hinge,
     .envelope__letter-track,
-    .envelope__letter-visible-track,
     .envelope__label {
         transition-duration: 220ms !important;
         transition-delay: 0ms !important;
