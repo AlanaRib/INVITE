@@ -168,7 +168,7 @@ body::after {
     display: none;
 }
 
-/* MOLDURA 02 POLIDA — PRESERVADA */
+/* MOLDURA 02 POLIDA — SEM ALTERAÇÕES */
 
 .intro__frame {
     position: absolute;
@@ -586,7 +586,7 @@ body::after {
         inset 0 -12px 20px rgba(37, 2, 5, 0.18);
 }
 
-/* CARTA */
+/* CARTA — MAIS ALTA, COM A BASE DENTRO DO BOLSO */
 
 .envelope__letter-track {
     position: absolute;
@@ -603,8 +603,8 @@ body::after {
     position: absolute;
     left: 17%;
     right: 17%;
-    top: 20%;
-    height: 65%;
+    top: 18%;
+    height: 91%;
     display: block;
     border: 1px solid rgba(132, 118, 124, 0.34);
     border-radius: 3px 3px 2px 2px;
@@ -646,7 +646,7 @@ body::after {
     );
 }
 
-/* BOLSO ABERTO */
+/* BOLSO — COBRE APENAS A PARTE INFERIOR DA CARTA */
 
 .envelope__pocket {
     position: absolute;
@@ -674,9 +674,9 @@ body::after {
         #720408 100%
     );
     clip-path: polygon(
-        0 43%,
-        50% 62%,
-        100% 43%,
+        0 70%,
+        50% 82%,
+        100% 70%,
         100% 100%,
         0 100%
     );
@@ -697,8 +697,8 @@ body::after {
         transparent 65%
     );
     clip-path: polygon(
-        0 43%,
-        50% 62%,
+        0 70%,
+        50% 82%,
         0 100%
     );
 }
@@ -710,13 +710,13 @@ body::after {
         transparent 65%
     );
     clip-path: polygon(
-        100% 43%,
-        50% 62%,
+        100% 70%,
+        50% 82%,
         100% 100%
     );
 }
 
-/* SUPERFÍCIE ORIGINAL */
+/* SUPERFÍCIE ORIGINAL FECHADA */
 
 .envelope__body {
     position: absolute;
@@ -864,7 +864,7 @@ body::after {
     transition: opacity 220ms ease;
 }
 
-/* ESTADOS DA ANIMAÇÃO */
+/* ESTADOS DA ABERTURA */
 
 .envelope__stage.is-seal-released .envelope__seal {
     opacity: 0;
@@ -901,7 +901,7 @@ body::after {
 }
 
 .envelope__letter-track.is-letter-revealed {
-    transform: translateY(-35%);
+    transform: translateY(-33%);
 }
 
 .envelope.is-opening .envelope__label {
