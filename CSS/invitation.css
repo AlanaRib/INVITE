@@ -1,7 +1,6 @@
-
 /* =========================================================
-   INVITE — PÁGINA PRINCIPAL V2
-   GÓTICO ELEGANTE / CONTINUIDADE VISUAL
+   INVITE — PÁGINA PRINCIPAL V2.1
+   GÓTICO ELEGANTE / COMPOSIÇÃO EQUILIBRADA
 ========================================================= */
 
 /* =========================================================
@@ -30,32 +29,30 @@
     --invite-font-body: "Cormorant Garamond", Georgia, serif;
 
     --invite-width: 1080px;
-    --invite-space: clamp(4.5rem, 8vw, 7rem);
+    --invite-space: clamp(3rem, 5vw, 4.5rem);
 
     position: relative;
     isolation: isolate;
 
     width: 100%;
     min-height: 100svh;
-
     overflow: hidden;
 
     color: var(--invite-ink);
     font-family: var(--invite-font-body);
 
-    background:
-        linear-gradient(
-            138deg,
-            #e3e8ee 0%,
-            #d9dfe6 14%,
-            #c8ccd4 28%,
-            #b2b1bd 41%,
-            #998795 52%,
-            #805767 64%,
-            #682e3c 77%,
-            #4b1422 89%,
-            #30070d 100%
-        );
+    background: linear-gradient(
+        138deg,
+        #e3e8ee 0%,
+        #d9dfe6 14%,
+        #c8ccd4 28%,
+        #b2b1bd 41%,
+        #998795 52%,
+        #805767 64%,
+        #682e3c 77%,
+        #4b1422 89%,
+        #30070d 100%
+    );
 }
 
 /* =========================================================
@@ -204,13 +201,13 @@
     );
 
     margin: 0 auto;
-    padding: clamp(2rem, 4vw, 3rem) 0;
+    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
 
     border-bottom: 1px solid var(--invite-line-soft);
 
     color: var(--invite-black);
     font-family: var(--invite-font-title);
-    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    font-size: clamp(0.65rem, 0.9vw, 0.78rem);
     font-weight: 600;
     letter-spacing: 0.25em;
     text-align: center;
@@ -243,10 +240,10 @@
     display: grid;
     place-items: center;
 
-    min-height: clamp(440px, 65svh, 700px);
+    min-height: clamp(370px, 52svh, 520px);
 
     padding:
-        clamp(5rem, 8vw, 7rem)
+        clamp(4rem, 6vw, 5.5rem)
         clamp(2.5rem, 7vw, 6rem);
 
     isolation: isolate;
@@ -257,7 +254,7 @@
 
 .invitation .hero::before {
     position: absolute;
-    top: clamp(24px, 4vw, 45px);
+    top: clamp(20px, 3vw, 34px);
     left: 50%;
 
     width: clamp(58px, 9vw, 98px);
@@ -292,7 +289,7 @@
     opacity: 0.82;
 }
 
-/* DETALHE ANGULAR DISCRETO */
+/* DETALHE ANGULAR */
 
 .invitation .hero::after {
     position: absolute;
@@ -326,11 +323,11 @@
 }
 
 .invitation .hero__subtitle {
-    margin-bottom: clamp(1rem, 2.5vw, 1.8rem);
+    margin-bottom: clamp(0.8rem, 1.8vw, 1.3rem);
 
     color: var(--invite-wine-dark);
     font-family: var(--invite-font-body);
-    font-size: clamp(1.4rem, 2.7vw, 2rem);
+    font-size: clamp(1.25rem, 2.2vw, 1.7rem);
     font-style: italic;
     font-weight: 600;
     letter-spacing: 0.015em;
@@ -341,7 +338,7 @@
 
     color: var(--invite-black);
     font-family: var(--invite-font-title);
-    font-size: clamp(3.7rem, 9vw, 7.5rem);
+    font-size: clamp(3.3rem, 7.5vw, 6rem);
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 1.06;
@@ -353,10 +350,10 @@
 .invitation .hero__title span {
     display: block;
 
-    margin-top: 0.35em;
+    margin-top: 0.28em;
 
     color: var(--invite-red);
-    font-size: 0.5em;
+    font-size: 0.48em;
     font-weight: 600;
     letter-spacing: 0.025em;
     line-height: 1.2;
@@ -366,7 +363,7 @@
 
 .invitation .hero__ornament {
     position: absolute;
-    bottom: clamp(35px, 5vw, 65px);
+    bottom: clamp(25px, 3.5vw, 45px);
     left: 50%;
 
     display: block;
@@ -473,7 +470,7 @@
     position: relative;
 
     padding:
-        clamp(3.8rem, 6vw, 6rem)
+        clamp(2.5rem, 4vw, 4rem)
         clamp(2.5rem, 7vw, 7rem);
 
     border-top: 1px solid var(--invite-line-soft);
@@ -504,7 +501,7 @@
     position: relative;
 
     min-width: 0;
-    padding: clamp(1.1rem, 2.5vw, 2.3rem);
+    padding: clamp(1rem, 2vw, 1.8rem);
 
     text-align: center;
 }
@@ -516,12 +513,12 @@
 .invitation .detail__label {
     display: block;
 
-    margin-bottom: clamp(1rem, 2vw, 1.6rem);
+    margin-bottom: clamp(0.7rem, 1.3vw, 1rem);
 
     color: var(--invite-red-dark);
     font-family: var(--invite-font-title);
-    font-size: clamp(0.7rem, 1.1vw, 0.85rem);
-    font-weight: 700;
+    font-size: clamp(0.65rem, 0.9vw, 0.76rem);
+    font-weight: 600;
     letter-spacing: 0.17em;
 }
 
@@ -530,8 +527,8 @@
 
     color: var(--invite-black);
     font-family: var(--invite-font-body);
-    font-size: clamp(1.65rem, 2.5vw, 2.3rem);
-    font-weight: 600;
+    font-size: clamp(1.45rem, 2vw, 1.85rem);
+    font-weight: 500;
     line-height: 1.3;
     overflow-wrap: anywhere;
 }
@@ -539,10 +536,10 @@
 .invitation .detail__value span {
     display: block;
 
-    margin-top: 0.35rem;
+    margin-top: 0.3rem;
 
     color: var(--invite-muted);
-    font-size: 0.72em;
+    font-size: 0.75em;
     font-style: italic;
     font-weight: 500;
 }
@@ -585,7 +582,7 @@
     left: 50%;
 
     width: 1px;
-    height: clamp(30px, 4vw, 52px);
+    height: clamp(25px, 3vw, 42px);
 
     content: "";
 
@@ -607,7 +604,7 @@
 
     color: var(--invite-black);
     font-family: var(--invite-font-title);
-    font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+    font-size: clamp(1.8rem, 3.2vw, 2.75rem);
     font-weight: 600;
     letter-spacing: -0.025em;
     line-height: 1.25;
@@ -620,7 +617,7 @@
     width: 70px;
     height: 1px;
 
-    margin: clamp(1.3rem, 2.5vw, 2rem) auto 0;
+    margin: clamp(1rem, 1.8vw, 1.5rem) auto 0;
 
     content: "";
 
@@ -633,7 +630,7 @@
 
     width: min(100%, 690px);
 
-    margin: clamp(2.5rem, 4vw, 4rem) auto 0;
+    margin: clamp(1.8rem, 3vw, 2.8rem) auto 0;
 }
 
 /* ITENS DINÂMICOS */
@@ -648,14 +645,14 @@
 .invitation .menu__items > * {
     min-width: 0;
 
-    padding: 1.1rem 0;
+    padding: 0.9rem 0;
 
     border-bottom: 1px solid var(--invite-line-soft);
 
     color: var(--invite-ink);
-    font-size: clamp(1.45rem, 2.3vw, 1.85rem);
-    font-weight: 600;
-    line-height: 1.45;
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .invitation .menu__items > *:first-child {
@@ -665,12 +662,12 @@
 .invitation .menu__items:empty::before {
     display: block;
 
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
 
     content: "O cardápio será revelado em breve.";
 
     color: var(--invite-muted);
-    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
     font-style: italic;
 
     border-top: 1px solid var(--invite-line-soft);
@@ -685,8 +682,8 @@
 
     width: min(100%, 520px);
 
-    margin: clamp(2.8rem, 4vw, 4rem) auto 0;
-    padding: 1.6rem 1.4rem;
+    margin: clamp(1.9rem, 3vw, 2.8rem) auto 0;
+    padding: 1.3rem 1.4rem;
 
     border-top: 1px solid var(--invite-line);
     border-bottom: 1px solid var(--invite-line);
@@ -722,9 +719,9 @@
     margin: 0;
 
     color: var(--invite-wine-dark);
-    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.45;
 }
 
@@ -752,9 +749,9 @@
     position: relative;
 
     padding:
-        clamp(4.5rem, 8vw, 7rem)
+        clamp(3rem, 5vw, 4.5rem)
         clamp(2.5rem, 7vw, 7rem)
-        clamp(6rem, 9vw, 9rem);
+        clamp(4.5rem, 6vw, 6rem);
 
     border-top: 1px solid var(--invite-line-soft);
 
@@ -780,10 +777,10 @@
 
     width: min(100%, 620px);
 
-    margin: clamp(2.8rem, 5vw, 4.2rem) auto 0;
+    margin: clamp(1.8rem, 3vw, 2.7rem) auto 0;
 
     padding:
-        clamp(2rem, 4vw, 3.5rem)
+        clamp(1.8rem, 3vw, 2.6rem)
         clamp(1.5rem, 4vw, 3.5rem);
 
     background:
@@ -836,7 +833,7 @@
     display: flex;
     flex-direction: column;
 
-    gap: clamp(1.6rem, 3vw, 2.2rem);
+    gap: clamp(1.3rem, 2.2vw, 1.8rem);
 
     width: 100%;
     text-align: left;
@@ -845,7 +842,7 @@
 .invitation .form-field {
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
+    gap: 0.6rem;
 
     min-width: 0;
     margin: 0;
@@ -862,7 +859,7 @@
 
     color: var(--invite-black);
     font-family: var(--invite-font-title);
-    font-size: clamp(0.72rem, 1.25vw, 0.85rem);
+    font-size: clamp(0.7rem, 1.1vw, 0.78rem);
     font-weight: 600;
     letter-spacing: 0.06em;
     line-height: 1.6;
@@ -874,9 +871,9 @@
 
     width: 100%;
     min-width: 0;
-    min-height: 52px;
+    min-height: 50px;
 
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 1rem;
 
     border: 1px solid rgba(23, 19, 25, 0.32);
     border-radius: 0;
@@ -886,8 +883,8 @@
 
     color: var(--invite-black);
     font-family: var(--invite-font-body);
-    font-size: 1.35rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 500;
 
     transition:
         border-color 250ms ease,
@@ -917,7 +914,7 @@
 }
 
 .invitation .form-field--attendance legend {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .invitation .attendance-options {
@@ -950,7 +947,7 @@
     align-items: center;
     justify-content: center;
 
-    min-height: 55px;
+    min-height: 52px;
     padding: 0.7rem 1rem;
 
     border: 1px solid rgba(23, 19, 25, 0.35);
@@ -959,7 +956,7 @@
 
     color: var(--invite-black);
     font-family: var(--invite-font-body);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 600;
 
     transition:
@@ -992,9 +989,9 @@
 
 .invitation .rsvp__submit {
     width: 100%;
-    min-height: 58px;
+    min-height: 54px;
 
-    padding: 1rem 1.5rem;
+    padding: 0.9rem 1.5rem;
 
     border: 1px solid var(--invite-black);
     border-radius: 0;
@@ -1003,7 +1000,7 @@
 
     color: #f4edf0;
     font-family: var(--invite-font-title);
-    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    font-size: clamp(0.75rem, 1.3vw, 0.85rem);
     font-weight: 600;
     letter-spacing: 0.1em;
     line-height: 1.5;
@@ -1045,7 +1042,7 @@
     margin: 0;
 
     color: var(--invite-red-dark);
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
     font-weight: 600;
     line-height: 1.5;
     text-align: center;
@@ -1100,11 +1097,11 @@
 
 @media (max-width: 900px) {
     .invitation .hero {
-        min-height: 580px;
+        min-height: 460px;
     }
 
     .invitation .hero__title {
-        font-size: clamp(4rem, 11vw, 6.5rem);
+        font-size: clamp(3.5rem, 9vw, 5.5rem);
     }
 
     .invitation .details__grid {
@@ -1113,7 +1110,7 @@
     }
 
     .invitation .detail {
-        padding: 1.9rem 1rem;
+        padding: 1.4rem 1rem;
     }
 
     .invitation .detail + .detail {
@@ -1122,11 +1119,11 @@
     }
 
     .invitation .detail__label {
-        margin-bottom: 0.7rem;
+        margin-bottom: 0.6rem;
     }
 
     .invitation .detail__value {
-        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        font-size: clamp(1.55rem, 3.5vw, 2rem);
     }
 
     .invitation .hero__character,
@@ -1150,7 +1147,7 @@
         width: calc(100% - 58px);
 
         gap: 0.9rem;
-        padding: 1.8rem 0;
+        padding: 1.4rem 0;
 
         font-size: 0.62rem;
         letter-spacing: 0.16em;
@@ -1161,16 +1158,16 @@
     }
 
     .invitation .hero {
-        min-height: clamp(420px, 69svh, 580px);
+        min-height: clamp(350px, 54svh, 440px);
 
         padding:
-            4.8rem
+            4rem
             1.7rem
-            5.5rem;
+            4.5rem;
     }
 
     .invitation .hero::before {
-        top: 25px;
+        top: 20px;
         width: 58px;
         height: 30px;
     }
@@ -1180,34 +1177,34 @@
     }
 
     .invitation .hero__subtitle {
-        margin-bottom: 1.2rem;
-        font-size: 1.3rem;
+        margin-bottom: 0.9rem;
+        font-size: 1.2rem;
     }
 
     .invitation .hero__title {
-        font-size: clamp(3.3rem, 12.5vw, 5.1rem);
+        font-size: clamp(3rem, 11vw, 4.4rem);
         letter-spacing: -0.055em;
     }
 
     .invitation .hero__title span {
-        margin-top: 0.4em;
-        font-size: 0.53em;
+        margin-top: 0.3em;
+        font-size: 0.5em;
     }
 
     .invitation .hero__ornament {
-        bottom: 2rem;
+        bottom: 1.5rem;
     }
 
     .invitation .details {
-        padding: 2.8rem 1.7rem;
+        padding: 2rem 1.7rem;
     }
 
     .invitation .detail {
-        padding: 1.8rem 0.5rem;
+        padding: 1.25rem 0.5rem;
     }
 
     .invitation .detail__value {
-        font-size: clamp(1.65rem, 5.5vw, 2.1rem);
+        font-size: clamp(1.45rem, 4.8vw, 1.85rem);
     }
 
     .invitation .menu,
@@ -1217,35 +1214,35 @@
     }
 
     .invitation .menu {
-        padding-top: 5.5rem;
-        padding-bottom: 5.5rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 
     .invitation .menu__title,
     .invitation .rsvp__title {
-        font-size: clamp(2rem, 7.5vw, 3rem);
+        font-size: clamp(1.8rem, 6.5vw, 2.5rem);
     }
 
     .invitation .menu__content {
-        margin-top: 2.7rem;
+        margin-top: 2rem;
     }
 
     .invitation .menu__notice {
-        margin-top: 2.8rem;
+        margin-top: 2rem;
     }
 
     .invitation .rsvp {
-        padding-top: 5rem;
-        padding-bottom: 7rem;
+        padding-top: 3.5rem;
+        padding-bottom: 5rem;
     }
 
     .invitation .rsvp__card {
-        margin-top: 2.8rem;
-        padding: 2rem 1.35rem;
+        margin-top: 2rem;
+        padding: 1.7rem 1.35rem;
     }
 
     .invitation .rsvp__form {
-        gap: 1.7rem;
+        gap: 1.4rem;
     }
 
     .invitation .attendance-options {
@@ -1272,11 +1269,11 @@
     }
 
     .invitation .hero__title {
-        font-size: clamp(2.8rem, 12vw, 3.8rem);
+        font-size: clamp(2.8rem, 10.5vw, 3.7rem);
     }
 
     .invitation .hero__subtitle {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 
     .invitation .menu,
@@ -1286,7 +1283,7 @@
     }
 
     .invitation .rsvp__card {
-        padding: 1.6rem 1rem;
+        padding: 1.5rem 1rem;
     }
 
     .invitation .form-field label,
@@ -1302,9 +1299,9 @@
 
 @media (max-height: 520px) and (min-width: 601px) {
     .invitation .hero {
-        min-height: 420px;
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+        min-height: 370px;
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
     }
 }
 
