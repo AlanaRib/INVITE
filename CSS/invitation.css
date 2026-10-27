@@ -1,5 +1,5 @@
 /* =========================================================
-   INVITE — PÁGINA PRINCIPAL V2.1
+   INVITE — PÁGINA PRINCIPAL V2.2
    GÓTICO ELEGANTE / COMPOSIÇÃO EQUILIBRADA
 ========================================================= */
 
@@ -182,7 +182,7 @@
 }
 
 /* =========================================================
-   CABEÇALHO
+   CABEÇALHO ORNAMENTAL
 ========================================================= */
 
 .invitation .masthead {
@@ -193,41 +193,40 @@
     align-items: center;
     justify-content: center;
 
-    gap: clamp(1rem, 3vw, 2.4rem);
-
     width: min(
         calc(100% - 90px),
         var(--invite-width)
     );
 
     margin: 0 auto;
-    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+    padding: clamp(1rem, 2vw, 1.5rem) 0;
 
     border-bottom: 1px solid var(--invite-line-soft);
-
-    color: var(--invite-black);
-    font-family: var(--invite-font-title);
-    font-size: clamp(0.65rem, 0.9vw, 0.78rem);
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-align: center;
 }
 
-.invitation .masthead__edition,
-.invitation .masthead__occasion {
+/* ORNAMENTO CENTRAL */
+
+.invitation .masthead__ornament {
     position: relative;
-    display: inline-block;
-}
+    display: block;
 
-.invitation .masthead__divider {
-    width: clamp(28px, 4vw, 44px);
-    height: 1px;
+    width: 18px;
+    height: 22px;
 
     flex-shrink: 0;
 
     background: var(--invite-red);
 
-    transform: rotate(-35deg);
+    clip-path: polygon(
+        50% 0,
+        64% 35%,
+        100% 50%,
+        64% 65%,
+        50% 100%,
+        36% 65%,
+        0 50%,
+        36% 35%
+    );
 }
 
 /* =========================================================
@@ -240,10 +239,10 @@
     display: grid;
     place-items: center;
 
-    min-height: clamp(370px, 52svh, 520px);
+    min-height: clamp(320px, 43svh, 410px);
 
     padding:
-        clamp(4rem, 6vw, 5.5rem)
+        clamp(3.5rem, 5vw, 4.5rem)
         clamp(2.5rem, 7vw, 6rem);
 
     isolation: isolate;
@@ -254,11 +253,11 @@
 
 .invitation .hero::before {
     position: absolute;
-    top: clamp(20px, 3vw, 34px);
+    top: clamp(14px, 2vw, 22px);
     left: 50%;
 
-    width: clamp(58px, 9vw, 98px);
-    height: clamp(32px, 4vw, 48px);
+    width: clamp(42px, 6vw, 64px);
+    height: clamp(24px, 3vw, 34px);
 
     content: "";
     pointer-events: none;
@@ -323,11 +322,11 @@
 }
 
 .invitation .hero__subtitle {
-    margin-bottom: clamp(0.8rem, 1.8vw, 1.3rem);
+    margin-bottom: clamp(0.6rem, 1.2vw, 0.9rem);
 
     color: var(--invite-wine-dark);
     font-family: var(--invite-font-body);
-    font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+    font-size: clamp(1.2rem, 1.7vw, 1.45rem);
     font-style: italic;
     font-weight: 600;
     letter-spacing: 0.015em;
@@ -338,7 +337,7 @@
 
     color: var(--invite-black);
     font-family: var(--invite-font-title);
-    font-size: clamp(3.3rem, 7.5vw, 6rem);
+    font-size: clamp(3.2rem, 5.3vw, 4.2rem);
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 1.06;
@@ -350,7 +349,7 @@
 .invitation .hero__title span {
     display: block;
 
-    margin-top: 0.28em;
+    margin-top: 0.2em;
 
     color: var(--invite-red);
     font-size: 0.48em;
@@ -363,7 +362,7 @@
 
 .invitation .hero__ornament {
     position: absolute;
-    bottom: clamp(25px, 3.5vw, 45px);
+    bottom: clamp(18px, 2.5vw, 30px);
     left: 50%;
 
     display: block;
@@ -1097,11 +1096,11 @@
 
 @media (max-width: 900px) {
     .invitation .hero {
-        min-height: 460px;
+        min-height: 400px;
     }
 
     .invitation .hero__title {
-        font-size: clamp(3.5rem, 9vw, 5.5rem);
+        font-size: clamp(3.2rem, 7vw, 4.2rem);
     }
 
     .invitation .details__grid {
@@ -1145,16 +1144,12 @@
 
     .invitation .masthead {
         width: calc(100% - 58px);
-
-        gap: 0.9rem;
-        padding: 1.4rem 0;
-
-        font-size: 0.62rem;
-        letter-spacing: 0.16em;
+        padding: 1rem 0;
     }
 
-    .invitation .masthead__divider {
-        width: 24px;
+    .invitation .masthead__ornament {
+        width: 15px;
+        height: 19px;
     }
 
     .invitation .hero {
@@ -1263,11 +1258,6 @@
 ========================================================= */
 
 @media (max-width: 360px) {
-    .invitation .masthead {
-        font-size: 0.56rem;
-        letter-spacing: 0.1em;
-    }
-
     .invitation .hero__title {
         font-size: clamp(2.8rem, 10.5vw, 3.7rem);
     }
@@ -1299,7 +1289,7 @@
 
 @media (max-height: 520px) and (min-width: 601px) {
     .invitation .hero {
-        min-height: 370px;
+        min-height: 320px;
         padding-top: 3.5rem;
         padding-bottom: 3.5rem;
     }
