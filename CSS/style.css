@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
+
 /* =========================================================
    VARIÁVEIS
 ========================================================= */
@@ -39,7 +41,7 @@ body {
     overflow-x: clip;
     background: #dedadb;
     color: var(--black);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -121,9 +123,8 @@ body::before {
     max-width: calc(100vw - 48px);
 
     content: "CLIQUE NO ENVELOPE PARA ABRIR";
-
     color: #171319;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
     font-size: clamp(0.65rem, 1.5vw, 0.82rem);
     font-weight: 600;
     letter-spacing: 0.19em;
@@ -160,7 +161,6 @@ body::before {
 
     --frame-black: #171319;
     --frame-black-soft: rgba(23, 19, 25, .85);
-
     --rail-thickness: 1.4px;
     --corner-reach: clamp(92px, 13vw, 168px);
     --rail-gap: calc(var(--corner-reach) * .65);
@@ -234,7 +234,6 @@ body::before {
     top: 0;
     right: 0;
     transform: scaleX(-1);
-
     --piece-main: #171319;
     --piece-accent: rgba(23, 19, 25, .68);
     --piece-shadow: .94;
@@ -274,7 +273,6 @@ body::before {
     height: 88%;
     opacity: var(--piece-shadow);
     transform: scale(.82);
-
     clip-path: polygon(
         0 0,
         100% 0,
@@ -301,7 +299,6 @@ body::before {
     background: var(--piece-accent);
     opacity: .95;
     transform: scale(.77);
-
     clip-path: polygon(
         0 0,
         27% 8%,
@@ -386,7 +383,6 @@ body::before {
     position: absolute;
     inset: 0;
     background: var(--frame-black);
-
     clip-path: polygon(
         0 0,
         25% 0,
@@ -504,7 +500,6 @@ body::before {
     z-index: 1;
     border: 1px solid var(--envelope-edge);
     border-radius: inherit;
-
     background: linear-gradient(
         165deg,
         var(--envelope-cold-top),
@@ -525,7 +520,6 @@ body::before {
     pointer-events: none;
 
     transform: translateY(0);
-
     transition:
         transform 670ms cubic-bezier(.22, .75, .22, 1);
 }
@@ -624,7 +618,6 @@ body::before {
         100% 100%;
 
     background-position: center;
-
     clip-path: polygon(
         0 47%,
         50% 64%,
@@ -680,7 +673,6 @@ body::before {
     z-index: 6;
     display: block;
     overflow: hidden;
-
     border: 1px solid var(--envelope-edge);
     border-radius: inherit;
 
@@ -720,7 +712,6 @@ body::before {
     inset: 0;
     content: "";
     opacity: .3;
-
     background: linear-gradient(
         135deg,
         rgba(255, 255, 255, .035),
@@ -813,8 +804,8 @@ body::before {
     left: 50%;
     bottom: 11%;
     width: 90%;
-
     color: white;
+    font-family: "Cinzel", Georgia, "Times New Roman", serif;
     font-size: clamp(.7rem, 2.5vw, .92rem);
     font-weight: 700;
     letter-spacing: .17em;
