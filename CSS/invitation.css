@@ -1,6 +1,6 @@
 /* =========================================================
-   INVITE — PÁGINA PRINCIPAL V2.2
-   GÓTICO ELEGANTE / COMPOSIÇÃO EQUILIBRADA
+   INVITE — PÁGINA PRINCIPAL V2.3
+   GÓTICO ELEGANTE / ORNAMENTOS TRIBAIS
 ========================================================= */
 
 /* =========================================================
@@ -204,29 +204,24 @@
     border-bottom: 1px solid var(--invite-line-soft);
 }
 
-/* ORNAMENTO CENTRAL */
+/* ORNAMENTO SUPERIOR — IMAGEM */
 
 .invitation .masthead__ornament {
     position: relative;
     display: block;
 
-    width: 18px;
-    height: 22px;
+    width: clamp(85px, 9vw, 125px);
+    aspect-ratio: 2.5 / 1;
+    height: auto;
 
     flex-shrink: 0;
 
-    background: var(--invite-red);
+    background-image: url("../IMGS/ornament-header.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
-    clip-path: polygon(
-        50% 0,
-        64% 35%,
-        100% 50%,
-        64% 65%,
-        50% 100%,
-        36% 65%,
-        0 50%,
-        36% 35%
-    );
+    pointer-events: none;
 }
 
 /* =========================================================
@@ -249,43 +244,26 @@
     text-align: center;
 }
 
-/* MARCA ORNAMENTAL SUPERIOR */
+/* ORNAMENTO DA APRESENTAÇÃO — IMAGEM */
 
 .invitation .hero::before {
     position: absolute;
-    top: clamp(14px, 2vw, 22px);
+    top: clamp(12px, 2vw, 22px);
     left: 50%;
 
-    width: clamp(42px, 6vw, 64px);
-    height: clamp(24px, 3vw, 34px);
+    width: clamp(115px, 13vw, 175px);
+    aspect-ratio: 2.5 / 1;
+    height: auto;
 
     content: "";
     pointer-events: none;
 
-    background: var(--invite-black);
-
-    clip-path: polygon(
-        50% 0,
-        56% 24%,
-        78% 9%,
-        67% 37%,
-        100% 50%,
-        67% 63%,
-        78% 91%,
-        56% 76%,
-        50% 100%,
-        44% 76%,
-        22% 91%,
-        33% 63%,
-        0 50%,
-        33% 37%,
-        22% 9%,
-        44% 24%
-    );
+    background-image: url("../IMGS/ornament-hero.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
     transform: translateX(-50%);
-
-    opacity: 0.82;
 }
 
 /* DETALHE ANGULAR */
@@ -1148,8 +1126,7 @@
     }
 
     .invitation .masthead__ornament {
-        width: 15px;
-        height: 19px;
+        width: 90px;
     }
 
     .invitation .hero {
@@ -1162,9 +1139,8 @@
     }
 
     .invitation .hero::before {
-        top: 20px;
-        width: 58px;
-        height: 30px;
+        top: 16px;
+        width: 125px;
     }
 
     .invitation .hero::after {
@@ -1258,6 +1234,14 @@
 ========================================================= */
 
 @media (max-width: 360px) {
+    .invitation .masthead__ornament {
+        width: 76px;
+    }
+
+    .invitation .hero::before {
+        width: 108px;
+    }
+
     .invitation .hero__title {
         font-size: clamp(2.8rem, 10.5vw, 3.7rem);
     }
