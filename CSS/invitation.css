@@ -1,6 +1,7 @@
+
 /* =========================================================
-   INVITE — PÁGINA PRINCIPAL
-   GÓTICO CERIMONIAL / EDITORIAL
+   INVITE — PÁGINA PRINCIPAL V2
+   GÓTICO ELEGANTE / CONTINUIDADE VISUAL
 ========================================================= */
 
 /* =========================================================
@@ -8,57 +9,58 @@
 ========================================================= */
 
 .invitation {
-    --paper: #eae2d8;
-    --paper-light: #f5efe7;
-    --paper-dark: #d8c9bd;
+    --invite-silver: #dedadb;
+    --invite-silver-light: #e3e8ee;
+    --invite-silver-mid: #b2b1bd;
 
-    --ink: #20171c;
-    --ink-soft: #52434a;
+    --invite-wine: #682e3c;
+    --invite-wine-dark: #4b1422;
 
-    --blood: #920608;
-    --blood-dark: #53070e;
-    --wine: #5b2335;
+    --invite-black: #171319;
+    --invite-ink: #241c25;
+    --invite-muted: #594952;
 
-    --silver: #9b8d91;
-    --line: rgba(64, 39, 47, 0.3);
-    --line-soft: rgba(64, 39, 47, 0.15);
+    --invite-red: #920608;
+    --invite-red-dark: #53070e;
 
-    --font-title: "Cinzel", Georgia, serif;
-    --font-body: "Cormorant Garamond", Georgia, serif;
+    --invite-line: rgba(23, 19, 25, 0.48);
+    --invite-line-soft: rgba(23, 19, 25, 0.2);
 
-    --content-width: 1120px;
-    --section-space: clamp(5rem, 11vw, 10rem);
+    --invite-font-title: "Cinzel", Georgia, serif;
+    --invite-font-body: "Cormorant Garamond", Georgia, serif;
+
+    --invite-width: 1080px;
+    --invite-space: clamp(4.5rem, 8vw, 7rem);
 
     position: relative;
     isolation: isolate;
 
     width: 100%;
     min-height: 100svh;
+
     overflow: hidden;
 
-    color: var(--ink);
-    font-family: var(--font-body);
+    color: var(--invite-ink);
+    font-family: var(--invite-font-body);
 
     background:
-        radial-gradient(
-            ellipse at 15% 12%,
-            rgba(146, 6, 8, 0.08),
-            transparent 36%
-        ),
-        radial-gradient(
-            ellipse at 88% 68%,
-            rgba(91, 35, 53, 0.1),
-            transparent 42%
-        ),
         linear-gradient(
-            155deg,
-            var(--paper-light),
-            var(--paper) 48%,
-            var(--paper-dark)
+            138deg,
+            #e3e8ee 0%,
+            #d9dfe6 14%,
+            #c8ccd4 28%,
+            #b2b1bd 41%,
+            #998795 52%,
+            #805767 64%,
+            #682e3c 77%,
+            #4b1422 89%,
+            #30070d 100%
         );
 }
 
-/* TEXTURA SUTIL */
+/* =========================================================
+   ATMOSFERA E MOLDURA
+========================================================= */
 
 .invitation::before {
     position: absolute;
@@ -68,39 +70,83 @@
     content: "";
     pointer-events: none;
 
-    opacity: 0.38;
-
-    background-image:
-        repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 3px,
-            rgba(77, 55, 60, 0.012) 4px
+    background:
+        radial-gradient(
+            ellipse at 48% 9%,
+            rgba(255, 255, 255, 0.22),
+            transparent 38%
         ),
-        repeating-linear-gradient(
-            0deg,
-            transparent 0,
-            transparent 5px,
-            rgba(77, 55, 60, 0.012) 6px
+        radial-gradient(
+            ellipse at 15% 56%,
+            rgba(213, 204, 214, 0.17),
+            transparent 36%
+        ),
+        radial-gradient(
+            ellipse at 87% 85%,
+            rgba(25, 8, 17, 0.17),
+            transparent 43%
         );
 }
 
-/* LINHAS LATERAIS */
-
 .invitation::after {
     position: absolute;
-    inset: 18px;
-    z-index: -1;
+    inset: clamp(13px, 2vw, 28px);
+    z-index: 5;
 
     content: "";
     pointer-events: none;
 
-    border-left: 1px solid var(--line-soft);
-    border-right: 1px solid var(--line-soft);
+    border-left: 1px solid var(--invite-line);
+    border-right: 1px solid var(--invite-line);
+
+    opacity: 0.8;
+}
+
+/* MOLDURA SUPERIOR E INFERIOR */
+
+.invitation .masthead::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: min(100%, 1080px);
+    height: 1px;
+
+    content: "";
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--invite-black) 12%,
+        var(--invite-black) 88%,
+        transparent
+    );
+
+    transform: translateX(-50%);
+}
+
+.invitation .rsvp::after {
+    position: absolute;
+    bottom: clamp(24px, 3vw, 42px);
+    left: 50%;
+
+    width: min(76%, 900px);
+    height: 1px;
+
+    content: "";
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(23, 19, 25, 0.62),
+        transparent
+    );
+
+    transform: translateX(-50%);
 }
 
 /* =========================================================
-   TIPOGRAFIA E ELEMENTOS GERAIS
+   ELEMENTOS GERAIS
 ========================================================= */
 
 .invitation h1,
@@ -130,7 +176,7 @@
 
 .invitation button:focus-visible,
 .invitation input:focus-visible {
-    outline: 2px solid var(--blood);
+    outline: 2px solid var(--invite-red);
     outline-offset: 4px;
 }
 
@@ -142,45 +188,47 @@
    CABEÇALHO
 ========================================================= */
 
-.masthead {
+.invitation .masthead {
     position: relative;
+    z-index: 2;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: clamp(1rem, 3vw, 2.5rem);
+    gap: clamp(1rem, 3vw, 2.4rem);
 
     width: min(
-        calc(100% - 72px),
-        var(--content-width)
+        calc(100% - 90px),
+        var(--invite-width)
     );
 
     margin: 0 auto;
-    padding: clamp(2rem, 5vw, 3.5rem) 0;
+    padding: clamp(2rem, 4vw, 3rem) 0;
 
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--invite-line-soft);
 
-    color: var(--ink);
-    font-family: var(--font-title);
-    font-size: clamp(0.65rem, 1vw, 0.8rem);
+    color: var(--invite-black);
+    font-family: var(--invite-font-title);
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
     font-weight: 600;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.25em;
     text-align: center;
 }
 
-.masthead__edition,
-.masthead__occasion {
+.invitation .masthead__edition,
+.invitation .masthead__occasion {
     position: relative;
     display: inline-block;
 }
 
-.masthead__divider {
-    width: 38px;
+.invitation .masthead__divider {
+    width: clamp(28px, 4vw, 44px);
     height: 1px;
 
-    flex: 0 0 auto;
+    flex-shrink: 0;
 
-    background: var(--blood);
+    background: var(--invite-red);
 
     transform: rotate(-35deg);
 }
@@ -189,115 +237,147 @@
    APRESENTAÇÃO
 ========================================================= */
 
-.hero {
+.invitation .hero {
     position: relative;
+
     display: grid;
     place-items: center;
 
-    min-height: clamp(520px, 78svh, 850px);
+    min-height: clamp(440px, 65svh, 700px);
 
     padding:
-        clamp(5rem, 10vw, 9rem)
-        clamp(2rem, 7vw, 7rem);
+        clamp(5rem, 8vw, 7rem)
+        clamp(2.5rem, 7vw, 6rem);
 
     isolation: isolate;
     text-align: center;
 }
 
-.hero::before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
+/* MARCA ORNAMENTAL SUPERIOR */
 
-    width: min(78vw, 650px);
-    aspect-ratio: 1;
+.invitation .hero::before {
+    position: absolute;
+    top: clamp(24px, 4vw, 45px);
+    left: 50%;
+
+    width: clamp(58px, 9vw, 98px);
+    height: clamp(32px, 4vw, 48px);
 
     content: "";
     pointer-events: none;
 
-    border: 1px solid rgba(91, 35, 53, 0.12);
-    border-radius: 50%;
+    background: var(--invite-black);
 
-    transform: translate(-50%, -50%);
+    clip-path: polygon(
+        50% 0,
+        56% 24%,
+        78% 9%,
+        67% 37%,
+        100% 50%,
+        67% 63%,
+        78% 91%,
+        56% 76%,
+        50% 100%,
+        44% 76%,
+        22% 91%,
+        33% 63%,
+        0 50%,
+        33% 37%,
+        22% 9%,
+        44% 24%
+    );
+
+    transform: translateX(-50%);
+
+    opacity: 0.82;
 }
 
-.hero::after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
+/* DETALHE ANGULAR DISCRETO */
 
-    width: min(66vw, 530px);
-    aspect-ratio: 1;
+.invitation .hero::after {
+    position: absolute;
+    inset: clamp(25px, 5vw, 60px);
 
     content: "";
     pointer-events: none;
 
-    border: 1px solid rgba(91, 35, 53, 0.09);
-    border-radius: 50%;
+    background:
+        linear-gradient(
+            135deg,
+            var(--invite-black) 0 1px,
+            transparent 1px
+        ) top left / 65px 65px no-repeat,
 
-    transform: translate(-50%, -50%);
+        linear-gradient(
+            225deg,
+            var(--invite-black) 0 1px,
+            transparent 1px
+        ) top right / 65px 65px no-repeat;
+
+    opacity: 0.4;
 }
 
-.hero__copy {
+.invitation .hero__copy {
     position: relative;
     z-index: 3;
 
     width: 100%;
-    max-width: 900px;
+    max-width: 840px;
 }
 
-.hero__subtitle {
-    margin-bottom: clamp(1.5rem, 4vw, 3rem);
+.invitation .hero__subtitle {
+    margin-bottom: clamp(1rem, 2.5vw, 1.8rem);
 
-    color: var(--wine);
-    font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+    color: var(--invite-wine-dark);
+    font-family: var(--invite-font-body);
+    font-size: clamp(1.4rem, 2.7vw, 2rem);
     font-style: italic;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-weight: 600;
+    letter-spacing: 0.015em;
 }
 
-.hero__title {
+.invitation .hero__title {
     margin: 0;
 
-    color: var(--ink);
-    font-family: var(--font-title);
-    font-size: clamp(4rem, 11vw, 10rem);
-    font-weight: 500;
-    letter-spacing: -0.065em;
-    line-height: 0.98;
+    color: var(--invite-black);
+    font-family: var(--invite-font-title);
+    font-size: clamp(3.7rem, 9vw, 7.5rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 1.06;
 
     text-shadow:
-        0 2px 20px rgba(64, 39, 47, 0.045);
+        0 2px 14px rgba(255, 255, 255, 0.08);
 }
 
-.hero__title span {
+.invitation .hero__title span {
     display: block;
 
     margin-top: 0.35em;
 
-    color: var(--blood);
-    font-size: 0.48em;
+    color: var(--invite-red);
+    font-size: 0.5em;
     font-weight: 600;
     letter-spacing: 0.025em;
-    line-height: 1.3;
+    line-height: 1.2;
 }
 
-.hero__ornament {
+/* ORNAMENTO INFERIOR */
+
+.invitation .hero__ornament {
     position: absolute;
-    bottom: clamp(2rem, 5vw, 4rem);
+    bottom: clamp(35px, 5vw, 65px);
     left: 50%;
 
     display: block;
 
-    width: 130px;
+    width: clamp(100px, 14vw, 160px);
     height: 28px;
 
     transform: translateX(-50%);
 }
 
-.hero__ornament::before {
+.invitation .hero__ornament::before {
     position: absolute;
     top: 50%;
     left: 0;
@@ -310,43 +390,45 @@
     background: linear-gradient(
         90deg,
         transparent,
-        var(--wine),
+        var(--invite-black),
         transparent
     );
 }
 
-.hero__ornament::after {
+.invitation .hero__ornament::after {
     position: absolute;
     top: 50%;
     left: 50%;
 
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 22px;
 
     content: "";
 
-    background: var(--blood);
+    background: var(--invite-red);
 
     clip-path: polygon(
         50% 0,
-        62% 38%,
+        65% 34%,
         100% 50%,
-        62% 62%,
+        65% 66%,
         50% 100%,
-        38% 62%,
+        35% 66%,
         0 50%,
-        38% 38%
+        35% 34%
     );
 
     transform: translate(-50%, -50%);
 }
 
-/* ESPAÇOS PARA ARTES DECORATIVAS */
+/* =========================================================
+   ELEMENTOS DECORATIVOS
+========================================================= */
 
-.hero__character,
-.details__character,
-.menu__character,
-.rsvp__character {
+.invitation .hero__character,
+.invitation .details__character,
+.invitation .menu__character,
+.invitation .rsvp__character {
     position: absolute;
     z-index: 1;
 
@@ -357,122 +439,127 @@
     background-position: center;
 }
 
-.hero__character--one {
-    top: 7%;
-    left: -4%;
+/* POSICIONAMENTO DAS ARTES */
 
-    width: clamp(110px, 21vw, 280px);
+.invitation .hero__character--one {
+    top: 12%;
+    left: -3%;
+
+    width: clamp(100px, 18vw, 240px);
     aspect-ratio: 0.8;
 }
 
-.hero__character--two {
-    right: -4%;
-    bottom: 8%;
+.invitation .hero__character--two {
+    right: -3%;
+    bottom: 12%;
 
-    width: clamp(130px, 24vw, 320px);
+    width: clamp(110px, 19vw, 260px);
     aspect-ratio: 0.8;
 }
 
-.hero__character--three {
-    top: 8%;
-    right: 10%;
+.invitation .hero__character--three {
+    top: 10%;
+    right: 9%;
 
-    width: clamp(70px, 9vw, 130px);
+    width: clamp(60px, 8vw, 110px);
     aspect-ratio: 1;
 }
 
 /* =========================================================
-   INFORMAÇÕES
+   INFORMAÇÕES DO EVENTO
 ========================================================= */
 
-.details {
+.invitation .details {
     position: relative;
 
     padding:
-        clamp(5rem, 9vw, 8rem)
-        clamp(2rem, 7vw, 7rem);
+        clamp(3.8rem, 6vw, 6rem)
+        clamp(2.5rem, 7vw, 7rem);
+
+    border-top: 1px solid var(--invite-line-soft);
+    border-bottom: 1px solid var(--invite-line-soft);
 
     background:
         linear-gradient(
-            180deg,
-            rgba(32, 23, 28, 0.025),
-            rgba(91, 35, 53, 0.075),
-            rgba(32, 23, 28, 0.025)
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent
         );
-
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
 }
 
-.details__grid {
+.invitation .details__grid {
     position: relative;
     z-index: 2;
 
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    width: min(100%, var(--content-width));
+    width: min(100%, var(--invite-width));
 
     margin: 0 auto;
 }
 
-.detail {
+.invitation .detail {
     position: relative;
 
     min-width: 0;
-    padding: clamp(1.5rem, 3vw, 3rem);
+    padding: clamp(1.1rem, 2.5vw, 2.3rem);
 
     text-align: center;
 }
 
-.detail + .detail {
-    border-left: 1px solid var(--line);
+.invitation .detail + .detail {
+    border-left: 1px solid var(--invite-line-soft);
 }
 
-.detail__label {
+.invitation .detail__label {
     display: block;
 
-    margin-bottom: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: clamp(1rem, 2vw, 1.6rem);
 
-    color: var(--blood);
-    font-family: var(--font-title);
-    font-size: clamp(0.7rem, 1vw, 0.85rem);
-    font-weight: 600;
-    letter-spacing: 0.22em;
+    color: var(--invite-red-dark);
+    font-family: var(--invite-font-title);
+    font-size: clamp(0.7rem, 1.1vw, 0.85rem);
+    font-weight: 700;
+    letter-spacing: 0.17em;
 }
 
-.detail__value {
+.invitation .detail__value {
     margin: 0;
 
-    color: var(--ink);
-    font-size: clamp(1.6rem, 2.5vw, 2.35rem);
-    font-weight: 500;
+    color: var(--invite-black);
+    font-family: var(--invite-font-body);
+    font-size: clamp(1.65rem, 2.5vw, 2.3rem);
+    font-weight: 600;
     line-height: 1.3;
+    overflow-wrap: anywhere;
 }
 
-.detail__value span {
+.invitation .detail__value span {
     display: block;
 
-    margin-top: 0.4rem;
+    margin-top: 0.35rem;
 
-    color: var(--ink-soft);
+    color: var(--invite-muted);
     font-size: 0.72em;
     font-style: italic;
+    font-weight: 500;
 }
 
-.details__character--one {
+.invitation .details__character--one {
     top: 0;
-    left: -4%;
+    left: -3%;
 
-    width: clamp(90px, 13vw, 190px);
+    width: clamp(80px, 12vw, 170px);
     aspect-ratio: 0.8;
 }
 
-.details__character--two {
+.invitation .details__character--two {
     right: -3%;
     bottom: 0;
 
-    width: clamp(90px, 13vw, 190px);
+    width: clamp(80px, 12vw, 170px);
     aspect-ratio: 0.8;
 }
 
@@ -480,171 +567,180 @@
    CARDÁPIO
 ========================================================= */
 
-.menu {
+.invitation .menu {
     position: relative;
 
     padding:
-        var(--section-space)
-        clamp(2rem, 7vw, 7rem);
+        var(--invite-space)
+        clamp(2.5rem, 7vw, 7rem);
 
     text-align: center;
 }
 
-.menu::before {
+/* TRAÇO CENTRAL */
+
+.invitation .menu::before {
     position: absolute;
     top: 0;
     left: 50%;
 
     width: 1px;
-    height: clamp(35px, 5vw, 65px);
+    height: clamp(30px, 4vw, 52px);
 
     content: "";
 
     background: linear-gradient(
         180deg,
-        var(--wine),
+        var(--invite-black),
         transparent
     );
 }
 
-.menu__title,
-.rsvp__title {
+/* TÍTULOS DAS SEÇÕES */
+
+.invitation .menu__title,
+.invitation .rsvp__title {
     position: relative;
     z-index: 2;
 
     margin: 0 auto;
 
-    color: var(--ink);
-    font-family: var(--font-title);
-    font-size: clamp(2.2rem, 5vw, 4.6rem);
-    font-weight: 500;
-    letter-spacing: -0.04em;
+    color: var(--invite-black);
+    font-family: var(--invite-font-title);
+    font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
     line-height: 1.25;
 }
 
-.menu__title::after,
-.rsvp__title::after {
+.invitation .menu__title::after,
+.invitation .rsvp__title::after {
     display: block;
 
-    width: 72px;
+    width: 70px;
     height: 1px;
 
-    margin: clamp(1.5rem, 3vw, 2.5rem) auto 0;
+    margin: clamp(1.3rem, 2.5vw, 2rem) auto 0;
 
     content: "";
 
-    background: var(--blood);
+    background: var(--invite-red);
 }
 
-.menu__content {
+.invitation .menu__content {
     position: relative;
     z-index: 2;
 
-    width: min(100%, 760px);
-    margin: clamp(3rem, 6vw, 5rem) auto 0;
+    width: min(100%, 690px);
+
+    margin: clamp(2.5rem, 4vw, 4rem) auto 0;
 }
 
-/* CONTEÚDO GERADO PELO JAVASCRIPT */
+/* ITENS DINÂMICOS */
 
-.menu__items {
+.invitation .menu__items {
     display: grid;
     gap: 0;
 
     width: 100%;
 }
 
-.menu__items > * {
+.invitation .menu__items > * {
     min-width: 0;
 
-    padding: 1.2rem 0;
+    padding: 1.1rem 0;
 
-    border-bottom: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--invite-line-soft);
 
-    color: var(--ink);
-    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-    line-height: 1.4;
+    color: var(--invite-ink);
+    font-size: clamp(1.45rem, 2.3vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.45;
 }
 
-.menu__items > *:first-child {
-    border-top: 1px solid var(--line-soft);
+.invitation .menu__items > *:first-child {
+    border-top: 1px solid var(--invite-line-soft);
 }
 
-.menu__items:empty::before {
+.invitation .menu__items:empty::before {
     display: block;
 
-    padding: 2.2rem 1rem;
+    padding: 2rem 1rem;
 
     content: "O cardápio será revelado em breve.";
 
-    color: var(--ink-soft);
-    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    color: var(--invite-muted);
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
     font-style: italic;
 
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
+    border-top: 1px solid var(--invite-line-soft);
+    border-bottom: 1px solid var(--invite-line-soft);
 }
 
-.menu__notice {
+/* AVISO SOBRE BEBIDAS */
+
+.invitation .menu__notice {
     position: relative;
     z-index: 2;
 
     width: min(100%, 520px);
 
-    margin: clamp(3rem, 5vw, 4.5rem) auto 0;
-    padding: 1.75rem 1.5rem;
+    margin: clamp(2.8rem, 4vw, 4rem) auto 0;
+    padding: 1.6rem 1.4rem;
 
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--invite-line);
+    border-bottom: 1px solid var(--invite-line);
 }
 
-.menu__notice::before {
+.invitation .menu__notice::before {
     position: absolute;
-    top: -7px;
+    top: -8px;
     left: 50%;
 
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
 
     content: "";
 
-    background: var(--blood);
+    background: var(--invite-red);
 
     clip-path: polygon(
         50% 0,
-        62% 38%,
+        65% 35%,
         100% 50%,
-        62% 62%,
+        65% 65%,
         50% 100%,
-        38% 62%,
+        35% 65%,
         0 50%,
-        38% 38%
+        35% 35%
     );
 
     transform: translateX(-50%);
 }
 
-.menu__notice p {
+.invitation .menu__notice p {
     margin: 0;
 
-    color: var(--wine);
-    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    color: var(--invite-wine-dark);
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
     font-style: italic;
-    line-height: 1.5;
+    font-weight: 600;
+    line-height: 1.45;
 }
 
-.menu__character--one {
+.invitation .menu__character--one {
     top: 12%;
-    left: -5%;
+    left: -4%;
 
-    width: clamp(100px, 18vw, 260px);
+    width: clamp(90px, 15vw, 210px);
     aspect-ratio: 0.8;
 }
 
-.menu__character--two {
-    right: -5%;
+.invitation .menu__character--two {
+    right: -4%;
     bottom: 5%;
 
-    width: clamp(100px, 18vw, 260px);
+    width: clamp(90px, 15vw, 210px);
     aspect-ratio: 0.8;
 }
 
@@ -652,97 +748,104 @@
    CONFIRMAÇÃO DE PRESENÇA
 ========================================================= */
 
-.rsvp {
+.invitation .rsvp {
     position: relative;
 
     padding:
-        clamp(5rem, 9vw, 9rem)
-        clamp(2rem, 7vw, 7rem)
-        clamp(6rem, 11vw, 11rem);
+        clamp(4.5rem, 8vw, 7rem)
+        clamp(2.5rem, 7vw, 7rem)
+        clamp(6rem, 9vw, 9rem);
 
-    border-top: 1px solid var(--line-soft);
+    border-top: 1px solid var(--invite-line-soft);
 
     background:
-        radial-gradient(
-            ellipse at 50% 100%,
-            rgba(91, 35, 53, 0.13),
-            transparent 65%
-        ),
         linear-gradient(
             180deg,
-            rgba(245, 239, 231, 0.1),
-            rgba(216, 201, 189, 0.28)
+            rgba(255, 255, 255, 0.025),
+            rgba(25, 8, 17, 0.09)
         );
 
     text-align: center;
 }
 
-.rsvp__title {
+.invitation .rsvp__title {
     max-width: 900px;
 }
 
-.rsvp__card {
+/* FORMULÁRIO */
+
+.invitation .rsvp__card {
     position: relative;
     z-index: 2;
 
-    width: min(100%, 660px);
+    width: min(100%, 620px);
 
-    margin: clamp(3rem, 6vw, 5rem) auto 0;
+    margin: clamp(2.8rem, 5vw, 4.2rem) auto 0;
 
     padding:
-        clamp(2rem, 5vw, 4rem)
-        clamp(1.5rem, 5vw, 4rem);
+        clamp(2rem, 4vw, 3.5rem)
+        clamp(1.5rem, 4vw, 3.5rem);
 
-    background: rgba(250, 245, 239, 0.48);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(235, 230, 236, 0.85),
+            rgba(204, 192, 201, 0.76)
+        );
 
-    border: 1px solid var(--line);
+    border: 1px solid rgba(23, 19, 25, 0.58);
 
     box-shadow:
-        0 15px 60px rgba(52, 25, 34, 0.045),
-        inset 0 0 0 6px rgba(250, 245, 239, 0.25);
+        0 18px 55px rgba(20, 8, 17, 0.16),
+        inset 0 0 0 5px rgba(255, 255, 255, 0.08);
 }
 
-.rsvp__card::before,
-.rsvp__card::after {
+/* CANTOS ORNAMENTAIS */
+
+.invitation .rsvp__card::before,
+.invitation .rsvp__card::after {
     position: absolute;
 
-    width: 27px;
-    height: 27px;
+    width: 32px;
+    height: 32px;
 
     content: "";
     pointer-events: none;
+
+    border-color: var(--invite-black);
+    border-style: solid;
 }
 
-.rsvp__card::before {
+.invitation .rsvp__card::before {
     top: -1px;
     left: -1px;
 
-    border-top: 2px solid var(--blood);
-    border-left: 2px solid var(--blood);
+    border-width: 2px 0 0 2px;
 }
 
-.rsvp__card::after {
+.invitation .rsvp__card::after {
     right: -1px;
     bottom: -1px;
 
-    border-right: 2px solid var(--blood);
-    border-bottom: 2px solid var(--blood);
+    border-width: 0 2px 2px 0;
 }
 
-.rsvp__form {
+/* CAMPOS */
+
+.invitation .rsvp__form {
     display: flex;
     flex-direction: column;
-    gap: clamp(1.8rem, 3vw, 2.5rem);
+
+    gap: clamp(1.6rem, 3vw, 2.2rem);
 
     width: 100%;
-
     text-align: left;
 }
 
-.form-field {
+.invitation .form-field {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.7rem;
 
     min-width: 0;
     margin: 0;
@@ -750,77 +853,81 @@
     border: 0;
 }
 
-.form-field label,
-.form-field legend {
+.invitation .form-field label,
+.invitation .form-field legend {
     display: block;
 
     margin: 0;
     padding: 0;
 
-    color: var(--ink);
-    font-family: var(--font-title);
-    font-size: clamp(0.72rem, 1.5vw, 0.86rem);
+    color: var(--invite-black);
+    font-family: var(--invite-font-title);
+    font-size: clamp(0.72rem, 1.25vw, 0.85rem);
     font-weight: 600;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
     line-height: 1.6;
 }
 
-.form-field input[type="text"],
-.form-field input[type="number"] {
+.invitation .form-field input[type="text"],
+.invitation .form-field input[type="number"] {
     display: block;
 
     width: 100%;
     min-width: 0;
     min-height: 52px;
 
-    padding: 0.8rem 1rem;
+    padding: 0.75rem 1rem;
 
-    border: 1px solid var(--line);
+    border: 1px solid rgba(23, 19, 25, 0.32);
     border-radius: 0;
-
     outline: none;
 
-    background: rgba(255, 252, 248, 0.65);
+    background: rgba(244, 241, 245, 0.67);
 
-    color: var(--ink);
-    font-family: var(--font-body);
+    color: var(--invite-black);
+    font-family: var(--invite-font-body);
     font-size: 1.35rem;
+    font-weight: 600;
 
     transition:
-        border-color 220ms ease,
-        background 220ms ease,
-        box-shadow 220ms ease;
+        border-color 250ms ease,
+        background 250ms ease,
+        box-shadow 250ms ease;
 }
 
-.form-field input::placeholder {
-    color: rgba(82, 67, 74, 0.62);
+.invitation .form-field input::placeholder {
+    color: rgba(60, 46, 55, 0.55);
     opacity: 1;
 }
 
-.form-field input[type="text"]:focus,
-.form-field input[type="number"]:focus {
-    border-color: var(--blood);
-    background: var(--paper-light);
+.invitation .form-field input[type="text"]:focus,
+.invitation .form-field input[type="number"]:focus {
+    border-color: var(--invite-red);
+
+    background: rgba(250, 248, 251, 0.9);
 
     box-shadow:
         0 0 0 3px rgba(146, 6, 8, 0.07);
 }
 
-.form-field--attendance {
+/* PRESENÇA */
+
+.invitation .form-field--attendance {
     display: block;
 }
 
-.form-field--attendance legend {
+.invitation .form-field--attendance legend {
     margin-bottom: 1rem;
 }
 
-.attendance-options {
+.invitation .attendance-options {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 1rem;
 }
 
-.attendance-option {
+.invitation .attendance-option {
     position: relative;
     display: block;
 
@@ -829,28 +936,29 @@
     cursor: pointer;
 }
 
-.attendance-option input {
+.invitation .attendance-option input {
     position: absolute;
+
     width: 1px;
     height: 1px;
 
     opacity: 0;
 }
 
-.attendance-option__content {
+.invitation .attendance-option__content {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    min-height: 58px;
-    padding: 0.75rem 1rem;
+    min-height: 55px;
+    padding: 0.7rem 1rem;
 
-    border: 1px solid var(--line);
+    border: 1px solid rgba(23, 19, 25, 0.35);
 
-    background: rgba(255, 252, 248, 0.45);
+    background: rgba(243, 239, 244, 0.38);
 
-    color: var(--ink);
-    font-family: var(--font-body);
+    color: var(--invite-black);
+    font-family: var(--invite-font-body);
     font-size: 1.5rem;
     font-weight: 600;
 
@@ -861,110 +969,116 @@
         transform 250ms ease;
 }
 
-.attendance-option:hover .attendance-option__content {
-    border-color: var(--blood);
-    background: rgba(146, 6, 8, 0.045);
+.invitation .attendance-option:hover .attendance-option__content {
+    border-color: var(--invite-red);
+    background: rgba(146, 6, 8, 0.07);
 }
 
-.attendance-option input:checked + .attendance-option__content {
-    border-color: var(--blood-dark);
+.invitation .attendance-option input:checked +
+.attendance-option__content {
+    border-color: var(--invite-red-dark);
 
-    background: var(--blood-dark);
-    color: var(--paper-light);
+    background: var(--invite-red-dark);
+    color: #f4edf0;
 }
 
-.attendance-option input:focus-visible + .attendance-option__content {
-    outline: 2px solid var(--blood);
+.invitation .attendance-option input:focus-visible +
+.attendance-option__content {
+    outline: 2px solid var(--invite-red);
     outline-offset: 4px;
 }
 
-.rsvp__submit {
-    position: relative;
+/* BOTÃO DE ENVIO */
 
+.invitation .rsvp__submit {
     width: 100%;
     min-height: 58px;
 
     padding: 1rem 1.5rem;
 
-    border: 1px solid var(--blood-dark);
+    border: 1px solid var(--invite-black);
     border-radius: 0;
 
-    background: var(--blood-dark);
+    background: var(--invite-black);
 
-    color: var(--paper-light);
-    font-family: var(--font-title);
-    font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+    color: #f4edf0;
+    font-family: var(--invite-font-title);
+    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     line-height: 1.5;
 
     cursor: pointer;
 
     transition:
         background 250ms ease,
-        color 250ms ease,
+        border-color 250ms ease,
         transform 250ms ease,
         box-shadow 250ms ease;
 }
 
-.rsvp__submit:hover {
-    background: var(--blood);
-    border-color: var(--blood);
+.invitation .rsvp__submit:hover {
+    background: var(--invite-red-dark);
+    border-color: var(--invite-red-dark);
 
     transform: translateY(-2px);
 
-    box-shadow: 0 8px 24px rgba(83, 7, 14, 0.16);
+    box-shadow:
+        0 8px 24px rgba(25, 8, 17, 0.2);
 }
 
-.rsvp__submit:active {
+.invitation .rsvp__submit:active {
     transform: translateY(0);
 }
 
-.rsvp__submit:disabled {
+.invitation .rsvp__submit:disabled {
     opacity: 0.55;
     cursor: not-allowed;
     transform: none;
 }
 
-.rsvp__feedback {
+/* RESPOSTA */
+
+.invitation .rsvp__feedback {
     min-height: 1.5em;
 
     margin: 0;
 
-    color: var(--blood-dark);
+    color: var(--invite-red-dark);
     font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 600;
     line-height: 1.5;
     text-align: center;
 }
 
-.rsvp__feedback:empty {
+.invitation .rsvp__feedback:empty {
     min-height: 0;
 }
 
-.rsvp__character--one {
-    top: 15%;
-    left: -4%;
+.invitation .rsvp__character--one {
+    top: 13%;
+    left: -3%;
 
-    width: clamp(110px, 18vw, 270px);
+    width: clamp(100px, 16vw, 220px);
     aspect-ratio: 0.8;
 }
 
-.rsvp__character--two {
-    right: -4%;
+.invitation .rsvp__character--two {
+    right: -3%;
     bottom: 0;
 
-    width: clamp(110px, 18vw, 270px);
+    width: clamp(100px, 16vw, 220px);
     aspect-ratio: 0.8;
 }
 
 /* =========================================================
-   ANIMAÇÕES SUTIS
+   ANIMAÇÃO DE ENTRADA
 ========================================================= */
 
 @keyframes invitation-reveal {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(18px);
     }
 
     to {
@@ -975,7 +1089,7 @@
 
 .invitation:not([hidden]) .hero__copy {
     animation:
-        invitation-reveal 900ms
+        invitation-reveal 850ms
         cubic-bezier(0.22, 1, 0.36, 1)
         both;
 }
@@ -985,40 +1099,40 @@
 ========================================================= */
 
 @media (max-width: 900px) {
-    .hero {
-        min-height: 650px;
+    .invitation .hero {
+        min-height: 580px;
     }
 
-    .hero__title {
-        font-size: clamp(4rem, 12vw, 7rem);
+    .invitation .hero__title {
+        font-size: clamp(4rem, 11vw, 6.5rem);
     }
 
-    .details__grid {
+    .invitation .details__grid {
         grid-template-columns: 1fr;
-        max-width: 600px;
+        max-width: 550px;
     }
 
-    .detail {
-        padding: 2.2rem 1rem;
+    .invitation .detail {
+        padding: 1.9rem 1rem;
     }
 
-    .detail + .detail {
+    .invitation .detail + .detail {
         border-left: 0;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid var(--invite-line-soft);
     }
 
-    .detail__label {
-        margin-bottom: 0.9rem;
+    .invitation .detail__label {
+        margin-bottom: 0.7rem;
     }
 
-    .detail__value {
-        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    .invitation .detail__value {
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
     }
 
-    .hero__character,
-    .details__character,
-    .menu__character,
-    .rsvp__character {
+    .invitation .hero__character,
+    .invitation .details__character,
+    .invitation .menu__character,
+    .invitation .rsvp__character {
         opacity: 0.55;
     }
 }
@@ -1029,152 +1143,168 @@
 
 @media (max-width: 600px) {
     .invitation::after {
-        inset: 10px;
+        inset: 11px;
     }
 
-    .masthead {
-        width: calc(100% - 52px);
+    .invitation .masthead {
+        width: calc(100% - 58px);
 
         gap: 0.9rem;
-        padding: 1.7rem 0;
+        padding: 1.8rem 0;
 
-        font-size: 0.6rem;
-        letter-spacing: 0.18em;
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
     }
 
-    .masthead__divider {
-        width: 22px;
+    .invitation .masthead__divider {
+        width: 24px;
     }
 
-    .hero {
-        min-height: clamp(440px, 75svh, 650px);
+    .invitation .hero {
+        min-height: clamp(420px, 69svh, 580px);
 
         padding:
-            5rem
-            1.5rem
-            6rem;
+            4.8rem
+            1.7rem
+            5.5rem;
     }
 
-    .hero::before {
-        width: 94vw;
+    .invitation .hero::before {
+        top: 25px;
+        width: 58px;
+        height: 30px;
     }
 
-    .hero::after {
-        width: 80vw;
+    .invitation .hero::after {
+        inset: 22px;
     }
 
-    .hero__subtitle {
-        font-size: 1.25rem;
+    .invitation .hero__subtitle {
+        margin-bottom: 1.2rem;
+        font-size: 1.3rem;
     }
 
-    .hero__title {
-        font-size: clamp(3.5rem, 14vw, 5.2rem);
+    .invitation .hero__title {
+        font-size: clamp(3.3rem, 12.5vw, 5.1rem);
+        letter-spacing: -0.055em;
     }
 
-    .hero__title span {
-        font-size: 0.52em;
-        margin-top: 0.45em;
+    .invitation .hero__title span {
+        margin-top: 0.4em;
+        font-size: 0.53em;
     }
 
-    .hero__ornament {
+    .invitation .hero__ornament {
         bottom: 2rem;
     }
 
-    .details {
-        padding: 3rem 1.75rem;
+    .invitation .details {
+        padding: 2.8rem 1.7rem;
     }
 
-    .detail {
-        padding: 2rem 0.5rem;
+    .invitation .detail {
+        padding: 1.8rem 0.5rem;
     }
 
-    .detail__value {
-        font-size: clamp(1.65rem, 6vw, 2.15rem);
+    .invitation .detail__value {
+        font-size: clamp(1.65rem, 5.5vw, 2.1rem);
     }
 
-    .menu,
-    .rsvp {
-        padding-left: 1.75rem;
-        padding-right: 1.75rem;
+    .invitation .menu,
+    .invitation .rsvp {
+        padding-left: 1.8rem;
+        padding-right: 1.8rem;
     }
 
-    .menu {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+    .invitation .menu {
+        padding-top: 5.5rem;
+        padding-bottom: 5.5rem;
     }
 
-    .menu__title,
-    .rsvp__title {
-        font-size: clamp(2rem, 8vw, 3rem);
+    .invitation .menu__title,
+    .invitation .rsvp__title {
+        font-size: clamp(2rem, 7.5vw, 3rem);
     }
 
-    .menu__content {
-        margin-top: 3rem;
+    .invitation .menu__content {
+        margin-top: 2.7rem;
     }
 
-    .menu__notice {
-        margin-top: 3rem;
+    .invitation .menu__notice {
+        margin-top: 2.8rem;
     }
 
-    .rsvp {
+    .invitation .rsvp {
         padding-top: 5rem;
         padding-bottom: 7rem;
     }
 
-    .rsvp__card {
+    .invitation .rsvp__card {
+        margin-top: 2.8rem;
         padding: 2rem 1.35rem;
-        margin-top: 3rem;
     }
 
-    .rsvp__form {
-        gap: 1.75rem;
+    .invitation .rsvp__form {
+        gap: 1.7rem;
     }
 
-    .attendance-options {
-        gap: 0.7rem;
+    .invitation .attendance-options {
+        gap: 0.75rem;
     }
 
-    .attendance-option__content {
+    .invitation .attendance-option__content {
         min-height: 52px;
     }
 
-    .hero__character--three {
+    .invitation .hero__character--three {
         display: none;
     }
 }
 
 /* =========================================================
-   RESPONSIVIDADE — TELAS PEQUENAS
+   RESPONSIVIDADE — TELAS ESTREITAS
 ========================================================= */
 
 @media (max-width: 360px) {
-    .masthead {
-        font-size: 0.55rem;
+    .invitation .masthead {
+        font-size: 0.56rem;
         letter-spacing: 0.1em;
     }
 
-    .hero__title {
-        font-size: clamp(3rem, 13.5vw, 4rem);
+    .invitation .hero__title {
+        font-size: clamp(2.8rem, 12vw, 3.8rem);
     }
 
-    .hero__subtitle {
+    .invitation .hero__subtitle {
         font-size: 1.15rem;
     }
 
-    .menu,
-    .rsvp {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+    .invitation .menu,
+    .invitation .rsvp {
+        padding-left: 1.35rem;
+        padding-right: 1.35rem;
     }
 
-    .rsvp__card {
+    .invitation .rsvp__card {
         padding: 1.6rem 1rem;
     }
 
-    .form-field label,
-    .form-field legend {
-        font-size: 0.72rem;
-        letter-spacing: 0.025em;
+    .invitation .form-field label,
+    .invitation .form-field legend {
+        font-size: 0.7rem;
+        letter-spacing: 0.02em;
+    }
+}
+
+/* =========================================================
+   RESPONSIVIDADE — TELAS BAIXAS
+========================================================= */
+
+@media (max-height: 520px) and (min-width: 601px) {
+    .invitation .hero {
+        min-height: 420px;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 }
 
