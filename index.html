@@ -21,13 +21,152 @@
     <link
         rel="icon"
         type="image/png"
-        href="/INVITE/IMGS/favicon.png"
+        href="IMGS/favicon.png"
     >
 
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/invitation.css">
 
     <script src="JS/app.js" defer></script>
+
+    <style>
+        /* NOVAS DECORAÇÕES */
+
+        .invitation .invitation-divider {
+            display: grid;
+            place-items: center;
+
+            width: min(76%, 540px);
+            margin: clamp(1rem, 3vw, 2rem) auto;
+
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .invitation .invitation-divider img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* CANTOS DO FORMULÁRIO */
+
+        .invitation .rsvp__card {
+            position: relative;
+            isolation: isolate;
+            overflow: visible;
+        }
+
+        .invitation .rsvp__card::before,
+        .invitation .rsvp__card::after {
+            display: none;
+        }
+
+        .invitation .rsvp__decorations {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .invitation .rsvp__corner {
+            position: absolute;
+            display: block;
+
+            width: clamp(52px, 8vw, 84px);
+            height: auto;
+            max-width: 24%;
+        }
+
+        .invitation .rsvp__corner--top-left {
+            top: -7px;
+            left: -7px;
+        }
+
+        .invitation .rsvp__corner--top-right {
+            top: -7px;
+            right: -7px;
+
+            transform: scaleX(-1);
+        }
+
+        .invitation .rsvp__corner--bottom-left {
+            bottom: -7px;
+            left: -7px;
+        }
+
+        .invitation .rsvp__corner--bottom-right {
+            bottom: -7px;
+            right: -7px;
+
+            transform: scaleX(-1);
+        }
+
+        .invitation .rsvp__form {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* FECHAMENTO INFERIOR */
+
+        .invitation .rsvp::after {
+            display: none;
+        }
+
+        .invitation .invitation-footer {
+            position: relative;
+            z-index: 1;
+
+            display: grid;
+            place-items: center;
+
+            width: min(72%, 340px);
+
+            margin:
+                clamp(2.5rem, 6vw, 4rem)
+                auto
+                0;
+
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .invitation .invitation-footer img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* LINK DO ENDEREÇO */
+
+        .invitation .detail__address {
+            color: inherit;
+
+            text-decoration: underline;
+            text-decoration-color: rgba(82, 24, 43, 0.35);
+            text-underline-offset: 0.18em;
+
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .invitation .invitation-divider {
+                width: min(74%, 340px);
+                margin: 1rem auto;
+            }
+
+            .invitation .rsvp__corner {
+                width: 58px;
+            }
+
+            .invitation .invitation-footer {
+                width: min(70%, 250px);
+                margin-top: 2.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -39,16 +178,14 @@
         id="intro"
         aria-label="Abertura do convite"
     >
-
         <div
             class="intro__atmosphere"
             aria-hidden="true"
         >
 
-            <!-- MOLDURA 02 POLIDA -->
+            <!-- MOLDURA -->
 
             <div class="intro__frame">
-
                 <i class="rail top"></i>
                 <i class="rail right"></i>
                 <i class="rail bottom"></i>
@@ -99,12 +236,10 @@
 
                 <div class="side left"></div>
                 <div class="side right"></div>
-
             </div>
 
             <div class="intro__glow intro__glow--red"></div>
             <div class="intro__glow intro__glow--silver"></div>
-
         </div>
 
         <div
@@ -114,7 +249,6 @@
         ></div>
 
         <div class="intro__content">
-
             <button
                 class="envelope"
                 id="open-envelope"
@@ -123,35 +257,25 @@
                 aria-controls="invitation"
                 aria-expanded="false"
             >
-
                 <span class="envelope__stage" aria-hidden="true">
-
                     <span class="envelope__shadow"></span>
-
                     <span class="envelope__back"></span>
 
                     <!-- CARTA -->
 
                     <span class="envelope__letter-track">
-
                         <span class="envelope__letter">
-
                             <span class="envelope__letter-inner">
-
                                 <span
                                     class="envelope__letter-ornament"
                                 ></span>
-
                             </span>
-
                         </span>
-
                     </span>
 
                     <!-- BOLSO -->
 
                     <span class="envelope__pocket">
-
                         <span class="envelope__pocket-front"></span>
 
                         <span
@@ -161,23 +285,18 @@
                         <span
                             class="envelope__pocket-crease envelope__pocket-crease--right"
                         ></span>
-
                     </span>
 
                     <!-- SUPERFÍCIE FECHADA -->
 
                     <span class="envelope__body"></span>
-
                     <span class="envelope__seal"></span>
 
                     <span class="envelope__label">
                         VOCÊ ESTÁ CONVIDADO
                     </span>
-
                 </span>
-
             </button>
-
         </div>
 
         <div
@@ -185,7 +304,6 @@
             id="particles"
             aria-hidden="true"
         ></div>
-
     </section>
 
     <!-- PÁGINA PRINCIPAL -->
@@ -199,13 +317,8 @@
 
         <!-- CABEÇALHO ORNAMENTAL -->
 
-        <header
-            class="masthead"
-            aria-hidden="true"
-        >
-
+        <header class="masthead" aria-hidden="true">
             <span class="masthead__ornament"></span>
-
         </header>
 
         <!-- APRESENTAÇÃO -->
@@ -215,7 +328,6 @@
             id="inicio"
             aria-labelledby="hero-title"
         >
-
             <div
                 class="hero__character hero__character--one"
                 data-art="hero-character-one"
@@ -235,22 +347,19 @@
             ></div>
 
             <div class="hero__copy">
-
                 <p class="hero__subtitle">
                     Para o meu aniversário!
                 </p>
 
-                <h1
-                    class="hero__title"
-                    id="hero-title"
-                >
+                <h1 class="hero__title" id="hero-title">
                     <time datetime="2026-11-08">
                         08.11.2026
                     </time>
                 </h1>
 
                 <p class="hero__invitation">
-                    Sua presença é muito importante pra mim, quero você lá.
+                    Sua presença é muito importante pra mim,
+                    quero você lá.
                 </p>
 
                 <p class="hero__signature">
@@ -258,14 +367,12 @@
                     <span aria-hidden="true">·</span>
                     19 ANOS
                 </p>
-
             </div>
 
             <span
                 class="hero__ornament"
                 aria-hidden="true"
             ></span>
-
         </section>
 
         <!-- INFORMAÇÕES -->
@@ -275,7 +382,6 @@
             id="detalhes"
             aria-label="Informações do aniversário"
         >
-
             <div
                 class="details__character details__character--one"
                 data-art="details-character-one"
@@ -283,9 +389,7 @@
             ></div>
 
             <div class="details__grid">
-
                 <article class="detail detail--time">
-
                     <span class="detail__label">
                         HORÁRIO
                     </span>
@@ -293,50 +397,38 @@
                     <p class="detail__value">
                         A partir das 11h30
                     </p>
-
                 </article>
 
                 <article class="detail detail--location">
-
                     <span class="detail__label">
                         LOCAL
                     </span>
 
                     <p class="detail__value">
-
                         <a
+                            class="detail__address"
                             href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Diva%20Regnier%20Barrozo%2C%20116%2C%20Curitiba%2C%20PR"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Abrir endereço no Google Maps"
-                            style="
-                                color: inherit;
-                                text-decoration: underline;
-                                text-decoration-color: rgba(82, 24, 43, 0.35);
-                                text-underline-offset: 0.18em;
-                                cursor: pointer;
-                            "
                         >
                             R. Diva Regnier Barrozo, 116
                             <span>Umbará - Curitiba</span>
                         </a>
-
                     </p>
-
                 </article>
 
                 <article class="detail detail--drinks">
-
                     <span class="detail__label">
                         AVISO
                     </span>
 
                     <p class="detail__value">
-                        Peço que cada convidado traga sua própria bebida alcoólica. Haverá bebidas não alcoólicas disponíveis para todos.
+                        Peço que cada convidado traga sua própria
+                        bebida alcoólica. Haverá bebidas não
+                        alcoólicas disponíveis para todos.
                     </p>
-
                 </article>
-
             </div>
 
             <div
@@ -344,8 +436,20 @@
                 data-art="details-character-two"
                 aria-hidden="true"
             ></div>
-
         </section>
+
+        <!-- DIVISOR ORNAMENTAL -->
+
+        <div class="invitation-divider" aria-hidden="true">
+            <img
+                src="IMGS/ornament-divider.png"
+                alt=""
+                width="2172"
+                height="724"
+                decoding="async"
+                draggable="false"
+            >
+        </div>
 
         <!-- CONFIRMAÇÃO -->
 
@@ -354,29 +458,64 @@
             id="confirmacao"
             aria-labelledby="rsvp-title"
         >
-
             <div
                 class="rsvp__character rsvp__character--one"
                 data-art="rsvp-character-one"
                 aria-hidden="true"
             ></div>
 
-            <h2
-                class="rsvp__title"
-                id="rsvp-title"
-            >
+            <h2 class="rsvp__title" id="rsvp-title">
                 Confirme sua presença
             </h2>
 
             <div class="rsvp__card">
 
-                <form
-                    class="rsvp__form"
-                    id="rsvp-form"
-                >
+                <!-- CANTOS ORNAMENTAIS -->
 
+                <div class="rsvp__decorations" aria-hidden="true">
+                    <img
+                        class="rsvp__corner rsvp__corner--top-left"
+                        src="IMGS/ornament-corner.png"
+                        alt=""
+                        width="1254"
+                        height="1254"
+                        decoding="async"
+                        draggable="false"
+                    >
+
+                    <img
+                        class="rsvp__corner rsvp__corner--top-right"
+                        src="IMGS/ornament-corner.png"
+                        alt=""
+                        width="1254"
+                        height="1254"
+                        decoding="async"
+                        draggable="false"
+                    >
+
+                    <img
+                        class="rsvp__corner rsvp__corner--bottom-left"
+                        src="IMGS/ornament-corner-bottom-left.png"
+                        alt=""
+                        width="1254"
+                        height="1254"
+                        decoding="async"
+                        draggable="false"
+                    >
+
+                    <img
+                        class="rsvp__corner rsvp__corner--bottom-right"
+                        src="IMGS/ornament-corner-bottom-left.png"
+                        alt=""
+                        width="1254"
+                        height="1254"
+                        decoding="async"
+                        draggable="false"
+                    >
+                </div>
+
+                <form class="rsvp__form" id="rsvp-form">
                     <div class="form-field">
-
                         <label for="guest-name">
                             Nome
                         </label>
@@ -390,21 +529,17 @@
                             maxlength="100"
                             required
                         >
-
                     </div>
 
                     <fieldset
                         class="form-field form-field--attendance"
                     >
-
                         <legend>
                             Você virá?
                         </legend>
 
                         <div class="attendance-options">
-
                             <label class="attendance-option">
-
                                 <input
                                     type="radio"
                                     name="presenca"
@@ -415,11 +550,9 @@
                                 <span class="attendance-option__content">
                                     Sim
                                 </span>
-
                             </label>
 
                             <label class="attendance-option">
-
                                 <input
                                     type="radio"
                                     name="presenca"
@@ -430,11 +563,8 @@
                                 <span class="attendance-option__content">
                                     Não
                                 </span>
-
                             </label>
-
                         </div>
-
                     </fieldset>
 
                     <div
@@ -442,7 +572,6 @@
                         id="companions-field"
                         hidden
                     >
-
                         <label for="companions">
                             Quantos acompanhantes irão com você?
                         </label>
@@ -458,7 +587,6 @@
                             placeholder="Digite um número de 0 a 4"
                             disabled
                         >
-
                     </div>
 
                     <button
@@ -475,9 +603,7 @@
                         role="status"
                         aria-live="polite"
                     ></p>
-
                 </form>
-
             </div>
 
             <div
@@ -486,8 +612,19 @@
                 aria-hidden="true"
             ></div>
 
-        </section>
+            <!-- ORNAMENTO INFERIOR -->
 
+            <div class="invitation-footer" aria-hidden="true">
+                <img
+                    src="IMGS/ornament-footer.png"
+                    alt=""
+                    width="2172"
+                    height="724"
+                    decoding="async"
+                    draggable="false"
+                >
+            </div>
+        </section>
     </main>
 
 </body>
