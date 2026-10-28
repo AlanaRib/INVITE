@@ -1057,3 +1057,89 @@ body::before {
         animation: none !important;
     }
 }
+
+/* MOLDURA RESPONSIVA COM ASSETS */
+
+.intro .intro__frame {
+    --frame-inset: clamp(16px, 2.2vw, 34px);
+    --frame-corner: clamp(80px, min(13vw, 20svh), 164px);
+    --frame-mark: clamp(48px, 7vw, 84px);
+    --frame-offset: calc(var(--frame-corner) * .045);
+    --frame-start: calc(var(--frame-corner) * .88);
+    inset: var(--frame-inset);
+}
+.intro .intro__frame .corner {
+    width: var(--frame-corner);
+    height: var(--frame-corner);
+    overflow: visible;
+    background: url("../IMGS/envelope-frame-corner.png") center / contain no-repeat;
+    filter: none;
+}
+.intro .intro__frame .corner .piece {
+    display: none;
+}
+.intro .intro__frame .rail {
+    background: #171319;
+    opacity: .72;
+    filter: none;
+}
+.intro .intro__frame .rail.top,
+.intro .intro__frame .rail.bottom {
+    left: var(--frame-start);
+    right: var(--frame-start);
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #171319 6%,
+        #171319 calc(50% - var(--frame-mark) / 2),
+        transparent calc(50% - var(--frame-mark) / 2),
+        transparent calc(50% + var(--frame-mark) / 2),
+        #171319 calc(50% + var(--frame-mark) / 2),
+        #171319 94%,
+        transparent
+    );
+}
+.intro .intro__frame .rail.left,
+.intro .intro__frame .rail.right {
+    top: var(--frame-start);
+    bottom: var(--frame-start);
+    width: 1px;
+    background: linear-gradient(transparent, #171319 6%, #171319 94%, transparent);
+}
+.intro .intro__frame .rail.top { top: var(--frame-offset); }
+.intro .intro__frame .rail.bottom { bottom: var(--frame-offset); }
+.intro .intro__frame .rail.left { left: var(--frame-offset); }
+.intro .intro__frame .rail.right { right: var(--frame-offset); }
+
+.intro .intro__frame .mid {
+    width: var(--frame-mark);
+    height: calc(var(--frame-mark) * .4);
+}
+.intro .intro__frame .mid.top {
+    top: calc(var(--frame-offset) - var(--frame-mark) * .2);
+}
+.intro .intro__frame .mid.bottom {
+    bottom: calc(var(--frame-offset) - var(--frame-mark) * .2);
+}
+.intro .intro__frame .mid::before {
+    background: url("../IMGS/ornament-header.png") center / contain no-repeat;
+    clip-path: none;
+}
+.intro .intro__frame .side {
+    display: none;
+}
+@media (max-width: 540px) {
+    .intro .intro__frame {
+        --frame-inset: 14px;
+        --frame-corner: clamp(68px, 20vw, 92px);
+        --frame-mark: 52px;
+    }
+}
+@media (max-height: 520px) {
+    .intro .intro__frame {
+        --frame-inset: 12px;
+        --frame-corner: clamp(56px, 20svh, 90px);
+        --frame-mark: 44px;
+    }
+}
