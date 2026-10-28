@@ -35,12 +35,16 @@
             padding-top: 0;
         }
 
-        /* INFORMAÇÕES E DIVISÓRIAS VERTICAIS */
+        /* FUNDO CONTÍNUO ENTRE AS SEÇÕES */
 
-        .invitation .details {
+        .invitation .details,
+        .invitation .rsvp {
+            background: transparent;
             border-top: 0;
             border-bottom: 0;
+        }
 
+        .invitation .details {
             padding-bottom: clamp(1rem, 2vw, 1.5rem);
         }
 
@@ -109,7 +113,6 @@
         .invitation .rsvp__corner--top-right {
             top: -7px;
             right: -7px;
-
             transform: scaleX(-1);
         }
 
@@ -121,7 +124,6 @@
         .invitation .rsvp__corner--bottom-right {
             bottom: -7px;
             right: -7px;
-
             transform: scaleX(-1);
         }
 
@@ -210,7 +212,6 @@
         aria-label="Abertura do convite"
     >
         <div class="intro__atmosphere" aria-hidden="true">
-
             <div class="intro__frame">
                 <i class="rail top"></i>
                 <i class="rail right"></i>
@@ -259,7 +260,6 @@
 
                 <div class="mid top"></div>
                 <div class="mid bottom"></div>
-
                 <div class="side left"></div>
                 <div class="side right"></div>
             </div>
@@ -301,17 +301,13 @@
 
                     <span class="envelope__pocket">
                         <span class="envelope__pocket-front"></span>
-
                         <span
                             class="envelope__pocket-crease envelope__pocket-crease--left"
                         ></span>
-
                         <span
                             class="envelope__pocket-crease envelope__pocket-crease--right"
                         ></span>
                     </span>
-
-                    <!-- SUPERFÍCIE FECHADA -->
 
                     <span class="envelope__body"></span>
                     <span class="envelope__seal"></span>
@@ -406,9 +402,7 @@
 
             <div class="details__grid">
                 <article class="detail detail--time">
-                    <span class="detail__label">
-                        HORÁRIO
-                    </span>
+                    <span class="detail__label">HORÁRIO</span>
 
                     <p class="detail__value">
                         A partir das 11h30
@@ -416,9 +410,7 @@
                 </article>
 
                 <article class="detail detail--location">
-                    <span class="detail__label">
-                        LOCAL
-                    </span>
+                    <span class="detail__label">LOCAL</span>
 
                     <p class="detail__value">
                         <a
@@ -435,9 +427,7 @@
                 </article>
 
                 <article class="detail detail--drinks">
-                    <span class="detail__label">
-                        AVISO
-                    </span>
+                    <span class="detail__label">AVISO</span>
 
                     <p class="detail__value">
                         Peço que cada convidado traga sua própria
@@ -485,9 +475,6 @@
             </h2>
 
             <div class="rsvp__card">
-
-                <!-- CANTOS ORNAMENTAIS -->
-
                 <div class="rsvp__decorations" aria-hidden="true">
                     <img
                         class="rsvp__corner rsvp__corner--top-left"
@@ -532,9 +519,7 @@
 
                 <form class="rsvp__form" id="rsvp-form">
                     <div class="form-field">
-                        <label for="guest-name">
-                            Nome
-                        </label>
+                        <label for="guest-name">Nome</label>
 
                         <input
                             type="text"
@@ -548,9 +533,7 @@
                     </div>
 
                     <fieldset class="form-field form-field--attendance">
-                        <legend>
-                            Você virá?
-                        </legend>
+                        <legend>Você virá?</legend>
 
                         <div class="attendance-options">
                             <label class="attendance-option">
