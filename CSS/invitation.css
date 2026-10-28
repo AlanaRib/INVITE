@@ -115,15 +115,14 @@
     display: none !important;
 }
 
-/* ORNAMENTO SUPERIOR */
+/* CABEÇALHO */
 
 .invitation .masthead {
     position: relative;
     z-index: 2;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
-    align-items: center;
+    place-items: center;
     width: 100%;
     margin: 0;
     padding: clamp(1rem, 2vw, 1.5rem) 0;
@@ -803,49 +802,75 @@
         inset: 12px;
     }
 
+    /* MESMO EIXO PARA O CABEÇALHO E A APRESENTAÇÃO */
+
+    .invitation .masthead,
+    .invitation .hero {
+        width: calc(100% - 48px);
+        max-width: 380px;
+        margin-inline: auto;
+        padding-inline: 0;
+        justify-items: center;
+        text-align: center;
+    }
+
     .invitation .masthead {
-        padding: 1rem 0 0;
+        padding-block: 1rem 0;
     }
 
     .invitation .masthead__ornament {
         width: 90px;
+        margin-inline: auto;
+        justify-self: center;
     }
 
     .invitation .hero {
-        padding: 2rem 1.5rem 0.5rem;
+        padding-block: 2rem 0.5rem;
     }
 
     .invitation .hero__copy {
-        max-width: 380px;
+        width: 100%;
+        max-width: none;
+        margin-inline: auto;
+        justify-items: center;
     }
 
     .invitation .hero__copy::after {
         width: 125px;
-        margin-top: 1.25rem;
+        margin: 1.25rem auto 0;
+        justify-self: center;
     }
 
     .invitation .hero__subtitle {
-        margin-bottom: 0.75rem;
+        width: 100%;
+        margin: 0 0 0.75rem;
         font-size: 1.2rem;
+        text-align: center;
     }
 
     .invitation .hero__title {
+        width: 100%;
+        margin: 0;
         font-size: clamp(2rem, 9vw, 3rem);
         letter-spacing: -0.045em;
+        text-align: center;
     }
 
     .invitation .hero__invitation {
         width: min(100%, 320px);
-        margin-top: 1.25rem;
+        margin: 1.25rem auto 0;
         font-size: 1.25rem;
         line-height: 1.45;
+        text-align: center;
     }
 
     .invitation .hero__signature {
+        width: 100%;
         gap: 0.5rem;
-        margin-top: 1rem;
+        margin: 1rem auto 0;
         font-size: 0.65rem;
         letter-spacing: 0.1em;
+        justify-content: center;
     }
 
     .invitation .hero__character--three {
@@ -868,6 +893,8 @@
         width: min(70%, 250px);
     }
 
+    /* CAMPOS MAIS ESTREITOS DENTRO DOS ORNAMENTOS */
+
     .invitation .rsvp {
         padding: 2.5rem 1.5rem 3rem;
     }
@@ -886,7 +913,7 @@
 
         padding:
             calc(var(--mobile-corner) + 8px)
-            12px;
+            28px;
     }
 
     .invitation .rsvp__corner {
@@ -895,7 +922,9 @@
     }
 
     .invitation .rsvp__form {
+        width: 100%;
         gap: 1.25rem;
+        margin-inline: auto;
     }
 
     .invitation .form-field label,
@@ -906,25 +935,26 @@
 
     .invitation .form-field input[type="text"],
     .invitation .form-field input[type="number"] {
-        min-height: 52px;
-        padding: 0.75rem;
-        font-size: 1.1rem;
+        min-height: 48px;
+        padding: 0.65rem 0.75rem;
+        font-size: 1.05rem;
     }
 
     .invitation .attendance-options {
-        gap: 0.75rem;
+        gap: 0.65rem;
     }
 
     .invitation .attendance-option__content {
-        min-height: 52px;
-        font-size: 1.2rem;
+        min-height: 48px;
+        padding: 0.6rem;
+        font-size: 1.15rem;
     }
 
     .invitation .rsvp__submit {
-        min-height: 54px;
-        padding: 0.85rem 0.5rem;
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
+        min-height: 50px;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
     }
 
     .invitation .rsvp__feedback {
@@ -946,7 +976,7 @@
 
     .invitation .rsvp__card {
         --mobile-corner: 64px;
-        padding-inline: 10px;
+        padding-inline: 22px;
     }
 }
 
