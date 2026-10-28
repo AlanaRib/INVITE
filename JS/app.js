@@ -105,7 +105,7 @@ async function fadeElement(element, from, to, duration) {
 
 async function showInvitation() {
     if (intro && !intro.hidden) {
-        await fadeElement(intro, 1, 0, 320);
+        await fadeElement(intro, 1, 0, 280);
         intro.hidden = true;
     }
 
@@ -124,7 +124,7 @@ async function showInvitation() {
     invitation.hidden = false;
     invitation.classList.add("is-visible");
 
-    await fadeElement(invitation, 0, 1, 480);
+    await fadeElement(invitation, 0, 1, 420);
 
     invitation.setAttribute("tabindex", "-1");
     invitation.focus({ preventScroll: true });
