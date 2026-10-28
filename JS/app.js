@@ -1,6 +1,4 @@
-/* =========================================================
-   CONFIGURAÇÕES
-========================================================= */
+/* CONFIGURAÇÕES */
 
 const CONFIG = {
     SHEETS_URL:
@@ -15,9 +13,7 @@ const CONFIG = {
     }
 };
 
-/* =========================================================
-   ELEMENTOS
-========================================================= */
+/* ELEMENTOS */
 
 const intro = document.querySelector("#intro");
 const envelope = document.querySelector("#open-envelope");
@@ -36,9 +32,7 @@ const motionQuery = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 );
 
-/* =========================================================
-   PARTÍCULAS
-========================================================= */
+/* PARTÍCULAS */
 
 function createParticles() {
     if (!particles || motionQuery.matches) {
@@ -75,29 +69,70 @@ function createParticles() {
     }
 }
 
-/* =========================================================
-   ABERTURA DO CONVITE
-========================================================= */
+/* TRANSIÇÃO ENTRE AS TELAS */
 
-let envelopeOpened = false;
+async function fadeElement(element, from, to, duration) {
+    if (
+        !element ||
+        motionQuery.matches ||
+        typeof element.animate !== "function"
+    ) {
+        return;
+    }
 
-function showInvitation() {
-    if (intro) {
+    let animation;
+
+    try {
+        animation = element.animate(
+            [
+                { opacity: from },
+                { opacity: to }
+            ],
+            {
+                duration,
+                easing: "ease-in-out",
+                fill: "both"
+            }
+        );
+
+        await animation.finished;
+    } catch {
+        // A navegação continua se a animação for cancelada.
+    } finally {
+        animation?.cancel();
+    }
+}
+
+async function showInvitation() {
+    if (intro && !intro.hidden) {
+        await fadeElement(intro, 1, 0, 320);
         intro.hidden = true;
     }
 
-    if (invitation) {
-        invitation.hidden = false;
-        invitation.classList.add("is-visible");
-    }
-
     envelope?.setAttribute("aria-expanded", "true");
+    particles?.replaceChildren();
 
     window.scrollTo({
         top: 0,
         behavior: "instant"
     });
+
+    if (!invitation) {
+        return;
+    }
+
+    invitation.hidden = false;
+    invitation.classList.add("is-visible");
+
+    await fadeElement(invitation, 0, 1, 480);
+
+    invitation.setAttribute("tabindex", "-1");
+    invitation.focus({ preventScroll: true });
 }
+
+/* ABERTURA DO ENVELOPE */
+
+let envelopeOpened = false;
 
 function openEnvelope() {
     if (envelopeOpened) {
@@ -134,9 +169,7 @@ function openEnvelope() {
 
 envelope?.addEventListener("click", openEnvelope);
 
-/* =========================================================
-   FORMULÁRIO
-========================================================= */
+/* FORMULÁRIO */
 
 const form = document.querySelector("#rsvp-form");
 const guestName = document.querySelector("#guest-name");
@@ -159,9 +192,7 @@ function getAttendance() {
     )?.value ?? "";
 }
 
-/* =========================================================
-   MENSAGENS
-========================================================= */
+/* MENSAGENS */
 
 function clearFeedback() {
     if (!feedback) {
@@ -181,9 +212,7 @@ function showFeedback(message, state) {
     feedback.dataset.state = state;
 }
 
-/* =========================================================
-   ACOMPANHANTES
-========================================================= */
+/* ACOMPANHANTES */
 
 function updateCompanions() {
     if (!companions) {
@@ -221,9 +250,7 @@ companions?.addEventListener("input", () => {
     clearFeedback();
 });
 
-/* =========================================================
-   ENVIO PARA O GOOGLE SHEETS
-========================================================= */
+/* ENVIO PARA O GOOGLE SHEETS */
 
 let sending = false;
 
@@ -312,7 +339,6 @@ form?.addEventListener("submit", async (event) => {
                 : CONFIG.MESSAGES.no,
             "success"
         );
-
     } catch (error) {
         console.error(
             "Erro ao enviar a confirmação:",
@@ -323,7 +349,6 @@ form?.addEventListener("submit", async (event) => {
             CONFIG.MESSAGES.error,
             "error"
         );
-
     } finally {
         sending = false;
         submitButton.disabled = false;
@@ -331,8 +356,6 @@ form?.addEventListener("submit", async (event) => {
     }
 });
 
-/* =========================================================
-   INICIALIZAÇÃO
-========================================================= */
+/* INICIALIZAÇÃO */
 
 updateCompanions();
