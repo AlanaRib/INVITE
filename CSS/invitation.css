@@ -11,14 +11,12 @@
     --invite-muted: #594952;
     --invite-red: #6d2338;
     --invite-red-dark: #52182b;
-    --invite-date-red: #920608;
     --invite-line: rgba(23, 19, 25, 0.48);
     --invite-line-soft: rgba(23, 19, 25, 0.2);
     --invite-font-title: "Cinzel", Georgia, serif;
     --invite-font-body: "Cormorant Garamond", Georgia, serif;
     --invite-width: 1080px;
     --invite-space: clamp(3rem, 5vw, 4.5rem);
-    --masthead-height: clamp(72px, 12svh, 110px);
 
     position: relative;
     isolation: isolate;
@@ -123,32 +121,33 @@
 .invitation .masthead {
     position: relative;
     z-index: 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
 
     width: min(calc(100% - 90px), var(--invite-width));
-    height: var(--masthead-height);
     margin: 0 auto;
-    padding: 0;
+    padding: clamp(1rem, 2vw, 1.5rem) 0;
+
     border: 0;
 }
 
 .invitation .masthead__ornament {
+    position: relative;
+    left: 50%;
     display: block;
-    flex-shrink: 0;
+
     width: clamp(85px, 9vw, 125px);
     aspect-ratio: 2.5 / 1;
+    margin: 0;
 
     background:
         url("../IMGS/ornament-header.png")
         center / contain no-repeat;
 
+    transform: translateX(-50%);
     pointer-events: none;
 }
 
-/* APRESENTAÇÃO CENTRALIZADA */
+/* APRESENTAÇÃO */
 
 .invitation .hero {
     position: relative;
@@ -158,11 +157,10 @@
     grid-template-columns: minmax(0, 1fr);
     place-items: center;
 
-    width: 100%;
-    min-height: calc(100svh - var(--masthead-height));
+    min-height: clamp(360px, 46svh, 440px);
 
     padding:
-        clamp(2rem, 5svh, 4rem)
+        clamp(4rem, 5.5vw, 5rem)
         clamp(2.5rem, 7vw, 6rem);
 
     text-align: center;
@@ -175,25 +173,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
-    width: min(100%, 840px);
+    width: 100%;
+    max-width: 840px;
     min-width: 0;
-    margin: 0 auto;
-
-    text-align: center;
+    margin-inline: auto;
 }
 
 /* ORNAMENTO DEPOIS DA ASSINATURA */
 
 .invitation .hero__copy::after {
+    position: relative;
+    left: 50%;
+    align-self: flex-start;
+
     display: block;
     flex-shrink: 0;
-    align-self: center;
 
     width: clamp(115px, 13vw, 175px);
     aspect-ratio: 2.5 / 1;
-    margin: clamp(1.25rem, 2.5vw, 2rem) auto 0;
+    margin: clamp(1.25rem, 2.5vw, 2rem) 0 0;
 
     content: "";
     pointer-events: none;
@@ -201,12 +200,12 @@
     background:
         url("../IMGS/ornament-hero.png")
         center / contain no-repeat;
+
+    transform: translateX(-50%);
 }
 
 .invitation .hero__subtitle {
-    width: 100%;
     margin: 0 0 clamp(0.65rem, 1.4vw, 1rem);
-
     color: var(--invite-wine-dark);
     font-family: var(--invite-font-body);
     font-size: clamp(1.3rem, 1.9vw, 1.6rem);
@@ -214,29 +213,23 @@
     font-weight: 600;
     letter-spacing: 0.015em;
     line-height: 1.3;
-    text-align: center;
 }
 
 .invitation .hero__title {
-    width: 100%;
     max-width: 100%;
     margin: 0;
-
-    color: var(--invite-date-red);
+    color: var(--invite-red-dark);
     font-family: var(--invite-font-title);
     font-size: clamp(2.3rem, 4.3vw, 3.65rem);
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 1.15;
-    text-align: center;
-
     text-shadow: 0 2px 14px rgba(255, 255, 255, 0.08);
 }
 
 .invitation .hero__title time {
     display: block;
     max-width: 100%;
-
     color: inherit;
     font: inherit;
     font-variant-numeric: lining-nums tabular-nums;
@@ -245,11 +238,9 @@
 
 .invitation .hero__invitation {
     position: relative;
-
     width: min(100%, 550px);
-    margin: clamp(1.2rem, 2.5vw, 1.8rem) auto 0;
+    margin: clamp(1.2rem, 2.5vw, 1.8rem) 0 0;
     padding: 0;
-
     color: var(--invite-wine-dark);
     font-family: var(--invite-font-body);
     font-size: clamp(1.35rem, 2vw, 1.65rem);
@@ -263,10 +254,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-
-    width: 100%;
-    margin: clamp(1rem, 2vw, 1.5rem) auto 0;
-
+    margin: clamp(1rem, 2vw, 1.5rem) 0 0;
     color: var(--invite-red);
     font-family: var(--invite-font-title);
     font-size: clamp(0.62rem, 0.85vw, 0.75rem);
@@ -833,7 +821,6 @@
 
     .invitation .masthead {
         width: calc(100% - 58px);
-        height: auto;
         padding: 1rem 0;
     }
 
