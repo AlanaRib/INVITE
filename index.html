@@ -10,196 +10,11 @@
     <title>Convite</title>
 
     <link rel="icon" type="image/png" href="IMGS/favicon.png">
+
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/invitation.css">
 
     <script src="JS/app.js" defer></script>
-
-    <style>
-        /* REMOVE OS TRAÇOS HORIZONTAIS DECORATIVOS */
-
-        .invitation .masthead {
-            border-bottom: 0;
-        }
-
-        .invitation .masthead::before,
-        .invitation .hero::after,
-        .invitation .hero__invitation::before,
-        .invitation .hero__ornament,
-        .invitation .rsvp__title::after,
-        .invitation .rsvp::after {
-            display: none;
-        }
-
-        .invitation .hero__invitation {
-            padding-top: 0;
-        }
-
-        /* FUNDO CONTÍNUO ENTRE AS SEÇÕES */
-
-        .invitation .details,
-        .invitation .rsvp {
-            background: transparent;
-            border-top: 0;
-            border-bottom: 0;
-        }
-
-        .invitation .details {
-            padding-bottom: clamp(1rem, 2vw, 1.5rem);
-        }
-
-        .invitation .detail + .detail {
-            border-top: 0;
-        }
-
-        /* DIVISOR TRIBAL */
-
-        .invitation .invitation-divider {
-            position: relative;
-            z-index: 2;
-
-            display: grid;
-            place-items: center;
-
-            width: min(68%, 420px);
-            margin: 0 auto;
-
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .invitation .invitation-divider img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* CANTOS DO FORMULÁRIO */
-
-        .invitation .rsvp__card {
-            position: relative;
-            isolation: isolate;
-            overflow: visible;
-        }
-
-        .invitation .rsvp__card::before,
-        .invitation .rsvp__card::after {
-            display: none;
-        }
-
-        .invitation .rsvp__decorations {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .invitation .rsvp__corner {
-            position: absolute;
-            display: block;
-
-            width: clamp(52px, 8vw, 84px);
-            height: auto;
-            max-width: 24%;
-        }
-
-        .invitation .rsvp__corner--top-left {
-            top: -7px;
-            left: -7px;
-        }
-
-        .invitation .rsvp__corner--top-right {
-            top: -7px;
-            right: -7px;
-            transform: scaleX(-1);
-        }
-
-        .invitation .rsvp__corner--bottom-left {
-            bottom: -7px;
-            left: -7px;
-        }
-
-        .invitation .rsvp__corner--bottom-right {
-            bottom: -7px;
-            right: -7px;
-            transform: scaleX(-1);
-        }
-
-        .invitation .rsvp__form {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* FECHAMENTO INFERIOR */
-
-        .invitation .invitation-footer {
-            position: relative;
-            z-index: 1;
-
-            display: grid;
-            place-items: center;
-
-            width: min(72%, 340px);
-            margin: clamp(2.5rem, 6vw, 4rem) auto 0;
-
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .invitation .invitation-footer img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* LINK DO ENDEREÇO */
-
-        .invitation .detail__address {
-            color: inherit;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .invitation .detail__address:hover {
-            color: var(--invite-red-dark);
-        }
-
-        .invitation .detail__address:focus-visible {
-            outline: 2px solid var(--invite-red);
-            outline-offset: 5px;
-        }
-
-        /* RESPONSIVIDADE */
-
-        @media (max-width: 900px) {
-            .invitation .detail + .detail {
-                border-top: 0;
-                border-left: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .invitation .details {
-                padding-bottom: 0.75rem;
-            }
-
-            .invitation .invitation-divider {
-                width: min(70%, 280px);
-                margin: 0 auto;
-            }
-
-            .invitation .rsvp__corner {
-                width: 58px;
-            }
-
-            .invitation .invitation-footer {
-                width: min(70%, 250px);
-                margin-top: 2.5rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -287,8 +102,6 @@
                     <span class="envelope__shadow"></span>
                     <span class="envelope__back"></span>
 
-                    <!-- CARTA -->
-
                     <span class="envelope__letter-track">
                         <span class="envelope__letter">
                             <span class="envelope__letter-inner">
@@ -297,13 +110,13 @@
                         </span>
                     </span>
 
-                    <!-- BOLSO -->
-
                     <span class="envelope__pocket">
                         <span class="envelope__pocket-front"></span>
+
                         <span
                             class="envelope__pocket-crease envelope__pocket-crease--left"
                         ></span>
+
                         <span
                             class="envelope__pocket-crease envelope__pocket-crease--right"
                         ></span>
