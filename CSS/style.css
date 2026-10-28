@@ -1,28 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 
-/* =========================================================
-   VARIÁVEIS
-========================================================= */
+/* VARIÁVEIS */
 
 :root {
     --blood-red: #920608;
-
     --envelope-cold-top: #6d2338;
     --envelope-cold-mid: #52182b;
     --envelope-cold-dark: #320b1c;
     --envelope-edge: #230712;
-
     --page-padding: clamp(1.25rem, 5vw, 4rem);
-
     --white: #fffdfd;
     --black: #0b0b0d;
-
     --transition-soft: 350ms ease;
 }
 
-/* =========================================================
-   BASE
-========================================================= */
+/* BASE */
 
 * {
     box-sizing: border-box;
@@ -57,8 +49,8 @@ input {
 body::before {
     position: fixed;
     inset: 0;
-    content: "";
     z-index: -1;
+    content: "";
 
     background: linear-gradient(
         138deg,
@@ -74,12 +66,11 @@ body::before {
     );
 }
 
-/* =========================================================
-   INTRODUÇÃO
-========================================================= */
+/* INTRODUÇÃO */
 
 .intro {
     position: relative;
+    isolation: isolate;
     display: grid;
     place-items: center;
     min-height: 100svh;
@@ -89,7 +80,6 @@ body::before {
         var(--page-padding);
 
     overflow: hidden;
-    isolation: isolate;
 }
 
 .intro__atmosphere {
@@ -99,21 +89,22 @@ body::before {
     pointer-events: none;
 }
 
-.intro__glow {
-    display: none;
-}
-
 .intro__content {
     position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     min-width: 0;
-    z-index: 2;
 }
 
-/* INSTRUÇÃO DE ABERTURA */
+.intro__character {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* INSTRUÇÃO */
 
 .intro__content::after {
     position: absolute;
@@ -132,7 +123,6 @@ body::before {
     text-align: center;
 
     transform: translateX(-50%);
-
     pointer-events: none;
 
     transition:
@@ -145,297 +135,142 @@ body::before {
     transform: translate(-50%, 8px);
 }
 
-.intro__character {
-    position: absolute;
-    pointer-events: none;
-}
-
-/* =========================================================
-   MOLDURA 02 POLIDA — PRETO UNIFORME
-========================================================= */
+/* MOLDURA COM ASSETS */
 
 .intro__frame {
+    --frame-inset: clamp(16px, 2.2vw, 34px);
+    --frame-corner: clamp(80px, min(13vw, 20svh), 164px);
+    --frame-mark: clamp(48px, 7vw, 84px);
+    --frame-offset: calc(var(--frame-corner) * 0.045);
+    --frame-start: calc(var(--frame-corner) * 0.88);
+
     position: absolute;
-    inset: clamp(20px, 2.2vw, 34px);
+    inset: var(--frame-inset);
     pointer-events: none;
-
-    --frame-black: #171319;
-    --frame-black-soft: rgba(23, 19, 25, .85);
-    --rail-thickness: 1.4px;
-    --corner-reach: clamp(92px, 13vw, 168px);
-    --rail-gap: calc(var(--corner-reach) * .65);
-}
-
-.intro__frame .rail {
-    position: absolute;
-    display: block;
-    opacity: 1;
-
-    filter: drop-shadow(
-        0 1px 1px rgba(0, 0, 0, .08)
-    );
-}
-
-.intro__frame .rail.top,
-.intro__frame .rail.bottom {
-    left: var(--rail-gap);
-    right: var(--rail-gap);
-    height: var(--rail-thickness);
-}
-
-.intro__frame .rail.left,
-.intro__frame .rail.right {
-    top: var(--rail-gap);
-    bottom: var(--rail-gap);
-    width: var(--rail-thickness);
-}
-
-.intro__frame .rail.top {
-    top: 0;
-    background: var(--frame-black);
-}
-
-.intro__frame .rail.bottom {
-    bottom: 0;
-    background: var(--frame-black);
-}
-
-.intro__frame .rail.left {
-    left: 0;
-    background: var(--frame-black);
-}
-
-.intro__frame .rail.right {
-    right: 0;
-    background: var(--frame-black);
 }
 
 .intro__frame .corner {
     position: absolute;
-    width: var(--corner-reach);
-    height: var(--corner-reach);
-    overflow: hidden;
+    display: block;
+    width: var(--frame-corner);
+    height: var(--frame-corner);
 
-    filter: drop-shadow(
-        0 1px 1px rgba(0, 0, 0, .14)
-    );
+    background:
+        url("../IMGS/envelope-frame-corner.png")
+        center / contain no-repeat;
 }
 
 .intro__frame .corner.tl {
     top: 0;
     left: 0;
-
-    --piece-main: #171319;
-    --piece-accent: rgba(23, 19, 25, .68);
-    --piece-shadow: .94;
 }
 
 .intro__frame .corner.tr {
     top: 0;
     right: 0;
     transform: scaleX(-1);
-    --piece-main: #171319;
-    --piece-accent: rgba(23, 19, 25, .68);
-    --piece-shadow: .94;
 }
 
 .intro__frame .corner.bl {
     bottom: 0;
     left: 0;
     transform: scaleY(-1);
-
-    --piece-main: #171319;
-    --piece-accent: rgba(23, 19, 25, .68);
-    --piece-shadow: .94;
 }
 
 .intro__frame .corner.br {
     bottom: 0;
     right: 0;
     transform: scale(-1);
-
-    --piece-main: #171319;
-    --piece-accent: rgba(23, 19, 25, .68);
-    --piece-shadow: .94;
 }
 
-.intro__frame .corner .piece {
+/* LINHAS FLEXÍVEIS */
+
+.intro__frame .rail {
     position: absolute;
     display: block;
-    background: var(--piece-main);
-    transform-origin: top left;
+    opacity: 0.72;
 }
 
-.intro__frame .c1 {
-    left: 0;
-    top: 0;
-    width: 88%;
-    height: 88%;
-    opacity: var(--piece-shadow);
-    transform: scale(.82);
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        77% 10%,
-        61% 15%,
-        70% 27%,
-        53% 24%,
-        48% 40%,
-        59% 46%,
-        44% 49%,
-        40% 63%,
-        28% 55%,
-        20% 70%,
-        10% 85%,
-        0 100%
+.intro__frame .rail.top,
+.intro__frame .rail.bottom {
+    left: var(--frame-start);
+    right: var(--frame-start);
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #171319 6%,
+        #171319 calc(50% - var(--frame-mark) / 2),
+        transparent calc(50% - var(--frame-mark) / 2),
+        transparent calc(50% + var(--frame-mark) / 2),
+        #171319 calc(50% + var(--frame-mark) / 2),
+        #171319 94%,
+        transparent
     );
 }
 
-.intro__frame .c2 {
-    left: 7%;
-    top: 8%;
-    width: 76%;
-    height: 76%;
-    background: var(--piece-accent);
-    opacity: .95;
-    transform: scale(.77);
-    clip-path: polygon(
-        0 0,
-        27% 8%,
-        51% 25%,
-        73% 30%,
-        91% 51%,
-        67% 49%,
-        46% 41%,
-        38% 61%,
-        24% 85%,
-        24% 57%,
-        11% 38%
+.intro__frame .rail.left,
+.intro__frame .rail.right {
+    top: var(--frame-start);
+    bottom: var(--frame-start);
+    width: 1px;
+
+    background: linear-gradient(
+        transparent,
+        #171319 6%,
+        #171319 94%,
+        transparent
     );
 }
 
-.intro__frame .c3 {
-    left: 16%;
-    top: 12%;
-    width: 58%;
-    height: 55%;
-    opacity: .74;
-    transform: scale(.76);
-
-    clip-path: polygon(
-        0 0,
-        39% 20%,
-        57% 16%,
-        52% 36%,
-        82% 54%,
-        58% 55%,
-        47% 80%,
-        36% 52%
-    );
+.intro__frame .rail.top {
+    top: var(--frame-offset);
 }
 
-.intro__frame .c4 {
-    left: 3%;
-    top: 18%;
-    width: 55%;
-    height: 66%;
-    opacity: .64;
-    transform: scale(.79);
-
-    clip-path: polygon(
-        0 0,
-        34% 27%,
-        42% 13%,
-        46% 48%,
-        80% 62%,
-        53% 65%,
-        20% 81%,
-        27% 56%
-    );
+.intro__frame .rail.bottom {
+    bottom: var(--frame-offset);
 }
 
-.intro__frame .c5,
-.intro__frame .c6,
-.intro__frame .c7 {
-    display: none;
+.intro__frame .rail.left {
+    left: var(--frame-offset);
 }
+
+.intro__frame .rail.right {
+    right: var(--frame-offset);
+}
+
+/* ORNAMENTOS CENTRAIS */
 
 .intro__frame .mid {
     position: absolute;
     left: 50%;
-    width: clamp(42px, 5.2vw, 76px);
-    height: 24px;
+    display: block;
+    width: var(--frame-mark);
+    height: calc(var(--frame-mark) * 0.4);
+
+    background:
+        url("../IMGS/ornament-header.png")
+        center / contain no-repeat;
+
     transform: translateX(-50%);
-    pointer-events: none;
 }
 
 .intro__frame .mid.top {
-    top: -1px;
+    top: calc(
+        var(--frame-offset) - var(--frame-mark) * 0.2
+    );
 }
 
 .intro__frame .mid.bottom {
-    bottom: -1px;
+    bottom: calc(
+        var(--frame-offset) - var(--frame-mark) * 0.2
+    );
+
     transform: translateX(-50%) rotate(180deg);
 }
 
-.intro__frame .mid::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--frame-black);
-    clip-path: polygon(
-        0 0,
-        25% 0,
-        36% 27%,
-        45% 13%,
-        50% 100%,
-        55% 13%,
-        64% 27%,
-        75% 0,
-        100% 0,
-        70% 40%,
-        57% 45%,
-        50% 85%,
-        43% 45%,
-        30% 40%
-    );
-}
-
-.intro__frame .side {
-    position: absolute;
-    top: 50%;
-    width: 16px;
-    height: clamp(28px, 4vw, 46px);
-    transform: translateY(-50%);
-}
-
-.intro__frame .side.left {
-    left: -1px;
-}
-
-.intro__frame .side.right {
-    right: -1px;
-    transform: translateY(-50%) scaleX(-1);
-}
-
-.intro__frame .side::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--frame-black);
-
-    clip-path: polygon(
-        0 0,
-        0 100%,
-        20% 70%,
-        100% 50%,
-        20% 30%
-    );
-}
-
-/* =========================================================
-   ENVELOPE
-========================================================= */
+/* ENVELOPE */
 
 .envelope {
     --envelope-width: min(
@@ -445,15 +280,17 @@ body::before {
     );
 
     position: relative;
-    display: block;
     isolation: isolate;
+    display: block;
     width: var(--envelope-width);
     max-width: 100%;
     aspect-ratio: 1.515 / 1;
+
     margin: 0;
     padding: 0;
     border: 0;
     border-radius: 18px 18px 10px 10px;
+
     background: transparent;
     color: white;
     cursor: pointer;
@@ -463,6 +300,11 @@ body::before {
 
 .envelope:hover {
     transform: translateY(-4px);
+}
+
+.envelope:focus-visible {
+    outline: 2px solid #171319;
+    outline-offset: 8px;
 }
 
 .envelope.is-opening,
@@ -485,14 +327,12 @@ body::before {
     inset: 3% 3% 2%;
     z-index: 0;
     border-radius: 18px;
-    background: rgba(11, 11, 13, .35);
+    background: rgba(11, 11, 13, 0.35);
     transform: translateY(15px);
     filter: blur(17px);
 }
 
-/* =========================================================
-   FUNDO DO ENVELOPE
-========================================================= */
+/* FUNDO */
 
 .envelope__back {
     position: absolute;
@@ -500,6 +340,7 @@ body::before {
     z-index: 1;
     border: 1px solid var(--envelope-edge);
     border-radius: inherit;
+
     background: linear-gradient(
         165deg,
         var(--envelope-cold-top),
@@ -508,9 +349,7 @@ body::before {
     );
 }
 
-/* =========================================================
-   CARTA INSERIDA NO BOLSO
-========================================================= */
+/* CARTA */
 
 .envelope__letter-track {
     position: absolute;
@@ -518,10 +357,10 @@ body::before {
     z-index: 2;
     display: block;
     pointer-events: none;
-
     transform: translateY(0);
+
     transition:
-        transform 670ms cubic-bezier(.22, .75, .22, 1);
+        transform 670ms cubic-bezier(0.22, 0.75, 0.22, 1);
 }
 
 .envelope__letter {
@@ -532,7 +371,7 @@ body::before {
     height: 86%;
     display: block;
 
-    border: 1px solid rgba(132, 118, 124, .34);
+    border: 1px solid rgba(132, 118, 124, 0.34);
     border-radius: 3px;
 
     background: linear-gradient(
@@ -543,15 +382,15 @@ body::before {
     );
 
     box-shadow:
-        0 6px 14px rgba(11, 11, 13, .18),
-        inset 0 0 0 1px rgba(255, 255, 255, .25);
+        0 6px 14px rgba(11, 11, 13, 0.18),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.25);
 }
 
 .envelope__letter-inner {
     position: absolute;
     inset: 9%;
     display: block;
-    border: 1px solid rgba(167, 150, 156, .24);
+    border: 1px solid rgba(167, 150, 156, 0.24);
 }
 
 .envelope__letter-ornament {
@@ -562,7 +401,7 @@ body::before {
     height: 18px;
 
     transform: translateX(-50%);
-    background: rgba(144, 98, 110, .32);
+    background: rgba(144, 98, 110, 0.32);
 
     clip-path: polygon(
         50% 0,
@@ -576,9 +415,7 @@ body::before {
     );
 }
 
-/* =========================================================
-   BOLSO FRONTAL
-========================================================= */
+/* BOLSO FRONTAL */
 
 .envelope__pocket {
     position: absolute;
@@ -618,6 +455,7 @@ body::before {
         100% 100%;
 
     background-position: center;
+
     clip-path: polygon(
         0 47%,
         50% 64%,
@@ -631,14 +469,14 @@ body::before {
     position: absolute;
     inset: 0;
     display: block;
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
 }
 
 .envelope__pocket-crease--left {
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, .07),
+        rgba(255, 255, 255, 0.07),
         transparent 65%
     );
 
@@ -652,7 +490,7 @@ body::before {
 .envelope__pocket-crease--right {
     background: linear-gradient(
         225deg,
-        rgba(0, 0, 0, .12),
+        rgba(0, 0, 0, 0.12),
         transparent 65%
     );
 
@@ -663,9 +501,7 @@ body::before {
     );
 }
 
-/* =========================================================
-   SUPERFÍCIE FECHADA
-========================================================= */
+/* SUPERFÍCIE FECHADA */
 
 .envelope__body {
     position: absolute;
@@ -695,9 +531,9 @@ body::before {
         100% 100%;
 
     box-shadow:
-        inset 0 0 0 1px rgba(11, 11, 13, .54),
-        inset 0 0 0 4px rgba(11, 11, 13, .1),
-        inset 0 -14px 24px rgba(37, 2, 5, .17);
+        inset 0 0 0 1px rgba(11, 11, 13, 0.54),
+        inset 0 0 0 4px rgba(11, 11, 13, 0.1),
+        inset 0 -14px 24px rgba(37, 2, 5, 0.17);
 
     opacity: 1;
     visibility: visible;
@@ -711,18 +547,17 @@ body::before {
     position: absolute;
     inset: 0;
     content: "";
-    opacity: .3;
+    opacity: 0.3;
+
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, .035),
+        rgba(255, 255, 255, 0.035),
         transparent 42%,
-        rgba(11, 11, 13, .08)
+        rgba(11, 11, 13, 0.08)
     );
 }
 
-/* =========================================================
-   ABA SUPERIOR
-========================================================= */
+/* ABA SUPERIOR */
 
 .envelope__back::before {
     position: absolute;
@@ -752,11 +587,11 @@ body::before {
     );
 
     transform-origin: bottom center;
-    transform: scaleY(.015);
+    transform: scaleY(0.015);
     opacity: 0;
 
     transition:
-        transform 650ms cubic-bezier(.22, .72, .24, 1) 200ms,
+        transform 650ms cubic-bezier(0.22, 0.72, 0.24, 1) 200ms,
         opacity 130ms ease 190ms;
 }
 
@@ -765,9 +600,7 @@ body::before {
     opacity: 1;
 }
 
-/* =========================================================
-   SELO E TEXTO
-========================================================= */
+/* SELO E TEXTO */
 
 .envelope__seal {
     position: absolute;
@@ -775,7 +608,6 @@ body::before {
     top: 48%;
     left: 50%;
     display: block;
-
     width: clamp(78px, 15vw, 98px);
     aspect-ratio: 1;
 
@@ -790,7 +622,7 @@ body::before {
     pointer-events: none;
 
     filter: drop-shadow(
-        0 7px 9px rgba(11, 11, 13, .28)
+        0 7px 9px rgba(11, 11, 13, 0.28)
     );
 
     transition:
@@ -804,33 +636,30 @@ body::before {
     left: 50%;
     bottom: 11%;
     width: 90%;
+
     color: white;
     font-family: "Cinzel", Georgia, "Times New Roman", serif;
-    font-size: clamp(.7rem, 2.5vw, .92rem);
+    font-size: clamp(0.7rem, 2.5vw, 0.92rem);
     font-weight: 700;
-    letter-spacing: .17em;
+    letter-spacing: 0.17em;
     line-height: 1.6;
     text-align: center;
 
-    text-shadow:
-        0 2px 3px rgba(11, 11, 13, .9);
+    text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
 
     transform: translateX(-50%);
     pointer-events: none;
-
     transition: opacity 220ms ease;
 }
 
-/* =========================================================
-   ANIMAÇÃO
-========================================================= */
+/* ANIMAÇÃO DE ABERTURA */
 
 .envelope__stage.is-seal-released .envelope__seal {
     opacity: 0;
 
     transform:
         translate(-50%, -54%)
-        scale(.7)
+        scale(0.7)
         rotate(8deg);
 }
 
@@ -856,16 +685,14 @@ body::before {
     opacity: 0;
 }
 
-/* =========================================================
-   PARTÍCULAS
-========================================================= */
+/* PARTÍCULAS */
 
 .particles {
     position: absolute;
     inset: 0;
+    z-index: 10;
     overflow: hidden;
     pointer-events: none;
-    z-index: 10;
 }
 
 .particle {
@@ -896,11 +723,11 @@ body::before {
 
         transform:
             translate3d(0, 0, 0)
-            scale(.4);
+            scale(0.4);
     }
 
     20% {
-        opacity: .75;
+        opacity: 0.75;
     }
 
     100% {
@@ -912,27 +739,17 @@ body::before {
     }
 }
 
-/* =========================================================
-   RESPONSIVIDADE
-========================================================= */
+/* MOLDURA NO MOBILE */
 
 @media (max-width: 540px) {
     .intro__frame {
-        inset: 14px;
-        --corner-reach: 84px;
-        --rail-gap: calc(var(--corner-reach) * .65);
-    }
-
-    .intro__frame .mid {
-        width: 44px;
-        height: 18px;
-    }
-
-    .intro__frame .side {
-        width: 13px;
-        height: 28px;
+        --frame-inset: 14px;
+        --frame-corner: clamp(68px, 20vw, 92px);
+        --frame-mark: 52px;
     }
 }
+
+/* ENVELOPE NO MOBILE */
 
 @media (max-width: 480px) {
     :root {
@@ -940,8 +757,7 @@ body::before {
     }
 
     .intro {
-        padding-block:
-            clamp(1.25rem, 5svh, 2rem);
+        padding-block: clamp(1.25rem, 5svh, 2rem);
     }
 
     .envelope {
@@ -954,8 +770,8 @@ body::before {
 
     .envelope__label {
         bottom: 10%;
-        font-size: clamp(.58rem, 2.8vw, .68rem);
-        letter-spacing: .1em;
+        font-size: clamp(0.58rem, 2.8vw, 0.68rem);
+        letter-spacing: 0.1em;
     }
 
     .envelope__seal {
@@ -973,13 +789,15 @@ body::before {
     }
 }
 
+/* TELAS ESTREITAS */
+
 @media (max-width: 320px) {
     :root {
-        --page-padding: .875rem;
+        --page-padding: 0.875rem;
     }
 
     .envelope__label {
-        font-size: .56rem;
+        font-size: 0.56rem;
     }
 
     .envelope__seal {
@@ -993,10 +811,17 @@ body::before {
     }
 }
 
+/* TELAS BAIXAS */
+
 @media (max-height: 520px) {
     .intro {
-        padding-block:
-            max(.75rem, 3svh);
+        padding-block: max(0.75rem, 3svh);
+    }
+
+    .intro__frame {
+        --frame-inset: 12px;
+        --frame-corner: clamp(56px, 20svh, 90px);
+        --frame-mark: 44px;
     }
 
     .envelope {
@@ -1013,25 +838,7 @@ body::before {
     }
 }
 
-@media (max-height: 520px) and (min-width: 541px) {
-    .intro__frame {
-        inset: 14px;
-        --corner-reach: clamp(72px, 13svh, 108px);
-        --rail-gap: calc(var(--corner-reach) * .65);
-    }
-
-    .intro__frame .mid {
-        height: 18px;
-    }
-
-    .intro__frame .side {
-        height: 26px;
-    }
-}
-
-/* =========================================================
-   MOVIMENTO REDUZIDO
-========================================================= */
+/* MOVIMENTO REDUZIDO */
 
 @media (prefers-reduced-motion: reduce) {
     html {
