@@ -23,7 +23,6 @@
     width: 100%;
     min-height: 100svh;
     overflow: hidden;
-
     color: var(--invite-ink);
     font-family: var(--invite-font-body);
 
@@ -41,7 +40,7 @@
     );
 }
 
-/* ATMOSFERA E LINHAS VERTICAIS */
+/* ATMOSFERA */
 
 .invitation::before {
     position: absolute;
@@ -116,34 +115,36 @@
     display: none !important;
 }
 
-/* CABEÇALHO */
+/* ORNAMENTO SUPERIOR */
 
 .invitation .masthead {
     position: relative;
     z-index: 2;
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    align-items: center;
 
-    width: min(calc(100% - 90px), var(--invite-width));
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     padding: clamp(1rem, 2vw, 1.5rem) 0;
-
     border: 0;
 }
 
 .invitation .masthead__ornament {
-    position: relative;
-    left: 50%;
+    position: static;
     display: block;
+    justify-self: center;
 
     width: clamp(85px, 9vw, 125px);
     aspect-ratio: 2.5 / 1;
     margin: 0;
+    transform: none;
 
     background:
         url("../IMGS/ornament-header.png")
         center / contain no-repeat;
 
-    transform: translateX(-50%);
     pointer-events: none;
 }
 
@@ -152,16 +153,16 @@
 .invitation .hero {
     position: relative;
     isolation: isolate;
-
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    place-items: center;
+    justify-items: center;
 
-    min-height: clamp(360px, 46svh, 440px);
+    min-height: 0;
 
     padding:
         clamp(4rem, 5.5vw, 5rem)
-        clamp(2.5rem, 7vw, 6rem);
+        clamp(2.5rem, 7vw, 6rem)
+        0.75rem;
 
     text-align: center;
 }
@@ -170,29 +171,28 @@
     position: relative;
     z-index: 3;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    align-content: start;
 
-    width: 100%;
-    max-width: 840px;
+    width: min(100%, 840px);
     min-width: 0;
-    margin-inline: auto;
+    margin: 0 auto;
+    text-align: center;
 }
 
-/* ORNAMENTO DEPOIS DA ASSINATURA */
+/* ORNAMENTO ABAIXO DA ASSINATURA */
 
 .invitation .hero__copy::after {
-    position: relative;
-    left: 50%;
-    align-self: flex-start;
-
+    position: static;
     display: block;
-    flex-shrink: 0;
+    justify-self: center;
 
     width: clamp(115px, 13vw, 175px);
     aspect-ratio: 2.5 / 1;
     margin: clamp(1.25rem, 2.5vw, 2rem) 0 0;
+    transform: none;
 
     content: "";
     pointer-events: none;
@@ -200,8 +200,6 @@
     background:
         url("../IMGS/ornament-hero.png")
         center / contain no-repeat;
-
-    transform: translateX(-50%);
 }
 
 .invitation .hero__subtitle {
@@ -339,7 +337,7 @@
     position: relative;
 
     padding:
-        clamp(2.5rem, 4vw, 4rem)
+        0.75rem
         clamp(2.5rem, 7vw, 7rem)
         clamp(1rem, 2vw, 1.5rem);
 
@@ -599,7 +597,7 @@
     outline-offset: 4px;
 }
 
-/* OPÇÕES DE PRESENÇA */
+/* PRESENÇA */
 
 .invitation .form-field--attendance {
     display: block;
@@ -733,7 +731,7 @@
     display: none;
 }
 
-/* FECHAMENTO INFERIOR */
+/* FECHAMENTO */
 
 .invitation .invitation-footer {
     position: relative;
@@ -776,10 +774,6 @@
 /* TABLETS */
 
 @media (max-width: 900px) {
-    .invitation .hero {
-        min-height: 400px;
-    }
-
     .invitation .hero__title {
         font-size: clamp(2.1rem, 5.2vw, 3rem);
     }
@@ -820,7 +814,6 @@
     }
 
     .invitation .masthead {
-        width: calc(100% - 58px);
         padding: 1rem 0;
     }
 
@@ -829,8 +822,7 @@
     }
 
     .invitation .hero {
-        min-height: clamp(390px, 58svh, 470px);
-        padding: 4.5rem 1.7rem;
+        padding: 4.5rem 1.7rem 0.5rem;
     }
 
     .invitation .hero__copy::after {
@@ -866,7 +858,7 @@
     }
 
     .invitation .details {
-        padding: 2rem 1.7rem 0.75rem;
+        padding: 0.5rem 1.7rem 0.75rem;
     }
 
     .invitation .detail {
@@ -963,9 +955,8 @@
 
 @media (max-height: 520px) and (min-width: 601px) {
     .invitation .hero {
-        min-height: 360px;
         padding-top: 3.5rem;
-        padding-bottom: 3.5rem;
+        padding-bottom: 0.75rem;
     }
 }
 
