@@ -3,41 +3,62 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0b0b0d">
-
-    <meta
-        name="description"
-        content="Convite de aniversário da Alana."
-    >
+    <meta name="description" content="Convite de aniversário da Alana.">
 
     <title>Convite</title>
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="IMGS/favicon.png"
-    >
-
+    <link rel="icon" type="image/png" href="IMGS/favicon.png">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/invitation.css">
 
     <script src="JS/app.js" defer></script>
 
     <style>
-        /* NOVAS DECORAÇÕES */
+        /* REMOVE OS TRAÇOS HORIZONTAIS DECORATIVOS */
+
+        .invitation .masthead {
+            border-bottom: 0;
+        }
+
+        .invitation .masthead::before,
+        .invitation .hero::after,
+        .invitation .hero__invitation::before,
+        .invitation .hero__ornament,
+        .invitation .rsvp__title::after,
+        .invitation .rsvp::after {
+            display: none;
+        }
+
+        .invitation .hero__invitation {
+            padding-top: 0;
+        }
+
+        /* INFORMAÇÕES E DIVISÓRIAS VERTICAIS */
+
+        .invitation .details {
+            border-top: 0;
+            border-bottom: 0;
+
+            padding-bottom: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .invitation .detail + .detail {
+            border-top: 0;
+        }
+
+        /* DIVISOR TRIBAL */
 
         .invitation .invitation-divider {
+            position: relative;
+            z-index: 2;
+
             display: grid;
             place-items: center;
 
-            width: min(76%, 540px);
-            margin: clamp(1rem, 3vw, 2rem) auto;
+            width: min(68%, 420px);
+            margin: 0 auto;
 
             pointer-events: none;
             user-select: none;
@@ -111,10 +132,6 @@
 
         /* FECHAMENTO INFERIOR */
 
-        .invitation .rsvp::after {
-            display: none;
-        }
-
         .invitation .invitation-footer {
             position: relative;
             z-index: 1;
@@ -123,11 +140,7 @@
             place-items: center;
 
             width: min(72%, 340px);
-
-            margin:
-                clamp(2.5rem, 6vw, 4rem)
-                auto
-                0;
+            margin: clamp(2.5rem, 6vw, 4rem) auto 0;
 
             pointer-events: none;
             user-select: none;
@@ -143,18 +156,36 @@
 
         .invitation .detail__address {
             color: inherit;
-
-            text-decoration: underline;
-            text-decoration-color: rgba(82, 24, 43, 0.35);
-            text-underline-offset: 0.18em;
-
+            text-decoration: none;
             cursor: pointer;
         }
 
+        .invitation .detail__address:hover {
+            color: var(--invite-red-dark);
+        }
+
+        .invitation .detail__address:focus-visible {
+            outline: 2px solid var(--invite-red);
+            outline-offset: 5px;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 900px) {
+            .invitation .detail + .detail {
+                border-top: 0;
+                border-left: 0;
+            }
+        }
+
         @media (max-width: 600px) {
+            .invitation .details {
+                padding-bottom: 0.75rem;
+            }
+
             .invitation .invitation-divider {
-                width: min(74%, 340px);
-                margin: 1rem auto;
+                width: min(70%, 280px);
+                margin: 0 auto;
             }
 
             .invitation .rsvp__corner {
@@ -178,12 +209,7 @@
         id="intro"
         aria-label="Abertura do convite"
     >
-        <div
-            class="intro__atmosphere"
-            aria-hidden="true"
-        >
-
-            <!-- MOLDURA -->
+        <div class="intro__atmosphere" aria-hidden="true">
 
             <div class="intro__frame">
                 <i class="rail top"></i>
@@ -266,9 +292,7 @@
                     <span class="envelope__letter-track">
                         <span class="envelope__letter">
                             <span class="envelope__letter-inner">
-                                <span
-                                    class="envelope__letter-ornament"
-                                ></span>
+                                <span class="envelope__letter-ornament"></span>
                             </span>
                         </span>
                     </span>
@@ -314,9 +338,6 @@
         aria-label="Convite de aniversário"
         hidden
     >
-
-        <!-- CABEÇALHO ORNAMENTAL -->
-
         <header class="masthead" aria-hidden="true">
             <span class="masthead__ornament"></span>
         </header>
@@ -368,11 +389,6 @@
                     19 ANOS
                 </p>
             </div>
-
-            <span
-                class="hero__ornament"
-                aria-hidden="true"
-            ></span>
         </section>
 
         <!-- INFORMAÇÕES -->
@@ -438,7 +454,7 @@
             ></div>
         </section>
 
-        <!-- DIVISOR ORNAMENTAL -->
+        <!-- DIVISOR TRIBAL -->
 
         <div class="invitation-divider" aria-hidden="true">
             <img
@@ -531,9 +547,7 @@
                         >
                     </div>
 
-                    <fieldset
-                        class="form-field form-field--attendance"
-                    >
+                    <fieldset class="form-field form-field--attendance">
                         <legend>
                             Você virá?
                         </legend>
@@ -612,7 +626,7 @@
                 aria-hidden="true"
             ></div>
 
-            <!-- ORNAMENTO INFERIOR -->
+            <!-- FECHAMENTO INFERIOR -->
 
             <div class="invitation-footer" aria-hidden="true">
                 <img
