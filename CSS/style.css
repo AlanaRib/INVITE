@@ -141,8 +141,15 @@ body::before {
     --frame-inset: clamp(16px, 2.2vw, 34px);
     --frame-corner: clamp(80px, min(13vw, 20svh), 164px);
     --frame-mark: clamp(48px, 7vw, 84px);
-    --frame-offset: calc(var(--frame-corner) * 0.045);
-    --frame-start: calc(var(--frame-corner) * 0.88);
+    --frame-ink: #000;
+
+    /* Eixos medidos dentro do PNG */
+    --frame-axis-x: calc(var(--frame-corner) * 0.111);
+    --frame-axis-y: calc(var(--frame-corner) * 0.15);
+
+    /* Sobreposição das linhas com as pontas */
+    --frame-start-x: calc(var(--frame-corner) * 0.8);
+    --frame-start-y: calc(var(--frame-corner) * 0.82);
 
     position: absolute;
     inset: var(--frame-inset);
@@ -151,6 +158,7 @@ body::before {
 
 .intro__frame .corner {
     position: absolute;
+    z-index: 1;
     display: block;
     width: var(--frame-corner);
     height: var(--frame-corner);
@@ -183,67 +191,61 @@ body::before {
     transform: scale(-1);
 }
 
-/* LINHAS FLEXÍVEIS */
+/* LINHAS ALINHADAS AO DESENHO */
 
 .intro__frame .rail {
     position: absolute;
+    z-index: 0;
     display: block;
-    opacity: 0.72;
+    opacity: 1;
 }
 
 .intro__frame .rail.top,
 .intro__frame .rail.bottom {
-    left: var(--frame-start);
-    right: var(--frame-start);
+    left: var(--frame-start-x);
+    right: var(--frame-start-x);
     height: 1px;
 
     background: linear-gradient(
         90deg,
-        transparent,
-        #171319 6%,
-        #171319 calc(50% - var(--frame-mark) / 2),
+        var(--frame-ink) 0,
+        var(--frame-ink) calc(50% - var(--frame-mark) / 2),
         transparent calc(50% - var(--frame-mark) / 2),
         transparent calc(50% + var(--frame-mark) / 2),
-        #171319 calc(50% + var(--frame-mark) / 2),
-        #171319 94%,
-        transparent
+        var(--frame-ink) calc(50% + var(--frame-mark) / 2),
+        var(--frame-ink) 100%
     );
 }
 
 .intro__frame .rail.left,
 .intro__frame .rail.right {
-    top: var(--frame-start);
-    bottom: var(--frame-start);
+    top: var(--frame-start-y);
+    bottom: var(--frame-start-y);
     width: 1px;
-
-    background: linear-gradient(
-        transparent,
-        #171319 6%,
-        #171319 94%,
-        transparent
-    );
+    background: var(--frame-ink);
 }
 
 .intro__frame .rail.top {
-    top: var(--frame-offset);
+    top: var(--frame-axis-y);
 }
 
 .intro__frame .rail.bottom {
-    bottom: var(--frame-offset);
+    bottom: var(--frame-axis-y);
 }
 
 .intro__frame .rail.left {
-    left: var(--frame-offset);
+    left: var(--frame-axis-x);
 }
 
 .intro__frame .rail.right {
-    right: var(--frame-offset);
+    right: var(--frame-axis-x);
 }
 
 /* ORNAMENTOS CENTRAIS */
 
 .intro__frame .mid {
     position: absolute;
+    z-index: 1;
     left: 50%;
     display: block;
     width: var(--frame-mark);
@@ -258,13 +260,13 @@ body::before {
 
 .intro__frame .mid.top {
     top: calc(
-        var(--frame-offset) - var(--frame-mark) * 0.2
+        var(--frame-axis-y) - var(--frame-mark) * 0.2
     );
 }
 
 .intro__frame .mid.bottom {
     bottom: calc(
-        var(--frame-offset) - var(--frame-mark) * 0.2
+        var(--frame-axis-y) - var(--frame-mark) * 0.2
     );
 
     transform: translateX(-50%) rotate(180deg);
@@ -415,7 +417,7 @@ body::before {
     );
 }
 
-/* BOLSO FRONTAL */
+/* BOLSO */
 
 .envelope__pocket {
     position: absolute;
@@ -557,7 +559,7 @@ body::before {
     );
 }
 
-/* ABA SUPERIOR */
+/* ABA */
 
 .envelope__back::before {
     position: absolute;
@@ -620,10 +622,7 @@ body::before {
         rotate(-2deg);
 
     pointer-events: none;
-
-    filter: drop-shadow(
-        0 7px 9px rgba(11, 11, 13, 0.28)
-    );
+    filter: drop-shadow(0 7px 9px rgba(11, 11, 13, 0.28));
 
     transition:
         opacity 220ms ease,
@@ -646,13 +645,12 @@ body::before {
     text-align: center;
 
     text-shadow: 0 2px 3px rgba(11, 11, 13, 0.9);
-
     transform: translateX(-50%);
     pointer-events: none;
     transition: opacity 220ms ease;
 }
 
-/* ANIMAÇÃO DE ABERTURA */
+/* ABERTURA */
 
 .envelope__stage.is-seal-released .envelope__seal {
     opacity: 0;
@@ -720,10 +718,7 @@ body::before {
 @keyframes particle-rise {
     0% {
         opacity: 0;
-
-        transform:
-            translate3d(0, 0, 0)
-            scale(0.4);
+        transform: translate3d(0, 0, 0) scale(0.4);
     }
 
     20% {
@@ -732,10 +727,7 @@ body::before {
 
     100% {
         opacity: 0;
-
-        transform:
-            translate3d(0, -32vh, 0)
-            scale(1.05);
+        transform: translate3d(0, -32vh, 0) scale(1.05);
     }
 }
 
@@ -862,91 +854,5 @@ body::before {
 
     .particle {
         animation: none !important;
-    }
-}
-
-/* MOLDURA RESPONSIVA COM ASSETS */
-
-.intro .intro__frame {
-    --frame-inset: clamp(16px, 2.2vw, 34px);
-    --frame-corner: clamp(80px, min(13vw, 20svh), 164px);
-    --frame-mark: clamp(48px, 7vw, 84px);
-    --frame-offset: calc(var(--frame-corner) * .045);
-    --frame-start: calc(var(--frame-corner) * .88);
-    inset: var(--frame-inset);
-}
-.intro .intro__frame .corner {
-    width: var(--frame-corner);
-    height: var(--frame-corner);
-    overflow: visible;
-    background: url("../IMGS/envelope-frame-corner.png") center / contain no-repeat;
-    filter: none;
-}
-.intro .intro__frame .corner .piece {
-    display: none;
-}
-.intro .intro__frame .rail {
-    background: #171319;
-    opacity: .72;
-    filter: none;
-}
-.intro .intro__frame .rail.top,
-.intro .intro__frame .rail.bottom {
-    left: var(--frame-start);
-    right: var(--frame-start);
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #171319 6%,
-        #171319 calc(50% - var(--frame-mark) / 2),
-        transparent calc(50% - var(--frame-mark) / 2),
-        transparent calc(50% + var(--frame-mark) / 2),
-        #171319 calc(50% + var(--frame-mark) / 2),
-        #171319 94%,
-        transparent
-    );
-}
-.intro .intro__frame .rail.left,
-.intro .intro__frame .rail.right {
-    top: var(--frame-start);
-    bottom: var(--frame-start);
-    width: 1px;
-    background: linear-gradient(transparent, #171319 6%, #171319 94%, transparent);
-}
-.intro .intro__frame .rail.top { top: var(--frame-offset); }
-.intro .intro__frame .rail.bottom { bottom: var(--frame-offset); }
-.intro .intro__frame .rail.left { left: var(--frame-offset); }
-.intro .intro__frame .rail.right { right: var(--frame-offset); }
-
-.intro .intro__frame .mid {
-    width: var(--frame-mark);
-    height: calc(var(--frame-mark) * .4);
-}
-.intro .intro__frame .mid.top {
-    top: calc(var(--frame-offset) - var(--frame-mark) * .2);
-}
-.intro .intro__frame .mid.bottom {
-    bottom: calc(var(--frame-offset) - var(--frame-mark) * .2);
-}
-.intro .intro__frame .mid::before {
-    background: url("../IMGS/ornament-header.png") center / contain no-repeat;
-    clip-path: none;
-}
-.intro .intro__frame .side {
-    display: none;
-}
-@media (max-width: 540px) {
-    .intro .intro__frame {
-        --frame-inset: 14px;
-        --frame-corner: clamp(68px, 20vw, 92px);
-        --frame-mark: 52px;
-    }
-}
-@media (max-height: 520px) {
-    .intro .intro__frame {
-        --frame-inset: 12px;
-        --frame-corner: clamp(56px, 20svh, 90px);
-        --frame-mark: 44px;
     }
 }
